@@ -1,0 +1,134 @@
+{
+  "round_id": "20260927T174209574990Z-glm-MATH-001",
+  "problem_id": "MATH-001",
+  "agent": "glm",
+  "branch": "glm/MATH-001-baseline-r1",
+  "base_sha": "cd1e4eadc177920b95332ebe08c2498e52c3ce56",
+  "started_at": "2026-09-27T17:42:09.574990+00:00",
+  "state": "ADMITTED",
+  "acceptance": "Scope 凍結（動手前）：(1) 建立 MATH-001 精確 evaluator：整數運算 verifier，檢查格點範圍 {1..n}^2、點唯一、恰好 2n 點、所有 C(2n,3) 三點組之整數行列式非零；另寫獨立第二實作（不同演算法表達：Fraction 斜率＋隨機三點組順序）交叉檢查所有憑證。(2) 以確定性 DFS（行逐列、列計數 ≤2、行剪枝）自行產生 n=2..8（stretch 至 ≤12）之 2n 構造；因 2n 為上界，通過驗證之 2n 憑證即證 D(n)=2n 該 n。(3) 重現公開構造：下載 Flammenkamp data_1997/known_solutions（1.65MB）＋decode.c，依其語意獨立重寫 Python 解碼器，解碼結果全數以 (1) verifier 重驗；解碼正確性由『錯誤解碼幾乎必然產生共線三點』自證。(4) 正例＝(2)(3) 全部 PASS；負例＝對每張憑證注入一組共線三點之篡改檔必須 FAIL；邊界案例＝重複點、越界、點數不足、n=1。(5) 文獻排重：8 條實際 query 確認一般問題無同範圍外部解答；verdict=PARTIAL_PROGRESS（finite frontier 由題卡之 n≤60/最小未定 61 推進至 n≤70 齊備＋71/72/73/74/76、最小未定 75），PR 更新題卡 known_result（文獻更新，不改 statement/completion_criterion/evaluator）。預算 0 美元、≤120 分鐘、≤100 trials；全部產物與執行僅在本 repo 內。",
+  "not_done": "不宣稱對一般 n 之任何證明或反例；不重現 HJSW (3/2−ε)n 下界構造；不做 Lean 形式化或 claims.json 變更；不搜尋 n=75/77 之新解（後續輪次）；未取得 Heule n=71–76 原始 SAT 解與認證檔（本輪僅文獻層級紀錄）；未執行 Prellberg CP-SAT solver（避免引入 ortools 依賴）。",
+  "budget": {
+    "wall_minutes": 120,
+    "usd": 0,
+    "max_trials": 100
+  },
+  "preflight": {
+    "checked_at": "2026-09-27T17:56:30+00:00",
+    "verdict": "PARTIAL_PROGRESS",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "queries": [
+      {
+        "query": "\"no-three-in-line\" problem 2n points construction 2026",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "general",
+        "outcome": "問題背景與構造史確認；一般問題 open"
+      },
+      {
+        "query": "Prellberg no-three-in-line constraint satisfaction arXiv",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "general",
+        "outcome": "arXiv:2602.07751（2026-02-08, v1）確認；CSP 達 2n 於 n≤60"
+      },
+      {
+        "query": "\"no-three-in-line\" solved OR \"general solution\" OR counterexample 2025 2026 open problem status",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "solution",
+        "outcome": "無一般解答或反例；2n 猜想仍 open"
+      },
+      {
+        "query": "Flammenkamp no-three-in-line best known solutions n 2n",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "discipline",
+        "outcome": "定位權威紀錄頁；紀錄 n=76（Heule 2026-08-10）"
+      },
+      {
+        "query": "\"no-three-in-line\" lower bound \"3/2\" OR \"1.5\" n points arXiv 2024 2025 improvement",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "solution",
+        "outcome": "無 2024-25 下界改進之 primary；HJSW 1975 (3/2−ε)n 仍最佳"
+      },
+      {
+        "query": "Heule no-three-in-line SAT solver solution n=76",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "discipline",
+        "outcome": "n=76 無直接 primary 命中；發現 Heule 認證計算論文線索"
+      },
+      {
+        "query": "\"Four Methods\" OR \"Three methods\" \"no-three-in-line\" ICML 2026 classical AI approaches",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "solution",
+        "outcome": "無法定位該論文 primary；僅次要摘要提及，記 disputed"
+      },
+      {
+        "query": "\"no-three-in-line\" Prellberg OR Heule erratum OR comment OR retraction OR \"failed replication\" OR correction",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "criticism",
+        "outcome": "無 erratum/retraction/failed replication；版本核查：2602.07751 僅 v1、2605.09215 有 v2(2026-09-19)"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2602.07751",
+        "title": "Constraint Satisfaction Programming for the No-three-in-line Problem (Prellberg 2026)",
+        "kind": "primary",
+        "supports": "2n 構造對所有 n≤60；最小未定 n 由 47→61；CP-SAT；補充資料 GitHub（MIT）"
+      },
+      {
+        "url": "https://wwwhomes.uni-bielefeld.de/achim/no3in/readme.html",
+        "title": "A. Flammenkamp, No-Three-in-Line Problem 紀錄頁（更新 2026-09-11）",
+        "kind": "primary",
+        "supports": "紀錄進展 58→76；n≤70 齊備＋71/72/73/74/76；最小未定 75；解資料檔與 decode.c 格式"
+      },
+      {
+        "url": "https://arxiv.org/abs/2605.09215",
+        "title": "No-three-in-line sets on the checkerboard grid (Prellberg 2026, v2 2026-09-19)",
+        "kind": "primary",
+        "supports": "單色變體 D_mono(n)≤αn+O(1)、α≈1.5768；不同 scope，佐證主問題仍 open"
+      },
+      {
+        "url": "https://github.com/ThomasPrellberg/no-three-in-line---CP-SAT",
+        "title": "Prellberg 論文補充程式庫（MIT）",
+        "kind": "primary",
+        "supports": "CP-SAT solver 與 Table 1.txt；repo 未附解資料檔"
+      }
+    ],
+    "limitations": "有界檢索：8 query、4 primary URL；未覆蓋付費牆全文、ResearchGate 原文、Heule 個人頁與 SAT 認證檔；arXiv:2602.07751 僅讀 abs 頁未逐頁審 PDF；『無搜尋結果』非未解證明；n=71–76 原始解資料未能下載（頁面無直接 href）。",
+    "scope_comparison": "題卡 scope＝『一般 n≥2 之 D(n)=2n 存在性或反例』。檢索確認：無同範圍一般解答或反例（open 不變）。有限進展已由 n≤60（Prellberg）推進至 n≤70 全覆蓋＋71/72/73/74/76（Heule/Prellberg），最小未定 n=75——屬 PARTIAL_PROGRESS：有限 n 構造不關閉一般問題，僅更新 known_result。",
+    "baseline": "baseline＝(a) 整數精確 verifier＋獨立第二實作（本輪建立）；(b) 自行 DFS 產生 n=2..8 之 2n 構造（n≤8 已屬 rigorously known，作為 evaluator 自我校準正例）；(c) Flammenkamp 公開解資料解碼後重驗（獨立重驗一組公開構造，涵蓋文獻紀錄之實際 n）。"
+  },
+  "artifacts": [
+    "runs/20260927T174209574990Z-glm-MATH-001/LITERATURE_MAP.md",
+    "runs/20260927T174209574990Z-glm-MATH-001/ROUND_REPORT.md",
+    "problems/MATH-001/experiments/baseline_r1/verifier.py",
+    "problems/MATH-001/experiments/baseline_r1/verifier_indep.py",
+    "problems/MATH-001/experiments/baseline_r1/search_small_n.py",
+    "problems/MATH-001/experiments/baseline_r1/decode_and_verify.py",
+    "problems/MATH-001/experiments/baseline_r1/tamper_test.py",
+    "problems/MATH-001/experiments/lit_data/known_solutions_1997.txt",
+    "problems/MATH-001/experiments/lit_data/decode.c",
+    "problems/MATH-001/experiments/lit_data/no3in_readme.html",
+    "problems/MATH-001/results/r1/self/",
+    "problems/MATH-001/results/r1/flammenkamp/",
+    "problems/MATH-001/results/r1/negative/",
+    "problems/MATH-001/results/r1/hashes.txt",
+    "problems/MATH-001/results/r1/environment.txt"
+  ],
+  "result": {
+    "state": "ROUND_FINISHED",
+    "verdict": "PARTIAL_PROGRESS",
+    "summary": "evaluator v1/v2 建立（636 案例 adversarial 全過、兩實作一致）；自製 n=2..10 之 2n 憑證（n=1 UNSAT 邊界）；Flammenkamp 36,912 公開構造（n=2..52）獨立解碼＋全量重驗 REPRODUCTION_SUCCESS；文獻更新：frontier n<=60→n<=74 除 75 外全解＋紀錄 76，最小未定 n=75；MATH-001 維持 OPEN。",
+    "skeptic_bugs_found": [
+      "decoder mapping ord(c)-87 should be ord(c)-61 (caught by bulk reproduction discrepancy concentrated at n>=37)",
+      "verifier_indep violation-report f-string NameError (caught by first fuzz case)"
+    ],
+    "wall_minutes_used_approx": 45
+  },
+  "admitted_at": "2026-09-27T17:55:50.332724+00:00"
+}

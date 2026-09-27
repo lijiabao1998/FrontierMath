@@ -1,0 +1,31 @@
+{
+  "problem": "MATH-001",
+  "n": 2,
+  "target": 4,
+  "points": [
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "source": "tamper:duplicate_point_of_glm-dfs-r1",
+  "origin_ref": "self-generated deterministic DFS, experiments/baseline_r1/search_small_n.py; upper bound 2n via <=2 per row, so a verified 2n certificate proves D(n)=2n for this n",
+  "generated": "2026-09-27T17:59:55+00:00",
+  "search_stats": {
+    "wall_seconds": 0.0,
+    "nodes": 2
+  },
+  "wlog_note": "exactly 2 points per row; columns capped at 2"
+}

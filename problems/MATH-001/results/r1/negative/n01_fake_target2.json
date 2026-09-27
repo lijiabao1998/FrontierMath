@@ -1,0 +1,17 @@
+{
+  "problem": "MATH-001",
+  "n": 1,
+  "target": 2,
+  "points": [
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "source": "tamper:fake_n1_boundary",
+  "tamper_note": "D(1)=1<2: no 2-point config exists in a 1x1 grid"
+}

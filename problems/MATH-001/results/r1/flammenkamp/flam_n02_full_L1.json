@@ -1,0 +1,28 @@
+{
+  "problem": "MATH-001",
+  "n": 2,
+  "target": 4,
+  "points": [
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ]
+  ],
+  "source": "flammenkamp-known-solutions-1997",
+  "origin_ref": "https://wwwhomes.uni-bielefeld.de/achim/no3in/readme.html (data_1997/known_solutions, decoded per decode.c semantics)",
+  "generated": "2026-09-27T18:26:31+00:00",
+  "symmetry_class": "full",
+  "archive_line": 1
+}
