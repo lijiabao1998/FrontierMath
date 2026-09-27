@@ -1,0 +1,24 @@
+# DeepSeek r1 -- third-party data and large generated instances are NOT vendored.
+#
+# This round explicitly follows the "URL + SHA-256 + fetch instructions instead of
+# vendored raw data" rule for anything large or third-party. See
+# ../../DEEPSEEK_REVIEW_FrontierMath_PRs.md (section P-1) for the reasoning and
+# independent_verifier_r1/PROVENANCE.md for the fetch commands and hashes.
+#
+# Paths here are relative to this directory (problems/MATH-001/experiments/).
+
+# Flammenkamp no-three-in-line data (third-party; redistribution terms not stated upstream)
+lit_data/known_solutions_1997.txt
+lit_data/dl/
+lit_data/out_*
+lit_data/readme_text.txt
+lit_data/r_*
+lit_data/t_*
+
+# Large generated instances (reproducible from the committed generators)
+n75_attack/*.cnf
+n75_attack/rot2_n75.cnf
+
+# Python bytecode
+__pycache__/
+*.pyc

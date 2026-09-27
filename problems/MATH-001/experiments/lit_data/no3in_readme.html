@@ -1,0 +1,463 @@
+<DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<HTML>
+<HEAD>
+<TITLE>No-Three-in-Line Problem</TITLE>
+<!--LINK REV="made" HREF="mailto:achim@uni-bielefeld.de"-->
+<link rel="icon" type="image/png" href="https://wwwhomes.uni-bielefeld.de/achim/no3in10.png">
+</HEAD>
+<BODY>
+<!--?system("../add_guest $REMOTE_ADDR etc/visitor")-->
+<EM>Universit&auml;t Bielefeld
+<BR>Bielefeld IT Service Center
+<!--
+<BR>HochschulRechenZentrum
+<BR>Fakult&auml;t f&uuml;r Mathematik
+-->
+</EM>
+<!--
+<EM>Friedrich-Schiller-Universit&auml;t Jena
+<BR>Universit&auml;tsRechenZentrum
+<BR>Fakult&auml;t f&uuml;r Mathematik und Informatik
+</EM>
+-->
+<HR>
+<H1>The No-Three-in-Line Problem<br> <img align="middle" width=420 height=430 src="rot4_76.png" alt="new record holder of grid size 76"></H1>
+<H2>Index</H2>
+<UL>
+<!-- given names="12t3s4567c890PunpqrvwzmkljidefghoabxyQRSTUVWKLMNJHIGFEDCBA"  -->
+<LI><a href="#1">Introduction</a>
+<LI><a href="#2">Known Solutions until 1992</a>
+<LI><a href="#t">State of the Art 1997</a>
+<LI><a href="#3">About the implemented Algorithm</a>
+<LI><a href="#s">Show No-Three-in-Line Configuration</a>
+<LI><a href="#4">Latest Calculations</a>
+<LI><a href="#5">Open Conjectures</a>
+<LI><a href="symmetry_remarks.html">Symmetry Remarks</a>
+<LI><a href="#6">A Superficial Explanation</a>
+<LI><a href="#7">Sub No-3-in-line Solutions</a>
+<LI><a href="#c">Submit a Configuration</a>
+<LI><a href="density.html">Distribution of Selected Points</a>
+<LI><a href="#8">References until July 1992</a>
+<LI><a href="#9">Corrections to published Data</a>
+<!--LI><a href="table.html">Summary in Tabular Form</a> (<img align=middle src="../icons/last_update.gif" alt="" width=45 height=20>2026-07-19)-->
+<LI><a href="table.html">Summary in Tabular Form</a> (<span style="background-color: #ffffc0;"> updated 2026-09-11 </span>)
+<LI><a href="#0">Near misses with at least orthogonal reflection symmetry</a>
+<LI><a href="#R">Minimal defect for fixed symmetry and grid size</a>
+<!--LI><a href="download">Directory to download no-three-in-line problem related files</a> (<img align=middle src="../icons/last_update.gif" alt="" width=45 height=20>2026-07-19)-->
+<LI><a href="download">Directory to download no-three-in-line problem related files</a> (<span style="background-color: #ffffc0;">last update 2026-08-31 </span>)
+<LI><a href="images.html">A few Pictures of Numbers of Solutions</a>
+<LI><a href="four_corner_permutation_note.html">Four Corner Permutation Note</a>
+<LI><a href="#P">Solutions discovered after 2001 by Various People</a>
+<UL>
+<LI>Benjamin Chaffin
+<UL>
+<LI><a href="#u">All Solutions for n=17 and n=18</a>
+</UL>
+<LI>Michael Collier
+<UL>
+<LI><a href="#n">New Solution for n=28 with orthogonal reflection symmetry</a>
+<LI><a href="#o">All Solutions for n=26 and n=27 in symmetry class dia1</a>
+<LI>Many solutions for n=21, 22, ..., 32 (in symmetry classes iden and rot2)
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+30 solutions for n=21 in symmetry classes iden.
+</UL>
+<LI>Thomas Prellberg
+<UL>
+<LI><a href="#p">New Solutions for n=47,49,51,53,54,55,56 and n=58 with (half/quarter) rotational symmetry</a>
+<LI><a href="#q">All Solutions for n=41 in symmetry class rct4 and a first solution for n=57</a>
+<LI><a href="#r">Solution for n=59 and n=60</a>
+<LI><a href="#z">Solution for n=62</a>
+<LI><a href="#m">All Solutions for n=48, 50 and n=52 in symmetry class rot4</a>
+<LI><a href="#k">Solution for n=64</a>
+<LI><a href="#j">All Solutions for n=49, 51 and n=53 in symmetry class rct4</a>
+<LI><a href="#i">Solution for n=61</a>
+<LI><a href="#e">Solution for n=63</a>
+<LI><a href="#f">Solution for n=66</a>
+<LI><a href="#g">Solution for n=68</a>
+<LI><a href="#h">All Solutions for n=54 in symmetry class rot4</a>
+<LI><a href="#Q">All Solutions for n=56 in symmetry class rot4</a>
+<LI><a href="#S">All Solutions for n=55 in symmetry class rct4</a>
+<LI><a href="#V">All Solutions for n=20</a>
+<LI><a href="#M">All Solutions for n=57 in symmetry class rct4</a>
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="#C">Solution for n=74</a>
+</UL>
+<LI>Mitchell Riley
+<UL>
+<LI><a href="#v">All Solutions for n=19</a>
+<LI><a href="#w">All Solutions for n=44 and n=46 in symmetry class rot4</a>
+<LI><a href="#m">All Solutions for n=48, 50 and n=52 in symmetry class rot4</a>
+<LI><a href="#l">All Solutions for n=43, 45 and n=47 in symmetry class rct4</a>
+<LI><a href="#d">Solution for n=47 in symmetry class dia2</a>
+</UL>
+<LI>Achim Flammenkamp
+<UL>
+<LI><a href="#T">All Solutions for n=26 and n=27 in symmetry class rot2</a>
+<LI><a href="#U">All Solutions for n=28 in symmetry class rot2</a>
+<LI><a href="#W">All Solutions for n=29 in symmetry class rot2</a>
+<LI><a href="#K">All Solutions for n=28 and n=29 in symmetry class dia1</a>
+<LI><a href="#L">All Solutions for n=30 in symmetry class rot2</a>
+<LI><a href="#N">All Solutions for n=30 in symmetry class dia1</a>
+<LI><a href="#J">All Solutions for n=31 in symmetry class dia1</a>
+<LI><a href="#G">All Solutions for n=32 in symmetry class dia1</a>
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="#D">All Solutions for n=31 in symmetry class rot2</a>
+</UL>
+<LI>Marijn Heule
+<UL>
+<LI><a href="#H">Solution for n=70</a>
+<LI><a href="#I">Solution for n=65</a>
+<LI><a href="#F">Solution for n=67 and n=69</a>
+<LI><a href="#E">Solution for n=72</a>
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="#A">Solution for n=76</a>
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="#01">Solution for n=71</a>
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="#02">Solution for n=73</a>
+</UL>
+<LI>Jacob Davies
+<UL>
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="#B">Many Solutions for n=21, 22, ..., 56, 57</a>
+</UL>
+<LI>Aleksei Kudriashov
+<UL>
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="#00">New Solutions for n=33, 36, 37, 39</a>
+</UL>
+</UL>
+</UL>
+<P>
+<H2><a name="1">Introduction</a></H2>
+The no-three-in-line problem is a geometric arrange problem. Let
+for every natural number <em>n</em> a <em>n</em>&times;<em>n</em> Cartesian grid be given in the Euclidean plane.
+The problem/task is now to select for each number <em>n</em> <em>2n</em>-many of the intersection points of the <em>n</em><sup>2</sup> grid points under the condition that no three of these <em>2n</em> points lie in a straight line.
+One can obviously choose (or select) at most <em>2n</em> points of the <em>n<sup>2</sup></em>-many grid points.
+<P>
+Firstly only for the grid size <em>8</em>&times;<em>8</em> H.E. Dudeney published the problem 1906 in the Indian daily newspaper "The Tribune".
+Latest 1914, this was cited and published again in the book "Mathematical Recreations and Essays" by Rouse Ball.<br>
+The problem of finding for which general grid sizes <em>n</em>&times;<em>n</em> the upper bound <em>2n</em> is reached is known as the no-three-in-line problem, introduced at latest 1951.
+<!-- Dudeney 1917 as 'Puzzle with pawns' for the special/single value <em>n=8</em> (motivated by the size of the chess board). -->
+<P>
+A closely related question is: How many points can maximally be selected/placed under this
+restriction? P. Erd&ouml;s has shown that
+<em>(1-eps)n</em> points can be placed in a given <em>n</em>&times;<em>n</em> grid for all sufficient large <em>n</em>. 
+Hall, Jackson, Sudbery, and Wild made the substantial improvement to <em>(3/2-eps)n</em> in 1975. This is the best known asymptotic lower bound. 
+But Guy and Kelly used a probabilitic argument to support their conjecture
+that for large grids the limit does not reach <em>2n</em> -- the <a href="#mc">main conjecture</a>.
+
+<H2><a name="2">Known Solutions until 1992</a></H2>
+Until March 1992 I had computed for small values of <em>n</em> such no-three-in-line configurations.
+The last class I counted was for n=23 with one diagonal-reflection symmetry. This was the only
+missing number in my 1992 JCT publication.
+All those old results are summarized in <a href="table_old.txt"><strong>this table</strong></a>. To get an impression of the increasing number of examined cases have a look at the <a href="cases.txt">counted vertices</a> in the recursive total tree search which is subdivided in the symmetry classes.
+Look for a short
+<a href="symmetry_remarks.html">explanation of symmetry classes</a> and their conditions.
+<BR>
+<H2><a name="t">State of the Art 1997</a></H2>
+Better you have a look to both, old and new, data as a collection of <a href="data_1997/">many files</a> or as a <a href="data_1997/known_solutions">list of coded configurations (1.6MB)</a>.
+To decypher this code use <a href="decode.c">this C-program</a>.
+For those who haven't access to a C-compiler:
+Each line represents a configuration and each character in it denotes a chosen column position, except the first one, which indicates the symmetry class. The positions are coded from left to right and from top to bottom in each configuration. They are indicated
+by the alphabet 0,1,2,...,9,A,B,C...,Z,a,b,...,z only in their column positions.
+<P>
+For example here are all now known configurations with <a href="ntdia">dia2- and full-symmetry</a>.
+Also you can see this as a <a href="dia.gif">44KB picture</a> of 33+3 configurations.
+<BR>Also an overview of the number of configurations is given with this hopefully up-to-date <a href="table.txt"><strong>table of 1997</strong></a>.
+The used method to find these solutions is mainly a sophisticated branch and bound algorithm.
+<H2><a name="3">About the implemented Algorithm</a></H2>
+My program <em>nothree</em> needs about 4 n^4 + O(n^2) bytes storage and was
+first implemented in July 1988.
+Its last release was of November 1991 and consists
+of about 600 lines of C sourcecode.
+<P>
+A new version was just in April 1996
+implemented. Aside the fact that computers nowadays seem to be by a factor 15-20 quicker, the
+refined algorithm itself gives a speedup of 1.5 - 8 depending on the examined symmetry class. It is very important to traverse the tree of the possible configurations in a proper chosen order. And this depends stronly of the symmetry class.
+<BR>
+Furthermore with a simple trick, the restriction of <em>n &le; 64</em> (due to the internal data structure) could be
+risen to <em>n &le; 90</em> without any runtime or memory increase. Currently I can check <em>n = 72</em> for configurations with full symmetry in the same cputime as those for <em>n = 60</em> with the old algorithm used 1991.  
+<br>The <a href="download/iden.c">algorithm independent of symmetries</a> of the grid and <a href="download/fullnew.c">the current one for full symmetry</a> of the grid are downloadable for free.
+<P>
+Since 7th June 1996 a new format for the coded configurations is in use: Now each configuration is lead in by a
+symmetry-class character of the list (. : / - o c x + *) which indicates the symmetry (iden rot2 dia1 ort1 rot4 rct4 dia2 ort2 full) respectively.
+Further, the selected positions are indicated by the alphabet 0,1,2,...,9,A,B,C...,Z,a,b,...,z only in their column positions from top to bottom row and in every row from left to right.
+A coded configuration must be terminated by a newline or space or tab.<BR>
+In February 2026 the first configuration with n=62 was discovered which triggered the extension of the alphabet by 28 more characters.
+Thus the <strong>alphabet for encoding</strong> is now <a href="encoding">"<strong>0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%&@?!()[]<>{}=*+|-/~^_:;,.</strong>"</a>.
+It consists of 90 characters and contains all ASCII-characters > 32 and < 127 except 4 unused characters. For examples of configuration encodings simply look at some configurations you may choose in the following section.
+<P>
+<H2><a name="s">Show No-Three-in-Line Configuration</a></H2>
+<form method="POST" action="/cgi-bin/cgiwrap/achim/script_lookup?para=FIXED">
+Symmetry class <input type="text" name="symm" size="2" maxlength="1"> at most one character of . : / - o c x + *<BR>
+If symmetry class is empty it matches every symmetry class.<BR>
+Grid size <input type="text" name="size" size="4" maxlength="2"> positive integer given as a decimal number<BR>
+If the given grid size is 0 or empty, then every size matches.<BR>
+Index <input type="text" name="index" size="10" maxlength="5"> positive integer given as a decimal number<BR>
+This index indicates a specific number (starting with 1) of an arbitrary enumeration of the chosen subset of configurations.<BR>
+If index is empty then show the next configuration of this subset. index=0 means: show the total number = maximal index.<BR>
+<input type="reset" value="Clear">
+<input type="submit" name="send" value="Do it">
+</form>
+As of <span style="background-color:#ffffc0;"> 2026-08-31 </span> there are<span style="background-color:#ffffc0;"> <strong>431008</strong> </span> configurations stored in the database.
+<HR>
+<H2><a name="4">Latest Calculations</a></H2>
+<UL>
+<LI>In 1996 <a href="new_results.html">finished case-studies</a>
+<LI><a href="odd_results.html">Progress for configurations with n odd</a>
+</UL>
+and <H2>Future Aims</H2>
+<UL>
+<LI>Finding configurations for larger n
+<LI>Settling the <strong>Main Conjecture</strong> of No-Three-in-Line
+</UL>
+<P>
+<HR>
+<H2><a name="5">Conjectures</a></H2>
+<DL>
+<DT><a name="mc"><strong>Main Conjecture</strong> (&le; 1967)</a>
+<DD>There are only <strong>finite many</strong> different no-three-in-line configurations.
+I.e. there is a (smallest) grid size <em>n</em> such that no configurations satisfying the no-three-in-line condition exist for any size greater this <em>n<em>.
+<DD>If <em>n</em> tends to infinity, there are only <em>(2/3PI<sup>2</sup>)<sup>(1/3)</sup>n = 1.873... n</em>
+points selectable such that any three of them do not lie in a straight line.
+<DD>In March 2004 Gabor Ellmann, a hungarian amateur mathematician, discovered an error in Guy & Kellys published derivation of 1968.
+<DD>If this "substitution"-mistake is corrected it results: asymptotically are only <em>PI/3<sup>1/2</sup> n = 1.814... n</em> points selectable.
+<DT>Conjecture I (R.K. Guy &amp; P.A. Kelly 1968)
+<DD>There are exactly 3 configurations having the full symmetry of the grid.
+<DT>Conjecture II (R.K. Guy &amp; P.A. Kelly 1968)
+<DD>Each configuration having ort2 symmetry has the full symmetry of the grid.
+<DT><img align=middle src="../icons/UPDATED.png" alt="" width=45 height=11>Conjecture III (renewed 2026)
+<DD>There are exactly 7 no-three-in-line configurations having reflection symmetry in a mid-perpendicular.
+<DT><img align=middle src="../icons/UPDATED.png" alt="" width=45 height=11>Conjecture IV (reformulated 2026)
+<DD>There are exactly 35 no-three-in-line configurations having reflection symmetry in both long diagonals.
+</DL>
+<P>
+The former Conjecture III was disproved in June 1996 by the discovery of a further, 6th, no-three-in-line configuration having reflection symmetry.
+<HR>
+<H2><a name="6">A Superficial Explanation</a></H2>
+To understand the relative number of solutions in the classes ort1, rot2, dia1  or the
+classes ort2, rot4, dia2 notice that in the orthogonal symmetry class ort1, resp. ort2,  two independent
+selected points force typically the blockade of
+<em>n</em> points for 2 of 6, respectively for 8 of 28, straight lines together with their 2, resp. 6, symmetry points.
+For the diagonal reflection classes dia1 and dia2 two independent selected points force typically the blockade of <em>n/2</em> points ... .
+And in the rotation symmetry classes rot? two independent selected points force typically the blockade of about <em>C log(n)</em>.
+The effect of blockade of the remainding 4 of 6, respectively 20 of 28, straight lines seem roughly independent of the regarded symmetry class.
+<P>Therefore one
+should expect most different configurations for given <em>n</em> in the rotational symmetry classes but least different configurations in those with mid-perpendicular symmetry. For a precise analysis of the asymmetric case, see the paper of
+Guy and Kelly 1968. Their idea can be applied to a special symmetry class to
+get probabilistic estimations for the number of different configurations. The
+relation of the numbers for different symmetry class but fixed <em>n</em>
+should be at least the same as the counted ones for the generatable configurations.
+<BR>
+Here are some remarks about <a href="symmetry_remarks.html">symmetry conditions/effects</a> in no-three-in-line configurations.
+<HR>
+<H2><a name="7">Sub No-3-in-line Solutions</a></H2>
+Due to a correspondence from John Selfridge, I checked the collected configurations whether
+they contain a no-3-in-line solution for smaller <em>n</em> than the given one. Besides the
+3 known "diagonal extentions" for
+<em>o2423670617014535 , :3458148A130A7902692567 , :372845190A460A19562837</em>
+the only subsolutions I found is the 2x2 solution. Almost all of these configurations belongs to symmetry class rot2 or rot4.
+Only 5 examples for <em>n=12, 13, 14,</em> are assymmetric and one with <em>n=15</em> has reflection symmetry at its long diagonal. But there are more assymmetric for <em>n &gt;= 15</em>.
+Those configurations having 2x2 blocks in class rot4 have the only block at their
+center, except the 2 configurations <em>o2323676701014545</em> and <em>o9OGHGHAM6M06OP34BFBTEQKL12128JALRSRS893F0IEIPQ45NT7N7JCDCD5K</em>. There are centerblock configurations in this symmetry class for <em>n=2,10,14,22,28,30,32,...,42,44</em> and
+probably for more <em>n &gt;= 46</em>.
+<HR>
+<H2><a name="c">Submit a Configuration</H2>
+<form method="POST" action="/cgi-bin/cgiwrap/achim/script_decode?para=FIXED">
+Type in a possible no-three-in-line configuration in my standard notation (lead in by its symmetry class chararcter).<br>
+On submission it will be <a name="c">Decoded, Checked, (if valid) Confirmed and Showed figuratively</a><BR>
+<input type="reset" value="Clear">
+<input type="text" name="config" size="145" maxlength="182">
+<input type="submit" name="send" value="Do it">
+</form>
+<HR>
+<H2><a name="8">References until July 1992</a></H2>
+<UL>
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<em>H.E. Dudeney</em>, "The Tribune", November 7, 1906.
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="https://archive.org/details/mathematicalrecr00ball/page/136/mode/2up?q=%22Queens' Problem%22">
+<em>W.W. Rouse Ball</em>, "Mathematical Recreations and Essays"</a>, MacMillan and Co. Limited, London, 1914, 6th edition, (Chap. VI, p. 136 Queens' Problem)</a>
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="https://archive.org/details/amusementsinmath00dude/page/34/mode/2up">
+<em>H.E. Dudeney</em>, "Amusements in Mathematics"</a>, Nelson, Edinburgh 1917, pp. 94, 222 (puzzle 317)</a>
+<LI><em>K.F. Roth</em>,
+Journal London Math. Society V.26 / 1951, pp. 204 <a href="heilbronn.txt">explanation</a>,
+<LI><em>R.K. Guy</em>,
+Bulletin Malayan Math. Society (1952-1953), E22
+<LI><em>Acland-Hood</em>,
+Bulletin Malayan Math. Society (1952-1953), E82
+<LI><em>P.A. Kelly</em>,
+Master's Thesis, University of Calgary, 1967
+<LI><img align=middle src="../icons/new.gif" alt="" width=31 height=12>
+<a href="R.K.Guy_P.A.Kelly_Research_paper_No_33_Jan.1968.pdf">
+<em>R.K. Guy and P.A. Kelly</em>, THE UNIVERSITY OF CALGARY, Department of Mathematics,
+Research Paper #33, January 1968</a>
+<LI><em>R.K. Guy and P.A. Kelly</em>,
+Canadian Mathematical Bulletin  V.11 / 1968, pp. 527-531
+<LI><em>M.A. Adena, D.A. Holton and P.A. Kelly</em>,
+Combinatorial Mathematics:  Proceedings of the Second Australian Conference
+   Lecture Notes in Mathematics, V.403 / 1974, pp 6-17.
+<LI><em>R.R. Hall, T.H. Jackson, A. Sudberry and K. Wild</em>,
+Journal of Combinatorial Theory  Series A,  V.18/1975  pp. 336 - 341  [&le;10]
+<LI><em>D. Craggs and R. Hughes-Jones</em>,
+Journal of Combinatorial Theory  Series A,  V.20/1976  pp. 363 - 364  [11,12]
+<LI><em>M. Gardner</em>,
+Scientific American V236 / March 1977, pp. 139 - 140  [13-16]
+<LI><em>T. Kl&oslash;ve</em>,
+Journal of Combinatorial Theory  Series A,  V.24/1978  pp. 126 - 127  [14,16]
+<LI><em>T. Kl&oslash;ve</em>,
+Journal of Combinatorial Theory  Series A,  V.26/1979  pp.  82 -  83  [18,20]
+<LI><em>D.B. Anderson</em>,
+Journal of Combinatorial Theory  Series A,  V.27/1979  pp. 365 - 366 [22,24,26]
+<LI><em>H. Harborth, P. Oertel and T. Prellberg</em>,
+Discrete Mathematic V73/1988  pp. 89-90      [17,19]     
+<LI><em>Gerken</em>,
+personal communication of H. Harborth 1990, [21,23]
+<LI><em>A. Flammenkamp</em>,
+Journal of Combinatorial Theory  Series A,  V.60/1992  pp. 305 - 311 [...,44,46]
+</UL>
+<HR>
+<H2><a name="9">Corrections to published Data</a></H2>
+In the 1992 published <a href="table_old.txt">enumeration table</a> in JCT wrong numbers
+were given in column o for n &gt;= 30. A program bug causes some missed solutions in symmetry class rot4, which were discovered now by a recomputation.
+The correct numbers are 92 instead of 62 for n = 30 and 101 in place of 99 for
+n = 32.<BR>
+Due to my unconcentration the value for n=20 in column : is a miscount. The correct
+value is 675 instead of 693, the value of all configuration with at least rot2
+symmetry.
+<HR>
+<H2><a name="0">Near misses with at least orthogonal reflection symmetry</a></H2>
+In April 2006 I counted the near-misses in symmetry class ort1, ort2 and full for even n &le; 26, n &le; 46 and n &le; 76, respectively,
+to get empirical evidence for the conjectures I, II and III (in conjecture III replacing 5 by 6).
+I.e., in these three symmetry classes I was looking for the maximal number of points which can be placed/chosen on/in the grid of given size n but which is less(!) than 2n.
+This means I defined a near-solution if 2n-2(ort1), 2n-4(ort2) or 2n-4(full)
+points can be placed on the grid.
+The results/counts of my research (computed on an Athlon MP 2000+ 1.6 GHz) are listed in <a href="near_miss_count.txt">this table</a>.<BR>
+Interpretation of the counts: For symmetry class full it seems the number of maximal points which can
+be placed are drifting further and further away from 2n with increasing n.
+For symmetry class ort2 this drifting away trend is much weaker, but if the maximal achieving points is 2n-2 then the number of these near-solutions is decreasing with increasing n.
+For symmetry class ort1 I do not recognize a clear trend in these few data.<BR>
+Therefore I think for the two symmetry classes ort2 and full,
+these numbers give (very) strong evidence that no more solutions for the no-three-in-line problem exist for n &gt; 46 and thus conjectures I and II might be true.<BR>
+BTW: Conjecture III is false (known since June 1996), but whether it would be true if replacing 5 by a small number &gt;= 7, this is an open question.
+<H2><a name="R">Minimal defect for fixed symmetry and grid size</H2>
+The defect is defined as the difference of the maximal achievable number of selectable points in the nxn grid to 2n.
+In April 2026 I computed <a href="table_min_defect">the minimal defect of no-three-in-line configuration 
+for small grid sizes n and fixed symmetry-classes</a>. Moreover I counted the number of non-equivalent configurations (regarding the chosen symmetry group) which achieves this defect.
+Thus these are algorithm-independent values for those near-misses in the previous paragraph.
+<HR>
+<H2><a name="P">Solutions discovered after 2001 by Various People</H2>
+<H3><a name="u">All Solutions for n=17 and n=18</a></H3>
+Sorry, but I forgot totally to indicate a computation of <strong>Benjamin Chaffin</strong> from Williamstown, MA, USA. In March 2006 he generated all solutions for n=17 and n=18 and he emailed me the corresponding total counts in the same month.
+Moreover he set up this
+<a href="http://wso.williams.edu/~bchaffin/no_three_in_line/index.htm">
+webpage</a> of his research results up to size n=18.
+<!--This page disappeared but was archived 
+<a href="http://web.archive.org/web/20131027174807/http://wso.williams.edu/~bchaffin/no_three_in_line/index.htm">here</a>.
+-->
+Because this web-page disappeared I put all 6800 asymmetric configurations of grid size 17 and all 18853 asymmetric configurations of grid size 18, coded in standard notation, in <a href="asym_17_18">this file</a> for download.
+<H3><a name="n">New Solution for n=28 with orthogonal reflection symmetry</H3>
+In September 2023, <strong>Michael Collier</strong> from Perth, Western Australia, wrote a program to check all my published counts of nothree-in-line solutions. He run it and also was able to extend the search for valid configurations in symmetry class - up to n=30. So he discovered <a href="new_28_ortho">one new configuration for n=28</a> and showed that there are no solutions for n=30 in this orthogonal reflection symmetry class.
+<H3><a name="p">New Solutions for n=47,49,51,53,54,55,56 and n=58 with (half/quarter-turn) rotational symmetry</H3>
+In September 2025 <strong>Thomas Prellberg</strong> from Queen Mary University of London, UK, did computer search using a constraint satisfaction approach on a massive multithreading hardware. <a href="Prellberg_Sep_2025.pdf">As a result</a> he was able to discover for every <em> 43 &le; n &le; 50</em> new no-three-in-line configuration.
+He continued his search for <em>n &ge; 51</em> until he discovered finally on 28th October the then current record-grid-size configuration with n=58. 
+<H3><a name="q">All Solutions for n=41 in symmetry class rct4 and a first solution for n=57</H3>
+Finally until end of November 2025 <strong>Thomas Prellberg</strong> generated all No-3-in-line solutions for n=41 in symmetry class rct4.
+as well as found a new largest solution for an odd n, namely n=57.
+<H3><a name="r">Solution for n=59 and n=60</H3>
+In January 2026 two new record solutions were found by <strong>Thomas Prellberg</strong>. The first for n=59 in symmetry class rct4 and the first for n=60 in symmetry class rot4.
+<H3><a name="v">All Solutions for n=19</H3>
+On 3rd February 2026 <strong>Mitchell Riley</strong> from Brisbane, Australia, announced that he has counted all solutions for n=19 on a GPU-system. Later the day he sent me the corresponding 32577 solutions for publication. Furthermore he confirmed the enumeration of all solutions for n=17 and n=18 claimed by Benjamin Chaffin.
+<H3><a name="w">All Solutions for n=44 and n=46 in symmetry class rot4</H3>
+On 6th February 2026 <strong>Mitchell Riley</strong> has published his discovery of all solutions for n=44 and n=46 in symmetry class rot4.
+<H3><a name="z">Solution for n=62</H3>
+On 11th February 2026 <strong>Thomas Prellberg</strong> found a new record solution which has grid size n=62 and belongs to symmetry class rot4.
+<H3><a name="m">All Solutions for n=48, 50 and n=52 in symmetry class rot4</H3>
+On 12th February 2026 <strong>Mitchell Riley</strong> announced to have found all solutions for n=48,50,52 in symmetry class rot4. His program/code uses GPUs via CUDA and was run by <strong>Thomas Prellberg</strong> on the Queen Mary University HPC cluster.
+<H3><a name="k">Solution for n=64</H3>
+On 13th February 2026 <strong>Thomas Prellberg</strong> found a new record solution based on GPU code from <strong>Mitchell Riley</strong> which has grid size n=64 and belongs to symmetry class rot4.
+<H3><a name="l">All Solutions for n=43, 45 and n=47 in symmetry class rct4</H3>
+On 14th February 2026 <strong>Mitchell Riley</strong> announced to have found all solutions for n=43,45,47 in symmetry class rct4.
+<H3><a name="j">All Solutions for n=49, 51 and n=53 in symmetry class rct4</H3>
+On 16th February 2026 <strong>Thomas Prellberg</strong> has calculated all solutions for n=49,51,53 in symmetry class rct4.
+<H3><a name="i">Solution for n=61</H3>
+On 17th February 2026 <strong>Thomas Prellberg</strong> found the first solution for grid size n=61. It belongs to symmetry class rct4.
+<H3><a name="d">Solution for n=47 in symmetry class dia2</H3>
+On 18th February 2026 <strong>Mitchell Riley</strong> announced to have counted all solutions for n=46, 47 and 48 in symmetry class dia2. And there is only one solution for grid size 47 and reflection symmetry in both diagonals. ;)
+<H3><a name="e">Solution for n=63</H3>
+On 20th February 2026 <strong>Thomas Prellberg</strong> found the first solution for grid size n=63. It belongs to symmetry class rct4.
+<H3><a name="f">Solution for n=66</H3>
+On 9th March 2026 <strong>Thomas Prellberg</strong> found new record solutions which have grid size n=66 and belongs to symmetry class rot4.
+<H3><a name="g">Solution for n=68</H3>
+On 23rd March 2026 <strong>Thomas Prellberg</strong> found new record solutions which have grid size n=68 and belongs to symmetry class rot4.
+<H3><a name="h">All Solutions for n=54 in symmetry class rot4</H3>
+Until end of March 2026 <strong>Thomas Prellberg</strong> has calculated all solutions for n=54 in symmetry class rot4.
+<H3><a name="o">All Solutions for n=26 and n=27 in symmetry class dia1</H3>
+On 2nd April 2026 <strong>Michael Collier</strong> sent me his complete enumeration of all solutions for
+n=26 and n=27 with exactly reflection symmetry about one long diagonal.
+<H3><a name="Q">All Solutions for n=56 in symmetry class rot4</H3>
+Until 17th April 2026 <strong>Thomas Prellberg</strong> has calculated all solutions for n=56 in symmetry class rot4.
+<H3><a name="S">All Solutions for n=55 in symmetry class rct4</H3>
+Until 26th April 2026 <strong>Thomas Prellberg</strong> has calculated all solutions for n=55 in symmetry class rct4.<BR>
+Moreover he counted all solutions in symmetry class dia2 for n=49, 50 and 51 but there are none.
+<H3><a name="T">All Solutions for n=26 and n=27 in symmetry class rot2</H3>
+Starting on 25th April 2026 <strong>Achim Flammenkamp</strong> completed the generation of all solutions for n=26 and n=27 in symmetry class rot2 on 5th May 2026.
+<H3><a name="U">All Solutions for n=28 in symmetry class rot2</H3>
+On 10th May 2026 <strong>Achim Flammenkamp</strong> completed the generation of all solutions for n=28 in symmetry class rot2.
+<H3><a name="V">All Solutions for n=20</H3>
+Finally, on 10th May 2026 <strong>Thomas Prellberg</strong> had generated all 118057 solutions for n=20 using 3536 GPUh of which were 117347 (the previously unknown) asymmetric configurations.
+<H3><a name="W">All Solutions for n=29 in symmetry class rot2</H3>
+On 14th May 2026 <strong>Achim Flammenkamp</strong> completed the generation of all solutions for n=29 in symmetry class rot2.
+<H3><a name="K">All Solutions for n=28 and n=29 in symmetry class dia1</H3>
+On 29th May 2026 <strong>Achim Flammenkamp</strong> completed the generation of all solutions for n=28 and n=29 in symmetry class dia1.
+<H3><a name="L">All Solutions for n=30 in symmetry class rot2</H3>
+On 29th May 2026 <strong>Achim Flammenkamp</strong> completed the generation of all solutions for n=30 in symmetry class rot2.
+<H3><a name="M">All Solutions for n=57 in symmetry class rct4</H3>
+Until 31th May 2026 <strong>Thomas Prellberg</strong> has calculated all solutions for n=57 in symmetry class rct4.<BR>
+<H3><a name="N">All Solutions for n=30 in symmetry class dia1</H3>
+On 1st June 2026 <strong>Achim Flammenkamp</strong> completed the generation of all solutions for n=30 in symmetry class dia1.
+<H3><a name="J">All Solutions for n=31 in symmetry class dia1</H3>
+On 6th June 2026 <strong>Achim Flammenkamp</strong> completed the generation of all solutions for n=31 in symmetry class dia1.
+<H3><a name="H">Solution for n=70</H3>
+On 17th June 2026 <strong>Marijn Heule</strong> of Carnegie Mellon University (Pittsburgh, Pennsylvania, USA) used a newly developed SAT (Boolean satisfiability) solver
+to find a solution for n=70 in the rot4 symmetry class.
+<H3><a name="H">Solution for n=65</H3>
+On 18th June 2026 <strong>Marijn Heule</strong> used his SAT solver again to find a first solution for n=65 in the rct4 symmetry class.
+<H3><a name="G">All Solutions for n=32 in symmetry class dia1</H3>
+On 20th June 2026 <strong>Achim Flammenkamp</strong> completed the generation of all solutions for n=32 in symmetry class dia1.
+<H3><a name="F">Solution for n=67 and n=69</H3>
+On 21th June 2026 <strong>Marijn Heule</strong> discovered three new solutions. With the first solution for n=67 in symmetry class rct4 and the other two solutions for n=69 in symmetry class rct4 now no-three-in-line solutions are known for all grid sizes &le; 70.
+<H3><a name="E">Solution for n=72</H3>
+On 25th June 2026 <strong>Marijn Heule</strong> found a new record solution with grid size n=72 in the rot4 symmetry class.
+<H3><a name="D">All Solutions for n=31 in symmetry class rot2</H3>
+On 9th July 2026 <strong>Achim Flammenkamp</strong> completed the generation of all solutions for n=31 in symmetry class rot2.
+<H3><a name="C">Solution for n=74</H3>
+On 20th July 2026 <strong>Thomas Prellberg</strong> found a new record solution with grid size n=74 in the rot4 symmetry class.
+<H3><a name="B">Many Solutions for n=21, 22, ..., 56, 57</H3>
+On 24th July 2026 <strong>Jacob Davies</strong> from Alameda (California, USA) used the AI ChatGPT 5.6 Sol to construct 619 new solutions for n=21, 22, ..., 56, 57 all in symmetry classes iden or rot2.<br>
+On 30th July he continued to construct 24 more new solutions with n &le; 57 in symmetry classes iden or rot2 and one solution for n=66 in symmetry class rot4.
+<H3><a name="A">Solution for n=76</H3>
+On 10th August 2026 <strong>Marijn Heule</strong> presented a new record solution with grid size n=76 in the rot4 symmetry class.
+<H3><a name="#00">New Solutions for n=33, 36, 37, 39</H3>
+On 17th August 2026 <strong>Aleksei Kudriashov</strong> from Nusa Dua (Bali, Indonesia) with the support from AI Claude from Anthropic found 9 new solutions all in symmetry class rot2.
+<H3><a name="#01">Solution for n=71</H3>
+On 17th August 2026 <strong>Marijn Heule</strong> used his SAT solver again to find a first solution for n=71 in the rct4 symmetry class.
+<H3><a name="#01">Solution for n=73</H3>
+On 19th August 2026 <strong>Marijn Heule</strong> used his SAT solver again to find a first solution for n=73 in the rct4 symmetry class.
+<HR>
+<P>
+<BR>
+Please send any comments or questions to <a href="mailto:achim@uni-bielefeld.de"><em>my current Email-address</em></a>.
+<P>
+<A HREF="http://wwwhomes.uni-bielefeld.de/achim/welcome.html">Back to my HomePage</A>
+<P>
+<ADDRESS>
+Achim Flammenkamp
+<BR>
+<!--?system("../filemodtime readme.html")-->
+2026-09-11 13:40 UTC+2
+</ADDRESS>
+</BODY>
+</HTML>

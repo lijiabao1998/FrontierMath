@@ -1,0 +1,328 @@
+{
+  "claims": {
+    "note": "No claim of D(75)=150 or D(75)<150 is made. No DRAT/LRAT proof was produced, so any UNSAT from a solver is residue, not a theorem.",
+    "solved_n75": false,
+    "status": "COMPUTE_REQUIRED"
+  },
+  "line_census": {
+    "estimated_clauses": 15508860,
+    "line_length_histogram": {
+      "10": 5708,
+      "11": 5708,
+      "12": 1772,
+      "13": 1556,
+      "14": 620,
+      "15": 3420,
+      "16": 220,
+      "17": 220,
+      "18": 516,
+      "19": 1028,
+      "20": 92,
+      "21": 92,
+      "22": 92,
+      "23": 92,
+      "24": 92,
+      "25": 956,
+      "26": 20,
+      "27": 20,
+      "28": 20,
+      "29": 20,
+      "3": 869276,
+      "30": 20,
+      "31": 20,
+      "32": 20,
+      "33": 20,
+      "34": 20,
+      "35": 20,
+      "36": 20,
+      "37": 168,
+      "38": 156,
+      "39": 4,
+      "4": 252644,
+      "40": 4,
+      "41": 4,
+      "42": 4,
+      "43": 4,
+      "44": 4,
+      "45": 4,
+      "46": 4,
+      "47": 4,
+      "48": 4,
+      "49": 4,
+      "5": 96836,
+      "50": 4,
+      "51": 4,
+      "52": 4,
+      "53": 4,
+      "54": 4,
+      "55": 4,
+      "56": 4,
+      "57": 4,
+      "58": 4,
+      "59": 4,
+      "6": 46668,
+      "60": 4,
+      "61": 4,
+      "62": 4,
+      "63": 4,
+      "64": 4,
+      "65": 4,
+      "66": 4,
+      "67": 4,
+      "68": 4,
+      "69": 4,
+      "7": 26444,
+      "70": 4,
+      "71": 4,
+      "72": 4,
+      "73": 4,
+      "74": 4,
+      "75": 152,
+      "8": 13220,
+      "9": 8716
+    },
+    "lines_encoded_explicitly": 1336088,
+    "lines_needing_cardinality_network": 740,
+    "max_line_length": 75,
+    "maximal_lines_ge3": 1336828,
+    "n": 75,
+    "seconds": 11.49,
+    "total_incidences": 5081844
+  },
+  "n": 75,
+  "negative_controls": {
+    "audit_has_teeth": true,
+    "controls": [
+      {
+        "covers_all_lines": true,
+        "dimacs": "n5_cells_good.cnf",
+        "expect_covers": true,
+        "first_missing_examples": [],
+        "lines_not_covered": 0,
+        "maximal_lines_checked": 32,
+        "n": 5,
+        "name": "intact_encoder",
+        "negative_triple_clauses": 152
+      },
+      {
+        "covers_all_lines": false,
+        "dimacs": "n5_cells_missing_line_family.cnf",
+        "expect_covers": false,
+        "first_missing_examples": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ]
+        ],
+        "kept_clauses": 217,
+        "lines_not_covered": 1,
+        "maximal_lines_checked": 32,
+        "n": 5,
+        "name": "missing_line_family",
+        "negative_triple_clauses": 142,
+        "removed_clauses": 10,
+        "sabotaged_line": [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            5
+          ]
+        ]
+      }
+    ],
+    "n": 5
+  },
+  "orbit_feasibility": {
+    "dia1": {
+      "feasible": true,
+      "group": [
+        "iden",
+        "dia1"
+      ],
+      "n": 75,
+      "n_orbits": 2850,
+      "orbit_size_multiset": {
+        "1": 75,
+        "2": 2775
+      },
+      "reason": null,
+      "target": 150
+    },
+    "dia2": {
+      "feasible": true,
+      "group": [
+        "iden",
+        "dia2"
+      ],
+      "n": 75,
+      "n_orbits": 2850,
+      "orbit_size_multiset": {
+        "1": 75,
+        "2": 2775
+      },
+      "reason": null,
+      "target": 150
+    },
+    "full": {
+      "feasible": false,
+      "group": [
+        "iden",
+        "rot2",
+        "rot4",
+        "rot4i",
+        "dia1",
+        "dia2",
+        "ort1",
+        "ort2"
+      ],
+      "n": 75,
+      "n_orbits": 741,
+      "orbit_size_multiset": {
+        "1": 1,
+        "4": 74,
+        "8": 666
+      },
+      "reason": "target 150 is not a sum of the available orbit sizes [(1, 1), (4, 74), (8, 666)]",
+      "target": 150
+    },
+    "iden": {
+      "feasible": true,
+      "group": [
+        "iden"
+      ],
+      "n": 75,
+      "n_orbits": 5625,
+      "orbit_size_multiset": {
+        "1": 5625
+      },
+      "reason": null,
+      "target": 150
+    },
+    "ort1": {
+      "feasible": true,
+      "group": [
+        "iden",
+        "ort1"
+      ],
+      "n": 75,
+      "n_orbits": 2850,
+      "orbit_size_multiset": {
+        "1": 75,
+        "2": 2775
+      },
+      "reason": null,
+      "target": 150
+    },
+    "ort2": {
+      "feasible": true,
+      "group": [
+        "iden",
+        "ort2"
+      ],
+      "n": 75,
+      "n_orbits": 2850,
+      "orbit_size_multiset": {
+        "1": 75,
+        "2": 2775
+      },
+      "reason": null,
+      "target": 150
+    },
+    "rot2": {
+      "build_seconds": 97.2,
+      "clauses": 36418316,
+      "dimacs_bytes": 694932595,
+      "feasible": true,
+      "group": [
+        "iden",
+        "rot2"
+      ],
+      "n": 75,
+      "n_orbits": 2813,
+      "orbit_size_multiset": {
+        "1": 1,
+        "2": 2812
+      },
+      "reason": null,
+      "sha256": "2b47bce655ec925d9cdb91d689461a995c1d0d2c83e1f4430f68b1490f1569da",
+      "target": 150,
+      "vars": 1648125
+    },
+    "rot4": {
+      "feasible": false,
+      "group": [
+        "iden",
+        "rot2",
+        "rot4",
+        "rot4i"
+      ],
+      "n": 75,
+      "n_orbits": 1407,
+      "orbit_size_multiset": {
+        "1": 1,
+        "4": 1406
+      },
+      "reason": "exactly one orbit of size 1 (the centre) and the rest of size 4: any invariant set has size in {0,1} mod 4, but target=150 \u2261 2",
+      "target": 150
+    }
+  },
+  "parity_excluded_groups": [
+    "rot4",
+    "full"
+  ],
+  "python": "3.13.5",
+  "rot2_instance": {
+    "build_seconds": 97.2,
+    "clauses": 36418316,
+    "dimacs_bytes": 694932595,
+    "feasible": true,
+    "group": [
+      "iden",
+      "rot2"
+    ],
+    "n": 75,
+    "n_orbits": 2813,
+    "orbit_size_multiset": {
+      "1": 1,
+      "2": 2812
+    },
+    "reason": null,
+    "sha256": "2b47bce655ec925d9cdb91d689461a995c1d0d2c83e1f4430f68b1490f1569da",
+    "target": 150,
+    "vars": 1648125
+  },
+  "target": 150
+}
