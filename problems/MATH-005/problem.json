@@ -1,0 +1,13 @@
+{
+  "id":"MATH-005","domain":"math","title":"五維 kissing number 的精確值","status":"OPEN","priority":"B","checked_on":"2026-09-27",
+  "statement":"決定 R^5 中可同時接觸一個單位球、彼此內部不相交的單位球最大數量 tau(5)。等價單位向量集兩兩內積<=1/2。",
+  "known_result":"Szollosi 報告新的 40 球排列；不同排列不等於提高 kissing number，也不等於最優性證明。",
+  "open_gap":"最大數量的嚴格上下界缺口。",
+  "first_task":"重查2026界及證書，重驗40點候選的範數與內積；故意把一對點靠近檢查 verifier 會拒絕。",
+  "evaluator":"有理／代數精確算術或含誤差界的區間內積；上界 SDP 結果需可核驗嚴格證書。",
+  "validation_limits":"浮點最佳化成功只是候選；eps 容忍不得擴大可行域來宣稱新下界。",
+  "completion_criterion":"匹配的嚴格構造下界與全域上界。",
+  "screening_note":"初始查詢包含2026文獻；新來源存在但部分原文取得受限，未把未讀證書當已驗證。",
+  "screening_queries":["kissing number dimension 5 exact 2026 2025"],
+  "sources":[{"title":"Szollosi (2023), A note on five dimensional kissing arrangements","url":"https://arxiv.org/abs/2301.08272","kind":"primary","supports":"40 球排列與問題定義；已讀摘要。"}]
+}

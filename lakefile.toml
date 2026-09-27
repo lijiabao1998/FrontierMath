@@ -1,0 +1,6 @@
+name = "frontiermath"
+version = "0.1.0"
+defaultTargets = ["FrontierMath"]
+
+[[lean_lib]]
+name = "FrontierMath"

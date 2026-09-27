@@ -1,0 +1,13 @@
+{
+  "id":"MATH-003","domain":"math","title":"Hadwiger–Nelson：歐氏平面單位距離色數","status":"OPEN","priority":"B","checked_on":"2026-09-27",
+  "statement":"求歐氏平面所有點的最少著色數，使距離恰為 1 的兩點異色；不限制著色可測性或地圖分塊形式。",
+  "known_result":"有限單位距離圖可提高下界；2025 的 map-type colouring 結果有額外結構限制，不能等同一般著色問題。",
+  "open_gap":"一般著色的精確最小色數；特定規則下的 7 色必要性並不完成本題。",
+  "first_task":"讀精確座標／距離證書，建立代數或區間距離驗證與小圖著色證書核對，區分 geometry 與 coloring 兩個 verifier。",
+  "evaluator":"精確單位距離邊的合法性，加可核驗著色或不可著色證書。",
+  "validation_limits":"浮點接近距離1不是等於1；有限圖下界不是整平面上界。",
+  "completion_criterion":"一般問題上下界一致並有嚴格證明；restricted version 另建子任務。",
+  "screening_note":"初始文獻篩查，已區分一般與 map-type 命題；未取得新一般精確解的確認。",
+  "screening_queries":["site.arxiv.org Hadwiger Nelson problem 2026 2025 chromatic plane"],
+  "sources":[{"title":"de Grey (2018), The chromatic number of the plane is at least 5","url":"https://arxiv.org/abs/1804.02385","kind":"primary","supports":"有限圖下界方法。"},{"title":"Map-type colouring result (2025)","url":"https://arxiv.org/abs/2502.01958","kind":"primary","supports":"受限著色新結果；不能關閉一般問題。"}]
+}

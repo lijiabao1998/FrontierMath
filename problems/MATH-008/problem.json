@@ -1,0 +1,13 @@
+{
+  "id":"MATH-008","domain":"math","title":"Earth–Moon：biplanar 圖的最大色數","status":"OPEN","priority":"B","checked_on":"2026-09-27",
+  "statement":"決定所有可分解為同頂點集上兩個平面圖之簡單圖 G 的 chromatic number 最大值；分解必須提供合法 planar embeddings 或可驗證平面性。",
+  "known_result":"biplanar blowup 等特殊類已有結構結果；特殊類猜想反例與一般 Earth–Moon 問題不同。",
+  "open_gap":"所有厚度至多2圖的精確普遍著色界。",
+  "first_task":"重現小型兩層圖，獨立檢查每層平面性及 union 著色；先定義分解證書格式再搜索。",
+  "evaluator":"兩層邊集合聯集等於目標圖、平面性與著色／不可著色證書分開驗。",
+  "validation_limits":"生成器聲稱 planar 不是證據；受限 alpha 或 blowup 結果不關閉一般命題。",
+  "completion_criterion":"所有 biplanar 圖之上界與達界構造一致。",
+  "screening_note":"已查2026新受限結果；部分最新原文未成功取得，下一輪先重查，不填成全面已核實。",
+  "screening_queries":["Earth-Moon chromatic 2026 2025 biplanar"],
+  "sources":[{"title":"Eppstein (2023), On the Biplanarity of Blowups","url":"https://arxiv.org/abs/2301.09246","kind":"primary","supports":"biplanar 與 blowup 子問題的範圍區別。"}]
+}

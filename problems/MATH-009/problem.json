@@ -1,0 +1,13 @@
+{
+  "id":"MATH-009","domain":"math","title":"一般 Hadamard conjecture（不是 order 668 子題）","status":"OPEN","priority":"C","checked_on":"2026-09-27",
+  "statement":"對每個正整數 n，是否存在 4n 階 ±1 矩陣 H，滿足 HH^T=4nI？",
+  "known_result":"本次讀到 Epoch AI 的 order668 問題頁已有完成資訊；因此不能再把668当新未解目標。一般4n存在性与某一階數完成不同。",
+  "open_gap":"每個4倍數階數的普遍存在性。",
+  "first_task":"先核最新已解階數與可下載證書；建立純整數正交 checker，重驗小階 Sylvester 構造，之後才選仍未定且可負擔的子題。",
+  "evaluator":"逐項確認元素±1、行列維度與精確 HH^T；構造搜尋與存在性證明分開。",
+  "validation_limits":"單一階數成功不證一般猜想；沒找到矩陣不證不存在。外部完成只能歸屬原作者。",
+  "completion_criterion":"一般4n存在性的嚴格證明，或嚴格不存在反例。",
+  "screening_note":"初始問題頁／近期搜尋已做；未自行重驗668矩陣，因此不把外部報告寫成本庫驗證成果。",
+  "screening_queries":["Hadamard conjecture 2026 open 668 solved"],
+  "sources":[{"title":"Epoch AI, Hadamard Matrix of Order 668 problem and resolution record","url":"https://epoch.ai/frontiermath/open-problems/hadamard","kind":"primary","supports":"子題已有完成資訊，提醒核對範圍與避免過期未解清單。"}]
+}

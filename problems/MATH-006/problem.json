@@ -1,0 +1,13 @@
+{
+  "id":"MATH-006","domain":"math","title":"Frankl union-closed sets conjecture","status":"OPEN","priority":"A","checked_on":"2026-09-27",
+  "statement":"對任意有限 union-closed 集合族 F，且聯集非空，是否存在元素出現在至少 |F|/2 個集合中？集合族不含重複集合。",
+  "known_result":"2026 Boolean polynomial 文章提出等價 reformulation，並非一般猜想的完成證明。",
+  "open_gap":"任意有限族的半數下界。",
+  "first_task":"以 bitset 枚舉小全集的閉包族並計算元素頻率；測空聯集邊界、重复集合與非閉包反例。",
+  "evaluator":"精確 union-closure、集合唯一性、2*frequency>=|F|；獨立直接集合版本對照。",
+  "validation_limits":"小全集成立不能推出所有族；等價表述不是解答。",
+  "completion_criterion":"一般有限族的嚴格證明或合法反例；特定 family 僅部分進展。",
+  "screening_note":"初始有界檢索及2026原始摘要核對；每輪繼續搜尋新證明／勘誤。",
+  "screening_queries":["union closed conjecture 2026 proof counterexample"],
+  "sources":[{"title":"DeFranco (2026), On Boolean polynomials and the Union-Closed Conjecture","url":"https://arxiv.org/abs/2606.26191","kind":"primary","supports":"等價 Boolean reformulation 而非通解。"}]
+}

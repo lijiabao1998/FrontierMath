@@ -1,0 +1,13 @@
+{
+  "id":"MATH-001","domain":"math","title":"No-three-in-line：一般 n 的 2n 點構造","status":"OPEN","priority":"A","checked_on":"2026-09-27",
+  "statement":"令 D(n) 為 {1,...,n}² 中任三相異點不共線的最大子集大小。研究對所有 n>=2 是否 D(n)=2n，或給出嚴格反例／一般界。",
+  "known_result":"Prellberg 2026 提供 n<=60 的 2n 構造；這是該文發表時的有限進展，不保證此刻 n=61 仍為最小未定實例。",
+  "open_gap":"一般 n 的存在性；新有限構造僅提升有限下界，不能直接完成一般問題。",
+  "first_task":"重查最新有限紀錄及補充資料，先以 n=2..8 建整數 determinant checker；獨立重驗一組公開構造與故意加入共線點的負例。",
+  "evaluator":"檢查格點範圍、唯一性及每组三點的整數行列式非零；目標大小與 n 分開記。",
+  "validation_limits":"隨機沒找到反例不證明通解；搜尋失敗不證明不存在；SAT UNSAT 需可驗證證書。",
+  "completion_criterion":"與 statement 同範圍的已確認一般證明或反例；有限 n 完成只記子任務。",
+  "screening_note":"初始有界搜尋與 arXiv 摘要核對；非完整證明審讀，下一輪重新查文獻。",
+  "screening_queries":["site.arxiv.org no-three-in-line problem 2026 2025 2n"],
+  "sources":[{"title":"Prellberg (2026), Constraint Satisfaction Programming for the No-three-in-line Problem","url":"https://arxiv.org/abs/2602.07751","kind":"primary","supports":"n<=60 有限構造與一般問題的缺口；本輪已讀摘要。"}]
+}

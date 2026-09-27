@@ -1,0 +1,13 @@
+{
+  "id":"MATH-007","domain":"math","title":"一般 Lonely Runner conjecture","status":"OPEN","priority":"B","checked_on":"2026-09-27",
+  "statement":"對任意 k 個互異正整數速度 v1,...,vk，是否存在實數 t，使所有 i 的 ||t*vi||>=1/(k+1)，其中 ||x|| 為到最近整數距離？",
+  "known_result":"2025 文獻證明八位跑者案例；初始搜尋也見到2026更多有限跑者及 shifted variant 文獻，需逐一核查，不把有限進展或 shifted 反例當一般原題完成。",
+  "open_gap":"任意 k 的一般命題。",
+  "first_task":"按周期內有理斷點分割時間，對小速度集合精確求最小距離最大值；避免只做時間網格抽樣。",
+  "evaluator":"有理數不等式與完整事件區間核查；一般證明則審量詞及 Lean 公理。",
+  "validation_limits":"速度上限內無反例不代表無界速度／任意跑者均成立。",
+  "completion_criterion":"原始未平移的一般命題之嚴格證明／反例。",
+  "screening_note":"初始篩查沒有宣稱最新有限跑者上限；新預印本需本輪查原文與獨立核實。",
+  "screening_queries":["lonely runner conjecture 2026 2025 solved fourteen runners"],
+  "sources":[{"title":"Rosenfeld (2025), The lonely runner conjecture holds for eight runners","url":"https://arxiv.org/abs/2509.14111","kind":"primary","supports":"有限跑者案例，並非一般完成。"}]
+}

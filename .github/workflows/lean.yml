@@ -1,0 +1,25 @@
+name: Lean kernel and axioms
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+concurrency:
+  group: lean-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596
+        with:
+          auto-config: 'false'
+          build: 'true'
+          build-args: '--wfail'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'false'
+      - name: Audit declared proof axioms
+        run: python3 tools/audit_lean.py

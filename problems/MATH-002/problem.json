@@ -1,0 +1,13 @@
+{
+  "id":"MATH-002","domain":"math","title":"Ramsey number R(5,5) 的精確值","status":"OPEN","priority":"B","checked_on":"2026-09-27",
+  "statement":"決定最小 N，使所有 N 點簡單圖都含 5 點完全子圖或 5 點獨立集。",
+  "known_result":"Angeltveit–McKay 的 R(5,5)<=46 使用線性規劃與計算枚舉，作者以獨立實作交叉核對。",
+  "open_gap":"上下界尚未在本次讀到的可靠來源中合為精確值；啟發式猜測 45 不當成證明。",
+  "first_task":"凍結 clique／independent-set checker，先重現 R(3,3) 的小圖正負例；確認目前精確界後才挑單個可驗證子類。",
+  "evaluator":"圖與補圖精確 K5 檢查、同構／對稱減少記錄；排除型證明要枚舉完整性與可重驗證書。",
+  "validation_limits":"找到圖給下界；找不到圖不是上界。上萬次啟發式失敗不等於 UNSAT。",
+  "completion_criterion":"精確相等的嚴格上下界及可獨立審查證明。",
+  "screening_note":"初始搜尋及原文摘要已核對；尚未重跑該大型計算，不宣稱當日所有新證明均已排除。",
+  "screening_queries":["site.arxiv.org Ramsey number R(5,5) 2026 2025"],
+  "sources":[{"title":"Angeltveit and McKay, R(5,5)<=46 (2025 revision)","url":"https://arxiv.org/abs/2409.15709","kind":"primary","supports":"已證上界與作者獨立計算方式。"}]
+}

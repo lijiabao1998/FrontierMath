@@ -1,0 +1,1 @@
+{"module":"FrontierMath","declarations":["FrontierMath.bootstrap_add_zero"],"allow_axioms":["propext","Classical.choice","Quot.sound"],"scope":"Infrastructure smoke only. Add every accepted research theorem explicitly; review statement equivalence separately."}

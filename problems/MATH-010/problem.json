@@ -1,0 +1,13 @@
+{
+  "id":"MATH-010","domain":"math","title":"七環 C7 的 Shannon capacity 精確值","status":"OPEN","priority":"A","checked_on":"2026-09-27",
+  "statement":"令 Theta(C7)=sup_d alpha(C7 的 d 次強積)^(1/d)。決定此值或改進經核實的嚴格界。",
+  "known_result":"2026 Itty 等及 Gao 的構造提高下界；初始檢索亦見後續遞迴改善聲稱。不能將任何一篇下界數字標成永久最佳或精確容量。",
+  "open_gap":"容量精確值與最新嚴格上下界缺口。",
+  "first_task":"先重查最新遞迴構造與公開証書，再以小 d 建兩個獨立的強積 adjacency checker，驗公開獨立集。",
+  "evaluator":"每個不同向量對至少有一坐標不是相等／環鄰接；完全整數核對獨立性及大小；遞迴需一般證明。",
+  "validation_limits":"浮點開根只作展示，保存精確大小與次方；有限独立集仅给下界。",
+  "completion_criterion":"匹配的嚴格上下界決定 Theta；任何下界改善只列 PARTIAL。",
+  "screening_note":"初始有界檢索，Gao 原始摘要可讀；部分後續來源取得受限，下一輪先更新基線。",
+  "screening_queries":["Shannon capacity C7 2026"],
+  "sources":[{"title":"Gao (2026), A Recursive Construction Improving the Lower Bound on the Shannon Capacity of C7","url":"https://arxiv.org/abs/2607.27869","kind":"primary","supports":"遞迴下界構造；不是精確解。"},{"title":"Itty et al. (2026), Improved lower bounds for the Shannon capacity of odd cycles","url":"https://arxiv.org/abs/2607.21517","kind":"primary","supports":"獨立集構造及公開驗證方向。"}]
+}

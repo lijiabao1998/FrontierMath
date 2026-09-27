@@ -1,0 +1,13 @@
+{
+  "id":"MATH-004","domain":"math","title":"Cap set 的漸近增長率","status":"OPEN","priority":"A","checked_on":"2026-09-27",
+  "statement":"令 a(n) 是 F3^n 中無三個相異 x,y,z 滿足 x+y+z=0 的最大子集大小。縮小 limsup a(n)^(1/n) 的上下界缺口，最終決定其值。",
+  "known_result":"Tyrrell 提出新的下界構造；2026 complete cap set 構造針對極大集而非保證最大集，需區分 complete 與 maximum。",
+  "open_gap":"漸近指數的精確值，以及凍結 n 下的新可驗證構造。",
+  "first_task":"先實作 F3 的正確算術和三項結構 checker，對小 n 暴力比較；再重現一個公開基線。",
+  "evaluator":"精確模3加法、唯一性、pair-complement 查找，與獨立 O(m^3) 小例 checker 比較。",
+  "validation_limits":"有限構造只给下界；極大／complete 不代表最優／maximum；數值 fit 不是漸近證明。",
+  "completion_criterion":"漸近上下界重合的證明；單個 n 改善按部分進展記，不關閉父問題。",
+  "screening_note":"初始摘要與構造類型核對，當輪需要重查最新下界與可用程式。",
+  "screening_queries":["cap set lower bounds 2026 2025 arxiv"],
+  "sources":[{"title":"Tyrrell, New Lower Bounds for Cap Sets","url":"https://arxiv.org/abs/2209.10045","kind":"primary","supports":"構造下界基線，不主張是今日最佳。"},{"title":"New Method for Constructing Complete Cap Sets (2026)","url":"https://arxiv.org/abs/2601.16917","kind":"primary","supports":"complete cap 的新構造，scope 與 maximum 不同。"}]
+}
