@@ -27,3 +27,32 @@ python cross_check_database.py --n 76 --symm o --index 1
 # path B (same script): the ASCII grid rendered by the live endpoint; the script
 # reports paths_agree=True only when both paths decode to the identical point set.
 ```
+
+## Packaging decision (2026-09-28, per owner instruction)
+
+Third-party raw bytes are **not tracked**. The licence audit is in
+`../lit_data/THIRD_PARTY_SOURCES.md`; the short version:
+
+- **Flammenkamp `no3in` pages: NO licence found.** Full-text search of the readme for
+  `licen[cs]`, `copyright`, `©`, `reproduc`, `redistribut`, `permission`, `free of
+  charge` returns only "downloadable for free" (about a C program, i.e. availability,
+  not a redistribution grant). So `decode.c`, `readme.html`, `table.html`, `encoding`,
+  the `new_results`/`odd_results` pages, the `rot4_*.png` record pictures, and both
+  solution corpora are **fetched on demand**, with SHA-256 recorded and verified by
+  `../lit_data/fetch_third_party.py`. They were removed from git tracking.
+- **`wustep/maths` prior-art logs: MIT, Copyright (c) 2026 Stephen Wu.** Redistribution
+  is permitted with the notice, so `../prior_art/RESEARCH.md` and `ATTACK.md` are kept
+  and the required MIT notice is carried in `../prior_art/ATTRIBUTION.md`.
+
+Restore everything a committed program needs:
+
+```bash
+python ../lit_data/fetch_third_party.py            # all files, hash-verified
+python ../lit_data/fetch_third_party.py --check    # verify what is on disk
+python ../lit_data/fetch_third_party.py --code-inputs-only   # just the two corpus files read by code
+```
+
+Nothing was lost by untracking: every conclusion drawn from those files is either
+reproduced by committed code from a fetched file, or quoted with attribution in this
+branch's own documents (the `TOPOS` mapping in `DERIVATION.md` §5, trap T3; the
+frontier status in `../../../../DEEPSEEK_LITERATURE_AUDIT.md`).

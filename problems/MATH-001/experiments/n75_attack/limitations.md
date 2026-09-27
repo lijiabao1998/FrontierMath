@@ -88,5 +88,35 @@ never as "symmetry breaking" in the sense of a full lex-leader scheme. It is als
   the point of this bench was to be independent of it).
 - No local-search / MCTS arm was implemented, despite being listed as an option in
   the task. Only the two Boolean formulations exist.
-- No DRAT/LRAT emission or checking.
 - No attempt at n=77 or beyond, and no attempt to extrapolate the n=75 status.
+
+## 9. The compute phase is blocked at G4 — an UNSAT here cannot be certified
+
+`COMPUTE_PHASE_PROTOCOL.md` freezes the contract for the round that takes n=75 into a
+compute phase. Its precondition **G4** ("an UNSAT-certifying pipeline must exist") was
+tested in advance by `drat_roundtrip_test.py`, and it **fails**. Three independent
+blockers, each reproduced:
+
+| # | blocker | reproduction |
+|---|---|---|
+| G4.1 | PySAT's CaDiCaL emits learned clauses and deletions but the retrieved trace **contains no empty clause**, so the proof never closes | `PHP(7,6)`: 1,932 lines, 980 additions verified RUP, 952 deletions, **0 empty-clause lines** (`small_n_tests/drat_roundtrip.json`) |
+| G4.2 | **Kissat refuses proof logging** in PySAT | `NotImplementedError: Proof logging is not supported by Kissat in PySAT` |
+| G4.3 | **No independent DRAT/LRAT checker** exists here | `drat-trim`, `cake_lpr`, `gratgen` absent; the checker in `drat_roundtrip_test.py` is this round's own RUP-only code and does not implement RAT |
+
+**Consequence, stated in the strongest available terms: any UNSAT produced at n=75 in
+this environment must be recorded as `COMPUTE_RESULT_UNVERIFIED` and must not be
+presented as a result.** This is not a formality — it is the same standard that
+`wustep/maths` applied to its own restricted UNSAT runs (no trace ⇒ residue), and it
+applies to this bench's own output.
+
+To lift G4: invoke a standalone proof-capable solver directly (CaDiCaL or Kissat with
+`--proof` / `--lrat`, not through PySAT's wrapper), add `drat-trim` or `cake_lpr`, and
+re-run `drat_roundtrip_test.py` until it reports `SOLVED_WITH_CHECKED_PROOF`.
+
+Also worth recording as a side effect: **every UNSAT instance this encoder produces at
+small n is refuted at the root by unit propagation alone**, so CaDiCaL emits no
+learned clauses at all for them. They are valid UNSAT controls (the contradiction is
+provable by hand), but they cannot exercise a proof pipeline. A compute round should
+therefore expect the n=75 trace — if a trace appears at all — to come from genuine
+search, and should not be surprised by an empty trace on the easy controls.
+
