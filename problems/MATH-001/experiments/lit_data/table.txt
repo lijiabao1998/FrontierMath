@@ -1,0 +1,79 @@
+     Number of Solutions of the No_Three_in_Line Problem on Small Grids
+
+
+   n     all      .      /      -      :      x    c    o      +      *    sum
+-------------------------------------------------------------------------------
+   1       0      0      0             0      0    0                         0
+   2       1      0      0      0      0      0         0      0      1      1
+   3       2      0      0             0      1    1                         1
+   4      11      0      0      1      1      1         0      0      1      4
+   5      32      3      2             0      0    0                         5
+   6      50      4      0      0      2      2         3      0      0     11
+   7     132     11      1            10      0    0                        22
+   8     380     40      5      1      7      0         4      0      0     57
+   9     368     41      3             7      0    1                        51
+  10    1135    132      3      0     13      1         6      0      1    156
+  11    1120    122      6            30      0    0                       158
+  12    4348    524      3      0     33      2         4      0      0    566
+  13    3622    407      9            82      1    0                       499
+  14   10568   1284      5      0     61      3        13      0      0   1366
+  15   30634   3681     13           283      1    0                      3978
+  16   46304   5683     14      0    189      1        13      0      0   5900
+  17      ..            12           282      0    1                        ..
+  18      ..            14      0    328      2         7      0      0     ..
+  19      ..            16           594      0    2                        ..
+  20      ..            17      0    675      2        16      0      0     ..
+  21      ..            13          2413      0    1                        ..
+  22      ..            18      0   1248      1         8      0      0     ..
+  23      ..            34          3968      1    1                        ..
+  24      ..            43      0   2852      2        23      0      0     ..
+  25      ..            55          8983      2    3                        ..
+  26      ..                    1             0        36      0      0     ..
+  27      ..                           .      0    9                        ..
+  28      ..                                  0        58      0      0     ..
+  29      ..                                  1    8                        ..
+  30      ..                                  1        92      0      0     ..
+  31      ..                                  2    5                        ..
+  32      ..                                  1       101      0      0     ..
+  33      ..                           .      0   14                        ..
+  34      ..                                  0       172      0      0     ..
+  35      ..                                  1   23                        ..
+  36      ..                                  1       281      0      0     ..
+  37      ..                                  0   21                        ..
+  38      ..                                  1       337      0      0     ..
+  39      ..                                  0   33                        ..
+  40      ..                                  0       541      0      0     ..
+  41       .                                  0    .                         .
+  42      ..                                  1       746      0      0     ..
+  43       .                                  0    .                         .
+  44       .                                  1         .      0      0      .
+  45       .                                  0    .                         .
+  46       .                                            .      0      0      .
+  47
+  48       .                                            .      0      0      .
+  49
+  50       .                                            .      0      0      .
+  51
+  52       .                                            .             0      .
+
+The column with heading * continues to be 0 for all n <= 82 .
+
+A number in the apropriate place gives the number of all existing solutions.
+. instead of a number means one known configuration.
+.. means some known configurations.
+ ======================  last update: 31. Januar 1997  ======================
+
+Heading abbreviations:
+----------------------
+n     board size -- grid size
+all   total number of solution
+.     number of asymmetric solutions
+/     number of solutions with exact one diagonal reflection symmetry
+-     number of solutions with exact one orthogonal reflection symmetry
+:     number of solutions with only half rotation symmetry
+x     number of solutions with both diagonal reflection symmetries
+c     number of solutions with quarter rotation symmetry except long diagonals
+o     number of solutions with quarter rotation symmetry
++     number of solutions with both orthogonal reflection symmetries
+*     number of solutions with all 8 symmetries of the grid
+sum   number of solutions which are not equivalent under symmetry transformation

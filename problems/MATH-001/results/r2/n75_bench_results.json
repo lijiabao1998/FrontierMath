@@ -1,0 +1,77 @@
+{
+  "results": [
+    {
+      "n": 1,
+      "mode": "triples",
+      "sat": false,
+      "vars": 1,
+      "clauses": 2,
+      "verifier_ok": null
+    },
+    {
+      "n": 2,
+      "mode": "triples",
+      "sat": true,
+      "vars": 4,
+      "clauses": 8,
+      "verifier_ok": true
+    },
+    {
+      "n": 3,
+      "mode": "triples",
+      "sat": true,
+      "vars": 9,
+      "clauses": 35,
+      "verifier_ok": true
+    },
+    {
+      "n": 3,
+      "mode": "seq",
+      "sat": true,
+      "vars": 94,
+      "clauses": 171,
+      "verifier_ok": true
+    },
+    {
+      "n": 4,
+      "mode": "triples",
+      "sat": true,
+      "vars": 16,
+      "clauses": 124,
+      "verifier_ok": true
+    },
+    {
+      "n": 4,
+      "mode": "seq",
+      "sat": true,
+      "vars": 190,
+      "clauses": 376,
+      "verifier_ok": true
+    },
+    {
+      "n": 5,
+      "mode": "triples",
+      "sat": true,
+      "vars": 25,
+      "clauses": 352,
+      "verifier_ok": true
+    },
+    {
+      "n": 3,
+      "mode": "triples+pigeonhole",
+      "sat": false
+    },
+    {
+      "n": 4,
+      "mode": "triples+pigeonhole",
+      "sat": false
+    }
+  ],
+  "checks": {
+    "C1_small_n_sat_and_verified": true,
+    "C2_n1_unsat": true,
+    "C3_pigeonhole_unsat": true,
+    "C4_modes_agree": true
+  },
+  "verdict": "BENCH_SOUND"
+}
