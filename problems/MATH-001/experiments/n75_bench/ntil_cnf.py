@@ -30,7 +30,9 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / ".deps"))
 sys.path.insert(0, str(HERE.parent / "baseline_r1"))
 
-from pysat.solvers import Cadical153  # noqa: E402
+# pysat is imported lazily inside solve(): the vendored .deps wheels are
+# platform/interpreter specific (cp313 win_amd64 committed), so importing at
+# module scope breaks --estimate and non-native platforms. Codex P1 fix.
 import verifier  # noqa: E402
 
 
@@ -123,8 +125,10 @@ def build(n: int, mode: str, row1_cap: int = 2):
             else:
                 b.at_most_2_sinz(row)
         else:
-            for x in row:
-                b.add([-x])
+            # at-most-1 via pairwise clauses; per-cell units would empty the
+            # row and trivially UNSAT without exercising cardinality (Codex P1)
+            for a, c2 in combinations(row, 2):
+                b.add([-a, -c2])
     for c in range(1, n + 1):
         col = [var(r, c, n) for r in range(1, n + 1)]
         for i in range(n):
@@ -143,6 +147,8 @@ def build(n: int, mode: str, row1_cap: int = 2):
 
 
 def solve(n: int, mode: str, row1_cap: int = 2):
+    from pysat.solvers import Cadical153  # lazy: platform-specific wheels
+
     clauses, nvars = build(n, mode, row1_cap)
     with Cadical153(bootstrap_with=clauses) as s:
         sat = s.solve()
@@ -169,12 +175,12 @@ def main() -> int:
         print(json.dumps({"n": n, "lines_ge3": len(lines),
                           "cell_line_incidences": incid,
                           "triple_clauses_lines_only": trip,
-                          "seq_aux_vars_lines_only": 2 * incid,
+                          "seq_aux_vars_lines_only": 2 * incid - len(lines),  # 2m-1 per line
                           "vars_cells": n * n}, indent=2))
         return 0
     out = {"results": []}
     for n in (1, 2, 3, 4, 5):
-        modes = ["triples", "seq"] if n in (3, 4) else [args.mode]
+        modes = ["triples", "seq"]  # always both: checks reference both
         for mode in modes:
             sat, model, nv, nc = solve(n, mode)
             entry = {"n": n, "mode": mode, "sat": sat, "vars": nv, "clauses": nc,

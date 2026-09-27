@@ -9,11 +9,27 @@
       "verifier_ok": null
     },
     {
+      "n": 1,
+      "mode": "seq",
+      "sat": false,
+      "vars": 3,
+      "clauses": 4,
+      "verifier_ok": null
+    },
+    {
       "n": 2,
       "mode": "triples",
       "sat": true,
       "vars": 4,
       "clauses": 8,
+      "verifier_ok": true
+    },
+    {
+      "n": 2,
+      "mode": "seq",
+      "sat": true,
+      "vars": 16,
+      "clauses": 24,
       "verifier_ok": true
     },
     {
@@ -54,6 +70,14 @@
       "sat": true,
       "vars": 25,
       "clauses": 352,
+      "verifier_ok": true
+    },
+    {
+      "n": 5,
+      "mode": "seq",
+      "sat": true,
+      "vars": 376,
+      "clauses": 763,
       "verifier_ok": true
     },
     {
