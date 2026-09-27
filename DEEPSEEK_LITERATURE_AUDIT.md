@@ -57,3 +57,50 @@ gap is coverage, not correctness:
 ("frontier config access blocked") is false — see `independent_verifier_r1/REPORT.md` F1.
 Per instruction, no card was edited on the basis of this audit; the evidence is
 recorded here in this branch for review.
+
+---
+
+## Late additions (fresh confirming search, 2026-09-27T20:0xZ, after the audit above)
+
+A second search pass was run to check specifically for 2026-09-27/09-28 updates and for
+errata. It found **two items the first pass and GLM's map both missed**. The first is a
+genuine erratum-class paper.
+
+| # | item | class | evidence |
+|---|---|---|---|
+| 15 | **Voutier, *On the Guy–Kelly Conjecture for the No-Three-In-Line Problem*, arXiv:2603.00215** (v1 2026-02-27, v2 2026-03-09) | **confirmed to exist; read at abstract level** | abstract fetched. It supplies the details of the error **Gabor Ellmann found in 2004** in the Guy–Kelly heuristic and the resulting correction to their *conjectured upper bound*. The abstract itself gives no constants; secondary summaries report the corrected constant as `π/√3` (matching part III of arXiv:2609.25133 and Prellberg). It makes **no claim about `D(n)` for any specific `n`, and does not mention `n=75`** — so it does not change the problem's status. This is the erratum-class item the round's `retractions_checked` flag exists to catch, and until now it was missing from both this audit and GLM's map |
+| 16 | **`aujurd22/no3inline-rigidity` — `analysis/even_n_existence_tools/ROT4_MULTIGRAPH_MODEL_CORRECTION_2026-07-19.md`** (MIT licence) | **confirmed; read in full** | fetched via the GitHub API. A **model correction that RETRACTS previously claimed infeasibility certificates** (see below) |
+
+### On item 16 — what it corrects, and why it does not affect this round's n=75 claim
+
+The correction's subject is explicitly `m = 37, n = 74`, i.e. **even** `n`. Its content:
+the old `build_general_model` imposed `x_uv + x_vu ≤ 1` on each unordered endpoint pair,
+and **that constraint is wrong** — in the contracted 2-regular object `(u,v)` and `(v,u)`
+are *distinct C4 orbits*, and they may coexist as two parallel edges forming a digon. The
+study had earlier recorded that digons do occur in the small-`m` census. An independent
+geometric audit over all `C(37,2) = 666` pairs (disjoint 8-point orbits, four rows/four
+columns, two points per row and column, no three collinear inside the union) passed with
+0 failures.
+
+**Withdrawn by that correction** (all in the even-`n` rot4 line, none of them cited by this
+round): the `k=11` full neighbour-layer closure, the `k=12` corridor for `3 ≤ A ≤ 6`, the
+`A=6` low-`B` `q=3`/`q=4` closure, and the `q=4` direction-pair certificate. Results that do
+not use the faulty constraint remain valid (normalisation-distance lemma, deletion-window
+identity, `q=1` double-resource and general-direction Gaussian resource formula, the blocker
+oracle, the blocker-only flip bound, the 666-pair audit, and certificates re-derived under
+the corrected model).
+
+**Why this does not touch this round's `rot4`-excluded-for-n=75 result.** This round's
+exclusion is a pure **orbit-cardinality** statement about a group action, with no multigraph
+or CP-SAT model anywhere in it: for odd `n` the 90° rotation `T` has only orbits of size 1
+(the centre) and 4, so a `T`-invariant set has size ≡ 0 or 1 (mod 4), while `150 ≡ 2
+(mod 4)`. That argument cannot be repaired or broken by an edge-orientation constraint in
+someone else's SAT encoding. The two statements live in different regimes (odd vs even `n`)
+and different formalisms (orbit counting vs contracted-graph modelling).
+
+**What it does mean for the bench:** the general lesson is transferable and is already
+reflected in `n75_attack/COMPUTE_PHASE_PROTOCOL.md` G3 — an encoding can silently over- or
+under-constrain the object it is meant to represent, so an UNSAT from any model must be
+accompanied by an audit that the formula expresses the problem (G2) before it is believed.
+Here the failure mode was the opposite direction: an over-constraint that made a space look
+smaller than it is and produced infeasibility certificates that did not hold.
