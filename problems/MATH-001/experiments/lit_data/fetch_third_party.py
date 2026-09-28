@@ -7,30 +7,44 @@ on demand instead of vendored. This script is what makes that safe -- it reprodu
 every input the committed code needs, and verifies each byte against the SHA-256
 recorded on 2026-09-28.
 
+FAIL-CLOSED CONTRACT (this is the whole point of the script):
+  For every selected, REQUIRED source, each of
+      * file missing
+      * size mismatch
+      * hash mismatch
+      * download failure
+  is a verification failure. Any such failure makes the process exit non-zero. The
+  success line is printed ONLY when run() returned ok, so a `--check` run can never
+  certify provenance it did not observe.
+
 Usage:
     python fetch_third_party.py                # fetch all, verify all
     python fetch_third_party.py --check        # verify what is already on disk, no network
     python fetch_third_party.py --skip-corpus  # small files only (skips the 23.8 MB DB)
-    python fetch_third_party.py --allow-unhashed  # fetch files with no recorded hash and print it
+    python fetch_third_party.py --code-inputs-only
+    python fetch_third_party.py --root DIR     # treat DIR as the origin of every path
+    python fetch_third_party.py --sources-json F   # replace the built-in table (testing hook)
 
-Exit code 0 when everything present verifies, 1 otherwise.
+Exit code 0 only when every selected required source is present, correctly sized and
+hash-verified (or, for entries with no recorded hash, fetched and reported).
 """
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import os
 import ssl
 import sys
 import time
 import urllib.request
-from typing import Sequence
+from typing import Callable, Sequence
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = "https://wwwhomes.uni-bielefeld.de/achim/no3in/"
 
-# local path (relative to this file) -> (url, bytes, sha256 or None)
+# local path (relative to the root) -> (url, bytes, sha256 or None)
 SOURCES: dict[str, tuple[str, int | None, str | None]] = {
     "decode.c": (BASE + "decode.c", 2324,
                  "4ef26ee8adda3543e19ce5ab75383b33f80365e3a013bbcac64fa9dbff5022db"),
@@ -56,13 +70,22 @@ SOURCES: dict[str, tuple[str, int | None, str | None]] = {
                             "8e2ff7df5a9915a95e635e62d62fc14e2894542ca30f484bc0ff4e9efd3aac5e"),
 }
 
-SMALL_ONLY_SKIP = {"dl/all_known_solutions"}
-
-# The text pages are third-party prose/graphics kept only for provenance; the two
-# files the committed code actually reads are known_solutions_1997.txt (audit) and
-# dl/all_known_solutions (full verification). Everything else is evidence of the
-# retrieval, not an input.
+SKIP_WITH_SKIP_CORPUS = {"dl/all_known_solutions"}
 CODE_INPUTS = {"known_solutions_1997.txt", "dl/all_known_solutions"}
+
+
+def load_sources(sources_json: str | None) -> dict[str, tuple[str, int | None, str | None]]:
+    if not sources_json:
+        return dict(SOURCES)
+    with open(sources_json, "r", encoding="utf-8") as fh:
+        raw = json.load(fh)
+    out: dict[str, tuple[str, int | None, str | None]] = {}
+    for rel, spec in raw.items():
+        if isinstance(spec, dict):
+            out[rel] = (spec["url"], spec.get("bytes"), spec.get("sha256"))
+        else:  # [url, bytes, sha256]
+            out[rel] = (spec[0], spec[1], spec[2])
+    return out
 
 
 def sha256_of(path: str) -> str:
@@ -73,8 +96,9 @@ def sha256_of(path: str) -> str:
     return h.hexdigest()
 
 
-def download(url: str, dest: str, expect_bytes: int | None, retries: int = 6) -> bool:
-    """Download with resume + retries; the upstream host is intermittently flaky."""
+def download(url: str, dest: str, expect_bytes: int | None, retries: int = 6,
+             log: Callable[[str], None] = print) -> bool:
+    """Download with resume + retries. Returns True only on a complete transfer."""
     os.makedirs(os.path.dirname(dest) or ".", exist_ok=True)
     part = dest + ".part"
     for attempt in range(1, retries + 1):
@@ -97,16 +121,77 @@ def download(url: str, dest: str, expect_bytes: int | None, retries: int = 6) ->
                             break
                         out.write(chunk)
         except Exception as exc:  # noqa: BLE001
-            print(f"    attempt {attempt}/{retries} failed: {type(exc).__name__}: {exc}", file=sys.stderr)
+            log(f"    attempt {attempt}/{retries} failed: {type(exc).__name__}: {exc}")
             time.sleep(2 * attempt)
             continue
         got = os.path.getsize(part)
         if expect_bytes is None or got == expect_bytes:
             break
-        print(f"    attempt {attempt}/{retries}: have {got}/{expect_bytes} bytes, resuming", file=sys.stderr)
-    if os.path.exists(part):
+        log(f"    attempt {attempt}/{retries}: have {got}/{expect_bytes} bytes, resuming")
+    if os.path.exists(part) and (expect_bytes is None or os.path.getsize(part) == expect_bytes):
         os.replace(part, dest)
-    return os.path.exists(dest)
+        return True
+    return False
+
+
+def run(sources: dict[str, tuple[str, int | None, str | None]], root: str, *,
+        check: bool = False, skip_corpus: bool = False, code_inputs_only: bool = False,
+        allow_unhashed: bool = False, log: Callable[[str], None] = print) -> bool:
+    """Verify (and if needed fetch) `sources` under `root`. Returns True iff all good."""
+    selected = {
+        rel: spec for rel, spec in sources.items()
+        if not (skip_corpus and rel in SKIP_WITH_SKIP_CORPUS)
+        and not (code_inputs_only and rel not in CODE_INPUTS)
+    }
+    if not selected:
+        log("FAIL: no sources selected -- refusing to report success on an empty set")
+        return False
+
+    ok = True
+    for rel, (url, nbytes, digest) in selected.items():
+        path = os.path.join(root, rel)
+
+        if os.path.exists(path):
+            # present on disk: always verify size and hash, in --check mode too
+            got = sha256_of(path)
+            size = os.path.getsize(path)
+            size_ok = nbytes is None or size == nbytes
+            hash_ok = digest is None or got == digest
+            if size_ok and hash_ok:
+                log(f"OK       {rel}  {size} bytes  {got[:32]}...")
+            else:
+                ok = False
+                if not size_ok:
+                    log(f"MISMATCH {rel}  size {size} != expected {nbytes}")
+                if not hash_ok:
+                    log(f"MISMATCH {rel}\n  expected {digest}\n  got      {got}")
+            continue
+
+        # absent
+        if check:
+            ok = False
+            log(f"MISSING  {rel}  (expected {nbytes if nbytes else '?'} bytes; "
+                f"--check performs no download)")
+            continue
+
+        log(f"fetching {rel}  ({nbytes if nbytes else '?'} bytes)  <- {url}")
+        if not download(url, path, nbytes, log=log):
+            ok = False
+            log(f"FAILED   {rel}  download incomplete")
+            continue
+        got = sha256_of(path)
+        size = os.path.getsize(path)
+        if digest is None:
+            log(f"FETCHED  {rel}  {size} bytes  sha256={got}")
+            if not allow_unhashed:
+                log("         (no hash recorded in advance; printed above for review)")
+        elif got != digest:
+            ok = False
+            log(f"MISMATCH {rel}\n  expected {digest}\n  got      {got}")
+        else:
+            log(f"OK       {rel}  {size} bytes  sha256 verified")
+
+    return ok
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -115,58 +200,23 @@ def main(argv: Sequence[str] | None = None) -> int:
     ap.add_argument("--skip-corpus", action="store_true", help="skip the 23.8 MB database")
     ap.add_argument("--allow-unhashed", action="store_true")
     ap.add_argument("--code-inputs-only", action="store_true",
-                    help="fetch only the two files the committed code reads")
+                    help="only the two files the committed code reads")
+    ap.add_argument("--root", default=HERE, help="root the relative paths are resolved against")
+    ap.add_argument("--sources-json", default=None,
+                    help="replace the built-in source table (testing hook)")
     args = ap.parse_args(list(argv) if argv is not None else None)
 
-    selected = {
-        rel: spec for rel, spec in SOURCES.items()
-        if not (args.skip_corpus and rel in SMALL_ONLY_SKIP)
-        and not (args.code_inputs_only and rel not in CODE_INPUTS)
-    }
+    sources = load_sources(args.sources_json)
+    ok = run(sources, args.root, check=args.check, skip_corpus=args.skip_corpus,
+             code_inputs_only=args.code_inputs_only, allow_unhashed=args.allow_unhashed)
 
-    ok = True
-    for rel, (url, nbytes, digest) in selected.items():
-        path = os.path.join(HERE, rel)
-        if args.check or (os.path.exists(path) and digest):
-            if not os.path.exists(path):
-                print(f"MISSING  {rel}")
-                if not args.check:
-                    ok = False
-                continue
-            got = sha256_of(path)
-            size = os.path.getsize(path)
-            size_ok = nbytes is None or size == nbytes
-            hash_ok = digest is None or got == digest
-            status = "OK      " if (size_ok and hash_ok) else "MISMATCH"
-            if not (size_ok and hash_ok):
-                ok = False
-            print(f"{status} {rel}  {size} bytes  {got[:32]}...")
-            continue
-
-        if args.check:
-            print(f"MISSING  {rel}")
-            ok = False
-            continue
-
-        print(f"fetching {rel}  ({nbytes if nbytes else '?'} bytes)  <- {url}")
-        if not download(url, path, nbytes):
-            print(f"FAILED   {rel}")
-            ok = False
-            continue
-        got = sha256_of(path)
-        size = os.path.getsize(path)
-        if digest is None:
-            print(f"FETCHED  {rel}  {size} bytes  sha256={got}")
-            if not args.allow_unhashed:
-                print("         (no hash was recorded in advance; printed above for review)")
-        elif got != digest:
-            print(f"MISMATCH {rel}\n  expected {digest}\n  got      {got}")
-            ok = False
-        else:
-            print(f"OK       {rel}  {size} bytes  sha256 verified")
-
-    print("\nRESULT:", "all present and verified" if ok else "PROBLEMS FOUND (see above)")
-    return 0 if ok else 1
+    # The success banner is printed ONLY when the run actually succeeded. There is no
+    # code path that prints it after a MISSING / MISMATCH / FAILED.
+    if ok:
+        print("\nRESULT: all present and verified")
+        return 0
+    print("\nRESULT: PROBLEMS FOUND (see above)")
+    return 1
 
 
 if __name__ == "__main__":

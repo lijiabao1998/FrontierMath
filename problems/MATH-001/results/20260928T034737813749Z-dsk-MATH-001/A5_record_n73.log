@@ -1,0 +1,15 @@
+$ C:\Users\Leon1\AppData\Local\Programs\Python\Python313\python.exe cross_check_database.py --n 73 --symm c --index 1 --json C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A5_record_n73.json
+[cwd] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\experiments\independent_verifier_r1
+[exit] 0
+[seconds] 4.71
+
+===== stdout =====
+== path A: coded entry from all_known_solutions ==
+  {'code_sha256': 'fb1429dee3d56691e72f27f8752c6cfec05576311fb9a38e7ebe6a5cbfc16c42', 'code_len': 147, 'points': 146, 'distinct': 146, 'legal': True, 'rows_used': 73, 'cols_used': 73}
+== path B: ASCII grid from the live CGI endpoint ==
+  {'header_lines': ['1. solution:     symmetry rct4'], 'grid_rows_parsed': 73, 'expected_rows': 73, 'rows_complete': True, 'raw_pre_chars': 10998, 'points': 146, 'distinct': 146, 'legal': True, 'no_configurations_known': False, 'count_line': None}
+== agreement: True ==
+[written] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A5_record_n73.json
+
+===== stderr =====
+

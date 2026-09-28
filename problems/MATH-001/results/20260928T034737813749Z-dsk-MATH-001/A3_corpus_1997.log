@@ -1,0 +1,20 @@
+$ C:\Users\Leon1\AppData\Local\Programs\Python\Python313\python.exe audit_r1_artifacts.py --r1 C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\r1 --json C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A3_1997_corpus.json
+[cwd] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\experiments\independent_verifier_r1
+[exit] 0
+[seconds] 317.06
+
+===== stdout =====
+== 1) GLM r1 self-certificates, checked by the DeepSeek verifier ==
+  -> all_pass=True
+== 2) Flammenkamp corpus, independent decode + verify ==
+  {'decoded': 36912, 'verify_pass': 36912}
+  n range 2..52; decode errors=0; verify failures=0; 162.42s
+== 3) teeth check: same corpus with the known-wrong lowercase mapping ==
+  {'decoded': 35221, 'verify_pass': 35221, 'decode_error': 1691}
+  decode errors=1691; verify failures=0
+== 4) teeth check: decode-invariant-preserving mutations must break legality ==
+  {'sampled_lines': 400, 'mutations_exercised': 371, 'mutated_lines_still_decode': 371, 'mutated_still_legal': 0, 'mutated_now_illegal': 371, 'skipped_swaps': 29, 'teeth_fraction_illegal': 1.0}
+[written] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A3_1997_corpus.json
+
+===== stderr =====
+

@@ -35,3 +35,8 @@ n75_attack/rot2_n75.cnf
 # --- Python bytecode
 __pycache__/
 *.pyc
+
+# Proof traces produced by the DRAT precondition test: regenerable in seconds by
+# n75_attack/drat_roundtrip_test.py, and their absence-of-empty-clause property is
+# recorded in small_n_tests/drat_roundtrip.json, so they are not vendored.
+*.drat

@@ -448,14 +448,82 @@ def encode_orbits(n: int, group: str, target: int) -> CNF:
 # --------------------------------------------------------------------------- #
 
 
-def audit_cnf_covers_lines(n: int, dimacs_path: str, var_of_cell=None) -> dict:
-    """Link (1) of certification: check the formula expresses the problem.
+def unit_propagation_conflict(clauses: Sequence[Sequence[int]],
+                              assumptions: Sequence[int]) -> bool:
+    """True iff unit propagation on `clauses` under `assumptions` reaches a conflict.
 
-    Reads a DIMACS file produced by encode_cells (cell variables numbered in the
-    documented order) and verifies that for EVERY maximal line with >= 3 grid
-    points there is at least one clause of the form (¬a ∨ ¬b ∨ ¬c) with a,b,c the
-    three cells of a collinear triple on that line. A missing line family is the
-    single most likely silent encoder bug, and this check catches it directly.
+    Used by the CNF audit's layer 2 (semantic completeness). Deliberately simple -- it
+    rescans the clause list until a fixed point -- because the audit's job is to be
+    obviously correct rather than fast. A False result is NOT a verdict that the triple
+    is allowed; layer 2 escalates to a real SAT call in that case.
+    """
+    assign: dict[int, bool] = {}
+    for lit in assumptions:
+        v, val = abs(lit), lit > 0
+        if v in assign and assign[v] != val:
+            return True
+        assign[v] = val
+    changed = True
+    while changed:
+        changed = False
+        for cl in clauses:
+            unassigned = []
+            satisfied = False
+            for lit in cl:
+                v = abs(lit)
+                if v in assign:
+                    if assign[v] == (lit > 0):
+                        satisfied = True
+                        break
+                else:
+                    unassigned.append(lit)
+            if satisfied:
+                continue
+            if not unassigned:
+                return True
+            if len(unassigned) == 1:
+                lit = unassigned[0]
+                v, val = abs(lit), lit > 0
+                if v in assign:
+                    if assign[v] != val:
+                        return True
+                else:
+                    assign[v] = val
+                    changed = True
+    return False
+
+
+def audit_cnf_covers_lines(n: int, dimacs_path: str, var_of_cell=None,
+                           semantic_check: bool = True,
+                           semantic_max_lines: int | None = None,
+                           explicit_limit: int = 4096) -> dict:
+    """Link (1) of certification: does the formula actually express the problem?
+
+    A previous version of this audit accepted a line as covered if AT LEAST ONE
+    negative triple clause for it was present. That is unsound: for a line with
+    k > 3 cells the other triples may still be selectable, so an underconstrained
+    formula would pass. This version requires COMPLETENESS, in two layers:
+
+    LAYER 1 -- explicit completeness (exact, no solver, no propagation).
+      For every maximal line L that the encoder represents with explicit triple
+      clauses (that is, C(|L|,3) <= explicit_limit, matching CNF.add_at_most), the
+      DIMACS must contain ALL C(|L|,3) clauses (¬a ∨ ¬b ∨ ¬c) over the triples of L.
+      A line with any missing triple is reported, with examples.
+
+    LAYER 2 -- semantic completeness for lines encoded by a cardinality network.
+      A network-encoded at-most-2 has no explicit triples, so layer 1 cannot speak
+      for it. For those lines the audit verifies the SEMANTICS directly: for every
+      3-subset T of L, the formula conjoined with the unit assumptions T must be
+      UNSATISFIABLE. Unit propagation is tried first; anything it cannot refute is
+      escalated to a real SAT call. This is encoding-agnostic and is what makes the
+      audit meaningful for large k.
+
+      `semantic_max_lines` bounds how many network lines are checked this way; if the
+      bound bites, `semantic_lines_unchecked` is non-zero and `covers_all_lines` is
+      reported as False with `complete: false`, rather than silently passing.
+
+    `covers_all_lines` is True only when layer 1 found no missing triple AND every
+    network line was semantically verified (or there were none).
     """
     order = [(x, y) for y in range(1, n + 1) for x in range(1, n + 1)]
     var_of = {cell: i + 1 for i, cell in enumerate(order)}
@@ -463,33 +531,112 @@ def audit_cnf_covers_lines(n: int, dimacs_path: str, var_of_cell=None) -> dict:
         var_of = var_of_cell
 
     neg_triples: set[tuple[int, int, int]] = set()
+    clauses: list[list[int]] = []
+    nvars_declared = 0
     with open(dimacs_path, "r", encoding="utf-8") as fh:
         for ln in fh:
-            if not ln or ln[0] in "cp":
+            if not ln:
+                continue
+            if ln[0] == "c":
+                continue
+            if ln[0] == "p":
+                parts = ln.split()
+                nvars_declared = int(parts[2])
                 continue
             lits = [int(t) for t in ln.split() if t != "0"]
+            clauses.append(lits)
             if len(lits) == 3 and all(v < 0 for v in lits):
                 neg_triples.add(tuple(sorted(-v for v in lits)))
 
-    missing: list[list[tuple[int, int]]] = []
     lines = maximal_lines(n, 3)
-    for cells in lines:
-        covered = False
-        for sub in combinations(cells, 3):
-            key = tuple(sorted(var_of[c] for c in sub))
-            if key in neg_triples:
-                covered = True
-                break
-        if not covered:
-            missing.append(cells)
+    explicit_lines = [L for L in lines if comb(len(L), 3) <= explicit_limit]
+    network_lines = [L for L in lines if comb(len(L), 3) > explicit_limit]
+
+    # ---- layer 1 ----
+    missing_examples: list[dict] = []
+    lines_with_missing = 0
+    triples_expected = 0
+    triples_present = 0
+    for L in explicit_lines:
+        want = [tuple(sorted(var_of[c] for c in sub)) for sub in combinations(L, 3)]
+        triples_expected += len(want)
+        miss = [w for w in want if w not in neg_triples]
+        triples_present += len(want) - len(miss)
+        if miss:
+            lines_with_missing += 1
+            if len(missing_examples) < 5:
+                missing_examples.append({"line": L, "n_expected": len(want),
+                                         "n_missing": len(miss), "missing": miss[:5]})
+
+    # ---- layer 2 ----
+    sem = {
+        "lines_total": len(network_lines),
+        "lines_checked": 0,
+        "lines_unchecked": 0,
+        "triples_checked": 0,
+        "refuted_by_unit_propagation": 0,
+        "refuted_by_sat": 0,
+        "not_refuted": [],
+    }
+    if semantic_check and network_lines:
+        todo = network_lines
+        if semantic_max_lines is not None and len(todo) > semantic_max_lines:
+            sem["lines_unchecked"] = len(todo) - semantic_max_lines
+            todo = todo[:semantic_max_lines]
+        try:
+            from pysat.solvers import Cadical153
+            have_solver = True
+        except Exception:  # noqa: BLE001
+            have_solver = False
+        for L in todo:
+            sem["lines_checked"] += 1
+            lits3 = [[var_of[c] for c in sub] for sub in combinations(L, 3)]
+            bad = None
+            for T in lits3:
+                sem["triples_checked"] += 1
+                if unit_propagation_conflict(clauses, list(T)):
+                    sem["refuted_by_unit_propagation"] += 1
+                    continue
+                if not have_solver:
+                    bad = {"line": L, "triple": T, "reason": "no solver available to escalate"}
+                    break
+                with Cadical153(bootstrap_with=clauses) as s:
+                    sat = s.solve(assumptions=list(T))
+                if sat:
+                    bad = {"line": L, "triple": T, "reason": "triple is satisfiable: at-most-2 NOT enforced"}
+                    break
+                sem["refuted_by_sat"] += 1
+            if bad is not None and len(sem["not_refuted"]) < 5:
+                sem["not_refuted"].append(bad)
+    elif network_lines:
+        sem["lines_unchecked"] = len(network_lines)
+
+    complete = (
+        lines_with_missing == 0
+        and sem["lines_unchecked"] == 0
+        and not sem["not_refuted"]
+    )
     return {
         "n": n,
         "dimacs": os.path.basename(dimacs_path),
+        "nvars_declared": nvars_declared,
+        "clauses_read": len(clauses),
         "maximal_lines_checked": len(lines),
-        "lines_not_covered": len(missing),
-        "first_missing_examples": missing[:5],
-        "covers_all_lines": not missing,
         "negative_triple_clauses": len(neg_triples),
+        "layer1_explicit_lines": len(explicit_lines),
+        "layer1_triples_expected": triples_expected,
+        "layer1_triples_present": triples_present,
+        "layer1_lines_with_missing_triple": lines_with_missing,
+        "layer1_missing_examples": missing_examples,
+        "layer2_network_lines": len(network_lines),
+        "layer2": sem,
+        "complete": complete,
+        "covers_all_lines": complete,
+        "completeness_scope": (
+            "layer 1 requires ALL C(k,3) negative triples on every explicitly encoded line; "
+            "layer 2 requires F AND T to be UNSAT for every 3-subset T of every network-encoded "
+            "line. covers_all_lines is True only when both hold with nothing unchecked."
+        ),
     }
 
 

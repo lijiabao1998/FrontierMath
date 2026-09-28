@@ -1,0 +1,38 @@
+$ C:\Users\Leon1\AppData\Local\Programs\Python\Python313\python.exe drat_roundtrip_test.py --json C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A7d_drat_roundtrip.json
+[cwd] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\experiments\n75_attack
+[exit] 1
+[seconds] 0.76
+
+===== stdout =====
+== A) checker self-test (must be GREEN; validates the checker, not the solver) ==
+   [ok] valid_two_step_proof: expect_checked=True got=True
+   [ok] step_not_rup_new_variable: expect_checked=False got=False
+   [ok] no_empty_clause: expect_checked=False got=False
+   [ok] malformed_token: expect_checked=False got=False
+   [ok] tokens_after_zero_ignored: expect_checked=True got=True
+   [ok] deletion_line_honoured: expect_checked=False got=False
+   checker_selftest_ok = True
+
+{
+  "final_status": "PROOF_TRACE_DID_NOT_CLOSE",
+  "overall_certification": "BLOCKED",
+  "checker_selftest_ok": true,
+  "cases_with_trace_emitted": 1,
+  "cases_with_checked_proof": 0,
+  "certification_requires_independent_checker": true,
+  "independent_drat_checker_available": false,
+  "kissat_proof_support": "PySAT raises NotImplementedError: proof logging is not supported by Kissat",
+  "environment_observations": [
+    "solver child process exited with code 3221226505 (on Windows 3221226505 = STATUS_STACK_BUFFER_OVERRUN): PySAT's CaDiCaL extension aborts during native teardown, after writing its results. The child was run in a separate process so this parent's exit code stays deterministic; a crashed child yields no certified trace, which is fail-closed.",
+    "PySAT's CaDiCaL extension crashes the process with STATUS_STACK_BUFFER_OVERRUN (0xC0000409; observed as bash exit 127) during native teardown, after all output is produced. The script therefore terminates via os._exit so the documented exit code is deterministic.",
+    "Every small-n UNSAT instance this encoder produces is refuted at the root by unit propagation, so CaDiCaL emits no learned clauses for them at all. They are valid UNSAT controls but cannot exercise a proof pipeline."
+  ],
+  "exit_contract": "0 iff final_status == SOLVED_WITH_CHECKED_PROOF; an uncertifiable pipeline exits non-zero as PROOF_PIPELINE_BLOCKED",
+  "interpretation": "The checker is validated (a hand-built 2-step DRAT proof is verified, and wrong, empty-less and malformed traces are all rejected). The SOLVER PIPELINE is blocked: the trace PySAT returns from CaDiCaL contains learned clauses and deletions but no empty clause, Kissat refuses proof logging in PySAT, and no independent DRAT/LRAT checker (drat-trim, cake_lpr, gratgen) is present. Therefore no UNSAT produced in this environment can be certified, and any n=75 UNSAT must be recorded as COMPUTE_RESULT_UNVERIFIED. This is reported as a failure on purpose: a green exit would be read by a shell or CI gate as 'checked proof'."
+}
+[written] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A7d_drat_roundtrip.json
+
+FAIL: PROOF_TRACE_DID_NOT_CLOSE. No checked proof was obtained, so this is a failure, not a success.
+
+===== stderr =====
+

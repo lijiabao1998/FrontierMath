@@ -1,0 +1,24 @@
+$ C:\Users\Leon1\AppData\Local\Programs\Python\Python313\python.exe brute_force.py --powerset-max 4 --rowpair-max 8 --json C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A2_ground_truth.json
+[cwd] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\experiments\independent_verifier_r1
+[exit] 0
+[seconds] 246.44
+
+===== stdout =====
+== A) full powerset enumeration (no use of the 2n row bound) ==
+  n=1: D(n)=1  (2n=2) !=  legal-max-sets=1  0.0s
+  n=2: D(n)=4  (2n) ==  legal-max-sets=1  0.0s
+  n=3: D(n)=6  (2n) ==  legal-max-sets=2  0.001s
+  n=4: D(n)=8  (2n) ==  legal-max-sets=11  0.197s
+== B) exhaustive row-pair enumeration (decides D(n)=2n exactly) ==
+  n=1: 0 legal configurations (grid has 1 cell < 2) -> D(1) != 2n
+  n=2: legal configs=1 of 1 -> D(n)=2n : True   (0.0s, 2 nodes)
+  n=3: legal configs=2 of 27 -> D(n)=2n : True   (0.0s, 39 nodes)
+  n=4: legal configs=11 of 1296 -> D(n)=2n : True   (0.004s, 570 nodes)
+  n=5: legal configs=32 of 100000 -> D(n)=2n : True   (0.066s, 7470 nodes)
+  n=6: legal configs=50 of 11390625 -> D(n)=2n : True   (1.06s, 97815 nodes)
+  n=7: legal configs=132 of 1801088541 -> D(n)=2n : True   (15.227s, 1115394 nodes)
+  n=8: legal configs=380 of 377801998336 -> D(n)=2n : True   (229.777s, 15388296 nodes)
+[written] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A2_ground_truth.json
+
+===== stderr =====
+

@@ -102,11 +102,21 @@ def negative_controls(n: int = 5) -> dict:
         {"name": "missing_line_family", "sabotaged_line": sabotage, "removed_clauses": removed,
          "kept_clauses": kept, "expect_covers": False, **bad}
     )
-    out["audit_has_teeth"] = (
-        out["controls"][0]["covers_all_lines"] is True
-        and out["controls"][1]["covers_all_lines"] is False
-        and out["controls"][1]["lines_not_covered"] >= 1
+    # The audit's output schema changed when completeness was required (P1-C): the field is
+    # now `layer1_lines_with_missing_triple`, and `complete` replaced `covers_all_lines` as
+    # the verdict. This caller was not updated at the time, which the in-round re-run caught
+    # as a KeyError on the first A8 attempt; it is fixed here and the teeth condition is
+    # strengthened to the completeness criterion rather than "a line was seen".
+    c0, c1 = out["controls"][0], out["controls"][1]
+    out["audit_has_teeth"] = bool(
+        c0.get("complete") is True
+        and c0.get("layer1_lines_with_missing_triple") == 0
+        and c1.get("complete") is False
+        and c1.get("layer1_lines_with_missing_triple", 0) >= 1
     )
+    out["schema_note"] = (
+        "controls[0] must be complete; controls[1] must be incomplete with at least one line "
+        "missing at least one of its C(k,3) triples.")
     return out
 
 
@@ -165,8 +175,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     neg = negative_controls(5)
     bench["negative_controls"] = neg
     for c in neg["controls"]:
-        print(f"  {c['name']}: covers_all_lines={c['covers_all_lines']} "
-              f"lines_not_covered={c['lines_not_covered']}")
+        print(f"  {c['name']}: complete={c.get('complete')} "
+              f"lines_with_missing_triple={c.get('layer1_lines_with_missing_triple')}")
     print(f"  audit_has_teeth={neg['audit_has_teeth']}")
 
     bench["claims"] = {

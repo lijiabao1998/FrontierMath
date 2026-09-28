@@ -22,7 +22,7 @@
       "provable_reason": "no rot2-invariant 2n-set at n=5",
       "reason": "instance is refuted by root-level unit propagation, so CaDiCaL emits no learned clauses",
       "sha256": "bdbd652828115e3359eeed0d4f6dc147",
-      "solve_seconds": 0.001,
+      "solve_seconds": 0.002,
       "status": "NO_TRACE_ROOT_LEVEL_REFUTATION",
       "vars": 325
     },
@@ -35,7 +35,7 @@
       "provable_reason": "no ort1-invariant 2n-set at n=6",
       "reason": "instance is refuted by root-level unit propagation, so CaDiCaL emits no learned clauses",
       "sha256": "22c337a4c92551a180bbce8f57f50694",
-      "solve_seconds": 0.002,
+      "solve_seconds": 0.003,
       "status": "NO_TRACE_ROOT_LEVEL_REFUTATION",
       "vars": 612
     },
@@ -50,7 +50,7 @@
         "original_clauses": 238,
         "parse_error": null,
         "proof_lines": 1932,
-        "seconds": 0.25,
+        "seconds": 0.3,
         "status": "PROOF_NOT_CHECKED",
         "steps_verified_rup": 980
       },
@@ -62,7 +62,7 @@
       "provable_reason": "pigeonhole PHP(7,6)",
       "reason": "trace does not reach a verified empty clause",
       "sha256": "743845c315bfdd3f1e96e673b45eedb3",
-      "solve_seconds": 0.008,
+      "solve_seconds": 0.011,
       "status": "PROOF_NOT_CHECKED",
       "vars": 0
     }
