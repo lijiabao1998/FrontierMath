@@ -1,0 +1,42 @@
+# DeepSeek r1 -- third-party data and large generated instances are NOT vendored.
+#
+# This round follows the "URL + SHA-256 + fetch instructions instead of vendored raw
+# data" rule for anything large or third-party. See ../../DEEPSEEK_REVIEW_FrontierMath_PRs.md
+# (section P-1) for the reasoning, lit_data/THIRD_PARTY_SOURCES.md for the licence audit,
+# and independent_verifier_r1/PROVENANCE.md for hashes.
+#
+# Restore everything with:  python lit_data/fetch_third_party.py
+#
+# Paths here are relative to this directory (problems/MATH-001/experiments/).
+
+# --- Flammenkamp no-three-in-line material: NO LICENCE FOUND upstream (see
+#     lit_data/THIRD_PARTY_SOURCES.md), so raw bytes are fetched, never tracked.
+lit_data/decode.c
+lit_data/no3in_readme.html
+lit_data/readme_text.txt
+lit_data/known_solutions_1997.txt
+lit_data/dl/
+lit_data/records/
+lit_data/r_new_results.html
+lit_data/r_odd_results.html
+lit_data/r_table.txt
+lit_data/r_encoding
+lit_data/t_table.html
+lit_data/t_table_old.txt
+lit_data/t_cases.txt
+lit_data/t_near_miss_count.txt
+lit_data/t_table_min_defect
+lit_data/out_*
+
+# --- Large generated instances (reproducible from the committed generators)
+n75_attack/*.cnf
+n75_attack/rot2_n75.cnf
+
+# --- Python bytecode
+__pycache__/
+*.pyc
+
+# Proof traces produced by the DRAT precondition test: regenerable in seconds by
+# n75_attack/drat_roundtrip_test.py, and their absence-of-empty-clause property is
+# recorded in small_n_tests/drat_roundtrip.json, so they are not vendored.
+*.drat
