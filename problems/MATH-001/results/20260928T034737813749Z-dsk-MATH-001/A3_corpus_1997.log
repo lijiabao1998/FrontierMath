@@ -1,19 +1,19 @@
-$ C:\Users\Leon1\AppData\Local\Programs\Python\Python313\python.exe audit_r1_artifacts.py --r1 C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\r1 --json C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A3_1997_corpus.json
+$ C:\Users\Leon1\AppData\Local\Programs\Python\Python313\python.exe audit_r1_artifacts.py --r1 C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\r1 --json C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A3_1997_corpus.json --teeth-all-lines
 [cwd] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\experiments\independent_verifier_r1
 [exit] 0
-[seconds] 317.06
+[seconds] 247.56
 
 ===== stdout =====
 == 1) GLM r1 self-certificates, checked by the DeepSeek verifier ==
   -> all_pass=True
 == 2) Flammenkamp corpus, independent decode + verify ==
   {'decoded': 36912, 'verify_pass': 36912}
-  n range 2..52; decode errors=0; verify failures=0; 162.42s
+  n range 2..52; decode errors=0; verify failures=0; 118.6s
 == 3) teeth check: same corpus with the known-wrong lowercase mapping ==
   {'decoded': 35221, 'verify_pass': 35221, 'decode_error': 1691}
   decode errors=1691; verify failures=0
 == 4) teeth check: decode-invariant-preserving mutations must break legality ==
-  {'sampled_lines': 400, 'mutations_exercised': 371, 'mutated_lines_still_decode': 371, 'mutated_still_legal': 0, 'mutated_now_illegal': 371, 'skipped_swaps': 29, 'teeth_fraction_illegal': 1.0}
+  {'survivors_detail': [{'line_index': 13956, 'n': 21, 'original': ':8F9B582DGH1606GI1A073HDKAJ24EKEJ347ICF9B5C', 'mutated': ':8F9B582DGH1606GI1AK73HD0AJ24EKEJ347ICF9B5C', 'distinct_points': 42, 'expect_count': 42, 'verified_legal_2n_set': True, 'point_set_changed': True}, {'line_index': 19248, 'n': 23, 'original': ':9J9A36EH1KAB460KFILM8F5H7E01472MGIBC2L58GJCD3D', 'mutated': ':9JCA36EH1KAB460KFILM8F5H7E01472MGIBC2L58GJ9D3D', 'distinct_points': 46, 'expect_count': 46, 'verified_legal_2n_set': True, 'point_set_changed': True}], 'survivor_interpretation': 'A survivor means the mutated configuration is still legal. That is a property of the mutation, not a verifier defect, PROVIDED each survivor is confirmed to be a legal 2n set -- the verified_legal_2n_set field records that confirmation. The teeth evidence is therefore two-part: almost all mutations are rejected, AND any survivor is independently confirmed legal.', 'mode': 'all_lines_one_mutation_each', 'lines_used': 36912, 'mutation_space_covered': 'one deterministic mutation per line over the entire corpus', 'mutation_space_not_covered': 'the full mutation space (every row pair x position pair x line) is ~7e7 mutations, each needing an O(m^2) verification, and is not enumerated', 'sampled_lines': 400, 'mutations_exercised': 34051, 'mutated_lines_still_decode': 34051, 'mutated_still_legal': 2, 'mutated_now_illegal': 34049, 'skipped_swaps': 2861, 'teeth_fraction_illegal': 0.999941}
 [written] C:\Users\Leon1\OneDrive\Desktop\前沿RP\_dsk\FrontierMath\problems\MATH-001\results\20260928T034737813749Z-dsk-MATH-001\A3_1997_corpus.json
 
 ===== stderr =====

@@ -9,6 +9,7 @@ excluded by counting, and to show that the encoder audit has teeth.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -120,15 +121,71 @@ def negative_controls(n: int = 5) -> dict:
     return out
 
 
+def audit_instance(path: str, n: int, group: str | None, out: dict) -> dict:
+    """Run the COMPLETE audit on an actual target DIMACS (protocol gate G2).
+
+    Added because the protocol previously told the reader to run benchmark.py, whose
+    negative_controls only tests the audit on a deliberately broken n=5 instance -- so G2
+    could have been marked complete without ever auditing the target formula. This runs
+    the real thing on the real file.
+    """
+    if not os.path.exists(path):
+        return {"path": path, "ran": False,
+                "reason": "instance not found; regenerate it first (see G1)"}
+    rep = audit_cnf_covers_lines(n, path)
+    res = {
+        "path": os.path.basename(path), "ran": True,
+        "dimacs_sha256": None, "n": n, "group": group,
+        "complete": rep["complete"], "covers_all_lines": rep["covers_all_lines"],
+        "layer1_explicit_lines": rep["layer1_explicit_lines"],
+        "layer1_triples_expected": rep["layer1_triples_expected"],
+        "layer1_triples_present": rep["layer1_triples_present"],
+        "layer1_lines_with_missing_triple": rep["layer1_lines_with_missing_triple"],
+        "layer2_network_lines": rep["layer2_network_lines"],
+        "layer2_lines_checked": rep["layer2"]["lines_checked"],
+        "layer2_lines_unchecked": rep["layer2"]["lines_unchecked"],
+        "layer2_formula_satisfiable": rep["layer2"].get("formula_satisfiable"),
+        "layer2_vacuous": rep["layer2"].get("vacuous"),
+        "layer2_triples_checked": rep["layer2"]["triples_checked"],
+        "layer2_not_refuted": rep["layer2"]["not_refuted"],
+        "completeness_scope": rep["completeness_scope"],
+    }
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 20), b""):
+            h.update(chunk)
+    res["dimacs_sha256"] = h.hexdigest()
+    res["gate_G2_satisfied"] = bool(rep["complete"])
+    out["instance_audit"] = res
+    return res
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=75)
+    ap.add_argument("--audit-instance", default=None, metavar="DIMACS",
+                    help="run protocol gate G2 against this actual instance and exit")
+    ap.add_argument("--group", default=None, help="symmetry group label for the audit record")
     ap.add_argument("--skip-instances", action="store_true")
     ap.add_argument("--json", default=os.path.join(HERE, "benchmark.json"))
     args = ap.parse_args(list(argv) if argv is not None else None)
 
     n = args.n
     bench: dict = {"n": n, "target": 2 * n, "python": sys.version.split()[0]}
+
+    if args.audit_instance:
+        print(f"== G2) complete audit of the actual target instance: {args.audit_instance} ==")
+        res = audit_instance(args.audit_instance, n, args.group, bench)
+        for k in ("ran", "dimacs_sha256", "complete", "layer1_lines_with_missing_triple",
+                  "layer2_network_lines", "layer2_lines_unchecked", "layer2_formula_satisfiable",
+                  "layer2_vacuous", "gate_G2_satisfied"):
+            print(f"   {k}: {res.get(k)}")
+        if not res.get("ran"):
+            print(f"   reason: {res.get('reason')}")
+        with open(args.json, "w", encoding="utf-8") as fh:
+            json.dump(bench, fh, indent=2, sort_keys=True, default=str)
+        print(f"[written] {args.json}")
+        return 0 if res.get("gate_G2_satisfied") else 1
 
     print(f"== line census for n={n} ==")
     cens = line_census(n)

@@ -174,24 +174,67 @@ def stage_A2(ev):
 
 
 def stage_A3(ev):
+    """A3, run as a FULL-CORPUS sweep, with the frozen criterion reported as ill-posed.
+
+    The acceptance as frozen said the teeth check must require "every
+    decode-invariant-preserving mutation to become illegal". The first implementation tested
+    a random sample of 400 lines and accepted a 90% rate, so it could not establish that
+    statement (a reviewer noted exactly this). Running the check over EVERY corpus line with
+    one deterministic mutation each shows the frozen statement is not merely unproven but
+    FALSE: 2 of 34,051 legality-changing mutations produce another LEGAL 2n configuration.
+
+    Both survivors were inspected: each is a single 2-character swap (differing positions
+    (19,24) at n=21 and (3,43) at n=23) whose result has 2n distinct in-range points and no
+    three collinear. They are legality-PRESERVING mutations, not verifier failures -- the
+    verifier is right to accept them. The criterion was wrong, not the checker.
+    """
     r1 = os.path.join(ROOT, "results", "r1")
     out = os.path.join(OUT, "A3_1997_corpus.json")
-    run([sys.executable, "audit_r1_artifacts.py", "--r1", r1, "--json", out],
-        IV, "A3_corpus_1997.log", ev)
+    run([sys.executable, "audit_r1_artifacts.py", "--r1", r1, "--json", out,
+         "--teeth-all-lines"], IV, "A3_corpus_1997.log", ev)
     c = jload(out)
     f = c["flammenkamp_correct_mapper"]
     teeth = c.get("corpus_teeth_check", {})
-    passed = bool(f["stats"].get("decoded") == 36912
-                  and f["stats"].get("verify_fail", 0) == 0 and f["n_decode_errors"] == 0
-                  and (teeth.get("teeth_fraction_illegal") or 0) >= 0.9)
+    survivors = teeth.get("survivors_detail", [])
+    all_survivors_legal = all(x.get("verified_legal_2n_set") for x in survivors) if survivors else True
+    corpus_ok = bool(f["stats"].get("decoded") == 36912
+                     and f["stats"].get("verify_fail", 0) == 0 and f["n_decode_errors"] == 0)
     ev["criteria"]["A3_1997_corpus"] = {
         "decoded": f["stats"].get("decoded"), "verify_pass": f["stats"].get("verify_pass"),
         "verify_fail": f["stats"].get("verify_fail", 0), "decode_errors": f["n_decode_errors"],
-        "mutation_teeth_fraction_illegal": teeth.get("teeth_fraction_illegal"),
-        "passed": passed,
+        "corpus_verification_passed": corpus_ok,
+        "teeth_mode": teeth.get("mode"),
+        "teeth_lines_used": teeth.get("lines_used"),
+        "mutations_exercised": teeth.get("mutations_exercised"),
+        "mutations_rejected": teeth.get("mutated_now_illegal"),
+        "survivors": teeth.get("mutated_still_legal"),
+        "teeth_fraction_illegal": teeth.get("teeth_fraction_illegal"),
+        "survivors_detail": survivors,
+        "all_survivors_confirmed_legal_2n_sets": all_survivors_legal,
+        "criterion_as_frozen": ("every decode-invariant-preserving mutation must become illegal"),
+        "frozen_criterion_literal_met": False,
+        "criterion_status": "ILL_POSED_AS_FROZEN",
+        "criterion_explanation": (
+            "The frozen criterion is REFUTED, not merely unproven: 2 of 34,051 legality-changing "
+            "mutations produce another legal 2n configuration, and both were inspected and "
+            "confirmed (single 2-character swaps; 42 and 46 distinct in-range points; no three "
+            "collinear). A mutation that maps one legal solution to another is not a verifier "
+            "failure, so the criterion asked for something that is not true of the corpus. This "
+            "is recorded as a criterion defect rather than silently restated, and A3 is reported "
+            "as NOT MET against its frozen wording per the review instruction."),
+        "restated_criterion_for_a_future_round": (
+            "Of all single 2-character swaps between distinct rows over the whole corpus, every "
+            "mutation must either be rejected by the verifier OR be independently confirmed to "
+            "produce a legal 2n set. Equivalently: ZERO unexplained survivors. This is checkable "
+            "and is what the evidence above establishes."),
+        "restated_criterion_met": bool(all_survivors_legal and corpus_ok),
+        "passed": False,
+        "scope": ("full corpus sweep, one deterministic mutation per line; the whole mutation "
+                  "space (~7e7) is not enumerated"),
     }
-    if not passed:
-        fail(ev, "A3 the 36,912-configuration corpus re-verification did not pass")
+    fail(ev, "A3: the criterion AS FROZEN is refuted (2 legality-preserving mutations out of "
+             "34,051) -- recorded as a criterion defect; the restated, checkable criterion IS "
+             "met. A3 therefore counts as not met against its frozen wording.")
 
 
 def stage_A4(ev):

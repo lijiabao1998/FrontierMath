@@ -199,7 +199,7 @@
       "8": 57,
       "9": 51
     },
-    "seconds": 111.35,
+    "seconds": 109.27,
     "stats": {
       "decode_error": 1691,
       "decoded": 35221,
@@ -316,14 +316,14 @@
       "8": 57,
       "9": 51
     },
-    "seconds": 118.6,
+    "seconds": 124.89,
     "stats": {
       "decoded": 36912,
       "verify_pass": 36912
     },
     "verify_failures": []
   },
-  "r1_dir": "C:\\Users\\Leon1\\OneDrive\\Desktop\\\u524d\u6cbfRP\\_dsk\\FrontierMath\\problems\\MATH-001\\results\\r1",
+  "r1_dir": "../results/r1",
   "self_certs": {
     "all_pass": true,
     "files": 0,

@@ -1,0 +1,70 @@
+{
+  "round_id": "20260928T034737813749Z-dsk-MATH-001",
+  "executed_at_utc": "2026-09-28T06:13:19+00:00",
+  "python": "3.13.5",
+  "output_dir": "results/20260928T034737813749Z-dsk-MATH-001",
+  "stages_run": [
+    "A3"
+  ],
+  "criteria": {
+    "A3_1997_corpus": {
+      "decoded": 36912,
+      "verify_pass": 36912,
+      "verify_fail": 0,
+      "decode_errors": 0,
+      "corpus_verification_passed": true,
+      "teeth_mode": "all_lines_one_mutation_each",
+      "teeth_lines_used": 36912,
+      "mutations_exercised": 34051,
+      "mutations_rejected": 34049,
+      "survivors": 2,
+      "teeth_fraction_illegal": 0.999941,
+      "survivors_detail": [
+        {
+          "distinct_points": 42,
+          "expect_count": 42,
+          "line_index": 13956,
+          "mutated": ":8F9B582DGH1606GI1AK73HD0AJ24EKEJ347ICF9B5C",
+          "n": 21,
+          "original": ":8F9B582DGH1606GI1A073HDKAJ24EKEJ347ICF9B5C",
+          "point_set_changed": true,
+          "verified_legal_2n_set": true
+        },
+        {
+          "distinct_points": 46,
+          "expect_count": 46,
+          "line_index": 19248,
+          "mutated": ":9JCA36EH1KAB460KFILM8F5H7E01472MGIBC2L58GJ9D3D",
+          "n": 23,
+          "original": ":9J9A36EH1KAB460KFILM8F5H7E01472MGIBC2L58GJCD3D",
+          "point_set_changed": true,
+          "verified_legal_2n_set": true
+        }
+      ],
+      "all_survivors_confirmed_legal_2n_sets": true,
+      "criterion_as_frozen": "every decode-invariant-preserving mutation must become illegal",
+      "frozen_criterion_literal_met": false,
+      "criterion_status": "ILL_POSED_AS_FROZEN",
+      "criterion_explanation": "The frozen criterion is REFUTED, not merely unproven: 2 of 34,051 legality-changing mutations produce another legal 2n configuration, and both were inspected and confirmed (single 2-character swaps; 42 and 46 distinct in-range points; no three collinear). A mutation that maps one legal solution to another is not a verifier failure, so the criterion asked for something that is not true of the corpus. This is recorded as a criterion defect rather than silently restated, and A3 is reported as NOT MET against its frozen wording per the review instruction.",
+      "restated_criterion_for_a_future_round": "Of all single 2-character swaps between distinct rows over the whole corpus, every mutation must either be rejected by the verifier OR be independently confirmed to produce a legal 2n set. Equivalently: ZERO unexplained survivors. This is checkable and is what the evidence above establishes.",
+      "restated_criterion_met": true,
+      "passed": false,
+      "scope": "full corpus sweep, one deterministic mutation per line; the whole mutation space (~7e7) is not enumerated"
+    }
+  },
+  "commands": [
+    {
+      "cmd": "C:\\Users\\Leon1\\AppData\\Local\\Programs\\Python\\Python313\\python.exe audit_r1_artifacts.py --r1 C:\\Users\\Leon1\\OneDrive\\Desktop\\前沿RP\\_dsk\\FrontierMath\\problems\\MATH-001\\results\\r1 --json C:\\Users\\Leon1\\OneDrive\\Desktop\\前沿RP\\_dsk\\FrontierMath\\problems\\MATH-001\\results\\20260928T034737813749Z-dsk-MATH-001\\A3_1997_corpus.json --teeth-all-lines",
+      "cwd": "independent_verifier_r1",
+      "exit": 0,
+      "seconds": 247.56,
+      "log": "..\\results\\20260928T034737813749Z-dsk-MATH-001\\A3_corpus_1997.log",
+      "stdout_tail": "n is still legal. That is a property of the mutation, not a verifier defect, PROVIDED each survivor is confirmed to be a legal 2n set -- the verified_legal_2n_set field records that confirmation. The teeth evidence is therefore two-part: almost all mutations are rejected, AND any survivor is independently confirmed legal.', 'mode': 'all_lines_one_mutation_each', 'lines_used': 36912, 'mutation_space_covered': 'one deterministic mutation per line over the entire corpus', 'mutation_space_not_covered': 'the full mutation space (every row pair x position pair x line) is ~7e7 mutations, each needing an O(m^2) verification, and is not enumerated', 'sampled_lines': 400, 'mutations_exercised': 34051, 'mutated_lines_still_decode': 34051, 'mutated_still_legal': 2, 'mutated_now_illegal': 34049, 'skipped_swaps': 2861, 'teeth_fraction_illegal': 0.999941}\n[written] C:\\Users\\Leon1\\OneDrive\\Desktop\\前沿RP\\_dsk\\FrontierMath\\problems\\MATH-001\\results\\20260928T034737813749Z-dsk-MATH-001\\A3_1997_corpus.json\n"
+    }
+  ],
+  "failures": [
+    "A3: the criterion AS FROZEN is refuted (2 legality-preserving mutations out of 34,051) -- recorded as a criterion defect; the restated, checkable criterion IS met. A3 therefore counts as not met against its frozen wording."
+  ],
+  "machine": {},
+  "all_criteria_passed": false
+}
