@@ -24,6 +24,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "independent_verifie
 
 from encoder import (  # noqa: E402
     SYMMETRY_GROUPS,
+    audit_any,
     audit_cnf_covers_lines,
     encode_cells,
     encode_orbits,
@@ -132,22 +133,28 @@ def audit_instance(path: str, n: int, group: str | None, out: dict) -> dict:
     if not os.path.exists(path):
         return {"path": path, "ran": False,
                 "reason": "instance not found; regenerate it first (see G1)"}
-    rep = audit_cnf_covers_lines(n, path)
+    # Dispatch on the formulation. The cell audit assumes row-major cell variable ids,
+    # which is wrong for the orbit encoding where many cells share one variable; a
+    # reviewer showed the cell audit reports an intact n=3 rot2 instance as incomplete.
+    rep = audit_any(n, path, group)
     res = {
         "path": os.path.basename(path), "ran": True,
         "dimacs_sha256": None, "n": n, "group": group,
-        "complete": rep["complete"], "covers_all_lines": rep["covers_all_lines"],
-        "layer1_explicit_lines": rep["layer1_explicit_lines"],
-        "layer1_triples_expected": rep["layer1_triples_expected"],
-        "layer1_triples_present": rep["layer1_triples_present"],
-        "layer1_lines_with_missing_triple": rep["layer1_lines_with_missing_triple"],
-        "layer2_network_lines": rep["layer2_network_lines"],
-        "layer2_lines_checked": rep["layer2"]["lines_checked"],
-        "layer2_lines_unchecked": rep["layer2"]["lines_unchecked"],
-        "layer2_formula_satisfiable": rep["layer2"].get("formula_satisfiable"),
-        "layer2_vacuous": rep["layer2"].get("vacuous"),
-        "layer2_triples_checked": rep["layer2"]["triples_checked"],
-        "layer2_not_refuted": rep["layer2"]["not_refuted"],
+        "complete": rep["complete"], "covers_all_lines": rep.get("covers_all_lines", rep["complete"]),
+        "layer1_explicit_lines": rep.get("layer1_explicit_lines"),
+        "layer1_triples_expected": rep.get("layer1_triples_expected"),
+        "layer1_triples_present": rep.get("layer1_triples_present"),
+        "layer1_lines_with_missing_triple": rep.get("layer1_lines_with_missing_triple"),
+        "layer2_network_lines": rep.get("layer2_network_lines"),
+        "layer2_lines_checked": rep.get("layer2", {}).get("lines_checked", rep.get("lines_checked")),
+        "layer2_lines_unchecked": rep.get("layer2", {}).get("lines_unchecked"),
+        "lines_with_unrefuted_violation": rep.get("lines_with_unrefuted_violation"),
+        "not_refuted": rep.get("not_refuted"),
+        "formulation": rep.get("formulation", "cells"),
+        "layer2_formula_satisfiable": rep.get("layer2", {}).get("formula_satisfiable"),
+        "layer2_vacuous": rep.get("layer2", {}).get("vacuous"),
+        "layer2_triples_checked": rep.get("layer2", {}).get("triples_checked"),
+        "layer2_not_refuted": rep.get("layer2", {}).get("not_refuted"),
         "completeness_scope": rep["completeness_scope"],
     }
     h = hashlib.sha256()

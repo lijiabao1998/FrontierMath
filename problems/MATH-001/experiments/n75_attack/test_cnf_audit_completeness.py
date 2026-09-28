@@ -34,8 +34,11 @@ sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "independent_verifie
 
 from encoder import (  # noqa: E402
     audit_cnf_covers_lines,
+    audit_orbit_cnf,
     encode_cells,
+    encode_orbits,
     maximal_lines,
+    orbits,
 )
 
 
@@ -224,6 +227,89 @@ class TestCnfAuditCompleteness(unittest.TestCase):
         rep = audit_cnf_covers_lines(n, path, explicit_limit=0, semantic_max_lines=1)
         self.assertFalse(rep["complete"], "unchecked lines must not be certified")
         self.assertGreater(rep["layer2"]["lines_unchecked"], 0)
+
+
+class TestOrbitAudit(unittest.TestCase):
+    """The orbit formulation needs its own audit.
+
+    A reviewer showed that the cell audit misreads an orbit CNF: in `encode_orbits` many
+    cells share one y[o] variable and the line constraints are weighted over orbit ids, so
+    the cell variable mapping and the explicit/network classification are both wrong. On an
+    intact n=3 rot2 instance the cell audit reported 7 of 8 lines missing.
+    """
+
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = self.tmp.name
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def _write(self, cnf, name):
+        path = os.path.join(self.root, name)
+        write_dimacs(cnf, path)
+        return path
+
+    def test_intact_n3_rot2_is_complete(self) -> None:
+        """The reviewer's exact reproduction case."""
+        path = self._write(encode_orbits(3, "rot2", 6), "n3_rot2.cnf")
+        rep = audit_orbit_cnf(3, path, "rot2")
+        self.assertTrue(rep["complete"], rep)
+        self.assertEqual(rep["lines_with_unrefuted_violation"], 0)
+        self.assertEqual(rep["local_vacuous_lines"], [])
+        self.assertGreater(rep["lines_checked"], 0)
+
+    def test_intact_n5_rot2_is_complete(self) -> None:
+        path = self._write(encode_orbits(5, "rot2", 10), "n5_rot2.cnf")
+        rep = audit_orbit_cnf(5, path, "rot2")
+        self.assertTrue(rep["complete"], rep)
+
+    def test_intact_n4_rot4_is_complete(self) -> None:
+        path = self._write(encode_orbits(4, "rot4", 8), "n4_rot4.cnf")
+        rep = audit_orbit_cnf(4, path, "rot4")
+        self.assertTrue(rep["complete"], rep)
+
+    def test_removing_a_line_gadget_makes_the_orbit_audit_red(self) -> None:
+        """Delete every clause mentioning one line's orbit variables -> must be RED."""
+        n, group = 5, "rot2"
+        cnf = encode_orbits(n, group, 2 * n)
+        orbs = orbits(n, __import__("encoder").SYMMETRY_GROUPS[group])
+        cell_to_orb = {}
+        for idx, o in enumerate(orbs):
+            for cell in o:
+                cell_to_orb[cell] = idx
+        L = maximal_lines(n, 3)[0]
+        lvars = {cell_to_orb[c] + 1 for c in L}
+        before = len(cnf.clauses)
+        cnf.clauses = [cl for cl in cnf.clauses if not any(abs(v) in lvars for v in cl)]
+        removed = before - len(cnf.clauses)
+        self.assertGreater(removed, 0, "the chosen line must have had a gadget")
+        path = self._write(cnf, "n5_rot2_broken.cnf")
+        rep = audit_orbit_cnf(n, path, group)
+        self.assertFalse(rep["complete"], "a removed line gadget must be detected")
+        self.assertTrue(rep["not_refuted"] or rep["local_vacuous_lines"])
+
+    def test_unrelated_global_contradiction_does_not_make_the_orbit_audit_vacuous(self) -> None:
+        """The local check must not be defeated by a contradiction elsewhere.
+
+        This is the counterpart of the cell-audit vacuity bug: a global guard would mark
+        everything vacuous, and no guard at all would mark everything refuted. The local
+        sub-formula check is unaffected by clauses outside the line.
+        """
+        n, group = 5, "rot2"
+        cnf = encode_orbits(n, group, 2 * n)
+        # add a contradiction on a variable no line touches: introduce a fresh var via an
+        # unused literal pair. Variable nvars+1 is fresh and appears in no line gadget.
+        fresh = cnf.nvars + 1
+        cnf.nvars = fresh
+        cnf.add_clause([fresh])
+        cnf.add_clause([-fresh])
+        path = self._write(cnf, "n5_rot2_extra.cnf")
+        rep = audit_orbit_cnf(n, path, group)
+        # the line gadgets are untouched, so completeness is preserved and the audit is not
+        # marked vacuous by the unrelated contradiction
+        self.assertTrue(rep["complete"], rep)
+        self.assertEqual(rep["local_vacuous_lines"], [])
 
 
 if __name__ == "__main__":

@@ -493,6 +493,131 @@ def unit_propagation_conflict(clauses: Sequence[Sequence[int]],
     return False
 
 
+
+def audit_orbit_cnf(n: int, dimacs_path: str, group: str,
+                    explicit_limit: int = 4096) -> dict:
+    """Complete, encoding-aware audit of an ORBIT-formulation DIMACS (protocol gate G2).
+
+    Two review findings are answered here.
+
+    (1) The previous audit assumed the CELL encoding, where cell (x,y) has row-major
+        variable id. In the orbit formulation many cells share one y[o] variable and the
+        line constraints are weighted over those orbit ids, so the cell mapping and the
+        explicit/network classification were both wrong and a valid orbit CNF was reported
+        incomplete (a reviewer reproduced 7 of 8 lines "missing" on an intact n=3 rot2
+        instance). This function reconstructs the orbits and the per-line weighted items
+        from the same group the encoder used, so the audit and the encoder agree.
+
+    (2) The previous vacuity guard asked whether the WHOLE formula is satisfiable. That is
+        unusable here: an UNSAT target formula -- exactly the outcome the compute phase
+        investigates -- would always be declared vacuous, and it required solving 36M
+        clauses synchronously. This function instead works LOCALLY: for each line it takes
+        the sub-formula of clauses mentioning that line's variables and checks (a) that
+        sub-formula is satisfiable on its own, and (b) every minimal weight-violating
+        selection makes it UNSAT. Nothing depends on the global formula being satisfiable,
+        and no global solve is performed.
+    """
+    orbs = orbits(n, SYMMETRY_GROUPS[group])
+    cell_to_orb = {}
+    for idx, o in enumerate(orbs):
+        for cell in o:
+            cell_to_orb[cell] = idx
+    orb_var = {i: i + 1 for i in range(len(orbs))}   # encode_orbits numbers y[o] from 1
+
+    clauses: list[list[int]] = []
+    with open(dimacs_path, "r", encoding="utf-8") as fh:
+        for ln in fh:
+            if not ln or ln[0] in "cp":
+                continue
+            clauses.append([int(t) for t in ln.split() if t != "0"])
+
+    lines = maximal_lines(n, 3)
+    missing: list[dict] = []
+    local_vacuous: list[dict] = []
+    checked = 0
+    not_refuted: list[dict] = []
+    try:
+        from pysat.solvers import Cadical153
+        have_solver = True
+    except Exception:  # noqa: BLE001
+        have_solver = False
+
+    for L in lines:
+        touched: dict[int, int] = {}
+        for cell in L:
+            idx = cell_to_orb[cell]
+            touched[idx] = touched.get(idx, 0) + 1
+        items = sorted((orb_var[i], w) for i, w in touched.items())
+        lvars = {v for v, _ in items}
+        # local sub-formula: every clause mentioning at least one of this line's variables.
+        # A seqcounter gadget for this line has all of its clauses tied to a line variable, so
+        # the gadget is contained here, and nothing outside the line can influence it.
+        local = [cl for cl in clauses if any(abs(v) in lvars for v in cl)]
+
+        # (a) local satisfiability: the gadget must be satisfiable on its own, otherwise
+        #     the "it refutes every violation" claim would be vacuous for a different reason.
+        if have_solver:
+            with Cadical153(bootstrap_with=local) as s:
+                if not s.solve():
+                    local_vacuous.append({"line": L, "reason": "the line's local sub-formula is UNSAT"})
+                    continue
+        else:
+            local_vacuous.append({"line": L, "reason": "no solver available for the local check"})
+            continue
+
+        # (b) every minimal weight-violating selection must be refuted. Minimal violations of
+        #     sum w_i y_i <= 2 with w_i in {1,2}: two items with total > 2, or three weight-1.
+        heavy = [v for v, w in items if w >= 2]
+        light = [v for v, w in items if w == 1]
+        violations: list[tuple[int, ...]] = []
+        for i in range(len(heavy)):
+            for j in range(i + 1, len(heavy)):
+                violations.append((heavy[i], heavy[j]))
+        for h in heavy:
+            for l in light:
+                violations.append((h, l))
+        for t in combinations(light, 3):
+            violations.append(t)
+
+        checked += 1
+        bad = None
+        for T in violations:
+            with Cadical153(bootstrap_with=local) as s:
+                if s.solve(assumptions=list(T)):
+                    bad = {"line": L, "selection": T,
+                           "reason": "a violating selection is satisfiable: at-most-2 not enforced"}
+                    break
+        if bad is not None and len(not_refuted) < 5:
+            not_refuted.append(bad)
+        if bad is not None:
+            missing.append({"line": L, "n_violations": len(violations)})
+
+    complete = (not missing and not local_vacuous and not not_refuted)
+    return {
+        "n": n, "group": group, "dimacs": os.path.basename(dimacs_path),
+        "formulation": "orbits",
+        "clauses_read": len(clauses),
+        "maximal_lines_checked": len(lines),
+        "lines_checked": checked,
+        "lines_with_unrefuted_violation": len(missing),
+        "local_vacuous_lines": local_vacuous[:5],
+        "not_refuted": not_refuted,
+        "complete": complete,
+        "completeness_scope": (
+            "per line: the local sub-formula of clauses mentioning that line's orbit variables "
+            "must be satisfiable AND must refute every minimal weight-violating selection. "
+            "Local, so it does not depend on the global formula being satisfiable and does not "
+            "require solving the target instance."),
+    }
+
+
+def audit_any(n: int, dimacs_path: str, group: str | None = None) -> dict:
+    """Dispatch to the orbit-aware audit when a group is given, else the cell audit."""
+    if group:
+        return audit_orbit_cnf(n, dimacs_path, group)
+    return audit_cnf_covers_lines(n, dimacs_path)
+
+
 def audit_cnf_covers_lines(n: int, dimacs_path: str, var_of_cell=None,
                            semantic_check: bool = True,
                            semantic_max_lines: int | None = None,

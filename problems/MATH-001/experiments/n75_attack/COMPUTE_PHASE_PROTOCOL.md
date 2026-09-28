@@ -42,11 +42,15 @@ Run `benchmark.py`'s CNF audit (or `encoder.audit_cnf_covers_lines`) and require
 - **layer 2 (encoding-agnostic):** for every line encoded by a cardinality network, every
   3-subset `T` must make `F ∧ T` UNSAT — unit propagation first, escalating to a real SAT
   call. Lines left unchecked force `complete: false`.
-- **vacuity guard:** `layer2.formula_satisfiable` must be `true`. If `F` is unsatisfiable
-  for any reason, every triple is vacuously refuted and the audit reports `vacuous: true`
-  with `complete: false`. (Without this guard, an unrelated contradictory unit pair makes
-  the semantic layer pass on a formula whose line constraints have been deleted — a
-  reviewer demonstrated exactly that.)
+- **vacuity guard, LOCAL not global:** for each line the audit takes the sub-formula of
+  clauses mentioning that line's variables and requires it to be satisfiable on its own
+  before using it to refute violations. An earlier version asked whether the WHOLE formula
+  is satisfiable, which two reviewers correctly rejected: it marked a genuinely UNSAT target
+  vacuous — exactly the outcome the compute phase investigates — and required solving the
+  36M-clause instance synchronously. The local check is unaffected by clauses outside the
+  line, so it is neither vacuous on a broken formula nor blind to a real contradiction.
+  Without any guard an unrelated contradictory unit pair makes the semantic layer pass on a
+  formula whose line constraints have been deleted; a reviewer demonstrated exactly that.
 
 **G2 must be run on the actual target instance, not on a small-n control.** The command is:
 
@@ -54,6 +58,12 @@ Run `benchmark.py`'s CNF audit (or `encoder.audit_cnf_covers_lines`) and require
 python encoder.py --n 75 --formulation orbits --group rot2 --out rot2_n75.cnf
 python benchmark.py --audit-instance rot2_n75.cnf --n 75 --group rot2
 ```
+
+Passing `--group` is **required** for an orbit instance: it selects `audit_orbit_cnf`, which
+reconstructs the orbits and the per-line weighted items from the same group the encoder used.
+Without it the cell audit applies a row-major cell variable mapping to an encoding where many
+cells share one variable, and reports a valid orbit formula as incomplete (a reviewer
+reproduced 7 of 8 lines "missing" on an intact n=3 rot2 instance).
 
 `benchmark.py`'s `negative_controls` only tests the *audit itself* on a deliberately broken
 n=5 instance; it does not audit the n=75 formula. An earlier revision of this section told
