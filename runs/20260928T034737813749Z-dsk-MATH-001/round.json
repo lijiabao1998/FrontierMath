@@ -1,0 +1,113 @@
+{
+  "round_id": "20260928T034737813749Z-dsk-MATH-001",
+  "problem_id": "MATH-001",
+  "agent": "dsk",
+  "branch": "dsk/MATH-001-independent-verifier-r1",
+  "base_sha": "cd1e4eadc177920b95332ebe08c2498e52c3ce56",
+  "started_at": "2026-09-28T03:47:37.813749+00:00",
+  "state": "ADMITTED",
+  "acceptance": "FROZEN BEFORE THE RE-RUN. This round re-executes, from the current reproducible state, the verifications that were previously done as pre-admission exploratory work; the exploratory artifacts are labelled as such in problems/MATH-001/experiments/EXPLORATORY_WORK.md and only results produced inside this round are recorded below. Acceptance criteria, fixed now: (A1) RE-VALIDATE the third independent certificate checker by re-running the adversarial suite (positive controls, deliberate collinear negative, duplicate, out-of-range, count error, randomised fuzz with a no-shared-code oracle) and require zero oracle/verifier disagreements and both verdict directions exercised; (A2) RE-DERIVE exact small-n ground truth by full powerset enumeration n=1..4 WITHOUT the 2n row bound, and by exhaustive row-pair enumeration n=2..8, and require the two methods to agree where they overlap; (A3) RE-VERIFY all 36,912 configurations of the 1997 corpus and require 0 failures, plus the mutation teeth check requiring every decode-invariant-preserving mutation to become illegal; (A4) RE-VERIFY the complete all_known_solutions corpus (431,008 configurations) and require 0 failures, and confirm n=75 is the only n in [2,76] with zero configurations; (A5) RE-VERIFY the n=71,72,73,74,76 record constructions through BOTH independent retrieval paths and require the decoded point sets to be identical; (A6) RE-RUN the n=75 bench calibration (cell and orbit formulations against exhaustive ground truth, plus UNSAT controls) and require 0 failures; (A7) RE-RUN the CNF completeness audit and the DRAT precondition test, requiring the new fail-closed regression suites to pass and the DRAT test to report the honest blocked status with a non-zero exit. FAILURE HANDLING, fixed now: any criterion that does not hold is recorded as a failure in the result; none of the acceptance criteria may be relaxed after the run. No claim about D(n) for any n, and no UNSAT claim, may be derived from this round beyond what a verified certificate supports.",
+  "not_done": "Not attempted in this round and therefore NOT claimed: Lean formalization; a local-search/MCTS arm; an n=75 solver run (the compute phase remains COMPUTE_REQUIRED); any DRAT/LRAT certificate (the environment cannot certify an UNSAT -- see n75_attack/COMPUTE_PHASE_PROTOCOL.md G4 and the DRAT precondition test); any statement about D(n) for an n without a verified certificate; the general conjecture. The exploratory literature audit and PR reviews are not round products and are not re-registered here. Third-party corpora are not committed (see lit_data/THIRD_PARTY_SOURCES.md); the round re-run fetches and hash-verifies them.",
+  "budget": {
+    "wall_minutes": 120,
+    "usd": 0,
+    "max_trials": 100
+  },
+  "preflight": {
+    "checked_at": "2026-09-28T03:48:03+00:00",
+    "verdict": "PARTIAL_PROGRESS",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "queries": [
+      {
+        "query": "\"no-three-in-line\" 2026 status D(n)=2n open problem latest",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "general",
+        "outcome": "D(n)=2n known for all n<=74 and n=76; smallest open finite case is n=75; general conjecture still open; no September 2026 solution"
+      },
+      {
+        "query": "no-three-in-line n=75 new solution September 2026 announcement",
+        "engine": "zcode-websearch",
+        "category": "general",
+        "outcome": "no announcement of an n=75 solution; the n=75 campaign is recorded as residue with UNKNOWN solver runs, which is not evidence that D(75) < 150"
+      },
+      {
+        "query": "no-(k+1)-in-line problem solved k>=3 Ghosal Grebennikov Keevash Kwan 2026 kn points",
+        "engine": "zcode-websearch",
+        "category": "solution",
+        "outcome": "located arXiv:2607.05255 (Ghosal-Goenka-Grebennikov-Keevash-Kwan-Pham, 2026): the no-(k+1)-in-line problem is resolved for all k>=3, maximum exactly kn. ADJACENT, NOT THIS PROBLEM: k=2 is explicitly the open exception, so this does not resolve MATH-001"
+      },
+      {
+        "query": "Flammenkamp no-three-in-line database all_known_solutions download integrity hash",
+        "engine": "zcode-websearch",
+        "category": "criticism",
+        "outcome": "no erratum or retraction located. IMPORTANT: this search returned claims that the database only reaches n=57 and that a file named all_known_solutions does not exist. Both are CONTRADICTED by direct primary retrieval performed in this round (the file is fetched, hashed and contains 431,008 configurations covering n=2..76; the live lookup endpoint confirms the 2026-08-31 cut). Recorded as a search-engine error and NOT relied on"
+      },
+      {
+        "query": "Prellberg constraint satisfaction programming no-three-in-line CP-SAT arXiv:2602.07751 method",
+        "engine": "zcode-websearch",
+        "category": "discipline",
+        "outcome": "confirms the card's primary (Prellberg, CP-SAT with rotational symmetry reduction, D(n)=2n for n<=60, J. Combin. Theory Ser. A) and that the same problem is the one the SAT records at n=65..76 extend; no erratum for it was found. Establishes the discipline-level state of the method the frontier uses"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://wwwhomes.uni-bielefeld.de/achim/no3in/download/all_known_solutions",
+        "title": "A. Flammenkamp, all known no-three-in-line solutions (2026-08-31 cut)",
+        "kind": "primary",
+        "supports": "the complete corpus re-verified in this round (431,008 configurations, n=2..76); zero configurations at n=75"
+      },
+      {
+        "url": "https://wwwhomes.uni-bielefeld.de/cgi-bin/cgiwrap/achim/script_lookup?para=FIXED",
+        "title": "A. Flammenkamp, live configuration lookup (database cut 2026-08-31)",
+        "kind": "primary",
+        "supports": "second independent retrieval path; returns 'sorry for n=75 no configurations are known'; its rendered grids decode to the same point sets as the coded entries"
+      },
+      {
+        "url": "https://wwwhomes.uni-bielefeld.de/achim/no3in/table.html",
+        "title": "A. Flammenkamp, Summary in Tabular Form (2026-09-11)",
+        "kind": "primary",
+        "supports": "the n=75 row is blank while every other n<=76 has an entry; column 'all' for n=2..8 equals this round's exhaustive counts"
+      },
+      {
+        "url": "https://wwwhomes.uni-bielefeld.de/achim/no3in/readme.html",
+        "title": "A. Flammenkamp, No-Three-in-Line record page (2026-09-11)",
+        "kind": "primary",
+        "supports": "frontier announcements; solutions known for all grid sizes <= 70"
+      },
+      {
+        "url": "https://arxiv.org/abs/2607.05255",
+        "title": "Ghosal, Goenka, Grebennikov, Keevash, Kwan, Pham, No-(k+1)-in-line problem for k >= 3 (2026)",
+        "kind": "primary",
+        "supports": "adjacent scope: resolves k>=3, leaves k=2 (this problem) open. Read at abstract level only. Not an answer to MATH-001"
+      },
+      {
+        "url": "https://github.com/wustep/maths",
+        "title": "wustep/maths, problems/three-in-line attack log (MIT)",
+        "kind": "secondary",
+        "supports": "prior art for the n=75 attack and the standard that a restricted UNSAT without a proof trace is residue, not a result"
+      }
+    ],
+    "limitations": "Bounded search: 4 queries spanning the four categories plus direct retrieval of the primary sources. Adjacent-scope items were read at abstract level only. One search returned claims directly contradicted by primary retrieval and is recorded as such rather than relied on. A search returning nothing is not a proof of openness. No paid literature was consulted.",
+    "scope_comparison": "Card scope: existence of D(n)=2n for all n>=2, or a rigorous counterexample or general bound. No same-scope solution and no counterexample exists. Explicitly NOT answers to this problem: (a) finite certificates establish D(n)=2n for one n only; (b) arXiv:2607.05255 resolves the no-(k+1)-in-line problem for k>=3 and leaves k=2 open; (c) the Guy-Kelly/Voutier work concerns the asymptotic COUNT of solutions, not D(n); (d) the absence of an n=75 configuration in a database is a search-status fact, not an impossibility result.",
+    "baseline": "Baseline for this round = the exploratory artifacts being re-executed, plus the external corpora: (a) the third independent checker with its adversarial suite; (b) exhaustive small-n ground truth (powerset n<=4 without the 2n bound; row-pair n=2..8); (c) the 36,912-configuration 1997 corpus and the 431,008-configuration complete corpus, both fetched and hash-verified at run time; (d) the live lookup endpoint as the second retrieval path for the n=71..76 records."
+  },
+  "artifacts": [],
+  "admitted_at": "2026-09-28T04:43:12.762979+00:00",
+  "execution_status": {
+    "executed_in_this_pr": false,
+    "reason": "This branch is the CANONICAL EVIDENCE unit. It carries verified facts and their provenance, not a round execution. The admitted round and its frozen acceptance are kept so the governance gate has a real record; execution evidence lives on dsk/MATH-001-round-execution and the compute plumbing on dsk/MATH-001-compute-tooling.",
+    "canonical_scope": "finite frontier facts + third independent verifier + small-n ground truth + 431,008-database verification summary + provenance + superseded-claim register",
+    "deliberately_excluded": [
+      "unfinished DRAT/LRAT pipeline",
+      "giant CNF execution plumbing",
+      "compute-phase gate implementation",
+      "experimental audit machinery not needed for the facts above"
+    ]
+  }
+}

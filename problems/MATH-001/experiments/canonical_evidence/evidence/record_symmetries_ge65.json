@@ -1,0 +1,806 @@
+[
+  {
+    "D4_elements_preserved": 2,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 65,
+    "points": 130,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": false,
+      "rot4i": false
+    },
+    "rotation_orbits": {
+      "fixed_cell": [
+        32,
+        32
+      ],
+      "n_orbits": 1057,
+      "orbit_size_histogram": {
+        "1": 1,
+        "4": 1056
+      }
+    },
+    "symmetry_char": "c"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 66,
+    "points": 132,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1089,
+      "orbit_size_histogram": {
+        "4": 1089
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 66,
+    "points": 132,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1089,
+      "orbit_size_histogram": {
+        "4": 1089
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 66,
+    "points": 132,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1089,
+      "orbit_size_histogram": {
+        "4": 1089
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 2,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 67,
+    "points": 134,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": false,
+      "rot4i": false
+    },
+    "rotation_orbits": {
+      "fixed_cell": [
+        33,
+        33
+      ],
+      "n_orbits": 1123,
+      "orbit_size_histogram": {
+        "1": 1,
+        "4": 1122
+      }
+    },
+    "symmetry_char": "c"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 68,
+    "points": 136,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1156,
+      "orbit_size_histogram": {
+        "4": 1156
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 68,
+    "points": 136,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1156,
+      "orbit_size_histogram": {
+        "4": 1156
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 68,
+    "points": 136,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1156,
+      "orbit_size_histogram": {
+        "4": 1156
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 2,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 69,
+    "points": 138,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": false,
+      "rot4i": false
+    },
+    "rotation_orbits": {
+      "fixed_cell": [
+        34,
+        34
+      ],
+      "n_orbits": 1191,
+      "orbit_size_histogram": {
+        "1": 1,
+        "4": 1190
+      }
+    },
+    "symmetry_char": "c"
+  },
+  {
+    "D4_elements_preserved": 2,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 69,
+    "points": 138,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": false,
+      "rot4i": false
+    },
+    "rotation_orbits": {
+      "fixed_cell": [
+        34,
+        34
+      ],
+      "n_orbits": 1191,
+      "orbit_size_histogram": {
+        "1": 1,
+        "4": 1190
+      }
+    },
+    "symmetry_char": "c"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 70,
+    "points": 140,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1225,
+      "orbit_size_histogram": {
+        "4": 1225
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 2,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 71,
+    "points": 142,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": false,
+      "rot4i": false
+    },
+    "rotation_orbits": {
+      "fixed_cell": [
+        35,
+        35
+      ],
+      "n_orbits": 1261,
+      "orbit_size_histogram": {
+        "1": 1,
+        "4": 1260
+      }
+    },
+    "symmetry_char": "c"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 72,
+    "points": 144,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1296,
+      "orbit_size_histogram": {
+        "4": 1296
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 2,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 73,
+    "points": 146,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": false,
+      "rot4i": false
+    },
+    "rotation_orbits": {
+      "fixed_cell": [
+        36,
+        36
+      ],
+      "n_orbits": 1333,
+      "orbit_size_histogram": {
+        "1": 1,
+        "4": 1332
+      }
+    },
+    "symmetry_char": "c"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 74,
+    "points": 148,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1369,
+      "orbit_size_histogram": {
+        "4": 1369
+      }
+    },
+    "symmetry_char": "o"
+  },
+  {
+    "D4_elements_preserved": 4,
+    "all_cols_used": true,
+    "all_rows_used": true,
+    "legal": true,
+    "n": 76,
+    "points": 152,
+    "preserves": {
+      "dia1": false,
+      "dia2": false,
+      "iden": true,
+      "ort1": false,
+      "ort2": false,
+      "rot2": true,
+      "rot4": true,
+      "rot4i": true
+    },
+    "rotation_orbits": {
+      "fixed_cell": null,
+      "n_orbits": 1444,
+      "orbit_size_histogram": {
+        "4": 1444
+      }
+    },
+    "symmetry_char": "o"
+  }
+]

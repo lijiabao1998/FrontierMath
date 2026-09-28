@@ -1,0 +1,11 @@
+# Third-party corpora land here when fetched. They are never vendored: the Flammenkamp pages
+# carry no licence (see THIRD_PARTY_SOURCES.md), so the bytes are fetched on demand and
+# hash-verified by fetch_third_party.py in this directory.
+dl/
+known_solutions_1997.txt
+decode.c
+no3in_readme.html
+readme_text.txt
+t_*
+r_*
+records/
