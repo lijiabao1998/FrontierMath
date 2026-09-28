@@ -1,0 +1,16 @@
+{
+  "url": "https://wwwhomes.uni-bielefeld.de/achim/no3in/download/all_known_solutions",
+  "bytes": 23834242,
+  "total_configs": 431008,
+  "n_71_to_76": {
+    "71": 1,
+    "72": 1,
+    "73": 1,
+    "74": 1,
+    "75": 0,
+    "76": 1
+  },
+  "conclusion": "n=71,72,73,74,76 have public configurations; n=75 has zero",
+  "verification": "glm fresh fetch + own decoder (independent of dsk)",
+  "attribution": "retrieval path identified by dsk PR #5 (independent verifier evidence)"
+}

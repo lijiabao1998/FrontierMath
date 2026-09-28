@@ -1,0 +1,133 @@
+{
+  "round_id": "20260927T191802542471Z-glm-MATH-001",
+  "problem_id": "MATH-001",
+  "agent": "glm",
+  "branch": "glm/MATH-001-n75-bench-r2",
+  "base_sha": "0578fc743e3c1b57ce9b2caf2290dcbdd38b9db9",
+  "started_at": "2026-09-27T19:18:02.542471+00:00",
+  "state": "ADMITTED",
+  "acceptance": "Scope 凍結（動手前）：本輪建立 n=75 SAT attack bench，不解 n=75。(1) 取得 n=71-76 公開構造/證書之嘗試已執行（HTML anchors 不可解析、table.txt/cases.txt 為解數量表、Heule GitHub 無 NTIL DIMACS）→ 記 BLOCKED，不以網頁聲稱代替 reproduction。(2) 可重用 CNF encoding 產生器（DIMACS）：變數 x_{r,c}；每列/每行 exactly-2（at-least-2=all-but-one 子句、at-most-2=三元組子句）；所有斜率方向之線（primitive steps 枚舉）at-most-2，提供 triples 與 sequential-counter 兩種編碼。(3) 小 n 行為驗證（預登記）：C1 n=2..5 SAT 且模型通過 r1 verifier.py（整數行列式）；C2 n=1 UNSAT；C3 鴿籠負控制（row1 容量降為 1 → UNSAT）；C4 兩種編碼在 n=3,4 同判 SAT/UNSAT；C5 solver 為 in-repo 安裝之 pysat/CaDiCaL（.deps 目錄，不污染系統）。(4) n=75 之變數/子句規模解析估計（兩種編碼），不實際產生巨型檔案。所有 checks 執行前凍結。",
+  "not_done": "不解 n=75（bench 輪）；不跑 n≥20 之 CNF（時間盒）；不做 Lean/claims.json 變更；不採用未驗證之網頁級 n=71-76 宣稱作為 reproduction；不與 PR #3（grok r1）爭同一範圍。",
+  "budget": {
+    "wall_minutes": 90,
+    "usd": 0,
+    "max_trials": 100
+  },
+  "preflight": {
+    "checked_at": "2026-09-27T19:20:00+00:00",
+    "verdict": "NO_RESOLUTION_FOUND",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "queries": [
+      {
+        "query": "\"no-three-in-line\" n=75 OR n=76 SAT solution 2026 frontier grid",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "general",
+        "outcome": "無公開 n=75/76 SAT 記錄；發現 Max-N3IL ML 論文（O(n^3)→O(n^2) constraint checking）"
+      },
+      {
+        "query": "no-three-in-line SAT encoding CNF cardinality symmetry breaking construction search",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "solution",
+        "outcome": "方法學：cardinality/symmetry-breaking 文獻（Stuckey、Ramani、PBLib）；「Four Methods, One Problem」現定位於 OpenReview"
+      },
+      {
+        "query": "Heule github OR homepage no-three-in-line SAT instances DIMACS symmetry rot4 solutions download",
+        "engine": "zcode-websearch(web_search_prime)",
+        "category": "discipline",
+        "outcome": "Heule GitHub 無 NTIL DIMACS；解經 Flammenkamp online viewer 分發（非靜態檔）；Reddit/Wolfram community 三級來源提及 n=70/72"
+      },
+      {
+        "query": "arXiv:2602.07751 版本/erratum 再核查（webfetch abs 頁）",
+        "engine": "zcode-webfetch(arxiv.org)",
+        "category": "criticism",
+        "outcome": "仍僅 v1（2026-02-08）；無 erratum/withdrawal；journal-ref 無變更"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://wwwhomes.uni-bielefeld.de/achim/no3in/table.txt",
+        "title": "Flammenkamp table.txt（解數量枚舉表，實檔下載）",
+        "kind": "primary",
+        "supports": "小 n 解數量（n≤16 全枚舉等）；證實非紀錄構造來源"
+      },
+      {
+        "url": "https://github.com/marijnheule",
+        "title": "M. Heule GitHub（matrix-challenges、march-cube solver）",
+        "kind": "secondary",
+        "supports": "無 NTIL DIMACS 公開 repo——BLOCKED 證據"
+      },
+      {
+        "url": "https://arxiv.org/abs/2602.07751",
+        "title": "Prellberg 2026（v1 再核查）",
+        "kind": "primary",
+        "supports": "版本狀態不變；無 erratum"
+      }
+    ],
+    "limitations": "4 query；n=71-76 原始解無法靜態下載（BLOCKED）；OpenReview「Four Methods」未取得全文；Max-N3IL ML 論文未讀全文。",
+    "scope_comparison": "本輪 scope＝n=75 attack 基建，非一般命題。文獻再確認：n=75 無公開解、紀錄 n=76 不變、primary 無修正 → NO_RESOLUTION_FOUND；題卡 known_result（r1 已更新）仍準確。",
+    "baseline": "baseline＝小 n SAT/CNF 行為正確性（SAT 模型經獨立 verifier 驗證）＋兩編碼等價性＋鴿籠 UNSAT 控制；solver=CaDiCaL。"
+  },
+  "artifacts": [
+    "runs/20260927T191802542471Z-glm-MATH-001/LITERATURE_MAP.md",
+    "runs/20260927T191802542471Z-glm-MATH-001/ROUND_REPORT.md",
+    "problems/MATH-001/experiments/n75_bench/ntil_cnf.py",
+    "problems/MATH-001/experiments/lit_data/table.txt",
+    "problems/MATH-001/experiments/lit_data/cases.txt",
+    "problems/MATH-001/results/r2/n75_bench_results.json",
+    "problems/MATH-001/results/r2/hashes.txt",
+    "problems/MATH-001/results/r2/environment.txt"
+  ],
+  "result": {
+    "state": "ROUND_FINISHED",
+    "verdict": "NO_RESOLUTION_FOUND",
+    "summary": "n=75 SAT attack bench BENCH_SOUND（小 n SAT/UNSAT/鴿籠/雙編碼 4 checks 全過，模型經 r1 verifier 驗證）；n=75 規模：~48.6M clauses(triples)/~20M(seq)；n=71-76 公開構造可得（初版 BLOCKED 記述經 dsk 獨立驗證者反證後撤回）、n=75 為唯一 0 筆之最小未解案例。",
+    "skeptic_bugs_found": [
+      "Sinz counter final unit -prev_ge2 would forbid >=2 (whole model UNSAT); rewritten forward-only"
+    ],
+    "wall_minutes_used_approx": 30,
+    "remediation_v3": {
+      "false_blocked_retraction": {
+        "retracted_claim": "n=71-76 frontier configuration access BLOCKED",
+        "corrected_claim": "n=71,72,73,74,76 public configurations are available; n=75 remains the smallest unresolved finite case",
+        "independent_verifier_evidence": "dsk PR #5 (branch dsk/MATH-001-independent-verifier-r1) identified two public retrieval paths; glm independently fresh-fetched path 1 (download/all_known_solutions, 23,834,242 bytes, 431,008 configs) with own decoder",
+        "verification_artifact": "problems/MATH-001/results/r2/deepseek_path1_verification.json",
+        "glm_own_check": {
+          "n71": 1,
+          "n72": 1,
+          "n73": 1,
+          "n74": 1,
+          "n75": 0,
+          "n76": 1
+        }
+      },
+      "unsat_evidence_semantics": {
+        "solver_unsat": "SOLVER_UNSAT_UNCERTIFIED (not evidence)",
+        "certified": "exhaustive enumeration proofs: n=1 (2 assignments), pigeonhole n=3 (512), n=4 (65,536) — satisfying=0"
+      },
+      "line_canonicalisation": {
+        "horizontal_vertical_excluded": true,
+        "direction_canonical": "dy>0",
+        "n75_lines": 1336678,
+        "n75_triples_lines_only": 23340962,
+        "n75_seq_aux": 8804510
+      },
+      "hash_manifest": "verify_manifest.py; regenerated after final edits",
+      "frontier_verification": {
+        "fix": "Codex P1: own-decoder claim was count-only (no decode of n>62 lines); extended 90-char alphabet (semantics attributed to dsk PR#5 decoder) implemented in decode_and_verify.py decode_ext",
+        "result": "all five frontier configs (n=71,72,73,74,76) decoded and PASS verifier v1 (0 collinear triples); n=75 zero configs confirmed",
+        "artifact": "problems/MATH-001/results/r2/frontier_configs_verification.json"
+      }
+    },
+    "unsat_evidence_semantics": {
+      "solver_unsat": "SOLVER_UNSAT_UNCERTIFIED (not evidence)",
+      "certified": "exhaustive enumeration proofs: n=1 (2 assignments), pigeonhole n=3 (512), n=4 (65,536) — satisfying=0"
+    }
+  },
+  "admitted_at": "2026-09-27T19:21:19.129778+00:00"
+}

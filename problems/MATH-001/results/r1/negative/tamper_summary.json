@@ -1,0 +1,7010 @@
+{
+  "generated": "2026-09-27T18:26:13+00:00",
+  "total_cases": 636,
+  "both_verifiers_agree": 636,
+  "improperly_accepted": [],
+  "verdict": "EVALUATORS_SOUND",
+  "note": "collinearity-injection cases keep count==2n, so any PASS would expose a real evaluator bug, not a count mismatch. Random fuzz expects rejection (2n-point random sets are essentially never no-three-in-line for n>=4).",
+  "cases": [
+    {
+      "case": "n02_collinear_injection",
+      "skipped": "no free collinear cell on any pair-line"
+    },
+    {
+      "case": "n02_duplicate_point",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "duplicate point: (1,1)"
+      ],
+      "v2_first_error": [
+        "duplicate points present"
+      ]
+    },
+    {
+      "case": "n02_out_of_range",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 2x2: (0,1)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [0, 1]"
+      ]
+    },
+    {
+      "case": "n02_count_deficit",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "point count 3 != target 4"
+      ],
+      "v2_first_error": [
+        "point count 3 != target 4"
+      ]
+    },
+    {
+      "case": "n03_collinear_injection",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(2,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n03_duplicate_point",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "duplicate point: (1,1)"
+      ],
+      "v2_first_error": [
+        "duplicate points present"
+      ]
+    },
+    {
+      "case": "n03_out_of_range",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 3x3: (0,1)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [0, 1]"
+      ]
+    },
+    {
+      "case": "n03_count_deficit",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "point count 5 != target 6"
+      ],
+      "v2_first_error": [
+        "point count 5 != target 6"
+      ]
+    },
+    {
+      "case": "n04_collinear_injection",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(2,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_duplicate_point",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "duplicate point: (1,1)"
+      ],
+      "v2_first_error": [
+        "duplicate points present"
+      ]
+    },
+    {
+      "case": "n04_out_of_range",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 4x4: (0,1)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [0, 1]"
+      ]
+    },
+    {
+      "case": "n04_count_deficit",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "point count 7 != target 8"
+      ],
+      "v2_first_error": [
+        "point count 7 != target 8"
+      ]
+    },
+    {
+      "case": "n05_collinear_injection",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(2,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_duplicate_point",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "duplicate point: (1,1)"
+      ],
+      "v2_first_error": [
+        "duplicate points present"
+      ]
+    },
+    {
+      "case": "n05_out_of_range",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 5x5: (0,1)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [0, 1]"
+      ]
+    },
+    {
+      "case": "n05_count_deficit",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "point count 9 != target 10"
+      ],
+      "v2_first_error": [
+        "point count 9 != target 10"
+      ]
+    },
+    {
+      "case": "n06_collinear_injection",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(2,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_duplicate_point",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "duplicate point: (1,1)"
+      ],
+      "v2_first_error": [
+        "duplicate points present"
+      ]
+    },
+    {
+      "case": "n06_out_of_range",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 6x6: (0,1)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [0, 1]"
+      ]
+    },
+    {
+      "case": "n06_count_deficit",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "point count 11 != target 12"
+      ],
+      "v2_first_error": [
+        "point count 11 != target 12"
+      ]
+    },
+    {
+      "case": "n07_collinear_injection",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(3,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n07_duplicate_point",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "duplicate point: (1,1)"
+      ],
+      "v2_first_error": [
+        "duplicate points present"
+      ]
+    },
+    {
+      "case": "n07_out_of_range",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 7x7: (0,1)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [0, 1]"
+      ]
+    },
+    {
+      "case": "n07_count_deficit",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "point count 13 != target 14"
+      ],
+      "v2_first_error": [
+        "point count 13 != target 14"
+      ]
+    },
+    {
+      "case": "n08_collinear_injection",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(3,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n08_duplicate_point",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "duplicate point: (1,1)"
+      ],
+      "v2_first_error": [
+        "duplicate points present"
+      ]
+    },
+    {
+      "case": "n08_out_of_range",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 8x8: (0,1)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [0, 1]"
+      ]
+    },
+    {
+      "case": "n08_count_deficit",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "point count 15 != target 16"
+      ],
+      "v2_first_error": [
+        "point count 15 != target 16"
+      ]
+    },
+    {
+      "case": "n09_collinear_injection",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(4,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n09_duplicate_point",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "duplicate point: (1,1)"
+      ],
+      "v2_first_error": [
+        "duplicate points present"
+      ]
+    },
+    {
+      "case": "n09_out_of_range",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 9x9: (0,1)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [0, 1]"
+      ]
+    },
+    {
+      "case": "n09_count_deficit",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "point count 17 != target 18"
+      ],
+      "v2_first_error": [
+        "point count 17 != target 18"
+      ]
+    },
+    {
+      "case": "n10_collinear_injection",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(2,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n10_duplicate_point",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "duplicate point: (1,1)"
+      ],
+      "v2_first_error": [
+        "duplicate points present"
+      ]
+    },
+    {
+      "case": "n10_out_of_range",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 10x10: (0,1)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [0, 1]"
+      ]
+    },
+    {
+      "case": "n10_count_deficit",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "point count 19 != target 20"
+      ],
+      "v2_first_error": [
+        "point count 19 != target 20"
+      ]
+    },
+    {
+      "case": "n01_fake_target2",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "out of grid 1x1: (1,2)"
+      ],
+      "v2_first_error": [
+        "bad or out-of-range point: [1, 2]"
+      ]
+    },
+    {
+      "case": "n04_random_000",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,1),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_001",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(2,3),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_002",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(3,4),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_003",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,2),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_004",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(1,3),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_005",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(4,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_006",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,3),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_007",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(3,4),(1,2)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_008",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(2,3),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_009",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,2),(1,3)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_010",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(4,4),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_011",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "column 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_012",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(1,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_013",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,3),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_014",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(3,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_015",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_016",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(3,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_017",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(1,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_018",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(2,3),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_019",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(2,1),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_020",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(4,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_021",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(1,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_022",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(2,4),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_023",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(4,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_024",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_025",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,2),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_026",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(3,3),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_027",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(1,1),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_028",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(1,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_029",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(4,4),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_030",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(2,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_031",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(1,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_032",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(1,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_033",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,1),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_034",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(4,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_035",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(1,3),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_036",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(4,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_037",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(1,4),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_038",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(2,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_039",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(1,1),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_040",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(3,2),(1,4)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_041",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(2,3),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_042",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(3,3),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_043",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(2,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_044",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(3,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_045",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(2,2),(2,1)"
+      ],
+      "v2_first_error": [
+        "column 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_046",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(3,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_047",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(3,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "column 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_048",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,2),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_049",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,2),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_050",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(1,1),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_051",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(3,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "column 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_052",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_053",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(1,1),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_054",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(4,1),(2,3)"
+      ],
+      "v2_first_error": [
+        "collinear triple: (3, 1),(2, 2),(1, 3)"
+      ]
+    },
+    {
+      "case": "n04_random_055",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(1,1),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_056",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,3),(1,2)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_057",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(4,2),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_058",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(4,1),(1,4)"
+      ],
+      "v2_first_error": [
+        "column 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_059",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(4,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_060",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,3),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_061",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,2),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_062",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,3),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_063",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(1,2),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_064",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,1),(3,3)"
+      ],
+      "v2_first_error": [
+        "column 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_065",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(2,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_066",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(2,1),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_067",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(1,4),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_068",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,3),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_069",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(3,1),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_070",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(1,4),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_071",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,2),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_072",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(2,3),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_073",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,3),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_074",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(4,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_075",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(3,2),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_076",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,4),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_077",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(4,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_078",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(2,1),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_079",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(4,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_080",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,2),(2,4)"
+      ],
+      "v2_first_error": [
+        "column 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_081",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(4,1),(4,4)"
+      ],
+      "v2_first_error": [
+        "column 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_082",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(1,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_083",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(4,4),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_084",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(4,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_085",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(3,3),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_086",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(4,4),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_087",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(2,2),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_088",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(1,2),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_089",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(3,4),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_090",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(3,2),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_091",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(4,4),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_092",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(4,1),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_093",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(2,3),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_094",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(4,1),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_095",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,1),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_096",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(1,2),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_097",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,1),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_098",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(2,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_099",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(3,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_100",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_101",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(2,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_102",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(1,2),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_103",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(3,3),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_104",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(2,3),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_105",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,3),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_106",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,4),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_107",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,4),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_108",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,1),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_109",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_110",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(1,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_111",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,2),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_112",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_113",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(3,3),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_114",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(1,2),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_115",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(4,3),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_116",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,2),(1,3)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_117",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(1,2),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_118",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(1,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_119",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(2,1),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_120",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(4,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_121",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(3,2),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_122",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_123",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(1,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_124",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(1,2),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_125",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(3,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_126",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(3,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_127",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(2,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_128",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(3,3),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_129",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(2,2),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_130",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(1,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "column 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_131",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(1,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_132",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(3,4),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_133",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(2,1),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_134",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,2),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_135",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(4,1),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_136",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(1,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_137",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(2,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_138",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,2),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_139",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(1,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_140",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(2,3),(2,2)"
+      ],
+      "v2_first_error": [
+        "column 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_141",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(4,4),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_142",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(4,2),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_143",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(2,3),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_144",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(3,2),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_145",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(3,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_146",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(3,3),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_147",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_148",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(2,2),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_149",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(3,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_150",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(3,2),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_151",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,2),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_152",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(3,3),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_153",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(4,4),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_154",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,3),(3,2)"
+      ],
+      "v2_first_error": [
+        "column 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_155",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(3,3),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_156",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,2),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_157",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(3,2),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_158",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(1,1),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_159",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(4,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_160",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(4,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_161",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(2,1),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_162",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(3,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_163",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(1,2),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_164",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_165",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,3),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_166",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,2),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_167",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(4,1),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_168",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(4,4),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_169",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(3,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_170",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(2,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_171",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(4,2),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_172",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(2,3),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_173",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(4,4),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_174",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(1,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "column 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_175",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,3),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_176",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,1),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_177",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(2,2),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_178",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(2,1),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_179",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(2,2),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_180",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,2),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_181",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_182",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(3,4),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_183",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(3,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_184",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(3,2),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_185",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,4),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_186",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(2,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_187",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,3),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_188",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,3),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_189",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_190",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(2,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_191",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,2),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_192",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(4,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_193",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(4,4),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_194",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(1,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_195",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(1,3),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_196",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(1,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_197",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(2,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_198",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(1,3),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n04_random_199",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_000",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(4,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_001",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(2,3),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_002",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(2,5),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_003",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(4,3),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_004",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,5),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_005",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,1),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_006",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,4),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_007",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_008",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(5,4),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_009",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(1,5),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_010",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(3,5),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_011",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(3,5),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_012",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(5,5),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_013",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(1,4),(1,3)"
+      ],
+      "v2_first_error": [
+        "column 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_014",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(4,5),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_015",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(5,2),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_016",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(4,5),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_017",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(5,3),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_018",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(5,3),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_019",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(2,2),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_020",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(1,4),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_021",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(4,5),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_022",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(4,5),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_023",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(5,2),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_024",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(2,2),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_025",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(2,1),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_026",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(3,2),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_027",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(3,2),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_028",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(1,5),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_029",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(2,5),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_030",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,2),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_031",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(4,3),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_032",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(3,2),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_033",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(4,3),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_034",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(3,3),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_035",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(3,1),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_036",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(5,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_037",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(2,2),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_038",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(2,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_039",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,3),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_040",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(3,4),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_041",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,4),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_042",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(3,5),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_043",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(4,2),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_044",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(5,3),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_045",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(3,5),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_046",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(1,4),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_047",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(5,3),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_048",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(3,5),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_049",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(2,1),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_050",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(3,5),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_051",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(4,1),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_052",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(5,1),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_053",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(1,5),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_054",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(2,3),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_055",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(2,4),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_056",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(5,5),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_057",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(5,4),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_058",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(4,3),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_059",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(2,2),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_060",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(3,3),(5,1)"
+      ],
+      "v2_first_error": [
+        "column 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_061",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(2,3),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_062",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(2,3),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_063",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(2,5),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_064",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,2),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_065",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(1,4),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_066",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(4,4),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_067",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(4,3),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_068",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(3,1),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_069",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(1,5),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_070",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(2,1),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_071",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,3),(1,1),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_072",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,4),(5,3),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_073",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(4,5),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_074",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(3,1),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_075",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,4),(1,2),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_076",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(2,1),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_077",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,4),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_078",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(3,2),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_079",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(2,5),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_080",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(2,4),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_081",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(5,2),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_082",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,3),(5,2),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_083",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(5,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_084",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(4,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_085",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(4,5),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_086",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(4,2),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_087",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(1,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_088",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(3,3),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_089",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(3,3),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_090",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(2,3),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_091",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(4,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_092",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(4,5),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_093",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(4,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_094",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,2),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_095",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,3),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_096",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(3,5),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_097",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_098",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,1),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_099",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(3,3),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_100",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(2,3),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_101",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(5,4),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_102",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(1,4),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_103",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,3),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_104",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,2),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_105",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,5),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_106",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,4),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_107",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(3,1),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_108",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(1,2),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_109",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(2,3),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_110",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(5,2),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_111",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(3,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_112",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,3),(5,5),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_113",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(4,3),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_114",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(5,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_115",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,4),(2,4),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_116",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(2,3),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_117",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(5,1),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_118",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(5,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_119",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(5,1),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_120",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(4,5),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_121",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(5,4),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_122",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,3),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_123",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_124",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(5,5),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_125",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(1,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_126",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,2),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_127",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_128",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(5,5),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_129",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(1,4),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_130",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(3,2),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_131",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(4,5),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_132",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(3,1),(3,2)"
+      ],
+      "v2_first_error": [
+        "column 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_133",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(1,5),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_134",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,1),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_135",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(4,3),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_136",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(2,5),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_137",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,2),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_138",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,5),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_139",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(1,5),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_140",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(2,5),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_141",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(3,2),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_142",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,3),(1,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_143",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(1,5),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_144",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,2),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_145",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(3,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_146",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,4),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_147",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(3,5),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_148",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(1,5),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_149",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(4,1),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_150",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(1,4),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_151",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(2,1),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_152",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(5,2),(5,3)"
+      ],
+      "v2_first_error": [
+        "column 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_153",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(5,3),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_154",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(3,5),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_155",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(5,3),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_156",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(2,3),(1,5)"
+      ],
+      "v2_first_error": [
+        "column 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_157",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(1,5),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_158",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(2,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_159",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(3,3),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_160",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(2,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_161",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,5),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_162",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(5,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_163",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(3,2),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_164",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,3),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_165",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(1,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_166",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(1,5),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_167",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,3),(2,3),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_168",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(3,3),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_169",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(3,1),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_170",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(2,4),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_171",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(1,1),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_172",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(3,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_173",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(5,1),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_174",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(5,3),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_175",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(3,1),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_176",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(2,3),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_177",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,5),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_178",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(5,1),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_179",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(3,3),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_180",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(2,3),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_181",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(4,5),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_182",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(2,3),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_183",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(1,3),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_184",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(1,1),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_185",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(5,3),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_186",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(2,2),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_187",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(3,4),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_188",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(5,5),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_189",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(3,2),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_190",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(1,1),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_191",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(4,4),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_192",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(4,4),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_193",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(1,2),(3,4)"
+      ],
+      "v2_first_error": [
+        "column 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_194",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(3,4),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_195",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(2,3),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_196",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(4,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_197",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(4,1),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_198",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(4,3),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n05_random_199",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(4,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_000",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(5,3),(6,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_001",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(2,2),(6,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_002",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,3),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_003",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(2,1),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_004",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(5,6),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_005",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(2,4),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_006",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(1,2),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_007",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,6),(2,3),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_008",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,6),(3,5),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_009",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,6),(1,3),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_010",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,2),(6,6),(6,3)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_011",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(3,4),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_012",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(5,3),(6,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_013",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(6,3),(3,6)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_014",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,6),(1,6),(6,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_015",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,3),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_016",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(1,2),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_017",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,2),(4,2),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_018",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(2,3),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_019",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(2,5),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_020",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(2,3),(6,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_021",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(4,2),(4,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_022",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(4,3),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_023",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(3,4),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_024",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(5,5),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_025",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(1,4),(1,6)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_026",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(2,1),(6,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_027",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,4),(4,6)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_028",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,6),(6,1),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_029",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,2),(6,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_030",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(2,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_031",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,6),(4,1),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_032",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(3,2),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_033",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,2),(3,5),(2,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_034",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(5,5),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_035",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(4,5),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_036",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,5),(6,1),(6,6)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_037",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,4),(6,1),(6,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_038",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,4),(6,6),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_039",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,6),(5,2),(4,3)"
+      ],
+      "v2_first_error": [
+        "column 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_040",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,4),(2,4),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_041",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(4,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_042",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,6),(2,4),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_043",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,1),(5,3),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_044",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(2,3),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_045",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,6),(4,6),(2,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_046",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(1,5),(6,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_047",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(3,4),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_048",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,6),(5,2),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_049",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,6),(4,5),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_050",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,2),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_051",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(6,6),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_052",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,6),(5,4),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_053",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(3,6),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_054",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(4,3),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_055",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(5,4),(6,6)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_056",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,1),(4,6)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_057",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(3,3),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_058",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,6),(2,1),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_059",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,5),(4,6)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_060",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(4,3),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_061",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,1),(3,1),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_062",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(2,4),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_063",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,6),(2,3),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_064",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(1,6),(4,3)"
+      ],
+      "v2_first_error": [
+        "column 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_065",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(4,6),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_066",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(1,5),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_067",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(3,5),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_068",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(4,5),(5,6)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_069",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(3,2),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_070",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(6,5),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_071",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(2,2),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_072",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,2),(6,5)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_073",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(6,6),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_074",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(3,6),(6,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_075",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(6,6),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_076",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(5,6),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_077",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(4,6),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_078",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(4,4),(6,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_079",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(5,2),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_080",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(2,2),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_081",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(5,1),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_082",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,2),(5,3),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_083",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,4),(4,4),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_084",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(5,4),(5,6)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_085",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,2),(4,4),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_086",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(1,6),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_087",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(5,2),(6,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_088",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(3,2),(1,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_089",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,6),(6,1),(6,2)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_090",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(4,6),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_091",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,3),(3,5),(6,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_092",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(5,3),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_093",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(1,1),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_094",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,6),(2,3),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_095",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,6),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_096",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,3),(4,2),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_097",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,6),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_098",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,3),(6,5),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_099",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,6),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_100",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(6,5),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_101",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(4,1),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_102",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(3,5),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_103",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,6),(4,1),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_104",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,3),(1,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_105",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(1,3),(1,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_106",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,2),(6,2),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_107",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(5,2),(1,6)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_108",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(3,2),(1,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_109",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(2,2),(4,6)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_110",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,6),(5,5),(6,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_111",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,6),(2,5),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_112",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,2),(5,4)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_113",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(3,5),(5,6)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_114",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,4),(4,3),(6,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_115",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(2,4),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_116",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,5),(5,1),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_117",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(4,2),(4,6)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_118",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(1,6),(6,1)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_119",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,3),(2,5),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_120",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(4,1),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_121",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(2,3),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_122",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,2),(4,6)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_123",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,4),(4,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_124",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,2),(2,6),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_125",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,6),(6,3),(6,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_126",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(3,5),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_127",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,6),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_128",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,5),(6,3),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_129",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,1),(6,2),(6,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_130",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(5,4),(4,3)"
+      ],
+      "v2_first_error": [
+        "column 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_131",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,1),(6,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_132",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,4),(5,4),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_133",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(2,3),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_134",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,6),(2,5),(2,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_135",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,1),(6,6),(6,2)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_136",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(6,3),(1,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_137",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(3,2),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_138",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(2,6),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_139",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,1),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_140",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(2,1),(2,6)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_141",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,1),(5,3),(4,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_142",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,1),(5,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_143",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,5),(5,3),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_144",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,4),(6,3),(6,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_145",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(3,6),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_146",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,1),(6,6),(6,5)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_147",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,3),(2,2),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_148",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(1,1),(1,6)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_149",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,5),(3,3),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_150",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,4),(5,4),(4,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_151",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(6,3),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_152",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,6),(3,6),(4,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_153",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,5),(4,2),(3,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_154",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(6,1),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_155",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(5,5),(6,6)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_156",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(6,5),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_157",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(4,3),(5,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 6 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_158",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(4,3),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_159",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(2,1),(6,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_160",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(4,4),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_161",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,3),(4,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_162",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,3),(3,3),(2,3)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_163",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,3),(6,5),(6,2)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_164",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(5,1),(2,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_165",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,6),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_166",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,6),(6,6),(3,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_167",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,6),(3,4),(3,1)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_168",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,6),(5,3),(6,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_169",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(2,5),(3,4)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_170",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(3,5),(2,6)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_171",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,1),(4,1),(5,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_172",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,6),(5,6),(6,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_173",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(1,6),(2,5)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_174",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,2),(5,5),(5,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_175",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,4),(3,5),(3,2)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_176",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,2),(5,2),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_177",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(3,4),(3,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_178",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,5),(4,3),(4,1)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_179",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,6),(5,4),(5,2)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_180",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,6),(3,5),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_181",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,1),(6,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_182",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,3),(1,1),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_183",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,1),(3,3),(4,2)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_184",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,6),(6,6),(1,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_185",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (5,6),(3,6),(6,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_186",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(4,1),(1,1)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_187",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,2),(4,2),(6,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_188",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,4),(1,4),(6,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_189",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(2,2),(5,5)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_190",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,1),(3,2),(4,3)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_191",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,6),(6,4),(6,1)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_192",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (2,2),(1,1),(6,6)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_193",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (1,1),(1,3),(1,6)"
+      ],
+      "v2_first_error": [
+        "row 1 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_194",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,4),(1,4),(2,4)"
+      ],
+      "v2_first_error": [
+        "row 4 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_195",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (4,3),(4,5),(4,6)"
+      ],
+      "v2_first_error": [
+        "row 3 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_196",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,2),(6,6),(6,4)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 5 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_197",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (3,6),(6,6),(2,6)"
+      ],
+      "v2_first_error": [
+        "row 6 holds 3 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_198",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,3),(6,5),(6,2)"
+      ],
+      "v2_first_error": [
+        "row 2 holds 4 points (>2)"
+      ]
+    },
+    {
+      "case": "n06_random_199",
+      "v1_pass": false,
+      "v2_pass": false,
+      "v1_first_error": [
+        "collinear triple: (6,5),(6,2),(6,3)"
+      ],
+      "v2_first_error": [
+        "row 5 holds 3 points (>2)"
+      ]
+    }
+  ]
+}

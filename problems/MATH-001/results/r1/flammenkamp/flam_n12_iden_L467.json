@@ -1,0 +1,108 @@
+{
+  "problem": "MATH-001",
+  "n": 12,
+  "target": 24,
+  "points": [
+    [
+      1,
+      1
+    ],
+    [
+      9,
+      1
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      11,
+      2
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      12,
+      4
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      8,
+      6
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      8,
+      7
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      12,
+      8
+    ],
+    [
+      10,
+      9
+    ],
+    [
+      11,
+      9
+    ],
+    [
+      1,
+      10
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      4,
+      11
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      6,
+      12
+    ],
+    [
+      9,
+      12
+    ]
+  ],
+  "source": "flammenkamp-known-solutions-1997",
+  "origin_ref": "https://wwwhomes.uni-bielefeld.de/achim/no3in/readme.html (data_1997/known_solutions, decoded per decode.c semantics)",
+  "generated": "2026-09-27T18:26:31+00:00",
+  "symmetry_class": "iden",
+  "archive_line": 467
+}

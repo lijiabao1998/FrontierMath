@@ -1,0 +1,76 @@
+{
+  "problem": "MATH-001",
+  "n": 8,
+  "target": 16,
+  "points": [
+    [
+      1,
+      1
+    ],
+    [
+      7,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      8,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      5,
+      8
+    ]
+  ],
+  "source": "flammenkamp-known-solutions-1997",
+  "origin_ref": "https://wwwhomes.uni-bielefeld.de/achim/no3in/readme.html (data_1997/known_solutions, decoded per decode.c semantics)",
+  "generated": "2026-09-27T18:26:31+00:00",
+  "symmetry_class": "dia1",
+  "archive_line": 45
+}

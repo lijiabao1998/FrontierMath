@@ -1,13 +1,13 @@
 {
   "id":"MATH-001","domain":"math","title":"No-three-in-line：一般 n 的 2n 點構造","status":"OPEN","priority":"A","checked_on":"2026-09-27",
   "statement":"令 D(n) 為 {1,...,n}² 中任三相異點不共線的最大子集大小。研究對所有 n>=2 是否 D(n)=2n，或給出嚴格反例／一般界。",
-  "known_result":"Prellberg 2026 提供 n<=60 的 2n 構造；這是該文發表時的有限進展，不保證此刻 n=61 仍為最小未定實例。",
+  "known_result":"Prellberg 2026（arXiv:2602.07751）以 CSP 達成所有 n<=60 的 2n 構造；其後 Flammenkamp 紀錄頁（更新 2026-09-11）記載 Heule 以 SAT 於 2026-06/08 補齊 61-70 全覆蓋並創 n=72/76 紀錄（rot4），n=71/73（rct4）亦解，Prellberg 2026-07-20 提供 n=74；截至該頁，n<=74 除 75 外均有解，紀錄 n=76，最小未定 n=75。一般問題仍 open；有限構造不完成一般命題。",
   "open_gap":"一般 n 的存在性；新有限構造僅提升有限下界，不能直接完成一般問題。",
-  "first_task":"重查最新有限紀錄及補充資料，先以 n=2..8 建整數 determinant checker；獨立重驗一組公開構造與故意加入共線點的負例。",
+  "first_task":"已完成 r1（runs/20260927T174209574990Z-glm-MATH-001）：整數 verifier＋獨立第二實作、n=2..10 自製 2n 憑證、Flammenkamp 36,912 個公開構造（n=2..52）獨立解碼重驗、共線注入負例。下一步：取得並重驗 Heule n=61-76 原始解／SAT 認證；研究 n=75 之 SAT/CSP 攻略或 UNSAT 證書可能性；審讀 arXiv:2602.07751 全文。",
   "evaluator":"檢查格點範圍、唯一性及每组三點的整數行列式非零；目標大小與 n 分開記。",
   "validation_limits":"隨機沒找到反例不證明通解；搜尋失敗不證明不存在；SAT UNSAT 需可驗證證書。",
   "completion_criterion":"與 statement 同範圍的已確認一般證明或反例；有限 n 完成只記子任務。",
-  "screening_note":"初始有界搜尋與 arXiv 摘要核對；非完整證明審讀，下一輪重新查文獻。",
-  "screening_queries":["site.arxiv.org no-three-in-line problem 2026 2025 2n"],
-  "sources":[{"title":"Prellberg (2026), Constraint Satisfaction Programming for the No-three-in-line Problem","url":"https://arxiv.org/abs/2602.07751","kind":"primary","supports":"n<=60 有限構造與一般問題的缺口；本輪已讀摘要。"}]
+  "screening_note":"r1（2026-09-28）四路有界檢索 8 query：一般問題無解答／反例；無 erratum/retraction；版本核查 2602.07751 僅 v1。詳見該輪 LITERATURE_MAP.md；每輪須重新檢索。",
+  "screening_queries":["site.arxiv.org no-three-in-line problem 2026 2025 2n","\"no-three-in-line\" solved OR \"general solution\" OR counterexample 2025 2026 open problem status","Flammenkamp no-three-in-line best known solutions n 2n","\"no-three-in-line\" Prellberg OR Heule erratum OR comment OR retraction OR \"failed replication\" OR correction"],
+  "sources":[{"title":"Prellberg (2026), Constraint Satisfaction Programming for the No-three-in-line Problem","url":"https://arxiv.org/abs/2602.07751","kind":"primary","supports":"n<=60 有限構造與一般問題的缺口；r1 已讀摘要頁，僅 v1。"},{"title":"A. Flammenkamp, No-Three-in-Line Problem 紀錄頁（更新 2026-09-11）","url":"https://wwwhomes.uni-bielefeld.de/achim/no3in/readme.html","kind":"primary","supports":"紀錄進展 58→76（Heule SAT）、n<=70 全覆蓋、最小未定 n=75、解資料檔與 decode.c；r1 已下載 known_solutions（36,912 構造）獨立重驗。"}]
 }
