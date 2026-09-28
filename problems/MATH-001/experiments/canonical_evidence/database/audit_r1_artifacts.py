@@ -377,12 +377,34 @@ def main(argv: Sequence[str] | None = None) -> int:
         out["flammenkamp_correct_mapper"] = None
         out["missing_corpus"] = True
 
+    # EXIT STATUS FROM ALL REQUIRED CHECKS. An earlier version returned success unless the
+    # corpus was missing, so a corpus with decode errors, verification failures or a weak
+    # mutation test still exited 0 -- an automated reproduction gate could report success
+    # without reproducing the cited result. Every required check now gates the exit.
+    reasons = []
+    if out.get("missing_corpus"):
+        reasons.append("corpus missing")
+    f = out.get("flammenkamp_correct_mapper")
+    if f is None:
+        reasons.append("corpus not audited")
+    else:
+        st = f.get("stats", {})
+        if f.get("n_decode_errors", 0):
+            reasons.append(f"{f['n_decode_errors']} decode errors")
+        if st.get("verify_fail", 0):
+            reasons.append(f"{st['verify_fail']} verification failures")
+        if st.get("decoded") != 36912:
+            reasons.append(f"decoded {st.get('decoded')} != 36912 expected")
+    teeth = (out.get("corpus_teeth_check") or {})
+    if (teeth.get("teeth_fraction_illegal") or 0) < 0.9:
+        reasons.append(
+            f"mutation teeth fraction {teeth.get('teeth_fraction_illegal')} below 0.9")
+    out["exit_reasons"] = reasons
     if args.json:
         with open(args.json, "w", encoding="utf-8") as fh:
             json.dump(out, fh, indent=2, sort_keys=True)
         print(f"[written] {args.json}")
-    # a missing corpus is a FAILURE, so an omitted audit cannot look successful
-    return 1 if out.get("missing_corpus") else 0
+    return 1 if reasons else 0
 
 
 if __name__ == "__main__":

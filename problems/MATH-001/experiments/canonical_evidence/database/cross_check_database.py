@@ -95,9 +95,13 @@ def coded_entry_from_file(path: str, n: int, symm: str, index: int) -> str | Non
 
 def main(argv: Sequence[str] | None = None) -> int:
     here = os.path.dirname(os.path.abspath(__file__))
-    default_file = os.path.abspath(
-        os.path.join(here, "..", "lit_data", "dl", "all_known_solutions")
-    )
+    # The fetched layout puts the corpus under provenance/ (fetch_third_party.py writes there);
+    # lit_data/ is the older exploratory layout and is tried second. os.path.abspath must NOT be
+    # given both paths -- it would join them into one nonsensical path, which is what an earlier
+    # attempt at this did.
+    _cands = [os.path.abspath(os.path.join(here, "..", "provenance", "dl", "all_known_solutions")),
+              os.path.abspath(os.path.join(here, "..", "lit_data", "dl", "all_known_solutions"))]
+    default_file = next((c for c in _cands if os.path.exists(c)), _cands[0])
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, required=True)
     ap.add_argument("--symm", required=True)
@@ -111,6 +115,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     print(f"== path A: coded entry from {os.path.basename(args.file)} ==")
     code = coded_entry_from_file(args.file, n, args.symm, args.index)
+    pts_a = None
     if code is None:
         print("  NOT FOUND")
         out["path_a"] = None
@@ -140,6 +145,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     }
     print(f"  {out['path_b']}")
 
+    pts_a = None
+    if code is not None:
+        _, _nn, pts_a = decode_code(code)
     if code is not None and pts_b:
         same = set(pts_a) == set(pts_b)
         out["paths_agree"] = same
@@ -150,6 +158,20 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(f"  A-only {out['points_only_in_A']}  B-only {out['points_only_in_B']}")
     else:
         out["paths_agree"] = None
+
+    # PRESERVE THE COMPARED DATA. A reviewer noted that a report containing only counts, one
+    # hash and this process's own agreement verdict cannot be checked offline: the reader has to
+    # trust an unrepeatable live-CGI computation. Both decoded point SETS are therefore written
+    # into the report, so the identity claim can be re-checked from the committed file alone.
+    if pts_a is not None:
+        out["path_a_points"] = sorted([list(p) for p in pts_a])
+    if pts_b:
+        out["path_b_points"] = sorted([list(p) for p in pts_b])
+    out["path_b_grid_sha256"] = hashlib.sha256(
+        json.dumps(sorted([list(p) for p in pts_b]), sort_keys=True).encode()).hexdigest()
+    out["offline_check"] = (
+        "path_a_points and path_b_points are the two decoded point sets; an offline reviewer can "
+        "confirm set equality (and re-verify legality) without reaching the live CGI endpoint.")
 
     if args.json:
         with open(args.json, "w", encoding="utf-8") as fh:

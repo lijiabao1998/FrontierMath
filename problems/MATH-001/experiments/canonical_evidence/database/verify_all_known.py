@@ -112,7 +112,9 @@ def decode(line: str) -> tuple[str, int, list[tuple[int, int]]] | None:
 
 def main(argv: Sequence[str] | None = None) -> int:
     here = os.path.dirname(os.path.abspath(__file__))
-    default = os.path.abspath(os.path.join(here, "..", "lit_data", "dl", "all_known_solutions"))
+    _c = [os.path.abspath(os.path.join(here, "..", "provenance", "dl", "all_known_solutions")),
+          os.path.abspath(os.path.join(here, "..", "lit_data", "dl", "all_known_solutions"))]
+    default = next((c for c in _c if os.path.exists(c)), _c[0])
     ap = argparse.ArgumentParser()
     ap.add_argument("--file", default=default)
     ap.add_argument("--sample", type=int, default=0, help="verify only a random sample of this size (0 = all)")

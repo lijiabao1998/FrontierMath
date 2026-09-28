@@ -131,7 +131,11 @@ def analyse(code: str) -> dict:
 
 def main(argv: Sequence[str] | None = None) -> int:
     here = os.path.dirname(os.path.abspath(__file__))
-    src = os.path.abspath(os.path.join(here, "..", "lit_data", "dl", "all_known_solutions"))
+    # the fetched layout puts the corpus under provenance/ (fetch_third_party.py writes there);
+    # lit_data/ is the older exploratory layout and is still tried second
+    _cands = [os.path.abspath(os.path.join(here, "..", "provenance", "dl", "all_known_solutions")),
+              os.path.abspath(os.path.join(here, "..", "lit_data", "dl", "all_known_solutions"))]
+    src = next((c for c in _cands if os.path.exists(c)), _cands[0])
     ap = argparse.ArgumentParser()
     ap.add_argument("--n-min", type=int, default=60)
     ap.add_argument("--file", default=src)

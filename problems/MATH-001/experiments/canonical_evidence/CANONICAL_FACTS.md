@@ -79,9 +79,12 @@ All use every row and column. Per-record code hashes are in the evidence file.
 
 **Evidence.** The corpus verification is `evidence/all_known_solutions_verification.json`. The
 **five cross-check reports are committed individually** —
-`evidence/record_crosscheck_n{71,72,73,74,76}.json` — each carrying `paths_agree: true`, the
-per-path point counts, and the coded-entry `code_sha256`, so an offline reviewer can check the
-"identical point sets" claim without reaching the mutable CGI endpoint:
+`evidence/record_crosscheck_n{71,72,73,74,76}.json` — and each contains **both decoded point sets**
+(`path_a_points`, `path_b_points`) alongside the agreement verdict, the counts and the coded-entry
+hash, so the "identical point sets" claim can be re-checked from the committed file alone without
+reaching the mutable CGI endpoint. A reviewer pointed out that an earlier version carried only
+counts and the same process's own verdict, which asked the reader to trust an unrepeatable live
+computation; both sets are now preserved:
 
 | n | points | legal | rows/cols | paths agree |
 |---|---|---|---|---|
