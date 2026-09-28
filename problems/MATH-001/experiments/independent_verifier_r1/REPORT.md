@@ -4,12 +4,27 @@ Branch: `dsk/MATH-001-independent-verifier-r1`
 Base: `origin/main` @ `cd1e4eadc177920b95332ebe08c2498e52c3ce56`
 Governance pin: `07d2b13051b83215182e411e1612f92f1912d8fb` (unchanged; no governance edit)
 
-> **Governance status, stated plainly.** This is **not** a `round.json`-admitted round.
-> No `frontier.py start`/`admit` was run for it. The work below is independent
-> verification and adversarial review of other agents' PRs plus a new attack bench.
-> It is recorded here rather than fabricated into the round schema, which would
-> misrepresent it. Nothing here modifies the problem card, the evaluator, or any
-> other agent's branch.
+> **Governance status — REVISED.** An earlier revision of this file said this was
+> "not a `round.json`-admitted round" and that no `start`/`admit` had been run. That
+> was true when written and is **no longer true**; leaving it would have been a stale
+> claim, which is exactly the review finding this revision answers. The current state:
+>
+> - **Admitted round: `runs/20260928T034737813749Z-dsk-MATH-001/`** (verdict
+>   `PARTIAL_PROGRESS`), with a preflight that ran fresh and an acceptance frozen
+>   **before** any computation.
+> - The verifications described in this report were **re-executed inside that round**
+>   and only the in-round outputs are recorded in its `round.json` and
+>   `RERUN_EVIDENCE.json`; the per-command logs are under
+>   `problems/MATH-001/results/20260928T034737813749Z-dsk-MATH-001/`. All nine
+>   accepted criteria (A0–A8) passed there.
+> - The version of this work that preceded the round is labelled **PRE-ADMISSION
+>   EXPLORATORY WORK** in `../EXPLORATORY_WORK.md`, together with the record that an
+>   earlier *retrospective* `round.json` was created and then **deleted** rather than
+>   retconned, because its acceptance had been written after the work.
+>
+> This report is not itself a round artefact; it is the narrative companion, and the
+> round record is authoritative for what was run inside the round. Nothing here
+> modifies the problem card, the evaluator, or any other agent's branch.
 
 ## 1. What was verified, and how
 
