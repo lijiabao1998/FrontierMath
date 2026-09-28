@@ -579,6 +579,36 @@ def audit_cnf_covers_lines(n: int, dimacs_path: str, var_of_cell=None,
         "not_refuted": [],
     }
     if semantic_check and network_lines:
+        # VACUITY GUARD. The semantic layer asks whether F AND T is UNSAT for each triple T.
+        # If F itself is UNSAT -- for any reason, including a contradiction unrelated to the
+        # line constraints -- then F AND T is UNSAT for EVERY T and the layer passes
+        # vacuously. A reviewer demonstrated exactly this by deleting all ten n=5 diagonal
+        # constraints and adding the units [1] and [-1]: the audit still returned
+        # complete: true. The guard below establishes that F is satisfiable before any
+        # triple is tested, and reports the layer as vacuous rather than complete if it is not.
+        try:
+            from pysat.solvers import Cadical153 as _C
+            with _C(bootstrap_with=clauses) as _s:
+                formula_satisfiable = bool(_s.solve())
+        except Exception:  # noqa: BLE001
+            formula_satisfiable = None
+        sem["formula_satisfiable"] = formula_satisfiable
+        if formula_satisfiable is False:
+            sem["vacuous"] = True
+            sem["vacuous_reason"] = (
+                "the formula is UNSATISFIABLE, so every triple would be reported as refuted "
+                "regardless of the line constraints. The semantic layer is vacuous and does "
+                "NOT establish anything about at-most-2 on the lines.")
+            sem["lines_unchecked"] = len(network_lines)
+            network_lines = []
+        elif formula_satisfiable is None:
+            sem["vacuous"] = True
+            sem["vacuous_reason"] = ("no solver available to establish that the formula is "
+                                     "satisfiable, so the semantic layer cannot be trusted")
+            sem["lines_unchecked"] = len(network_lines)
+            network_lines = []
+        else:
+            sem["vacuous"] = False
         todo = network_lines
         if semantic_max_lines is not None and len(todo) > semantic_max_lines:
             sem["lines_unchecked"] = len(todo) - semantic_max_lines
@@ -615,6 +645,7 @@ def audit_cnf_covers_lines(n: int, dimacs_path: str, var_of_cell=None,
         lines_with_missing == 0
         and sem["lines_unchecked"] == 0
         and not sem["not_refuted"]
+        and sem.get("vacuous") is not True
     )
     return {
         "n": n,
@@ -630,6 +661,11 @@ def audit_cnf_covers_lines(n: int, dimacs_path: str, var_of_cell=None,
         "layer1_missing_examples": missing_examples,
         "layer2_network_lines": len(network_lines),
         "layer2": sem,
+        "layer2_vacuity_guard": (
+            "layer 2 first requires the formula to be SATISFIABLE; if it is not, every triple "
+            "would be vacuously refuted and the layer reports vacuous=true with complete=false. "
+            "This closes a hole a reviewer demonstrated by adding an unrelated contradictory "
+            "unit pair to an instance whose line constraints had been deleted."),
         "complete": complete,
         "covers_all_lines": complete,
         "completeness_scope": (

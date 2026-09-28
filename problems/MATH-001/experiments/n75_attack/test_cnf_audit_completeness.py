@@ -180,6 +180,41 @@ class TestCnfAuditCompleteness(unittest.TestCase):
         self.assertFalse(rep["complete"])
         self.assertTrue(rep["layer2"]["not_refuted"], "a satisfiable triple must be reported")
 
+    def test_vacuous_formula_with_unrelated_contradiction_is_red(self) -> None:
+        """The reviewer's exact counterexample for the semantic layer.
+
+        Delete all ten n=5 diagonal constraints AND add an unrelated contradictory unit pair
+        [1], [-1]. Before the vacuity guard, unit propagation on the whole formula reported a
+        conflict for every assumed triple, so the audit returned complete: true while the
+        diagonal was entirely unconstrained. It must now be RED and must report vacuity.
+        """
+        n = 5
+        diag = [(i, i) for i in range(1, n + 1)]
+        cnf = encode_cells(n, 2)
+        all_vars = {tuple(sorted(cell_var(n, x, y) for x, y in t))
+                    for t in combinations(diag, 3)}
+        drop_clauses_for_triples(cnf, all_vars)
+        cnf.add_clause([1])
+        cnf.add_clause([-1])
+        path = os.path.join(self.root, "n5_vacuous.cnf")
+        write_dimacs(cnf, path)
+        rep = audit_cnf_covers_lines(n, path, explicit_limit=0)   # force everything to layer 2
+        self.assertFalse(rep["complete"], "a vacuously refuted formula must not pass")
+        self.assertIs(rep["layer2"].get("vacuous"), True)
+        self.assertIs(rep["layer2"].get("formula_satisfiable"), False)
+        self.assertIn("vacuous", rep["layer2"].get("vacuous_reason", "").lower())
+
+    def test_satisfiable_formula_is_not_reported_vacuous(self) -> None:
+        """The guard must not fire on a well-formed instance."""
+        n = 5
+        cnf = encode_cells(n, 2)
+        path = os.path.join(self.root, "n5_ok.cnf")
+        write_dimacs(cnf, path)
+        rep = audit_cnf_covers_lines(n, path, explicit_limit=0)
+        self.assertIs(rep["layer2"].get("vacuous"), False)
+        self.assertIs(rep["layer2"].get("formula_satisfiable"), True)
+        self.assertTrue(rep["complete"])
+
     def test_unchecked_network_lines_make_audit_incomplete(self) -> None:
         """A bound that leaves network lines unchecked must not report completeness."""
         n = 5

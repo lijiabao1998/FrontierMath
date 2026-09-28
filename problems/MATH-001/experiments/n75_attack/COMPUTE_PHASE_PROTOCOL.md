@@ -33,10 +33,41 @@ Corollaries that must appear verbatim in the round report:
 
 ### G2 — link (1) of certification: the formula must express the problem
 Run `benchmark.py`'s CNF audit (or `encoder.audit_cnf_covers_lines`) and require
-`covers_all_lines: true`: for **every** maximal line with ≥3 grid points there must be
-at least one clause forbidding a collinear triple on it. The audit has demonstrated
-teeth (`negative_tests/`, `audit_has_teeth: true`). An UNSAT on a formula with a
-missing line family is worthless.
+`complete: true` from `encoder.audit_cnf_covers_lines`, which means **all** of:
+
+- **layer 1 (exact):** for every maximal line encoded with explicit triple clauses, the
+  DIMACS contains **every** `C(k,3)` clause `(¬a ∨ ¬b ∨ ¬c)` over that line's triples —
+  not merely at least one. (An earlier revision of this protocol accepted "at least one
+  clause", which is unsound for `k > 3` and was the subject of a review finding.)
+- **layer 2 (encoding-agnostic):** for every line encoded by a cardinality network, every
+  3-subset `T` must make `F ∧ T` UNSAT — unit propagation first, escalating to a real SAT
+  call. Lines left unchecked force `complete: false`.
+- **vacuity guard:** `layer2.formula_satisfiable` must be `true`. If `F` is unsatisfiable
+  for any reason, every triple is vacuously refuted and the audit reports `vacuous: true`
+  with `complete: false`. (Without this guard, an unrelated contradictory unit pair makes
+  the semantic layer pass on a formula whose line constraints have been deleted — a
+  reviewer demonstrated exactly that.)
+
+**G2 must be run on the actual target instance, not on a small-n control.** The command is:
+
+```bash
+python encoder.py --n 75 --formulation orbits --group rot2 --out rot2_n75.cnf
+python benchmark.py --audit-instance rot2_n75.cnf --n 75 --group rot2
+```
+
+`benchmark.py`'s `negative_controls` only tests the *audit itself* on a deliberately broken
+n=5 instance; it does not audit the n=75 formula. An earlier revision of this section told
+the reader to run `benchmark.py` and could therefore have marked G2 complete without ever
+checking the target formula. That is the finding this text answers.
+
+**STATUS: G2 is NOT yet satisfied for n=75.** The audit has been executed only on small-n
+instances, where it passes. Running it on the hashed `rot2` instance
+(SHA-256 `2b47bce655ec925d9cdb91d689461a995c1d0d2c83e1f4430f68b1490f1569da`) is a required
+pre-compute step and has not been done. Until it is, no solver run may be reported under
+this protocol.
+
+An UNSAT on a formula whose line constraints are incomplete, or which is unsatisfiable for
+an unrelated reason, is worthless.
 
 ### G3 — the symmetry-breaking claim must be one of the two proved kinds
 Only these two are allowed, and each must be labelled with its scope:

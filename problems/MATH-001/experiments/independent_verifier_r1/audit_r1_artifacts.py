@@ -196,7 +196,8 @@ def audit_flammenkamp(path: str, mapper=topos, max_lines: int | None = None) -> 
     }
 
 
-def corpus_teeth_check(path: str, samples: int = 400, seed: int = 20260928) -> dict:
+def corpus_teeth_check(path: str, samples: int = 400, seed: int = 20260928,
+                       all_lines: bool = False) -> dict:
     """Does the VERIFICATION step have teeth on this corpus, or is decoding doing all the work?
 
     The decode step enforces max-column == n-1, so a wrong mapping is caught before
@@ -220,8 +221,15 @@ def corpus_teeth_check(path: str, samples: int = 400, seed: int = 20260928) -> d
     mutated_still_legal = 0
     mutated_now_illegal = 0
     skipped = 0
+    survivors: list[dict] = []
 
-    for line in rng.sample(lines, min(samples, len(lines))):
+    # all_lines=True sweeps EVERY line with one deterministic mutation each. The full
+    # mutation space (every row pair x every position pair x every line) is ~7e7 mutations
+    # each needing an O(m^2) verification, which is infeasible; one mutation per line over
+    # the whole corpus is what this mode actually delivers, and the result says so rather
+    # than implying exhaustiveness.
+    todo = lines if all_lines else rng.sample(lines, min(samples, len(lines)))
+    for line in todo:
         try:
             dec = decode_line(line)
         except ValueError:
@@ -230,13 +238,13 @@ def corpus_teeth_check(path: str, samples: int = 400, seed: int = 20260928) -> d
         if dec is None:
             skipped += 1
             continue
-        _, n, _ = dec
+        _, n, pts_orig = dec
         if n < 4:
             skipped += 1
             continue
         data = list(line[1:])
         # pick two distinct rows and swap one of their column characters
-        r1, r2 = rng.sample(range(n), 2)
+        r1, r2 = rng.sample(range(n), 2)          # distinct rows: a same-row swap is a no-op
         p1 = 2 * r1 + rng.randrange(2)
         p2 = 2 * r2 + rng.randrange(2)
         if data[p1] == data[p2]:
@@ -263,11 +271,42 @@ def corpus_teeth_check(path: str, samples: int = 400, seed: int = 20260928) -> d
         mutated_decode_ok += 1
         rep = verify(pts2, n2, expect_count=2 * n2)
         if rep["ok"]:
+            # A surviving mutation is NOT automatically a verifier failure: a swap can
+            # produce a DIFFERENT set that is still a legal 2n configuration. What must be
+            # true is that the survivor really is one -- so each survivor is recorded in
+            # full, with its point count and legality, for inspection rather than being
+            # absorbed into a rate.
             mutated_still_legal += 1
+            if len(survivors) < 10:
+                survivors.append({
+                    "line_index": checked, "n": n2, "original": line[:80], "mutated": mut[:80],
+                    "distinct_points": rep["distinct_points"], "expect_count": 2 * n2,
+                    "verified_legal_2n_set": bool(rep["math_ok"]),
+                    "point_set_changed": sorted(pts2) != sorted(pts_orig),
+                })
         else:
             mutated_now_illegal += 1
 
+    # The mutation must change the POINT SET, not merely reorder a row's two entries:
+    # swapping the two positions inside one row is a no-op, which an earlier version of
+    # this generator allowed and which produced spurious "survivors". Rows are sampled
+    # without replacement, so r1 != r2 already, but the test is made explicit.
     return {
+        "survivors_detail": survivors,
+        "survivor_interpretation": (
+            "A survivor means the mutated configuration is still legal. That is a property of "
+            "the mutation, not a verifier defect, PROVIDED each survivor is confirmed to be a "
+            "legal 2n set -- the verified_legal_2n_set field records that confirmation. The "
+            "teeth evidence is therefore two-part: almost all mutations are rejected, AND any "
+            "survivor is independently confirmed legal."),
+        "mode": "all_lines_one_mutation_each" if all_lines else f"sampled_{samples}",
+        "lines_used": len(todo),
+        "mutation_space_covered": (
+            "one deterministic mutation per line over the entire corpus" if all_lines else
+            "a random sample of lines, one random mutation each"),
+        "mutation_space_not_covered": (
+            "the full mutation space (every row pair x position pair x line) is ~7e7 mutations, "
+            "each needing an O(m^2) verification, and is not enumerated"),
         "sampled_lines": samples,
         "mutations_exercised": checked,
         "mutated_lines_still_decode": mutated_decode_ok,
@@ -284,6 +323,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--r1", default=default_r1, help="path to problems/MATH-001/results/r1")
     ap.add_argument("--json", default=None)
+    ap.add_argument("--teeth-all-lines", action="store_true",
+                    help="sweep every corpus line for the mutation teeth check")
     args = ap.parse_args(list(argv) if argv is not None else None)
 
     out: dict = {"r1_dir": args.r1}
@@ -313,7 +354,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"  decode errors={bad['n_decode_errors']}; verify failures={bad['stats'].get('verify_fail', 0)}")
 
         print("== 4) teeth check: decode-invariant-preserving mutations must break legality ==")
-        teeth = corpus_teeth_check(lit)
+        teeth = corpus_teeth_check(lit, all_lines=args.teeth_all_lines)
         out["corpus_teeth_check"] = teeth
         print(f"  {teeth}")
         if teeth["mutated_lines_still_decode"] and (teeth["teeth_fraction_illegal"] or 0) < 0.9:
