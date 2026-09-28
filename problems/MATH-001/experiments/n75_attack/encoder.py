@@ -372,7 +372,7 @@ def encode_cells(n: int, per_row: int = 2, lex_break: bool = False,
 # --------------------------------------------------------------------------- #
 
 
-def encode_orbits(n: int, group: str, target: int) -> CNF:
+def encode_orbits(n: int, group: str, target: int, gadget_sink: list | None = None) -> CNF:
     """Orbit-based CNF for a named symmetry group.
 
     Variables y[o]: the whole orbit is selected. A line's weighted count is
@@ -427,6 +427,7 @@ def encode_orbits(n: int, group: str, target: int) -> CNF:
             idx = cell_to_orb[cell]
             touched[idx] = touched.get(idx, 0) + 1
         items = [(cnf.var_of[("y", i)], w) for i, w in touched.items()]
+        _gadget_start = len(cnf.clauses) if gadget_sink is not None else 0
         heavy = [v for v, w in items if w >= 2]
         light = [v for v, w in items if w == 1]
         # any two of the heavy orbits already give >= 4 points on the line
@@ -440,6 +441,17 @@ def encode_orbits(n: int, group: str, target: int) -> CNF:
         # three light orbits reach 3 points
         for sub in combinations(light, 3):
             cnf.add_clause([-v for v in sub])
+        if gadget_sink is not None:
+            # Record exactly what this line's constraint emitted. Reconstructing it from the
+            # weights is what an earlier audit attempt did, and it did NOT match: the encoder
+            # uses weighted pairs when a heavy orbit is present, not all C(m,3) triples, so a
+            # reconstructed gadget rejected intact instances. The encoder is the authority.
+            gadget_sink.append({
+                "line": [list(c) for c in cells],
+                "line_vars": sorted(v for v, _w in items),
+                "items": [[v, w] for v, w in sorted(items)],
+                "clauses": [list(cl) for cl in cnf.clauses[_gadget_start:]],
+            })
     return cnf
 
 
@@ -495,7 +507,7 @@ def unit_propagation_conflict(clauses: Sequence[Sequence[int]],
 
 
 def audit_orbit_cnf(n: int, dimacs_path: str, group: str,
-                    explicit_limit: int = 4096) -> dict:
+                    explicit_limit: int = 4096, gadgets: list | None = None) -> dict:
     """Complete, encoding-aware audit of an ORBIT-formulation DIMACS (protocol gate G2).
 
     Two review findings are answered here.
@@ -531,11 +543,26 @@ def audit_orbit_cnf(n: int, dimacs_path: str, group: str,
                 continue
             clauses.append([int(t) for t in ln.split() if t != "0"])
 
+    # Index clause numbers by the variables they mention, ONCE. The first version scanned the
+    # whole clause list for every line, which for the documented n=75 command is
+    # 1,336,828 lines x 36,418,316 clauses ~ 4.9e13 visits before any SAT call -- an audit
+    # that cannot finish inside the research budget. With this index a line's local
+    # sub-formula is the union of the clause lists of its own variables.
+    clauses_by_var: dict[int, list[int]] = {}
+    for ci, cl in enumerate(clauses):
+        for lit in cl:
+            clauses_by_var.setdefault(abs(lit), []).append(ci)
+
     lines = maximal_lines(n, 3)
     missing: list[dict] = []
     local_vacuous: list[dict] = []
     checked = 0
     not_refuted: list[dict] = []
+    containment_mode = "manifest" if gadgets else "unavailable"
+    gadget_by_line = {}
+    if gadgets:
+        for g in gadgets:
+            gadget_by_line[tuple(tuple(c) for c in g["line"])] = g
     try:
         from pysat.solvers import Cadical153
         have_solver = True
@@ -552,14 +579,89 @@ def audit_orbit_cnf(n: int, dimacs_path: str, group: str,
         # local sub-formula: every clause mentioning at least one of this line's variables.
         # A seqcounter gadget for this line has all of its clauses tied to a line variable, so
         # the gadget is contained here, and nothing outside the line can influence it.
-        local = [cl for cl in clauses if any(abs(v) in lvars for v in cl)]
+        idxs: set[int] = set()
+        for v in lvars:
+            idxs.update(clauses_by_var.get(v, ()))
+        local = [clauses[i] for i in sorted(idxs)]
 
-        # (a) local satisfiability: the gadget must be satisfiable on its own, otherwise
-        #     the "it refutes every violation" claim would be vacuous for a different reason.
+        # (a) local satisfiability AND a weight-2 witness.
+        #
+        # Local satisfiability alone is not enough. A reviewer showed that a DIMACS containing
+        # only a negative unit -y_o for every orbit variable is locally satisfiable (take all
+        # false), refutes every violating selection, and would therefore be reported complete
+        # -- while containing none of the intended line gadgets. A formula that forces
+        # everything false is OVER-constrained, and an UNSAT drawn from it would be
+        # meaningless.
+        #
+        # The constraint the encoder is supposed to impose is "at most 2", so the gadget must
+        # also PERMIT a selection of weight exactly 2. Requiring a weight-2 witness rules out
+        # the degenerate all-false formula while still being purely local.
+        # (a) CONTAINMENT, derived from the encoder itself, plus local satisfiability.
+        #
+        # Local satisfiability alone is not enough. A reviewer showed that a DIMACS containing
+        # only a negative unit -y_o for every orbit variable is locally satisfiable (take all
+        # false), refutes every violating selection, and would be reported complete -- while
+        # containing none of the intended line gadgets. So the audit also builds the gadget the
+        # encoder WOULD emit for this line's items and requires the target to contain at least
+        # that many clauses mentioning the line's variables. A formula that omits the gadget
+        # cannot reach that count.
+        #
+        # (A weight-2 "not over-constrained" witness was tried and rejected: on a real instance
+        # other lines sharing a variable legitimately block a weight-2 selection for this line,
+        # so requiring one produced false negatives on intact n=3/n=4/n=5 instances.)
+        # (a) CONTAINMENT, taken from the ENCODER'S OWN RECORD of what this line's constraint
+        # emitted, when a gadget manifest is supplied.
+        #
+        # Two review findings drive this. First, local satisfiability alone is not enough: a
+        # DIMACS containing only a negative unit -y_o for every orbit variable is locally
+        # satisfiable, refutes every violating selection, and would be reported complete while
+        # containing none of the intended gadgets. Second, and found while fixing that, the
+        # gadget CANNOT be reconstructed from the weights: encode_orbits emits weighted pair
+        # clauses when a heavy orbit is present rather than all C(m,3) triples, so a rebuilt
+        # gadget rejected intact n=4/n=5 instances. The manifest removes the guesswork.
+        #
+        # Without a manifest the audit FAILS CLOSED: it reports containment as unavailable and
+        # therefore not complete, rather than assuming the constraint is present.
+        if gadgets is None:
+            missing.append({"line": L, "reason": ("no gadget manifest supplied, so it cannot be "
+                                                  "verified that this line's constraint is "
+                                                  "present; re-generate the instance with "
+                                                  "--gadget-manifest and pass it here")})
+            continue
+        g = gadget_by_line.get(tuple(tuple(c) for c in L))
+        if g is None:
+            missing.append({"line": L, "reason": "line absent from the gadget manifest"})
+            continue
+        present = {tuple(sorted(cl)) for cl in clauses}
+        absent = [cl for cl in g["clauses"] if tuple(sorted(cl)) not in present]
+        if absent:
+            missing.append({"line": L, "expected_gadget_clauses": len(g["clauses"]),
+                            "absent_gadget_clauses": len(absent), "first_absent": absent[:3],
+                            "reason": ("the formula does not contain the clauses the encoder "
+                                       "emitted for this line")})
+            continue
+
+        # the encoder's gadget uses auxiliary variables iff it mentions any variable outside
+        # this line's own orbit variables
+        gadget_uses_aux = any(abs(lit) not in lvars for cl in g["clauses"] for lit in cl)
         if have_solver:
             with Cadical153(bootstrap_with=local) as s:
                 if not s.solve():
                     local_vacuous.append({"line": L, "reason": "the line's local sub-formula is UNSAT"})
+                    continue
+            if gadget_uses_aux:
+                # reject a formula that simply forces every line variable false
+                selectable = False
+                for v in gadget_lits:
+                    with Cadical153(bootstrap_with=local) as s:
+                        if s.solve(assumptions=[v]):
+                            selectable = True
+                            break
+                if not selectable:
+                    local_vacuous.append({
+                        "line": L,
+                        "reason": ("no line variable can be selected, so the line is forced empty "
+                                   "rather than constrained to at-most-2")})
                     continue
         else:
             local_vacuous.append({"line": L, "reason": "no solver available for the local check"})
@@ -603,18 +705,26 @@ def audit_orbit_cnf(n: int, dimacs_path: str, group: str,
         "local_vacuous_lines": local_vacuous[:5],
         "not_refuted": not_refuted,
         "complete": complete,
+        "containment_mode": containment_mode,
         "completeness_scope": (
-            "per line: the local sub-formula of clauses mentioning that line's orbit variables "
-            "must be satisfiable AND must refute every minimal weight-violating selection. "
+            "per line: the formula must CONTAIN every clause the encoder emitted for that line "
+            "(verified against the encoder's own gadget manifest; without a manifest the audit "
+            "fails closed as incomplete). Then the local sub-formula of clauses mentioning that "
+            "line's orbit variables "
+            "must contain at least as many clauses mentioning its variables as the encoder's own "
+            "gadget for that line (so a formula omitting the gadget, or forcing every line "
+            "variable false, is rejected rather than approved), must be satisfiable, and must "
+            "refute every minimal weight-violating selection. "
             "Local, so it does not depend on the global formula being satisfiable and does not "
             "require solving the target instance."),
     }
 
 
-def audit_any(n: int, dimacs_path: str, group: str | None = None) -> dict:
+def audit_any(n: int, dimacs_path: str, group: str | None = None,
+              gadgets: list | None = None) -> dict:
     """Dispatch to the orbit-aware audit when a group is given, else the cell audit."""
     if group:
-        return audit_orbit_cnf(n, dimacs_path, group)
+        return audit_orbit_cnf(n, dimacs_path, group, gadgets=gadgets)
     return audit_cnf_covers_lines(n, dimacs_path)
 
 
@@ -814,6 +924,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     ap.add_argument("--lex-break", action="store_true")
     ap.add_argument("--out", required=True)
     ap.add_argument("--stats", default=None)
+    ap.add_argument("--gadget-manifest", default=None,
+                    help="write the per-line clause manifest the audit needs for G2")
     args = ap.parse_args(list(argv) if argv is not None else None)
 
     t_stats: dict = {"n": args.n, "formulation": args.formulation}
@@ -830,7 +942,12 @@ def main(argv: Sequence[str] | None = None) -> int:
                 with open(args.stats, "w", encoding="utf-8") as fh:
                     json.dump(t_stats, fh, indent=2, sort_keys=True)
             return 0
-        cnf = encode_orbits(args.n, args.group, 2 * args.n)
+        _sink = [] if args.gadget_manifest else None
+        cnf = encode_orbits(args.n, args.group, 2 * args.n, gadget_sink=_sink)
+        if args.gadget_manifest:
+            with open(args.gadget_manifest, "w", encoding="utf-8") as fh:
+                json.dump({"n": args.n, "group": args.group, "gadgets": _sink}, fh)
+            print(f"[manifest] {len(_sink)} line gadgets -> {args.gadget_manifest}")
 
     doc = cnf.dimacs()
     with open(args.out, "w", encoding="utf-8") as fh:

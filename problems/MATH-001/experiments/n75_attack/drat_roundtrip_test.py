@@ -360,6 +360,40 @@ def _child_pipeline(json_path: str) -> int:
     return 0 if ok else 1
 
 
+INDEPENDENT_CHECKERS = ("drat-trim", "cake_lpr", "gratgen", "lrat-check")
+
+
+def find_independent_checker() -> dict:
+    """Look for an actual independent proof checker instead of assuming there is none.
+
+    An earlier revision hardcoded `independent_checker = False`, which the reviewer correctly
+    observed makes SOLVED_WITH_CHECKED_PROOF UNREACHABLE: the compute protocol tells the
+    reader to provision drat-trim/cake_lpr to unblock G4, but the script could never return
+    green even after doing so. This detects one and, when found, runs it on the emitted trace.
+    """
+    import shutil
+    found = {}
+    for name in INDEPENDENT_CHECKERS:
+        path = shutil.which(name)
+        if path:
+            found[name] = path
+    return found
+
+
+def run_independent_checker(checker_path: str, cnf_path: str, proof_path: str) -> dict:
+    """Run an independent checker on (formula, proof). Returns its verdict."""
+    import subprocess
+    cmd = [checker_path, cnf_path, proof_path]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=3600)
+    except Exception as exc:  # noqa: BLE001
+        return {"ran": False, "error": f"{type(exc).__name__}: {exc}"}
+    out = (r.stdout or "") + (r.stderr or "")
+    verified = ("VERIFIED" in out.upper()) or ("s VERIFIED" in out)
+    return {"ran": True, "cmd": " ".join(cmd), "returncode": r.returncode,
+            "verified": bool(verified), "stdout_tail": out[-800:]}
+
+
 def compute_final_status(checker_selftest_ok: bool, n_checked: int, n_emitted: int,
                          independent_checker: bool) -> str:
     """The single place the exit semantics are decided. Pure function, unit-tested.
@@ -475,7 +509,24 @@ def main(argv: Sequence[str] | None = None) -> int:
     checked = [r for r in results if r["status"] == "SOLVED_WITH_CHECKED_PROOF"]
     emitted = [r for r in results if r.get("proof_lines")]
 
-    independent_checker = False  # no drat-trim / cake_lpr / gratgen in this environment
+    # Detect a real independent checker rather than assuming none exists; if one is present,
+    # actually run it on the emitted trace and derive the flag from its verdict.
+    available = find_independent_checker()
+    checker_run: dict = {"available": available, "ran": False}
+    independent_checker = False
+    if available and emitted:
+        name, path = next(iter(available.items()))
+        trace = next((r for r in results if r.get("drat_path")), None)
+        if trace:
+            cnf_path = os.path.join(json_dir, f"{trace['case']}.cnf")
+            if os.path.exists(cnf_path):
+                checker_run = {"available": available, "name": name,
+                               **run_independent_checker(path, cnf_path,
+                                                         os.path.join(json_dir, trace["drat_path"]))}
+                independent_checker = bool(checker_run.get("verified"))
+            else:
+                checker_run["note"] = ("the instance DIMACS was not written next to the trace, "
+                                       "so the checker could not be invoked")
     final = compute_final_status(st["ok"], len(checked), len(emitted), independent_checker)
 
     # `final_status` is the precise per-run diagnosis; `overall_certification` is the
@@ -489,6 +540,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         "cases_with_checked_proof": len(checked),
         "certification_requires_independent_checker": True,
         "independent_drat_checker_available": independent_checker,
+        "independent_checker_run": checker_run,
+        "independent_checker_detection": (
+            "the flag is derived from actually running a detected checker, not hardcoded. An "
+            "earlier revision hardcoded False, which made SOLVED_WITH_CHECKED_PROOF "
+            "unreachable even after a checker was provisioned -- contradicting the compute "
+            "protocol's own route to unblocking G4."),
+        "checkers_searched": list(INDEPENDENT_CHECKERS),
         "kissat_proof_support": ("PySAT raises NotImplementedError: proof logging is not "
                                  "supported by Kissat"),
         "environment_observations": env_obs + [

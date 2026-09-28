@@ -250,29 +250,38 @@ class TestOrbitAudit(unittest.TestCase):
         write_dimacs(cnf, path)
         return path
 
+    def _encode_with_manifest(self, n, group, target):
+        """Encode with the encoder so the gadget manifest matches what was emitted."""
+        sink = []
+        cnf = encode_orbits(n, group, target, gadget_sink=sink)
+        return cnf, sink
+
     def test_intact_n3_rot2_is_complete(self) -> None:
         """The reviewer's exact reproduction case."""
-        path = self._write(encode_orbits(3, "rot2", 6), "n3_rot2.cnf")
-        rep = audit_orbit_cnf(3, path, "rot2")
+        cnf, sink = self._encode_with_manifest(3, "rot2", 6)
+        path = self._write(cnf, "n3_rot2.cnf")
+        rep = audit_orbit_cnf(3, path, "rot2", gadgets=sink)
         self.assertTrue(rep["complete"], rep)
         self.assertEqual(rep["lines_with_unrefuted_violation"], 0)
         self.assertEqual(rep["local_vacuous_lines"], [])
         self.assertGreater(rep["lines_checked"], 0)
 
     def test_intact_n5_rot2_is_complete(self) -> None:
-        path = self._write(encode_orbits(5, "rot2", 10), "n5_rot2.cnf")
-        rep = audit_orbit_cnf(5, path, "rot2")
+        cnf, sink = self._encode_with_manifest(5, "rot2", 10)
+        path = self._write(cnf, "n5_rot2.cnf")
+        rep = audit_orbit_cnf(5, path, "rot2", gadgets=sink)
         self.assertTrue(rep["complete"], rep)
 
     def test_intact_n4_rot4_is_complete(self) -> None:
-        path = self._write(encode_orbits(4, "rot4", 8), "n4_rot4.cnf")
-        rep = audit_orbit_cnf(4, path, "rot4")
+        cnf, sink = self._encode_with_manifest(4, "rot4", 8)
+        path = self._write(cnf, "n4_rot4.cnf")
+        rep = audit_orbit_cnf(4, path, "rot4", gadgets=sink)
         self.assertTrue(rep["complete"], rep)
 
     def test_removing_a_line_gadget_makes_the_orbit_audit_red(self) -> None:
         """Delete every clause mentioning one line's orbit variables -> must be RED."""
         n, group = 5, "rot2"
-        cnf = encode_orbits(n, group, 2 * n)
+        cnf, sink = self._encode_with_manifest(n, group, 2 * n)
         orbs = orbits(n, __import__("encoder").SYMMETRY_GROUPS[group])
         cell_to_orb = {}
         for idx, o in enumerate(orbs):
@@ -285,9 +294,36 @@ class TestOrbitAudit(unittest.TestCase):
         removed = before - len(cnf.clauses)
         self.assertGreater(removed, 0, "the chosen line must have had a gadget")
         path = self._write(cnf, "n5_rot2_broken.cnf")
-        rep = audit_orbit_cnf(n, path, group)
+        rep = audit_orbit_cnf(n, path, group, gadgets=sink)
         self.assertFalse(rep["complete"], "a removed line gadget must be detected")
-        self.assertTrue(rep["not_refuted"] or rep["local_vacuous_lines"])
+        # detection may land in any of the three channels: a missing gadget clause
+        # (lines_with_unrefuted_violation counts the `missing` list), an unsatisfiable local
+        # sub-formula, or an unrefuted violating selection
+        self.assertTrue(rep["lines_with_unrefuted_violation"] > 0
+                        or rep["local_vacuous_lines"]
+                        or rep["not_refuted"],
+                        "the removed gadget must be reported through some channel")
+
+    def test_missing_manifest_fails_closed(self) -> None:
+        """Without a gadget manifest the audit must NOT report completeness."""
+        cnf, _sink = self._encode_with_manifest(3, "rot2", 6)
+        path = self._write(cnf, "n3_nomanifest.cnf")
+        rep = audit_orbit_cnf(3, path, "rot2")          # no gadgets=
+        self.assertFalse(rep["complete"])
+        self.assertEqual(rep["containment_mode"], "unavailable")
+
+    def test_overconstrained_degenerate_formula_is_red(self) -> None:
+        """The reviewer's construction: only -y_o units, no gadgets at all."""
+        n, group = 3, "rot2"
+        _cnf, sink = self._encode_with_manifest(n, group, 6)
+        orbs = orbits(n, __import__("encoder").SYMMETRY_GROUPS[group])
+        path = os.path.join(self.root, "degen.cnf")
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write("p cnf %d %d\n" % (len(orbs), len(orbs)))
+            for i in range(1, len(orbs) + 1):
+                fh.write("-%d 0\n" % i)
+        rep = audit_orbit_cnf(n, path, group, gadgets=sink)
+        self.assertFalse(rep["complete"], "a formula containing no gadgets must not pass")
 
     def test_unrelated_global_contradiction_does_not_make_the_orbit_audit_vacuous(self) -> None:
         """The local check must not be defeated by a contradiction elsewhere.
@@ -297,7 +333,7 @@ class TestOrbitAudit(unittest.TestCase):
         sub-formula check is unaffected by clauses outside the line.
         """
         n, group = 5, "rot2"
-        cnf = encode_orbits(n, group, 2 * n)
+        cnf, sink = self._encode_with_manifest(n, group, 2 * n)
         # add a contradiction on a variable no line touches: introduce a fresh var via an
         # unused literal pair. Variable nvars+1 is fresh and appears in no line gadget.
         fresh = cnf.nvars + 1
@@ -305,7 +341,7 @@ class TestOrbitAudit(unittest.TestCase):
         cnf.add_clause([fresh])
         cnf.add_clause([-fresh])
         path = self._write(cnf, "n5_rot2_extra.cnf")
-        rep = audit_orbit_cnf(n, path, group)
+        rep = audit_orbit_cnf(n, path, group, gadgets=sink)
         # the line gadgets are untouched, so completeness is preserved and the audit is not
         # marked vacuous by the unrelated contradiction
         self.assertTrue(rep["complete"], rep)

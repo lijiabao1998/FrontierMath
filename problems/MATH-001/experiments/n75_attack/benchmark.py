@@ -122,7 +122,8 @@ def negative_controls(n: int = 5) -> dict:
     return out
 
 
-def audit_instance(path: str, n: int, group: str | None, out: dict) -> dict:
+def audit_instance(path: str, n: int, group: str | None, out: dict,
+                   manifest: str | None = None) -> dict:
     """Run the COMPLETE audit on an actual target DIMACS (protocol gate G2).
 
     Added because the protocol previously told the reader to run benchmark.py, whose
@@ -136,7 +137,11 @@ def audit_instance(path: str, n: int, group: str | None, out: dict) -> dict:
     # Dispatch on the formulation. The cell audit assumes row-major cell variable ids,
     # which is wrong for the orbit encoding where many cells share one variable; a
     # reviewer showed the cell audit reports an intact n=3 rot2 instance as incomplete.
-    rep = audit_any(n, path, group)
+    gadgets = None
+    if manifest:
+        with open(manifest, "r", encoding="utf-8") as fh:
+            gadgets = json.load(fh)["gadgets"]
+    rep = audit_any(n, path, group, gadgets=gadgets)
     res = {
         "path": os.path.basename(path), "ran": True,
         "dimacs_sha256": None, "n": n, "group": group,
@@ -155,6 +160,7 @@ def audit_instance(path: str, n: int, group: str | None, out: dict) -> dict:
         "layer2_vacuous": rep.get("layer2", {}).get("vacuous"),
         "layer2_triples_checked": rep.get("layer2", {}).get("triples_checked"),
         "layer2_not_refuted": rep.get("layer2", {}).get("not_refuted"),
+        "containment_mode": rep.get("containment_mode"),
         "completeness_scope": rep["completeness_scope"],
     }
     h = hashlib.sha256()
@@ -173,6 +179,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     ap.add_argument("--audit-instance", default=None, metavar="DIMACS",
                     help="run protocol gate G2 against this actual instance and exit")
     ap.add_argument("--group", default=None, help="symmetry group label for the audit record")
+    ap.add_argument("--gadget-manifest", default=None,
+                    help="encoder-produced per-line clause manifest; REQUIRED for G2 on an "
+                         "orbit instance (the audit fails closed without it)")
     ap.add_argument("--skip-instances", action="store_true")
     ap.add_argument("--json", default=os.path.join(HERE, "benchmark.json"))
     args = ap.parse_args(list(argv) if argv is not None else None)
@@ -182,7 +191,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if args.audit_instance:
         print(f"== G2) complete audit of the actual target instance: {args.audit_instance} ==")
-        res = audit_instance(args.audit_instance, n, args.group, bench)
+        res = audit_instance(args.audit_instance, n, args.group, bench, args.gadget_manifest)
         for k in ("ran", "dimacs_sha256", "complete", "layer1_lines_with_missing_triple",
                   "layer2_network_lines", "layer2_lines_unchecked", "layer2_formula_satisfiable",
                   "layer2_vacuous", "gate_G2_satisfied"):

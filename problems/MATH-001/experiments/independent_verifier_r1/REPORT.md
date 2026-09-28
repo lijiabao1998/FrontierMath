@@ -12,11 +12,19 @@ Governance pin: `07d2b13051b83215182e411e1612f92f1912d8fb` (unchanged; no govern
 > - **Admitted round: `runs/20260928T034737813749Z-dsk-MATH-001/`** (verdict
 >   `PARTIAL_PROGRESS`), with a preflight that ran fresh and an acceptance frozen
 >   **before** any computation.
-> - The verifications described in this report were **re-executed inside that round**
->   and only the in-round outputs are recorded in its `round.json` and
->   `RERUN_EVIDENCE.json`; the per-command logs are under
->   `problems/MATH-001/results/20260928T034737813749Z-dsk-MATH-001/`. All nine
->   accepted criteria (A0–A8) passed there.
+> - **Run status: NOT RUN IN THIS PR.** The round was executed once, but the review found
+>   that committing the verifier, gates and thresholds together with the reports those
+>   components approve does not provide a frozen verifier/gate boundary. The results were
+>   therefore split out to branch `dsk/MATH-001-round-execution`, and the authoritative
+>   `round.json` here records `execution_status.executed_in_this_pr: false`. The evidence
+>   directory and `RERUN_EVIDENCE.json` referenced by that earlier revision are **absent from
+>   this branch**. An earlier version of this report said the round had been executed and
+>   that all nine criteria passed; that claim is **withdrawn here** and will be reinstated
+>   only when the follow-up PR commits the evidence alongside it.
+> - For reproducibility, the intended command sequence is `reexecute_round.py` (staged via
+>   `--only`, merged with `--merge`) writing into
+>   `problems/MATH-001/results/<round-id>/`. See the follow-up branch for the actual outputs
+>   and the two defects those runs found in this round's own code.
 > - The version of this work that preceded the round is labelled **PRE-ADMISSION
 >   EXPLORATORY WORK** in `../EXPLORATORY_WORK.md`, together with the record that an
 >   earlier *retrospective* `round.json` was created and then **deleted** rather than
