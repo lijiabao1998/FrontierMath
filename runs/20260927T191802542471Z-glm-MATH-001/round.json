@@ -117,7 +117,12 @@
         "n75_triples_lines_only": 23340962,
         "n75_seq_aux": 8804510
       },
-      "hash_manifest": "verify_manifest.py; regenerated after final edits"
+      "hash_manifest": "verify_manifest.py; regenerated after final edits",
+      "frontier_verification": {
+        "fix": "Codex P1: own-decoder claim was count-only (no decode of n>62 lines); extended 90-char alphabet (semantics attributed to dsk PR#5 decoder) implemented in decode_and_verify.py decode_ext",
+        "result": "all five frontier configs (n=71,72,73,74,76) decoded and PASS verifier v1 (0 collinear triples); n=75 zero configs confirmed",
+        "artifact": "problems/MATH-001/results/r2/frontier_configs_verification.json"
+      }
     },
     "unsat_evidence_semantics": {
       "solver_unsat": "SOLVER_UNSAT_UNCERTIFIED (not evidence)",

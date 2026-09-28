@@ -85,6 +85,40 @@ def decode_line(line: str, idx: int) -> tuple[dict | None, str]:
     return cert, ""
 
 
+
+# --- extended alphabet (n up to 90), semantics per Flammenkamp docs and the
+# dsk independent-verifier implementation (PR #5, attributed) ---
+EXT_ALPHABET = ("0123456789"
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                "abcdefghijklmnopqrstuvwxyz"
+                "#$%&@?!()[]<>{}=*+|-/~^_:;,.")
+CHAR_TO_COL = {ch: i for i, ch in enumerate(EXT_ALPHABET)}
+
+
+def decode_ext(line: str):
+    sym = line[0]
+    data = line[1:]
+    if not data or len(data) % 2:
+        return None
+    n = len(data) // 2
+    if n < 2:
+        return None
+    cols = [CHAR_TO_COL[c] for c in data]
+    if max(cols) != n - 1:
+        return None
+    pts = []
+    for j in range(n):
+        c1, c2 = cols[2 * j], cols[2 * j + 1]
+        if c1 == c2:
+            return None
+        pts.append([c1 + 1, j + 1])
+        pts.append([c2 + 1, j + 1])
+    return {"problem": "MATH-001", "n": n, "target": 2 * n, "points": pts,
+            "source": "flammenkamp-all-known-solutions",
+            "origin_ref": "https://wwwhomes.uni-bielefeld.de/achim/no3in/download/all_known_solutions (extended alphabet semantics attributed to dsk PR #5 decoder)",
+            "symmetry_class": SYMCLASS.get(sym, "?")}
+
+
 def main(argv: list[str]) -> int:
     if len(argv) != 3:
         print("usage: decode_and_verify.py <known_solutions> <outdir>", file=sys.stderr)

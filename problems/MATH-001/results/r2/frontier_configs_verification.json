@@ -1,0 +1,44 @@
+{
+  "verified": [
+    {
+      "line": 431004,
+      "n": 71,
+      "sym": "rct4",
+      "errors": []
+    },
+    {
+      "line": 431005,
+      "n": 72,
+      "sym": "rot4",
+      "errors": []
+    },
+    {
+      "line": 431006,
+      "n": 73,
+      "sym": "rct4",
+      "errors": []
+    },
+    {
+      "line": 431007,
+      "n": 74,
+      "sym": "rot4",
+      "errors": []
+    },
+    {
+      "line": 431008,
+      "n": 76,
+      "sym": "rot4",
+      "errors": []
+    }
+  ],
+  "failed": [],
+  "counts_by_n": {
+    "71": 1,
+    "72": 1,
+    "73": 1,
+    "74": 1,
+    "75": 0,
+    "76": 1
+  },
+  "attribution": "retrieval path + extended-alphabet semantics identified by dsk PR#5 (independent verifier evidence); decode+verify executed by glm with own verifier v1"
+}

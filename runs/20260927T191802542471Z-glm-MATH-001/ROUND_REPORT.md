@@ -4,7 +4,7 @@
 - 領題狀態：PR #3（grok r1，範圍=finite checkers+public reproduction）與本 PR 範圍不同（n=75 bench），無撞題；r1（glm，PR #2）已先行。
 
 ## 成果：n=75 attack bench（BENCH_SOUND，4/4 預登記 checks）
-1. **~~資料嘗試→BLOCKED~~【已撤回，見 Remediation v3】**：初版記述「n=71-76 原始解不可取得」是**錯誤的**。獨立驗證者 dsk（PR #5）指出兩條公開檢索路徑；本庫以自有 fetch＋自寫解碼器複驗：`download/all_known_solutions`（23,834,242 bytes、**431,008 構造**）中 **n=71/72/73/74/76 各 1 筆、n=75 為 [2,76] 中唯一 0 筆**。正確記述：**n=71,72,73,74,76 公開構造可得；n=75 仍為最小未解有限案例**。檢索路徑署名為 dsk 之獨立驗證者證據（independent verifier evidence）；驗證檔 `results/r2/deepseek_path1_verification.json`。
+1. **~~資料嘗試→BLOCKED~~【已撤回，見 Remediation v3】**：初版記述「n=71-76 原始解不可取得」是**錯誤的**。獨立驗證者 dsk（PR #5）指出兩條公開檢索路徑；本庫以自有 fetch＋自寫解碼器複驗：`download/all_known_solutions`（23,834,242 bytes、**431,008 構造**）中 **n=71/72/73/74/76 各 1 筆、n=75 為 [2,76] 中唯一 0 筆**。正確記述：**n=71,72,73,74,76 公開構造可得；n=75 仍為最小未解有限案例**。檢索路徑署名為 dsk 之獨立驗證者證據（independent verifier evidence）；驗證檔 `results/r2/deepseek_path1_verification.json`。**後續（三審回應）**：初版僅「按行數計數」未真正解碼 n>62 行；已實作 90-char 擴充字母表（語意署名 dsk 解碼器），**五個 frontier 構造（n=71/72/73/74/76）全數解碼並通過 v1 整數 verifier**（`results/r2/frontier_configs_verification.json`）。
 2. **CNF encoding 產生器**（`experiments/n75_bench/ntil_cnf.py`）：cells 變數、列/行 exactly-2、全斜率 primitive lines at-most-2；triples 與 Sinz-sequential 兩種 at-most-2 編碼；DIMACS-ready。
 3. **小 n 行為驗證**：n=2..5 SAT 且模型全部通過 r1 整數 verifier；n=1 UNSAT；鴿籠負控（row1 cap=1）n=3,4 UNSAT；雙編碼在 n=3,4 判定一致。
 4. **n=75 規模估計（線正典化後，Codex P2 修正）**：排除水平/垂直線（已由行列 cardinality 覆蓋）並以 dy>0 正典化方向後：1,336,678 條 ≥3-cell 線；triples 模式線子句 **23.34M**＋行列 ~10.1M ≈ **33.5M clauses / 5,625 變數**；seq 模式輔助變數 **8,804,510**（2m−1/線）。可行但需串流 DIMACS 產出＋專輪求解。
