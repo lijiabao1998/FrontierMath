@@ -1,0 +1,32 @@
+{
+  "index": 1,
+  "n": 76,
+  "path_a": {
+    "code_len": 153,
+    "code_sha256": "b1d4d6fc115c887cf719a4b0265691420ffee03f4d1f01719a2a07a0833b7fbe",
+    "cols_used": 76,
+    "distinct": 152,
+    "legal": true,
+    "points": 152,
+    "rows_used": 76
+  },
+  "path_b": {
+    "count_line": null,
+    "distinct": 152,
+    "expected_rows": 76,
+    "grid_rows_parsed": 76,
+    "header_lines": [
+      "1. solution:     symmetry rot4"
+    ],
+    "legal": true,
+    "no_configurations_known": false,
+    "points": 152,
+    "raw_pre_chars": 11904,
+    "rows_complete": true
+  },
+  "paths_agree": true,
+  "points_only_in_A": [],
+  "points_only_in_B": [],
+  "symm": "o",
+  "symmetry_name": "rot4"
+}

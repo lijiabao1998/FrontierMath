@@ -77,8 +77,21 @@ cut date 2026-08-31).
 `n=76` (152 points, Heule's record), `n=74` (148), `n=73` (146), `n=72` (144), `n=71` (142).
 All use every row and column. Per-record code hashes are in the evidence file.
 
-**Evidence:** `evidence/all_known_solutions_verification.json`,
-`evidence/record_symmetries_ge65.json`, `evidence/r1_artifact_verification.json`.
+**Evidence.** The corpus verification is `evidence/all_known_solutions_verification.json`. The
+**five cross-check reports are committed individually** —
+`evidence/record_crosscheck_n{71,72,73,74,76}.json` — each carrying `paths_agree: true`, the
+per-path point counts, and the coded-entry `code_sha256`, so an offline reviewer can check the
+"identical point sets" claim without reaching the mutable CGI endpoint:
+
+| n | points | legal | rows/cols | paths agree |
+|---|---|---|---|---|
+| 71 | 142 | true | 71/71 | true |
+| 72 | 144 | true | 72/72 | true |
+| 73 | 146 | true | 73/73 | true |
+| 74 | 148 | true | 74/74 | true |
+| 76 | 152 | true | 76/76 | true |
+
+Recorded symmetry classes: `evidence/record_symmetries_ge65.json`.
 
 **Reproduce** (these exact commands were executed from this tree, and their outputs are the
 numbers quoted above):
@@ -92,12 +105,25 @@ python cross_check_database.py --file ../provenance/dl/all_known_solutions      
 #   -> paths_agree True, points 152, legal True   (repeat for --n 74 o, 73 c, 72 o, 71 c)
 python symmetry_probe.py --file ../provenance/dl/all_known_solutions        --n-min 65 --json /tmp/sym.json
 ```
+The five cross-check reports in `evidence/` were produced by exactly the `cross_check_database.py`
+invocation above, once per record, and committed so the claim does not depend on a live endpoint
+being reachable at review time.
 
-**Caveat on `evidence/r1_artifact_verification.json`.** That file was produced against the r1
-tree on `glm/MATH-001-baseline-r1`; its Flammenkamp-corpus portion is reproducible here with
-`database/audit_r1_artifacts.py`, but its self-certificate portion requires that branch (without
-it the script finds zero self-certificate files and reports an empty, vacuous pass — which is
-why this branch cites the corpus result and not the self-certificate result).
+The corpus verifier the C3 corpus numbers come from is also runnable here:
+```bash
+cd database && python audit_r1_artifacts.py --r1 ../verifier --json /tmp/r1.json
+#   -> 36912 decoded, 36912 legal, 0 failures, mutation teeth fraction 1.0
+#      (its self-certificate section is vacuous in this tree; see the scope note above)
+```
+
+**Scope of `evidence/r1_artifact_verification.json` — read this before citing it.** The file is
+regenerated in this tree by `database/audit_r1_artifacts.py --r1 ../verifier`. Its
+**Flammenkamp-corpus portion** (36,912 configurations decoded, 36,912 legal, 0 failures, plus the
+mutation teeth fraction of 1.0) is fully reproducible here and is what this branch cites. Its
+**self-certificate portion is VACUOUS in this tree**: there is no `self/` directory under
+`verifier/`, so the script finds zero certificate files and reports an empty pass. That section
+must not be cited, and the earlier revision of this document wrongly implied the whole file
+supported the C3 claim.
 
 ## C4 — Measured symmetry classes of the published records
 

@@ -1,11 +1,17 @@
 {
   "corpus_teeth_check": {
+    "lines_used": 400,
+    "mode": "sampled_400",
     "mutated_lines_still_decode": 371,
     "mutated_now_illegal": 371,
     "mutated_still_legal": 0,
+    "mutation_space_covered": "a random sample of lines, one random mutation each",
+    "mutation_space_not_covered": "the full mutation space (every row pair x position pair x line) is ~7e7 mutations, each needing an O(m^2) verification, and is not enumerated",
     "mutations_exercised": 371,
     "sampled_lines": 400,
     "skipped_swaps": 29,
+    "survivor_interpretation": "A survivor means the mutated configuration is still legal. That is a property of the mutation, not a verifier defect, PROVIDED each survivor is confirmed to be a legal 2n set -- the verified_legal_2n_set field records that confirmation. The teeth evidence is therefore two-part: almost all mutations are rejected, AND any survivor is independently confirmed legal.",
+    "survivors_detail": [],
     "teeth_fraction_illegal": 1.0
   },
   "flammenkamp_buggy_mapper": {
@@ -172,7 +178,7 @@
       "8": 57,
       "9": 51
     },
-    "seconds": 144.46,
+    "seconds": 194.63,
     "stats": {
       "decode_error": 1691,
       "decoded": 35221,
@@ -289,207 +295,17 @@
       "8": 57,
       "9": 51
     },
-    "seconds": 171.93,
+    "seconds": 210.92,
     "stats": {
       "decoded": 36912,
       "verify_pass": 36912
     },
     "verify_failures": []
   },
-  "r1_dir": "C:/Users/Leon1/OneDrive/Desktop/\u524d\u6cbfRP/FrontierMath/problems/MATH-001/results/r1",
+  "r1_dir": "../verifier",
   "self_certs": {
     "all_pass": true,
-    "files": 9,
-    "results": [
-      {
-        "checks": {
-          "C1_in_range_1_to_n": true,
-          "C1_integer_coordinates": true,
-          "C2_no_duplicate_entries": true,
-          "C3_count_eq_expect": true,
-          "C4_no_three_in_line_pairlines": true,
-          "C5_agrees_with_C4": true,
-          "C5_no_three_in_line_rationals": true,
-          "C6_agrees_with_C4": true,
-          "C6_no_three_in_line_naive_triples": true
-        },
-        "declared_target": 4,
-        "distinct_points": 4,
-        "file": "self_n02.json",
-        "math_ok": true,
-        "n": 2,
-        "target_is_2n": true,
-        "violations": [],
-        "wellformed": true
-      },
-      {
-        "checks": {
-          "C1_in_range_1_to_n": true,
-          "C1_integer_coordinates": true,
-          "C2_no_duplicate_entries": true,
-          "C3_count_eq_expect": true,
-          "C4_no_three_in_line_pairlines": true,
-          "C5_agrees_with_C4": true,
-          "C5_no_three_in_line_rationals": true,
-          "C6_agrees_with_C4": true,
-          "C6_no_three_in_line_naive_triples": true
-        },
-        "declared_target": 6,
-        "distinct_points": 6,
-        "file": "self_n03.json",
-        "math_ok": true,
-        "n": 3,
-        "target_is_2n": true,
-        "violations": [],
-        "wellformed": true
-      },
-      {
-        "checks": {
-          "C1_in_range_1_to_n": true,
-          "C1_integer_coordinates": true,
-          "C2_no_duplicate_entries": true,
-          "C3_count_eq_expect": true,
-          "C4_no_three_in_line_pairlines": true,
-          "C5_agrees_with_C4": true,
-          "C5_no_three_in_line_rationals": true,
-          "C6_agrees_with_C4": true,
-          "C6_no_three_in_line_naive_triples": true
-        },
-        "declared_target": 8,
-        "distinct_points": 8,
-        "file": "self_n04.json",
-        "math_ok": true,
-        "n": 4,
-        "target_is_2n": true,
-        "violations": [],
-        "wellformed": true
-      },
-      {
-        "checks": {
-          "C1_in_range_1_to_n": true,
-          "C1_integer_coordinates": true,
-          "C2_no_duplicate_entries": true,
-          "C3_count_eq_expect": true,
-          "C4_no_three_in_line_pairlines": true,
-          "C5_agrees_with_C4": true,
-          "C5_no_three_in_line_rationals": true,
-          "C6_agrees_with_C4": true,
-          "C6_no_three_in_line_naive_triples": true
-        },
-        "declared_target": 10,
-        "distinct_points": 10,
-        "file": "self_n05.json",
-        "math_ok": true,
-        "n": 5,
-        "target_is_2n": true,
-        "violations": [],
-        "wellformed": true
-      },
-      {
-        "checks": {
-          "C1_in_range_1_to_n": true,
-          "C1_integer_coordinates": true,
-          "C2_no_duplicate_entries": true,
-          "C3_count_eq_expect": true,
-          "C4_no_three_in_line_pairlines": true,
-          "C5_agrees_with_C4": true,
-          "C5_no_three_in_line_rationals": true,
-          "C6_agrees_with_C4": true,
-          "C6_no_three_in_line_naive_triples": true
-        },
-        "declared_target": 12,
-        "distinct_points": 12,
-        "file": "self_n06.json",
-        "math_ok": true,
-        "n": 6,
-        "target_is_2n": true,
-        "violations": [],
-        "wellformed": true
-      },
-      {
-        "checks": {
-          "C1_in_range_1_to_n": true,
-          "C1_integer_coordinates": true,
-          "C2_no_duplicate_entries": true,
-          "C3_count_eq_expect": true,
-          "C4_no_three_in_line_pairlines": true,
-          "C5_agrees_with_C4": true,
-          "C5_no_three_in_line_rationals": true,
-          "C6_agrees_with_C4": true,
-          "C6_no_three_in_line_naive_triples": true
-        },
-        "declared_target": 14,
-        "distinct_points": 14,
-        "file": "self_n07.json",
-        "math_ok": true,
-        "n": 7,
-        "target_is_2n": true,
-        "violations": [],
-        "wellformed": true
-      },
-      {
-        "checks": {
-          "C1_in_range_1_to_n": true,
-          "C1_integer_coordinates": true,
-          "C2_no_duplicate_entries": true,
-          "C3_count_eq_expect": true,
-          "C4_no_three_in_line_pairlines": true,
-          "C5_agrees_with_C4": true,
-          "C5_no_three_in_line_rationals": true,
-          "C6_agrees_with_C4": true,
-          "C6_no_three_in_line_naive_triples": true
-        },
-        "declared_target": 16,
-        "distinct_points": 16,
-        "file": "self_n08.json",
-        "math_ok": true,
-        "n": 8,
-        "target_is_2n": true,
-        "violations": [],
-        "wellformed": true
-      },
-      {
-        "checks": {
-          "C1_in_range_1_to_n": true,
-          "C1_integer_coordinates": true,
-          "C2_no_duplicate_entries": true,
-          "C3_count_eq_expect": true,
-          "C4_no_three_in_line_pairlines": true,
-          "C5_agrees_with_C4": true,
-          "C5_no_three_in_line_rationals": true,
-          "C6_agrees_with_C4": true,
-          "C6_no_three_in_line_naive_triples": true
-        },
-        "declared_target": 18,
-        "distinct_points": 18,
-        "file": "self_n09.json",
-        "math_ok": true,
-        "n": 9,
-        "target_is_2n": true,
-        "violations": [],
-        "wellformed": true
-      },
-      {
-        "checks": {
-          "C1_in_range_1_to_n": true,
-          "C1_integer_coordinates": true,
-          "C2_no_duplicate_entries": true,
-          "C3_count_eq_expect": true,
-          "C4_no_three_in_line_pairlines": true,
-          "C5_agrees_with_C4": true,
-          "C5_no_three_in_line_rationals": true,
-          "C6_agrees_with_C4": true,
-          "C6_no_three_in_line_naive_triples": true
-        },
-        "declared_target": 20,
-        "distinct_points": 20,
-        "file": "self_n10.json",
-        "math_ok": true,
-        "n": 10,
-        "target_is_2n": true,
-        "violations": [],
-        "wellformed": true
-      }
-    ]
+    "files": 0,
+    "results": []
   }
 }

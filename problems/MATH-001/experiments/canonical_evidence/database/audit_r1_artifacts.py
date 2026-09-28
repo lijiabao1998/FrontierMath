@@ -26,7 +26,13 @@ import time
 from collections import Counter, defaultdict
 from typing import Sequence
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# ntil_verify.py lives in the sibling verifier/ directory in the canonical layout, so both
+# locations are added. An earlier version added only the script's own directory, which raised
+# ModuleNotFoundError immediately when run as documented.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+for _p in (_HERE, os.path.join(_HERE, "..", "verifier")):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 from ntil_verify import verify  # noqa: E402
 
 # --------------------------------------------------------------------------- #
@@ -337,8 +343,13 @@ def main(argv: Sequence[str] | None = None) -> int:
               f"math_ok={r['math_ok']}  wellformed={r['wellformed']}")
     print(f"  -> all_pass={self_audit['all_pass']}")
 
-    lit = os.path.join(here, "..", "lit_data", "known_solutions_1997.txt")
-    lit = os.path.abspath(lit)
+    # The corpus is fetched by provenance/fetch_third_party.py into provenance/, so that is the
+    # default here. An earlier version looked in ../lit_data, took the "not found" branch and
+    # still exited 0, which made an OMITTED audit look successful -- and made this branch's
+    # reproducibility claim false. Missing corpus is now a failure, not a skip.
+    candidates = [os.path.abspath(os.path.join(here, "..", "provenance", "known_solutions_1997.txt")),
+                  os.path.abspath(os.path.join(here, "..", "lit_data", "known_solutions_1997.txt"))]
+    lit = next((c for c in candidates if os.path.exists(c)), candidates[0])
     if os.path.exists(lit):
         print("== 2) Flammenkamp corpus, independent decode + verify ==")
         good = audit_flammenkamp(lit)
@@ -360,14 +371,18 @@ def main(argv: Sequence[str] | None = None) -> int:
         if teeth["mutated_lines_still_decode"] and (teeth["teeth_fraction_illegal"] or 0) < 0.9:
             print("  !! WARNING: mutated lines remain legal too often; verification may be vacuous")
     else:
-        print(f"[skip] corpus not found at {lit}", file=sys.stderr)
+        print(f"[FAIL] corpus not found at any of {candidates}", file=sys.stderr)
+        print("       fetch it first:  cd ../provenance && python fetch_third_party.py",
+              file=sys.stderr)
         out["flammenkamp_correct_mapper"] = None
+        out["missing_corpus"] = True
 
     if args.json:
         with open(args.json, "w", encoding="utf-8") as fh:
             json.dump(out, fh, indent=2, sort_keys=True)
         print(f"[written] {args.json}")
-    return 0
+    # a missing corpus is a FAILURE, so an omitted audit cannot look successful
+    return 1 if out.get("missing_corpus") else 0
 
 
 if __name__ == "__main__":

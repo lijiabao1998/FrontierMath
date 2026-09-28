@@ -1,0 +1,32 @@
+{
+  "index": 1,
+  "n": 73,
+  "path_a": {
+    "code_len": 147,
+    "code_sha256": "fb1429dee3d56691e72f27f8752c6cfec05576311fb9a38e7ebe6a5cbfc16c42",
+    "cols_used": 73,
+    "distinct": 146,
+    "legal": true,
+    "points": 146,
+    "rows_used": 73
+  },
+  "path_b": {
+    "count_line": null,
+    "distinct": 146,
+    "expected_rows": 73,
+    "grid_rows_parsed": 73,
+    "header_lines": [
+      "1. solution:     symmetry rct4"
+    ],
+    "legal": true,
+    "no_configurations_known": false,
+    "points": 146,
+    "raw_pre_chars": 10998,
+    "rows_complete": true
+  },
+  "paths_agree": true,
+  "points_only_in_A": [],
+  "points_only_in_B": [],
+  "symm": "c",
+  "symmetry_name": "rct4"
+}
