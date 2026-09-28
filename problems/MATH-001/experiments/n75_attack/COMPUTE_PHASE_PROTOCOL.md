@@ -55,9 +55,17 @@ Run `benchmark.py`'s CNF audit (or `encoder.audit_cnf_covers_lines`) and require
 **G2 must be run on the actual target instance, not on a small-n control.** The command is:
 
 ```bash
-python encoder.py --n 75 --formulation orbits --group rot2 --out rot2_n75.cnf
-python benchmark.py --audit-instance rot2_n75.cnf --n 75 --group rot2
+python encoder.py --n 75 --formulation orbits --group rot2 --out rot2_n75.cnf     --gadget-manifest rot2_n75_manifest.json
+python benchmark.py --audit-instance rot2_n75.cnf --n 75 --group rot2     --gadget-manifest rot2_n75_manifest.json
 ```
+
+`--gadget-manifest` is **required**, not optional. The manifest records every clause the
+encoder emitted, and the audit requires the instance's clause multiset to equal it exactly --
+so both a MISSING clause (an underconstrained line) and an EXTRA clause (a unit that forces
+variables false and could manufacture an UNSAT unrelated to the problem) are detected. Without
+a manifest the audit fails closed and G2 always fails, which is why the commands above pass
+one. An earlier revision of this section omitted the argument, so following the frozen
+commands could never satisfy G2.
 
 Passing `--group` is **required** for an orbit instance: it selects `audit_orbit_cnf`, which
 reconstructs the orbits and the per-line weighted items from the same group the encoder used.

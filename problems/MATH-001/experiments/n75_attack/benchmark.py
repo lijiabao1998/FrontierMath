@@ -138,10 +138,13 @@ def audit_instance(path: str, n: int, group: str | None, out: dict,
     # which is wrong for the orbit encoding where many cells share one variable; a
     # reviewer showed the cell audit reports an intact n=3 rot2 instance as incomplete.
     gadgets = None
+    manifest_clauses = None
     if manifest:
         with open(manifest, "r", encoding="utf-8") as fh:
-            gadgets = json.load(fh)["gadgets"]
-    rep = audit_any(n, path, group, gadgets=gadgets)
+            man = json.load(fh)
+        gadgets = man["gadgets"]
+        manifest_clauses = man.get("clauses")
+    rep = audit_any(n, path, group, gadgets=gadgets, manifest_clauses=manifest_clauses)
     res = {
         "path": os.path.basename(path), "ran": True,
         "dimacs_sha256": None, "n": n, "group": group,
@@ -161,6 +164,8 @@ def audit_instance(path: str, n: int, group: str | None, out: dict,
         "layer2_triples_checked": rep.get("layer2", {}).get("triples_checked"),
         "layer2_not_refuted": rep.get("layer2", {}).get("not_refuted"),
         "containment_mode": rep.get("containment_mode"),
+        "clause_multiset_matches_manifest": rep.get("clause_multiset_matches_manifest"),
+        "extra_clauses": rep.get("extra_clauses"), "missing_clauses": rep.get("missing_clauses"),
         "completeness_scope": rep["completeness_scope"],
     }
     h = hashlib.sha256()

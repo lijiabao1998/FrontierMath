@@ -311,10 +311,10 @@ def run_case(name: str, cnf, provable_reason: str, json_dir: str, n: int) -> dic
     return out
 
 
-def _child_pipeline(json_path: str) -> int:
+def _child_pipeline(json_path: str, artifact_dir: str | None = None) -> int:
     """Section B only, in-process. Writes its own JSON so a later native crash still
     leaves the results on disk. Returns 0 when a checked proof was obtained, else 1."""
-    json_dir = os.path.dirname(json_path)
+    json_dir = artifact_dir or os.path.dirname(json_path)
     print("== B) solver pipeline: can a trace reaching a checked empty clause be emitted? ==")
     results: list[dict] = []
     for name, n, group in [("unsat_orbit_ort1_n5", 5, "ort1"),
@@ -389,9 +389,17 @@ def run_independent_checker(checker_path: str, cnf_path: str, proof_path: str) -
     except Exception as exc:  # noqa: BLE001
         return {"ran": False, "error": f"{type(exc).__name__}: {exc}"}
     out = (r.stdout or "") + (r.stderr or "")
-    verified = ("VERIFIED" in out.upper()) or ("s VERIFIED" in out)
+    up = out.upper()
+    # A substring test for "VERIFIED" matches "s NOT VERIFIED", so a checker that REJECTED a
+    # proof while exiting nonzero was promoted to certification. Both the exit code and an
+    # unambiguous positive verdict are now required, and any explicit negative verdict wins.
+    negative = ("NOT VERIFIED" in up) or ("NOT VERIFIED" in up.replace("  ", " ")) or ("INVALID" in up)
+    positive = ("S VERIFIED" in up) or ("VERIFIED" in up)
+    verified = (r.returncode == 0) and positive and not negative
     return {"ran": True, "cmd": " ".join(cmd), "returncode": r.returncode,
-            "verified": bool(verified), "stdout_tail": out[-800:]}
+            "verified": bool(verified), "verdict_negative_marker": bool(negative),
+            "verdict_requires_zero_exit_and_no_negative_marker": True,
+            "stdout_tail": out[-800:]}
 
 
 def compute_final_status(checker_selftest_ok: bool, n_checked: int, n_emitted: int,
@@ -440,7 +448,8 @@ def run_pipeline_isolated(json_path: str) -> dict:
     os.close(fd)
     try:
         r = subprocess.run([sys.executable, os.path.abspath(__file__),
-                            "--child-pipeline", "--json", tmp],
+                            "--child-pipeline", "--json", tmp,
+                            "--artifact-dir", os.path.dirname(os.path.abspath(json_path))],
                            capture_output=True, text=True, timeout=3600)
         obs["child_returncode"] = r.returncode
         obs["child_crashed"] = r.returncode != 0
@@ -474,10 +483,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     ap.add_argument("--skip-pipeline", action="store_true")
     ap.add_argument("--child-pipeline", action="store_true",
                     help="internal: run only the solver section, in-process")
+    ap.add_argument("--artifact-dir", default=None,
+                    help="internal: directory the CHILD writes .cnf/.drat into (the parent's "
+                         "json_dir), so the parent's checker invocation can find them")
     args = ap.parse_args(list(argv) if argv is not None else None)
 
     if args.child_pipeline:
-        return _child_pipeline(args.json)
+        return _child_pipeline(args.json, args.artifact_dir or os.path.dirname(args.json))
 
     json_dir = os.path.dirname(args.json)
     report: dict = {}

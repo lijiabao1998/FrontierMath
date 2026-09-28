@@ -506,8 +506,16 @@ def unit_propagation_conflict(clauses: Sequence[Sequence[int]],
 
 
 
+def _multiset_extra(a: list, b: list) -> int:
+    """Count of items in `a` that `b` does not cover (multiset difference size)."""
+    from collections import Counter
+    ca, cb = Counter(a), Counter(b)
+    return sum(max(0, v - cb.get(k, 0)) for k, v in ca.items())
+
+
 def audit_orbit_cnf(n: int, dimacs_path: str, group: str,
-                    explicit_limit: int = 4096, gadgets: list | None = None) -> dict:
+                    explicit_limit: int = 4096, gadgets: list | None = None,
+                    manifest_clauses: list | None = None) -> dict:
     """Complete, encoding-aware audit of an ORBIT-formulation DIMACS (protocol gate G2).
 
     Two review findings are answered here.
@@ -563,6 +571,37 @@ def audit_orbit_cnf(n: int, dimacs_path: str, group: str,
     if gadgets:
         for g in gadgets:
             gadget_by_line[tuple(tuple(c) for c in g["line"])] = g
+    # built ONCE: rebuilding this set inside the line loop made the documented n=75 command
+    # perform ~4.9e13 clause visits again
+    present = {tuple(sorted(cl)) for cl in clauses}
+
+    # EXACTNESS: the manifest carries every clause the encoder emitted, so the target must
+    # contain all of them AND nothing else. Containment alone only catches MISSING clauses; a
+    # reviewer showed that taking a genuine manifest and ADDING a negative unit for every orbit
+    # variable still passed -- all manifested clauses present, every local formula satisfiable
+    # with all variables false, every violation refuted -- so the added units could force an
+    # UNSAT that has nothing to do with the intended constraints. Comparing the clause
+    # multisets detects both missing and extra clauses.
+    expected_multiset = None
+    if manifest_clauses is not None:
+        expected_multiset = sorted(tuple(sorted(cl)) for cl in manifest_clauses)
+        actual_multiset = sorted(tuple(sorted(cl)) for cl in clauses)
+        if expected_multiset != actual_multiset:
+            # counts from the TARGET's point of view: what it has beyond the manifest (extra)
+            # and what the manifest has that it lacks (missing)
+            n_extra = _multiset_extra(actual_multiset, expected_multiset)
+            n_missing = _multiset_extra(expected_multiset, actual_multiset)
+            return {
+                "n": n, "group": group, "dimacs": os.path.basename(dimacs_path),
+                "formulation": "orbits", "clauses_read": len(clauses),
+                "complete": False, "containment_mode": containment_mode,
+                "clause_multiset_matches_manifest": False,
+                "extra_clauses": n_extra, "missing_clauses": n_missing,
+                "reason": ("the DIMACS clause multiset differs from the encoding the manifest "
+                           "records: extra clauses can constrain the model beyond the intended "
+                           "problem, and missing ones leave it underconstrained"),
+                "completeness_scope": "exact clause-multiset equality with the encoder manifest",
+            }
     try:
         from pysat.solvers import Cadical153
         have_solver = True
@@ -632,7 +671,6 @@ def audit_orbit_cnf(n: int, dimacs_path: str, group: str,
         if g is None:
             missing.append({"line": L, "reason": "line absent from the gadget manifest"})
             continue
-        present = {tuple(sorted(cl)) for cl in clauses}
         absent = [cl for cl in g["clauses"] if tuple(sorted(cl)) not in present]
         if absent:
             missing.append({"line": L, "expected_gadget_clauses": len(g["clauses"]),
@@ -721,10 +759,11 @@ def audit_orbit_cnf(n: int, dimacs_path: str, group: str,
 
 
 def audit_any(n: int, dimacs_path: str, group: str | None = None,
-              gadgets: list | None = None) -> dict:
+              gadgets: list | None = None, manifest_clauses: list | None = None) -> dict:
     """Dispatch to the orbit-aware audit when a group is given, else the cell audit."""
     if group:
-        return audit_orbit_cnf(n, dimacs_path, group, gadgets=gadgets)
+        return audit_orbit_cnf(n, dimacs_path, group, gadgets=gadgets,
+                               manifest_clauses=manifest_clauses)
     return audit_cnf_covers_lines(n, dimacs_path)
 
 
@@ -946,8 +985,11 @@ def main(argv: Sequence[str] | None = None) -> int:
         cnf = encode_orbits(args.n, args.group, 2 * args.n, gadget_sink=_sink)
         if args.gadget_manifest:
             with open(args.gadget_manifest, "w", encoding="utf-8") as fh:
-                json.dump({"n": args.n, "group": args.group, "gadgets": _sink}, fh)
-            print(f"[manifest] {len(_sink)} line gadgets -> {args.gadget_manifest}")
+                json.dump({"n": args.n, "group": args.group,
+                           "clauses": [list(c) for c in cnf.clauses],
+                           "gadgets": _sink}, fh)
+            print(f"[manifest] {len(_sink)} line gadgets, {len(cnf.clauses)} clauses "
+                  f"-> {args.gadget_manifest}")
 
     doc = cnf.dimacs()
     with open(args.out, "w", encoding="utf-8") as fh:
