@@ -86,11 +86,43 @@
   "result": {
     "state": "ROUND_FINISHED",
     "verdict": "NO_RESOLUTION_FOUND",
-    "summary": "n=75 SAT attack bench BENCH_SOUND（小 n SAT/UNSAT/鴿籠/雙編碼 4 checks 全過，模型經 r1 verifier 驗證）；n=75 規模：~48.6M clauses(triples)/~20M(seq)；n=71-76 原始解取得 BLOCKED。",
+    "summary": "n=75 SAT attack bench BENCH_SOUND（小 n SAT/UNSAT/鴿籠/雙編碼 4 checks 全過，模型經 r1 verifier 驗證）；n=75 規模：~48.6M clauses(triples)/~20M(seq)；n=71-76 公開構造可得（初版 BLOCKED 記述經 dsk 獨立驗證者反證後撤回）、n=75 為唯一 0 筆之最小未解案例。",
     "skeptic_bugs_found": [
       "Sinz counter final unit -prev_ge2 would forbid >=2 (whole model UNSAT); rewritten forward-only"
     ],
-    "wall_minutes_used_approx": 30
+    "wall_minutes_used_approx": 30,
+    "remediation_v3": {
+      "false_blocked_retraction": {
+        "retracted_claim": "n=71-76 frontier configuration access BLOCKED",
+        "corrected_claim": "n=71,72,73,74,76 public configurations are available; n=75 remains the smallest unresolved finite case",
+        "independent_verifier_evidence": "dsk PR #5 (branch dsk/MATH-001-independent-verifier-r1) identified two public retrieval paths; glm independently fresh-fetched path 1 (download/all_known_solutions, 23,834,242 bytes, 431,008 configs) with own decoder",
+        "verification_artifact": "problems/MATH-001/results/r2/deepseek_path1_verification.json",
+        "glm_own_check": {
+          "n71": 1,
+          "n72": 1,
+          "n73": 1,
+          "n74": 1,
+          "n75": 0,
+          "n76": 1
+        }
+      },
+      "unsat_evidence_semantics": {
+        "solver_unsat": "SOLVER_UNSAT_UNCERTIFIED (not evidence)",
+        "certified": "exhaustive enumeration proofs: n=1 (2 assignments), pigeonhole n=3 (512), n=4 (65,536) — satisfying=0"
+      },
+      "line_canonicalisation": {
+        "horizontal_vertical_excluded": true,
+        "direction_canonical": "dy>0",
+        "n75_lines": 1336678,
+        "n75_triples_lines_only": 23340962,
+        "n75_seq_aux": 8804510
+      },
+      "hash_manifest": "verify_manifest.py; regenerated after final edits"
+    },
+    "unsat_evidence_semantics": {
+      "solver_unsat": "SOLVER_UNSAT_UNCERTIFIED (not evidence)",
+      "certified": "exhaustive enumeration proofs: n=1 (2 assignments), pigeonhole n=3 (512), n=4 (65,536) — satisfying=0"
+    }
   },
   "admitted_at": "2026-09-27T19:21:19.129778+00:00"
 }

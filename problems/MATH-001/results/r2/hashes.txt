@@ -1,6 +1,6 @@
-b8560577e9821389e7945356c27e98983f2dff46d25429d9dab86b959f1152c6 *ntil_cnf.py
-efb4a6d4468cd84fbaf62de8132d0e633c0a59cc4846089193e4e337533effe8 *tests_regression.py
-262ad68907c8d086e7afd60b95b07231324c5f1b1472bda912f463a20e03b932 *../../results/r2/n75_bench_results.json
-# remediation 2026-09-28: ntil_cnf.py fixed per Codex findings (lazy pysat import,
-# pairwise at-most-1 pigeonhole control, both-mode CLI, aux var count 2m-1);
-# results JSON regenerated after fixes; aux estimate corrected 10.17M -> 8.84M.
+998b925bf2e297e768b06d58d7b561475d2475af22f7d68f51b4a19af2bdcbc6 *experiments/n75_bench/ntil_cnf.py
+66dd07db89902e64d0ac936a4c58eb0bcd25fe35e3aa9b8559ac49afb4bcee37 *experiments/n75_bench/tests_regression.py
+cd6d70c977e9c8c0c635ee8dbc9b8ecdce7c5da40d3e34d60b9fa9ecefb3b9cd *experiments/n75_bench/verify_manifest.py
+b7f019df752fd229e8d179162550f7b07c51da612a2ede5baa2d3106477a0b7b *results/r2/n75_bench_results.json
+d4977a2edfd509651b789ba802c0894ea6606b0593b6a5a125aed223eefb9e31 *results/r2/deepseek_path1_verification.json
+70e575e421b22f407ce5f08969f0b8f84b7c54bd7f3a2c9575f1fff8d1cf4fef *results/r2/environment.txt

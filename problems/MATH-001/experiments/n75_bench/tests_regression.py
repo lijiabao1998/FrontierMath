@@ -83,6 +83,39 @@ def test_t4_aux_formula() -> None:
     assert len(aux) == 2 * 4 - 1, f"expected 2m-1=7 aux vars, got {len(aux)}"
 
 
+def test_t5_exhaustive_unsat() -> None:
+    """Codex P1: UNSAT controls must carry checkable certificates."""
+    import json as _json
+    proc = subprocess.run(
+        [sys.executable, str(HERE / "ntil_cnf.py")],
+        capture_output=True, text=True, timeout=900)
+    assert proc.returncode == 0, proc.stderr[-2000:]
+    stdout = proc.stdout[proc.stdout.index("{"):]
+    res = _json.loads(stdout)
+    proofs = res["unsat_proofs"]
+    assert proofs["n1_exhaustive"]["satisfying_assignments"] == 0
+    assert proofs["n1_exhaustive"]["assignments_checked"] == 2
+    for pn in (3, 4):
+        pr = proofs[f"pigeonhole_n{pn}_exhaustive"]
+        assert pr["satisfying_assignments"] == 0
+        assert pr["assignments_checked"] == 2 ** (pn * pn)
+    assert all(r.get("unsat_evidence") == "SOLVER_UNSAT_UNCERTIFIED"
+               for r in res["results"] if r["sat"] is False)
+
+
+def test_t6_lines_canonical() -> None:
+    """Codex P2: no horizontal/vertical/duplicate lines; estimate consistent."""
+    lines = ntil_cnf.primitive_lines(8)
+    assert all(len({y for _, y in ln}) > 1 for ln in lines), "horizontal leaked"
+    assert all(len({x for x, _ in ln}) > 1 for ln in lines), "vertical leaked"
+    assert len({frozenset(ln) for ln in lines}) == len(lines), "duplicate lines"
+    # NOTE: pre-fix count at n=8 was 140 — smaller than the corrected count,
+    # because the old dedup also WRONGLY SKIPPED legitimate slope families
+    # ((1,2) shadowed by (2,1)) while duplicating horizontals. The invariant
+    # assertions above are the regression contract; counts are recorded data.
+    print(f"n=8 canonical line count: {len(lines)} (pre-fix: 140)")
+
+
 if __name__ == "__main__":
     test_t1_lazy_import()
     print("T1 lazy import: PASS")
@@ -90,6 +123,10 @@ if __name__ == "__main__":
     print("T2 at-most-1 pairwise: PASS")
     test_t4_aux_formula()
     print("T4 aux formula 2m-1: PASS")
+    test_t6_lines_canonical()
+    print("T6 lines canonical: PASS")
+    test_t5_exhaustive_unsat()
+    print("T5 exhaustive UNSAT certificates: PASS")
     test_t3_cli_mode_seq()
     print("T3 CLI --mode seq: PASS")
     print("ALL REGRESSION TESTS PASS")
