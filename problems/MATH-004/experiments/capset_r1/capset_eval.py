@@ -147,7 +147,7 @@ def main() -> int:
     out["checks"] = checks
     out["verdict"] = ("EVALUATOR_ROUND_COMPLETE" if ok
                       else "EVALUATOR_VERIFICATION_FAILURE")
-    dest = HERE.parent.parent / "results" / "MATH-004" / "r1"
+    dest = HERE.parent.parent / "results" / "r1"
     dest.mkdir(parents=True, exist_ok=True)
     (dest / "capset_r1_results.json").write_bytes(
         (json.dumps(out, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
