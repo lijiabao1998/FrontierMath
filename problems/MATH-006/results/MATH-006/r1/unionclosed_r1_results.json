@@ -1,0 +1,46 @@
+{
+  "results": [
+    {
+      "check": "V1",
+      "v1_pos": true,
+      "v1_neg": false
+    },
+    {
+      "m": 1,
+      "union_closed_families": 3,
+      "nontrivial_frankl_checked": 2,
+      "frankl_ok": 2,
+      "all_satisfy_frankl": true
+    },
+    {
+      "m": 2,
+      "union_closed_families": 13,
+      "nontrivial_frankl_checked": 12,
+      "frankl_ok": 12,
+      "all_satisfy_frankl": true
+    },
+    {
+      "m": 3,
+      "union_closed_families": 121,
+      "nontrivial_frankl_checked": 120,
+      "frankl_ok": 120,
+      "all_satisfy_frankl": true
+    },
+    {
+      "m": 4,
+      "union_closed_families": 4959,
+      "nontrivial_frankl_checked": 4958,
+      "frankl_ok": 4958,
+      "all_satisfy_frankl": true
+    }
+  ],
+  "V4_gilmer_numeric_exploration": {
+    "trials": 200,
+    "min_ratio": 0.5079,
+    "mean_ratio": 0.6841,
+    "max_ratio": 0.8636,
+    "fracs_ge_038": 1.0,
+    "status": "HYPOTHESIS_LEVEL_NUMERIC_OBSERVATION — not a reproduction of Gilmer's theorem"
+  },
+  "verdict": "EVALUATOR_ROUND_COMPLETE"
+}
