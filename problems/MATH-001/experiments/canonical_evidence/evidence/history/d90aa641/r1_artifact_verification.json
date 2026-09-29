@@ -14,7 +14,6 @@
     "survivors_detail": [],
     "teeth_fraction_illegal": 1.0
   },
-  "exit_reasons": [],
   "flammenkamp_buggy_mapper": {
     "decode_errors": [
       {
@@ -179,7 +178,7 @@
       "8": 57,
       "9": 51
     },
-    "seconds": 283.7,
+    "seconds": 194.63,
     "stats": {
       "decode_error": 1691,
       "decoded": 35221,
@@ -296,19 +295,17 @@
       "8": 57,
       "9": 51
     },
-    "seconds": 313.5,
+    "seconds": 210.92,
     "stats": {
       "decoded": 36912,
       "verify_pass": 36912
     },
     "verify_failures": []
   },
-  "r1_dir": null,
-  "scope": "CORPUS_ONLY",
+  "r1_dir": "../verifier",
   "self_certs": {
-    "all_pass": null,
+    "all_pass": true,
     "files": 0,
-    "results": [],
-    "status": "NOT_REQUESTED"
+    "results": []
   }
 }

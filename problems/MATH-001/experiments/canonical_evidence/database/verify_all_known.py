@@ -26,6 +26,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -41,6 +42,8 @@ ALPHABET = (
     "#$%&@?!()[]<>{}=*+|-/~^_:;,."
 )
 CHAR_TO_COL = {ch: i for i, ch in enumerate(ALPHABET)}
+EXPECTED_RECORDS = 431008
+EXPECTED_SHA256 = "c27f8f53286be5b047a46bf1e469985e44efd4e6955783e8d0fb5ad66b7effde"
 
 # The historical mapping shipped in decode.c, valid only for n <= 62.
 def legacy_col(ch: str) -> int:
@@ -87,13 +90,15 @@ def check_legal(pts: list[tuple[int, int]]) -> bool:
 
 
 def decode(line: str) -> tuple[str, int, list[tuple[int, int]]] | None:
+    if not line:
+        raise ValueError("empty record")
     sym = line[0]
     data = line[1:]
     if not data or len(data) % 2:
-        return None
+        raise ValueError("missing or odd-length coordinate data")
     n = len(data) // 2
     if n < 2:
-        return None
+        raise ValueError("record must encode n >= 2")
     try:
         cols = [CHAR_TO_COL[c] for c in data]
     except KeyError as exc:
@@ -122,10 +127,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     ap.add_argument("--json", default=None)
     ap.add_argument("--progress", type=int, default=50000)
     args = ap.parse_args(list(argv) if argv is not None else None)
+    if args.sample < 0:
+        ap.error("--sample must be nonnegative")
 
     t0 = time.time()
+    with open(args.file, "rb") as fh:
+        input_sha256 = hashlib.file_digest(fh, "sha256").hexdigest()
     with open(args.file, "r", encoding="latin-1") as fh:
         lines = [ln.rstrip("\n").rstrip("\r") for ln in fh if ln.strip()]
+    input_lines = len(lines)
     read_s = round(time.time() - t0, 2)
     print(f"[read] {len(lines)} lines from {args.file} in {read_s}s", flush=True)
 
@@ -150,8 +160,6 @@ def main(argv: Sequence[str] | None = None) -> int:
         except ValueError as exc:
             decode_errors.append({"idx": idx, "line": line[:80], "error": str(exc)})
             continue
-        if dec is None:
-            continue
         sym, n, pts = dec
         per_n[n] += 1
         sym_per_n[n][sym] += 1
@@ -172,8 +180,28 @@ def main(argv: Sequence[str] | None = None) -> int:
     elapsed = round(time.time() - t0, 2)
     total = sum(per_n.values())
     passed = sum(pass_n.values())
+    reasons = []
+    if total == 0:
+        reasons.append("no configurations decoded")
+    if decode_errors:
+        reasons.append(f"{len(decode_errors)} nonblank records failed decoding")
+    if total != passed:
+        reasons.append(f"{total - passed} illegal configurations")
+    if legacy_mismatch:
+        reasons.append(f"{legacy_mismatch} legacy alphabet mismatches")
+    if not args.sample:
+        if total != EXPECTED_RECORDS:
+            reasons.append(f"decoded {total} != {EXPECTED_RECORDS} expected")
+        if input_sha256 != EXPECTED_SHA256:
+            reasons.append("input SHA-256 differs from the pinned historical corpus")
     out = {
         "file": os.path.basename(args.file),
+        "input_sha256": input_sha256,
+        "input_nonblank_lines": input_lines,
+        "scope": "SAMPLE_ONLY" if args.sample else "FULL_PINNED_CORPUS",
+        "sample_requested": args.sample,
+        "sample_seed": args.seed if args.sample else None,
+        "expected_records": None if args.sample else EXPECTED_RECORDS,
         "lines_read": len(lines),
         "decoded": total,
         "verify_pass": passed,
@@ -191,13 +219,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         "legacy_alphabet_mismatches_for_n_le_62": legacy_mismatch,
         "seconds": elapsed,
         "read_seconds": read_s,
+        "exit_reasons": reasons,
+        "passed": not reasons,
     }
     print(json.dumps({k: v for k, v in out.items() if k not in ("per_n_counts",)}, indent=2, sort_keys=True))
     if args.json:
-        with open(args.json, "w", encoding="utf-8") as fh:
+        with open(args.json, "w", encoding="utf-8", newline="\n") as fh:
             json.dump(out, fh, indent=2, sort_keys=True)
         print(f"[written] {args.json}")
-    return 0 if (total == passed and not decode_errors) else 1
+    return 1 if reasons else 0
 
 
 if __name__ == "__main__":

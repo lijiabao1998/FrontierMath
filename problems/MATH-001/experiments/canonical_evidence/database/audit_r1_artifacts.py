@@ -108,19 +108,30 @@ def decode_line(line: str, mapper=topos) -> tuple[str, int, list[tuple[int, int]
 
 def audit_self_certs(r1_dir: str) -> dict:
     files = sorted(glob.glob(os.path.join(r1_dir, "self", "*.json")))
-    out = {"files": len(files), "results": [], "all_pass": True}
+    out = {"files": len(files), "results": [], "all_pass": bool(files),
+           "status": "CHECKED" if files else "MISSING_REQUIRED_INPUT"}
     for path in files:
-        with open(path, "r", encoding="utf-8") as fh:
-            doc = json.load(fh)
-        n = doc.get("n")
-        pts = [tuple(p) for p in doc.get("points", [])]
-        declared_target = doc.get("target")
-        rep = verify(pts, int(n), expect_count=2 * int(n))
+        try:
+            with open(path, "r", encoding="utf-8") as fh:
+                doc = json.load(fh)
+            n = doc.get("n")
+            if type(n) is not int or n < 1:
+                raise ValueError("n must be a positive integer")
+            pts = [tuple(p) for p in doc.get("points", [])]
+            declared_target = doc.get("target")
+            rep = verify(pts, n, expect_count=2 * n)
+        except (OSError, ValueError, TypeError, AttributeError) as exc:
+            out["results"].append({"file": os.path.basename(path),
+                                   "ok": False, "error": str(exc)})
+            out["all_pass"] = False
+            continue
+        target_ok = type(declared_target) is int and declared_target == 2 * n
         rec = {
             "file": os.path.basename(path),
             "n": n,
             "declared_target": declared_target,
-            "target_is_2n": declared_target == 2 * int(n),
+            "target_is_2n": target_ok,
+            "ok": bool(rep["ok"] and target_ok),
             "distinct_points": rep["distinct_points"],
             "math_ok": rep["math_ok"],
             "wellformed": rep["wellformed"],
@@ -128,7 +139,7 @@ def audit_self_certs(r1_dir: str) -> dict:
             "checks": {k: v for k, v in rep["checks"].items()},
         }
         out["results"].append(rec)
-        if not rep["ok"]:
+        if not rec["ok"]:
             out["all_pass"] = False
     return out
 
@@ -160,6 +171,8 @@ def audit_flammenkamp(path: str, mapper=topos, max_lines: int | None = None) -> 
                 continue
             if dec is None:
                 stats["skipped_not_solution"] += 1
+                decode_errors.append({"line": lineno, "error": "nonblank record did not decode"})
+                stats["decode_error"] += 1
                 continue
             sym, n, pts = dec
             stats["decoded"] += 1
@@ -325,20 +338,30 @@ def corpus_teeth_check(path: str, samples: int = 400, seed: int = 20260928,
 
 def main(argv: Sequence[str] | None = None) -> int:
     here = os.path.dirname(os.path.abspath(__file__))
-    default_r1 = os.path.abspath(os.path.join(here, "..", "..", "results", "r1"))
+    default_r1 = os.path.abspath(os.path.join(here, "..", "..", "..", "results", "r1"))
     ap = argparse.ArgumentParser()
-    ap.add_argument("--r1", default=default_r1, help="path to problems/MATH-001/results/r1")
+    scope = ap.add_mutually_exclusive_group()
+    scope.add_argument("--r1", default=None, help="path to required nonempty self-certificate set")
+    scope.add_argument("--corpus-only", action="store_true",
+                       help="explicitly exclude self-certificates; no self-certificate claim")
+    ap.add_argument("--corpus", default=None, help="path to the pinned 1997 corpus")
     ap.add_argument("--json", default=None)
     ap.add_argument("--teeth-all-lines", action="store_true",
                     help="sweep every corpus line for the mutation teeth check")
     args = ap.parse_args(list(argv) if argv is not None else None)
 
-    out: dict = {"r1_dir": args.r1}
+    r1_dir = args.r1 or default_r1
+    out: dict = {"r1_dir": None if args.corpus_only else r1_dir,
+                 "scope": "CORPUS_ONLY" if args.corpus_only else "SELF_AND_CORPUS"}
 
     print("== 1) GLM r1 self-certificates, checked by the DeepSeek verifier ==")
-    self_audit = audit_self_certs(args.r1)
+    self_audit = ({"status": "NOT_REQUESTED", "files": 0, "results": [], "all_pass": None}
+                  if args.corpus_only else audit_self_certs(r1_dir))
     out["self_certs"] = self_audit
     for r in self_audit["results"]:
+        if "error" in r:
+            print(f"  {r['file']}: FAIL {r['error']}")
+            continue
         print(f"  n={r['n']:>2}  target={r['declared_target']}  distinct={r['distinct_points']:>2}  "
               f"math_ok={r['math_ok']}  wellformed={r['wellformed']}")
     print(f"  -> all_pass={self_audit['all_pass']}")
@@ -349,7 +372,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     # reproducibility claim false. Missing corpus is now a failure, not a skip.
     candidates = [os.path.abspath(os.path.join(here, "..", "provenance", "known_solutions_1997.txt")),
                   os.path.abspath(os.path.join(here, "..", "lit_data", "known_solutions_1997.txt"))]
-    lit = next((c for c in candidates if os.path.exists(c)), candidates[0])
+    lit = args.corpus or next((c for c in candidates if os.path.exists(c)), candidates[0])
     if os.path.exists(lit):
         print("== 2) Flammenkamp corpus, independent decode + verify ==")
         good = audit_flammenkamp(lit)
@@ -382,6 +405,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     # mutation test still exited 0 -- an automated reproduction gate could report success
     # without reproducing the cited result. Every required check now gates the exit.
     reasons = []
+    if not args.corpus_only and not self_audit["all_pass"]:
+        reasons.append("required self-certificates missing or failed")
     if out.get("missing_corpus"):
         reasons.append("corpus missing")
     f = out.get("flammenkamp_correct_mapper")
@@ -401,7 +426,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             f"mutation teeth fraction {teeth.get('teeth_fraction_illegal')} below 0.9")
     out["exit_reasons"] = reasons
     if args.json:
-        with open(args.json, "w", encoding="utf-8") as fh:
+        with open(args.json, "w", encoding="utf-8", newline="\n") as fh:
             json.dump(out, fh, indent=2, sort_keys=True)
         print(f"[written] {args.json}")
     return 1 if reasons else 0

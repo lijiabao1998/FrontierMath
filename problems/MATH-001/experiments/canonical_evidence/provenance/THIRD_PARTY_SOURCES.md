@@ -46,7 +46,7 @@ upstream commitment. For `all_known_solutions` the stronger integrity evidence i
 **content** check this round actually performed: 431,008 lines decode, every one
 verifies as a legal 2n configuration, and the per-`n` counts reconcile with
 `table.html`. That result is in
-`../independent_verifier_r1/small_n_tests/all_known_solutions_verification.json`.
+`../evidence/all_known_solutions_verification.json`.
 `fetch_third_party.py --check` compares a re-fetch against the table above, so tampering
 with the upstream file after 2026-09-28 would be detectable.
 
@@ -60,7 +60,7 @@ drew from them is either (a) reproduced by committed code from a fetched file, o
   and the database itself, and re-derivable in one command by the fetch script;
 - the lowercase-alphabet bug analysis → derived from `decode.c`'s `TOPOS` macro, whose
   relevant lines are quoted in
-  `../independent_verifier_r1/DERIVATION.md` §5 (trap T3);
+  `../verifier/DERIVATION.md` §5 (trap T3);
 - the record constructions → decodable from the database or the live lookup endpoint,
   and the decoded point sets are hash-recorded in
-  `../independent_verifier_r1/small_n_tests/`.
+  `../evidence/record_crosscheck_n{71,72,73,74,76}.json`.

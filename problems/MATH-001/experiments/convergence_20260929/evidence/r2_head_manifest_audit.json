@@ -1,0 +1,117 @@
+{
+  "purpose": "Read-only triage; no changes to the r2 branch",
+  "hash_of": "committed Git blob bytes",
+  "reports": [
+    {
+      "head": "beaf8427afe541361a577d21428edbafafdec0d9",
+      "manifest": "results/r1/hashes.txt",
+      "entries": 17,
+      "failures": [
+        {
+          "path": "results/r1/self/self_n02.json",
+          "status": "MISMATCH",
+          "expected": "96f463ac03c6c44153d1bd0c79b35c2572f595623f887dcdf5977c896df06f40",
+          "actual": "625bc8003a15aba3b83e32c17074341cd5b6068ffa6eacaa8418ce5b2aaf4d9f"
+        },
+        {
+          "path": "results/r1/self/self_n03.json",
+          "status": "MISMATCH",
+          "expected": "cb20ebb8475fc9ee4ce12a6e553fc50c7ea67d89752556343fa3f8fc0377704c",
+          "actual": "710e8cfb32e7b67b317e781eba8cda515b9584593fb90ef9ca8f5083c041a7b4"
+        },
+        {
+          "path": "results/r1/self/self_n04.json",
+          "status": "MISMATCH",
+          "expected": "838f54531eb72580616d4f9c7994ef85133adac6ffa821a0cd40520f6f0fd07c",
+          "actual": "351827d5b1d8314a96a2269bc843a48329f95f60bf10998f4c15ed2cbd4cdffb"
+        },
+        {
+          "path": "results/r1/self/self_n05.json",
+          "status": "MISMATCH",
+          "expected": "ee0d3245807ce81cef591cd6ecd71c9ccaafe0b81eca32e8e7d648bf9d3564f6",
+          "actual": "394b9a11240c162b67308e0eb75ae05171cd07d5e41ffb230f6001f35a3aea3f"
+        },
+        {
+          "path": "results/r1/self/self_n06.json",
+          "status": "MISMATCH",
+          "expected": "d3be44dd6cb1526eb9f58d0664026ecadbd6b462cfdd02578b6ee99688b5294a",
+          "actual": "04a9ffa6eae51f119e2c6b4bdf76df9a6bb14678010151c6da7fa4b1a34d5b3e"
+        },
+        {
+          "path": "results/r1/self/self_n07.json",
+          "status": "MISMATCH",
+          "expected": "2c45846d4f999ef15f535f20cb20f7a369ee10ef43ee9a3035c82314c2fec975",
+          "actual": "92bc4af835841b81408024fbd5f96c0bb95404e5295fdfe3bb9a611d4118ad26"
+        },
+        {
+          "path": "results/r1/self/self_n08.json",
+          "status": "MISMATCH",
+          "expected": "d7f186fe0493942f64abf0f8c787dfd17ebcc009138f3eb551461eb59b6b3dce",
+          "actual": "a3edfbc57e51bd36bbc24016141e1a1c43d22b97f7eabb4960ca61ea9aeb0386"
+        },
+        {
+          "path": "results/r1/self/self_n09.json",
+          "status": "MISMATCH",
+          "expected": "b184ca32a63a43899773b6d3bb235d6ba426b0392fd171632310cf38d6857435",
+          "actual": "5c4193c5a77bccf5992705ee3de3d950ed8039938d273f3687019b9d3b2b2588"
+        },
+        {
+          "path": "results/r1/self/self_n10.json",
+          "status": "MISMATCH",
+          "expected": "03faf332a2af21d1a32218be354bf3c33b022112e18d7a93563b9dec31026742",
+          "actual": "85c03e7dab597ce711beaefb506e0559acbf07f86747470e1c3744ec2348fc4a"
+        },
+        {
+          "path": "results/r1/negative/tamper_summary.json",
+          "status": "MISMATCH",
+          "expected": "e80131af13289cd9d08479d369d7cd9c7d79e8504b13717463e682559006888e",
+          "actual": "821e5995992ddddcef694b6f226d7125410e6ce6f7038b9dfe71fd45a45ca2fb"
+        },
+        {
+          "path": "experiments/baseline_r1/decode_and_verify.py",
+          "status": "MISMATCH",
+          "expected": "f6882c7abfa0631cf812d5629c82be274fe9bfd8e09ebd3edb6b36b388600827",
+          "actual": "bea0e3b555e152b2bca7ac390044fbbf43b170c9a42efbd5938cf9a926a9f21a"
+        }
+      ]
+    },
+    {
+      "head": "beaf8427afe541361a577d21428edbafafdec0d9",
+      "manifest": "results/r2/hashes.txt",
+      "entries": 6,
+      "failures": [
+        {
+          "path": "experiments/n75_bench/ntil_cnf.py",
+          "status": "MISMATCH",
+          "expected": "998b925bf2e297e768b06d58d7b561475d2475af22f7d68f51b4a19af2bdcbc6",
+          "actual": "db57c7f681e7eb2a00f752c5e1506fb617ca130e843d721ff754c2ea9f6c4832"
+        },
+        {
+          "path": "experiments/n75_bench/tests_regression.py",
+          "status": "MISMATCH",
+          "expected": "66dd07db89902e64d0ac936a4c58eb0bcd25fe35e3aa9b8559ac49afb4bcee37",
+          "actual": "6970efab86bc41d2c963104b076b879b86273bfc82d26c44d33662cb07a158a8"
+        },
+        {
+          "path": "experiments/n75_bench/verify_manifest.py",
+          "status": "MISMATCH",
+          "expected": "cd6d70c977e9c8c0c635ee8dbc9b8ecdce7c5da40d3e34d60b9fa9ecefb3b9cd",
+          "actual": "576f1242108dcac6a3dea82eaec21cb5a06767275d683a47e6658e8e412c2317"
+        },
+        {
+          "path": "results/r2/n75_bench_results.json",
+          "status": "MISMATCH",
+          "expected": "b7f019df752fd229e8d179162550f7b07c51da612a2ede5baa2d3106477a0b7b",
+          "actual": "7f068099971c351577bba3acb700a13f78cf3229c62a5786ff44b43bef04094e"
+        },
+        {
+          "path": "results/r2/deepseek_path1_verification.json",
+          "status": "MISMATCH",
+          "expected": "d4977a2edfd509651b789ba802c0894ea6606b0593b6a5a125aed223eefb9e31",
+          "actual": "cb1fc46722560cf2c633e86bb4aa9057c9ec17dab0f488b25807435b714629fe"
+        }
+      ]
+    }
+  ],
+  "decision": "HOLD"
+}

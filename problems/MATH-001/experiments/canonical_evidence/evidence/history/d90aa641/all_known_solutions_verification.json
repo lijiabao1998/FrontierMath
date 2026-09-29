@@ -1,11 +1,7 @@
 {
   "decode_errors": [],
   "decoded": 431008,
-  "exit_reasons": [],
-  "expected_records": 431008,
   "file": "all_known_solutions",
-  "input_nonblank_lines": 431008,
-  "input_sha256": "c27f8f53286be5b047a46bf1e469985e44efd4e6955783e8d0fb5ad66b7effde",
   "legacy_alphabet_mismatches_for_n_le_62": 0,
   "lines_read": 431008,
   "n75_count": 0,
@@ -107,7 +103,6 @@
     74,
     76
   ],
-  "passed": true,
   "per_n_counts": {
     "10": 156,
     "11": 158,
@@ -184,11 +179,8 @@
     "8": 57,
     "9": 51
   },
-  "read_seconds": 0.17,
-  "sample_requested": 0,
-  "sample_seed": null,
-  "scope": "FULL_PINNED_CORPUS",
-  "seconds": 511.61,
+  "read_seconds": 0.08,
+  "seconds": 373.13,
   "verify_fail": 0,
   "verify_failures": [],
   "verify_pass": 431008

@@ -114,19 +114,26 @@ being reachable at review time.
 
 The corpus verifier the C3 corpus numbers come from is also runnable here:
 ```bash
-cd database && python audit_r1_artifacts.py --r1 ../verifier --json /tmp/r1.json
+cd database && python audit_r1_artifacts.py --corpus-only --json /tmp/r1.json
 #   -> 36912 decoded, 36912 legal, 0 failures, mutation teeth fraction 1.0
-#      (its self-certificate section is vacuous in this tree; see the scope note above)
+#      self-certificates NOT_REQUESTED; corpus-only scope is explicit
 ```
 
 **Scope of `evidence/r1_artifact_verification.json` — read this before citing it.** The file is
-regenerated in this tree by `database/audit_r1_artifacts.py --r1 ../verifier`. Its
+regenerated in this tree by `database/audit_r1_artifacts.py --corpus-only`. Its
 **Flammenkamp-corpus portion** (36,912 configurations decoded, 36,912 legal, 0 failures, plus the
 mutation teeth fraction of 1.0) is fully reproducible here and is what this branch cites. Its
-**self-certificate portion is VACUOUS in this tree**: there is no `self/` directory under
-`verifier/`, so the script finds zero certificate files and reports an empty pass. That section
-must not be cited, and the earlier revision of this document wrongly implied the whole file
-supported the C3 claim.
+**self-certificate portion is NOT_REQUESTED**: this canonical tree has no self-certificate
+set and makes no self-certificate claim. Omitting `--corpus-only` now requires a nonempty
+self-certificate set, and any rejected certificate fails the exit gate. The former artifact
+reported an empty pass and omitted `exit_reasons`; it is preserved as historical output at
+`evidence/history/d90aa641/r1_artifact_verification.json` and is not current gate evidence.
+
+The complete-corpus command likewise requires all 431,008 records and the pinned historical
+SHA-256, rejects every nonblank undecodable record, and labels `--sample` output SAMPLE_ONLY.
+These are software/provenance repairs on the same historical bytes, not a new literature
+search or a new result. See `../convergence_20260929/MAINTENANCE_PLAN.md` for the frozen scope
+and `../convergence_20260929/evidence/` for exact runtime and source-byte records.
 
 ## C4 — Measured symmetry classes of the published records
 
