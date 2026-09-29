@@ -1,0 +1,2 @@
+c7478993266bb894508a1ae2d60bf634f6fda3156f998634275880b4b1cef929 *experiments/capset_r1/capset_eval.py
+35b1fd1a2ecf3a87a9330d38f716f7c53f2bc2da532e616d2197f7d95bfd107f *experiments/capset_r1/verify_manifest.py

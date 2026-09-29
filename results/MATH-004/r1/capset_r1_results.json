@@ -1,0 +1,68 @@
+{
+  "results": [
+    {
+      "n": 1,
+      "method": "exhaustive",
+      "D_n": 2,
+      "literature": 2,
+      "matches_literature": true
+    },
+    {
+      "n": 2,
+      "method": "exhaustive",
+      "D_n": 4,
+      "literature": 4,
+      "matches_literature": true
+    },
+    {
+      "n": 3,
+      "method": "greedy_lower_bound(seed42)",
+      "achieved_lower_bound": 8,
+      "literature_value_cited": 9,
+      "reaches_literature_value": false,
+      "set_independently_verified_ap_free": true
+    },
+    {
+      "n": 4,
+      "method": "greedy_lower_bound(seed42)",
+      "achieved_lower_bound": 18,
+      "literature_value_cited": 20,
+      "reaches_literature_value": false,
+      "set_independently_verified_ap_free": true
+    },
+    {
+      "n": 5,
+      "method": "greedy_lower_bound(seed42)",
+      "achieved_lower_bound": 35,
+      "literature_value_cited": 45,
+      "reaches_literature_value": false,
+      "set_independently_verified_ap_free": true
+    },
+    {
+      "n": 6,
+      "method": "greedy_lower_bound(seed42)",
+      "achieved_lower_bound": 72,
+      "literature_value_cited": 112,
+      "reaches_literature_value": false,
+      "set_independently_verified_ap_free": true
+    }
+  ],
+  "literature_claim_only": {
+    "exact_n1_to_n6": [
+      2,
+      4,
+      9,
+      20,
+      45,
+      112
+    ],
+    "source": "OEIS A090245 (cited, not computed here)",
+    "upper_bound": "2.756^n (Ellenberg-Gijswijt 2017, cited)",
+    "lower_bound_n8": "512-cap via FunSearch (cited)"
+  },
+  "checks": {
+    "V1_positive_PASS": false,
+    "V1_sabotage_FAIL": true
+  },
+  "verdict": "EVALUATOR_ROUND_COMPLETE"
+}
