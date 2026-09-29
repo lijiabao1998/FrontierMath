@@ -1,0 +1,33 @@
+{
+  "classification": "FIXED_HISTORICAL_SNAPSHOT_SOFTWARE_REGRESSION",
+  "started_at": "2026-09-29T13:36:52.671075+00:00",
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "command": [
+    "C:\\Users\\Leon1\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "audit_r1_artifacts.py",
+    "--corpus-only",
+    "--json",
+    "../evidence/r1_artifact_verification.json"
+  ],
+  "cwd": "problems/MATH-001/experiments/canonical_evidence/database",
+  "input_sha256": "5e127d7be1c060a4d9021356b14848661fac8b76efee45c79acba5b7b7cd80f4",
+  "source_sha256": {
+    "problems/MATH-001/experiments/canonical_evidence/database/audit_r1_artifacts.py": "4067981033749ac3c3c0a645c3e109b103aed874615a9871b831e08961fa7666",
+    "problems/MATH-001/experiments/canonical_evidence/database/cross_check_database.py": "3a6d9a2e5d7ca5e0a0d338dfca86ac93b0589b2acdc60373bd31943e76f25b8d",
+    "problems/MATH-001/experiments/canonical_evidence/database/symmetry_probe.py": "45b661e6280e4b7fd7967322616a17c35355fd3abc8878e9047e62eea076fa25",
+    "problems/MATH-001/experiments/canonical_evidence/database/test_fail_closed.py": "66de82793aa2b22c6b3a305589e73381416717c762bb3da1a7723f204694a6be",
+    "problems/MATH-001/experiments/canonical_evidence/database/verify_all_known.py": "fd63e5ade73fba5e29a339e47ec6a0336b0913e87723a38c5ea31bb6e27aada9",
+    "problems/MATH-001/experiments/canonical_evidence/verifier/adversarial_suite.py": "4f691e47ca08fc24ef11fe4bffc12d2313c6efde75eb35a7237a944cb90907f2",
+    "problems/MATH-001/experiments/canonical_evidence/verifier/brute_force.py": "af69f84cdd3ec5f6258e6703f34926b7cbaad62082531834976c8a4001333a4b",
+    "problems/MATH-001/experiments/canonical_evidence/verifier/ntil_verify.py": "3d85503205b60a2ccfb8575e7ac6c9ddc4a4734b641490b8891889be65817907",
+    "problems/MATH-001/experiments/convergence_20260929/regenerate_fixed_snapshot.py": "4759fe79cf163c18d219e249a613b4ab07d82ddc536cfcd78f0efbe0cc3ad4ac"
+  },
+  "exit_code": 0,
+  "finished_at": "2026-09-29T13:46:50.916979+00:00",
+  "input_unchanged": true,
+  "sources_unchanged": true,
+  "log_sha256": "e09c6a7d32df85c3cdcb099a631a1eba5adcc9499c02bec9809147db767608ec",
+  "result_sha256": "51a8d2013e6dd7b8ea1ecc75fe99d8c97c5354abdc78b4a4ceec4c70caadafb3",
+  "passed": true
+}

@@ -1,0 +1,8 @@
+# Preserve raw subprocess logs so their runtime SHA-256 equals the committed blob.
+/problems/MATH-001/experiments/convergence_20260929/evidence/*.log -text whitespace=cr-at-eol
+# Keep executed source and generated JSON stable in fresh Windows checkouts too.
+/problems/MATH-001/experiments/canonical_evidence/**/*.py text eol=lf
+/problems/MATH-001/experiments/canonical_evidence/**/*.json text eol=lf
+/problems/MATH-001/experiments/convergence_20260929/**/*.py text eol=lf
+/problems/MATH-001/experiments/convergence_20260929/**/*.json text eol=lf
+/problems/MATH-001/experiments/convergence_20260929/*.py text eol=lf

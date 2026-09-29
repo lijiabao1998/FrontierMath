@@ -1,0 +1,19 @@
+name: Evidence exit contracts
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  regression:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Positive and negative CLI controls
+        run: python -m unittest discover -s problems/MATH-001/experiments/canonical_evidence/database -p test_fail_closed.py -v
+      - name: Verify committed bytes against execution records
+        run: python problems/MATH-001/experiments/convergence_20260929/verify_committed_evidence.py
