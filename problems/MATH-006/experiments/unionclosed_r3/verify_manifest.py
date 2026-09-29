@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import hashlib, sys
 from pathlib import Path
-ROOT = Path(__file__).resolve().parent.parent.parent
+ROOT = Path(__file__).resolve().parent.parent  # problems/MATH-006
 fail = False
-for line in (ROOT / "problems" / "MATH-006" / "results" / "r3" / "hashes.txt").read_text(encoding="utf-8").splitlines():
+for line in (ROOT / "results" / "r3" / "hashes.txt").read_text(encoding="utf-8").splitlines():
     line = line.strip()
     if not line or line.startswith("#"):
         continue
