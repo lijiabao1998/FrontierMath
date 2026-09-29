@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "m": 1,
+      "bfs_count": 2,
+      "A102896": 2,
+      "match": true
+    },
+    {
+      "m": 2,
+      "bfs_count": 7,
+      "A102896": 7,
+      "match": true
+    },
+    {
+      "m": 3,
+      "bfs_count": 61,
+      "A102896": 61,
+      "match": true
+    },
+    {
+      "m": 4,
+      "bfs_count": 2480,
+      "A102896": 2480,
+      "match": true
+    }
+  ],
+  "m4_frankl": {
+    "nontrivial_families": 2479,
+    "frankl_ok": 2479,
+    "all_satisfy": true,
+    "min_max_freq_ratio": 0.5,
+    "max_max_freq_ratio": 0.8889
+  },
+  "verdict": "ENUMERATOR_VALIDATED_FRANKL_M4_PASS"
+}
