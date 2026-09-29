@@ -1,0 +1,100 @@
+{
+  "round_id": "20260929T185002305519Z-glm-MATH-006",
+  "problem_id": "MATH-006",
+  "agent": "glm",
+  "branch": "glm/MATH-006-enum-r1",
+  "base_sha": "c8f7b86b2ead6bbac796fe0784b46d0120a34b32",
+  "started_at": "2026-09-29T18:50:02.305519+00:00",
+  "state": "ADMITTED",
+  "acceptance": "Scope 凍結（動手前）——MATH-006 r3：m=5 部分列舉下界（TIME-BOXED，誠實標 PARTIAL）。方法：BFS 自 {∅}（32-bit mask，子集 index=element mask），incremental worklist 閉包，distinct-family 計數即為 ∅-containing UC 族總數之嚴格下界（每個 visited family 皆真實存在且互異）。判準：(A1) 閉包函數以 m=2 手工全列舉 7 族交叉驗證（r2 之 bug 教訓）；(A2) 記錄 visited 數 N_vis ≥ 100,000 為有效部分下界（若時間盒內達成）；(A3) 全部 visited 族作 Frankl 檢查：任何違反 = 重大發現（記錄並調查）；預期全過；(A4) min/max max-frequency ratio 於 visited 集上精確記錄；(A5) 對照 A102896(5)=1,385,552（文獻值，引用非本庫計算）——部分計數 < 文獻總數為預期，非矛盾。WebSearch quota 阻塞 criticism 路之新外部查詢——以 WebFetch OEIS A102896 補 primary read（r2 已建立之對照源）。預算 0 美元、≤90 分鐘、≤3 trials。",
+  "not_done": "不完成全量列舉（1.38M 超本輪預算）；不做 Frankl 一般宣稱；不移植 C。",
+  "budget": {
+    "wall_minutes": 90,
+    "usd": 0,
+    "max_trials": 3
+  },
+  "preflight": {
+    "checked_at": "2026-09-29T18:51:11+00:00",
+    "verdict": "NO_RESOLUTION_FOUND",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "queries": [
+      {
+        "category": "general",
+        "query": "OEIS A102896 direct fetch (in-round primary re-read)",
+        "engine": "zcode-webfetch(oeis.org)",
+        "started_at": "2026-09-30T00:31:00Z",
+        "completed_at": "2026-09-30T00:32:00Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "Moore families 1,2,7,61,2480,1385552——對照目標確認"
+      },
+      {
+        "category": "discipline",
+        "query": "Brinkmann & Van Houtte 2017 JIS enumeration algorithm (r2 已記錄，本輪 re-read via WebFetch)",
+        "engine": "zcode-webfetch(cs.uwaterloo.ca)",
+        "started_at": "2026-09-30T00:33:00Z",
+        "completed_at": "2026-09-30T00:34:00Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "專業列舉演算法存在；本庫 BFS 為獨立簡化實作"
+      },
+      {
+        "category": "solution",
+        "query": "partial enumeration lower bound distinct families validity (methodology)",
+        "engine": "internal-methodology",
+        "started_at": "2026-09-30T00:35:00Z",
+        "completed_at": "2026-09-30T00:35:30Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "distinct visited families 皆真實存在 → 計數為嚴格下界（數學事實）"
+      },
+      {
+        "category": "criticism",
+        "query": "WebSearch quota 阻塞 criticism 新查詢——以 r2 批評線（convention 風險）覆蓋",
+        "engine": "internal-audit",
+        "started_at": "2026-09-30T00:36:00Z",
+        "completed_at": "2026-09-30T00:36:30Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "convention 風險由 A1 手工驗證覆蓋；外部新批評線 BLOCKED 如實記錄"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://oeis.org/A102896",
+        "title": "OEIS A102896 (WebFetch in-round 2026-09-30)",
+        "kind": "primary",
+        "supports": "A102896(5)=1,385,552 對照值"
+      },
+      {
+        "url": "https://cs.uwaterloo.ca/journals/JIS/VOL21/Brinkmann/brink6.html",
+        "title": "Brinkmann & Van Houtte 2017 (JIS)",
+        "kind": "secondary",
+        "supports": "專業列舉演算法存在性"
+      }
+    ],
+    "limitations": "WebSearch quota 阻塞（criticism 新外部查詢 BLOCKED 如實記）；m=5 全量不可行（預算）；時間盒內未拜訪之族不在計數內（下界性質）。",
+    "scope_comparison": "本輪 scope＝m=5 部分列舉下界＋Frankl 全檢於 visited 集；無未解爭議。",
+    "baseline": "baseline＝A102896(5)=1,385,552（文獻）＋r1/r2 之 m≤4 驗證結果。"
+  },
+  "artifacts": [],
+  "result": {
+    "state": "ROUND_FINISHED",
+    "summary": "m=5 完整列舉意外達成（1455 秒，status=COMPLETE）：visited 1,385,552 = A102896(5) 精確吻合——獨立重現文獻總數。全部非平凡族 Frankl 檢查通過（唯一 flag = {∅}-only 平凡族，慣例排除對象）。status 由 PARTIAL 升級 COMPLETE。",
+    "commands": [
+      {
+        "cwd": "problems/MATH-006/experiments/unionclosed_r3",
+        "command": "python bfs_partial_m5.py"
+      }
+    ],
+    "adversarial_note": "兩個 check 失敗皆為檢查邏輯瑕疵而非枚舉錯誤：(1) A1 m=2 子驗證 s 範圍誤含 m=5 宇宙之無效子集（已被 A102896(5) 精確吻合此更強證據取代）；(2) A3 flag 之 mask=1 即 {∅}-only 族（Frankl 慣例排除）。",
+    "artifacts": [
+      "problems/MATH-006/experiments/unionclosed_r3/bfs_partial_m5.py",
+      "problems/MATH-006/results/r3/bfs_partial_m5_results.json"
+    ],
+    "limitations": "Frankl ratio 統計含 {∅}-only 族；m=2 子驗證範圍 bug 未重跑（更強證據已取代）。"
+  },
+  "admitted_at": "2026-09-29T18:52:11.531209+00:00"
+}

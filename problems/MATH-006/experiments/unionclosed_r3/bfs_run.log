@@ -1,0 +1,16 @@
+{
+  "visited_families": 1385552,
+  "status": "COMPLETE",
+  "A1_closure_m2_validation": false,
+  "A3_frankl_violations": [
+    {
+      "mask": 1,
+      "ratio": 0.0
+    }
+  ],
+  "A4_freq_ratio": {
+    "min": 0.0,
+    "max": 0.9412
+  },
+  "elapsed_s": 1455.1
+}
