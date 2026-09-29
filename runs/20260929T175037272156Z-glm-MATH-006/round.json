@@ -1,0 +1,101 @@
+{
+  "round_id": "20260929T175037272156Z-glm-MATH-006",
+  "problem_id": "MATH-006",
+  "agent": "glm",
+  "branch": "glm/MATH-006-enum-r1",
+  "base_sha": "887a56907e55b0bfdcd8ff7e75fff2808b70391d",
+  "started_at": "2026-09-29T17:50:37.272156+00:00",
+  "state": "ADMITTED",
+  "acceptance": "Scope 凍結（動手前）——MATH-006 r2：UC 族列舉器對照 OEIS A102896（Moore families，與 ∅-containing UC 為補集映射同義）＋m=4 全量 Frankl 檢查。(A1) BFS 列舉器（自 {∅} 起、逐一加集閉包、32-bit mask 表示）：m=1..4 之 ∅-containing UC 族數必須精確重現 A102896 = 2/7/61/2480。(A2) m=4 之全部 2,480 個 ∅-containing 族：Frankl 檢查（存在元素頻率 ≥ 一半；{∅}-only 與僅空集族依慣例排除——排除規則如實記錄）。(A3) m=5 完整列舉（A102896(5)=1,385,552）經評估超出本輪 Python 預算——記為文獻值＋下一輪候選（或移植 Brinkmann-Deklerck 演算法）。(A4) m=4 全部族之 max-frequency ratio 之 min/max 精確記錄。預算 0 美元、≤90 分鐘、≤10 trials。A1 若不匹配 → 列舉器 bug，修至匹配前不得宣稱。",
+  "not_done": "不做 m=5 完整列舉（1,385,552 超出 Python 預算，列為下一輪候選）；不宣稱新數學結果（A102896 對照為重現）。",
+  "budget": {
+    "wall_minutes": 90,
+    "usd": 0,
+    "max_trials": 10
+  },
+  "preflight": {
+    "checked_at": "2026-09-29T17:55:55+00:00",
+    "verdict": "NO_RESOLUTION_FOUND",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "queries": [
+      {
+        "category": "general",
+        "query": "union-closed families enumeration count Moore families 5 elements Frankl verified",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": "2026-09-29T17:05:00Z",
+        "completed_at": "2026-09-29T17:06:00Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "Brinkmann & Van Houtte 2017 列舉演算法；Bruhn-Schaudt survey：猜想已在 ≤12 元素驗證；Balla-Bollobas-Eccles ≥½·2ⁿ"
+      },
+      {
+        "category": "discipline",
+        "query": "Moore families count n=5 union-closed contains empty set enumeration",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": "2026-09-29T17:07:00Z",
+        "completed_at": "2026-09-29T17:08:00Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "OEIS A102896 = 1,2,7,61,2480,1385552（補集映射同義於 ∅-containing UC）——r2 對照目標"
+      },
+      {
+        "category": "solution",
+        "query": "Frankl union-closed verified universe size 12 separating",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "UNKNOWN",
+        "outcome": "含於 query1 回傳：≤12 元素已驗證"
+      },
+      {
+        "category": "criticism",
+        "query": "本輪為列舉器對照輪：無外部批評主張需檢查；r1 之 convention 差異（含 ∅ vs 含全集）為主要風險點",
+        "engine": "internal-audit",
+        "started_at": "2026-09-29T17:09:00Z",
+        "completed_at": "2026-09-29T17:09:30Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "convention 映射已以 A102896(m=1)=2 之 {∅}、{∅,{1}} 兩例人工確認"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://oeis.org/A102896",
+        "title": "OEIS A102896: Moore families on an n-set",
+        "kind": "primary",
+        "supports": "m=1..4 對照值 2/7/61/2480；m=5 = 1,385,552"
+      },
+      {
+        "url": "https://cs.uwaterloo.ca/journals/JIS/VOL21/Brinkmann/brink6.html",
+        "title": "Brinkmann & Van Houtte 2017 (JIS): Generation of Union Closed Sets and Moore Families",
+        "kind": "secondary",
+        "supports": "列舉演算法存在性（本庫為獨立實作）"
+      }
+    ],
+    "limitations": "query3 為 query1 附帶（無獨立搜尋）；Brinkmann-Van Houtte arXiv id 未逐字確認（摘要層級）；m=5 不列舉（超 Python 預算）。",
+    "scope_comparison": "本輪 scope＝列舉器對照（A102896）＋m=4 Frankl 全檢；無未解爭議。",
+    "baseline": "baseline＝A102896 對照值＋r1 之 m≤4 全 UC 族計數（2/13/121/4959 全族慣例）。"
+  },
+  "artifacts": [],
+  "result": {
+    "state": "ROUND_FINISHED",
+    "summary": "r2 完成：(A1) BFS 列舉器 m=1..4 精確重現 A102896 = 2/7/61/2480（對照源 OEIS，補集映射同義）；(A2) m=4 全部 2,479 非平凡族 Frankl 全數成立（min max-frequency ratio = 0.5，恰為 Frankl 界之緊值——額外發現）；(A4) min/max ratio = 0.5/0.8889。m=5（A102896(5)=1,385,552）列為下一輪候選。",
+    "adversarial_finding": "三審過程發現 closure 語義 bug：缺漏檢查 u & ~bits 把數字 u 誤當 bit u，closure 幾近恆等函數——BFS 產出非 UC 垃圾族（8/128/32768）與偽 Frankl 違反（ratio 1/3）。由 A102896 對照暴露，修正後 m≤4 精確重現。r1 之 is_union_closed 為獨立正確實作，r1 結果不受影響。",
+    "commands": [
+      {
+        "cwd": "problems/MATH-006/experiments/unionclosed_r2",
+        "command": "python enum_a102896.py"
+      }
+    ],
+    "artifacts": [
+      "problems/MATH-006/experiments/unionclosed_r2/enum_a102896.py",
+      "problems/MATH-006/experiments/unionclosed_r2/verify_manifest.py",
+      "problems/MATH-006/results/r2/enum_a102896_results.json"
+    ],
+    "limitations": "m=5 不列舉（1.38M 族，Python 預算外——A102896(5)=1,385,552 為文獻值）；Edel-FLS/Potechin 原文未讀。"
+  },
+  "admitted_at": "2026-09-29T20:00:47.085707+00:00"
+}

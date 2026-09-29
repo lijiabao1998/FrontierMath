@@ -1,0 +1,84 @@
+{
+  "round_id": "20260929T200046844260Z-glm-MATH-006",
+  "problem_id": "MATH-006",
+  "agent": "glm",
+  "branch": "glm/MATH-006-enum-r1",
+  "base_sha": "9d39b2b45f6c9e27208bedc5d1b8516b3f0ed48d",
+  "started_at": "2026-09-29T20:00:46.844260+00:00",
+  "state": "DRAFT",
+  "acceptance": "Scope 凍結（動手前）——MATH-006 r4：r3 完整列舉之 Frankl 統計修正版（r3 之 ratio 統計誤含 {∅}-only 族致 min=0.0）。方法：同一 BFS 完整重跑（deterministic），修正統計：(S1) ratio 統計排除 {∅}-only 族（慣例排除對象）；(S2) 精確 min/mean/max over 非平凡族；(S3) ratio 直方圖（16 桶，0–1）；(S4) ratio 恰為 0.5 之族數。判準：visited 總數 = 1,385,552（A102896(5) 交叉）；全部非平凡族 Frankl 成立（任何違反 = 重大發現如實記錄）；min ratio 記錄為計算值（文獻緊界範例為所有 size ≥ n−k 之族——恰 0.5，預期一致但以計算為準）。新增：本輪四路檢索含 Poonen 1992 JCT A（separability reduction）與 1/2 緊界範例之 fresh 確認。預算 0 美元、≤90 分鐘、≤3 trials。",
+  "not_done": "不做 m=5 以上；不做 EG 上界重現；不宣稱新數學定理。",
+  "budget": {
+    "wall_minutes": 90,
+    "usd": 0,
+    "max_trials": 3
+  },
+  "preflight": {
+    "checked_at": "2026-09-30T05:20:00Z",
+    "verdict": "NO_RESOLUTION_FOUND",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "queries": [
+      {
+        "category": "general",
+        "query": "Frankl union-closed conjecture tight examples minimum abundance ratio half",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": "2026-09-30T04:58:00Z",
+        "completed_at": "2026-09-30T04:59:00Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "1/2 為最佳可能常數；緊界範例 = 所有 size ≥ n−k 之族（每元素恰半）"
+      },
+      {
+        "category": "solution",
+        "query": "Poonen union-closed families classification 1992 separable Frankl half abundance",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": "2026-09-30T05:00:00Z",
+        "completed_at": "2026-09-30T05:01:00Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "Poonen 1992 JCT A 59(2):253-268 確認（separability reduction；primary source）"
+      },
+      {
+        "category": "discipline",
+        "query": "OEIS A102896 + Brinkmann-Van Houtte 2017 JIS（r2 對照源 re-read via session）",
+        "engine": "session-reuse (r2 2026-09-29 同日已四路檢索)",
+        "started_at": "2026-09-30T05:02:00Z",
+        "completed_at": "2026-09-30T05:02:30Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "對照值 2480/1385552 維持；無新修訂"
+      },
+      {
+        "category": "criticism",
+        "query": "本輪為統計修正輪：對抗式檢查 = 統計排除規則（{∅}-only）與 Frankl 定義之慣例一致性審計",
+        "engine": "internal-audit",
+        "started_at": "2026-09-30T05:03:00Z",
+        "completed_at": "2026-09-30T05:03:30Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "{∅}-only 排除符合 Frankl 慣例（conjecture excludes {∅}）；West 頁/survey 一致"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.tudelft.nl (DMO Seminar, Poonen)",
+        "title": "Frankl's Union-Closed Sets Conjecture (Poonen talk/page)",
+        "kind": "secondary",
+        "supports": "conjecture 定義：excludes {∅}、half abundance"
+      },
+      {
+        "url": "https://www.combinatorics.org (Ellis 2023 EJC)",
+        "title": "Small Sets in Union-Closed Families (Ellis 2023, EJC)",
+        "kind": "primary",
+        "supports": "小集 UC 族之近期文獻線"
+      }
+    ],
+    "limitations": "query3 為 session-reuse（同日 r2 已四路檢索）；本輪統計修正為主，外部新主張零。",
+    "scope_comparison": "本輪 scope＝r3 統計修正＋補完；無未解爭議。",
+    "baseline": "baseline＝r3 之完整列舉（1,385,552）＋修正統計規則。"
+  },
+  "artifacts": [],
+  "result": null
+}

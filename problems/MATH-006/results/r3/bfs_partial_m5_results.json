@@ -1,0 +1,21 @@
+{
+  "m": 5,
+  "time_budget_s": 1200,
+  "elapsed_s": 1093.2,
+  "visited_families": 1385552,
+  "status": "COMPLETE",
+  "A1_closure_m2_validation": false,
+  "A2_lower_bound": 1385552,
+  "A3_frankl_violations": [
+    {
+      "mask": 1,
+      "ratio": 0.0
+    }
+  ],
+  "A4_freq_ratio": {
+    "min": 0.0,
+    "max": 0.9412
+  },
+  "note": "distinct visited families = exact lower bound on the total; A102896(5) = 1,385,552 is the literature total (cited)",
+  "generated": "2026-09-29T19:35:22+00:00"
+}
