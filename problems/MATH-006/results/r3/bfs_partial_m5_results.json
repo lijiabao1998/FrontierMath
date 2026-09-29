@@ -1,7 +1,7 @@
 {
   "m": 5,
-  "time_budget_s": 2700,
-  "elapsed_s": 1455.1,
+  "time_budget_s": 1200,
+  "elapsed_s": 1093.2,
   "visited_families": 1385552,
   "status": "COMPLETE",
   "A1_closure_m2_validation": false,
@@ -17,7 +17,5 @@
     "max": 0.9412
   },
   "note": "distinct visited families = exact lower bound on the total; A102896(5) = 1,385,552 is the literature total (cited)",
-  "generated": "2026-09-29T19:25:42+00:00",
-  "interpretation": "visited 1,385,552 = A102896(5) exactly: COMPLETE enumeration independently reproduces the literature count. The single Frankl 'violation' (mask=1, ratio 0) is the {∅}-only family, excluded by convention — no genuine violation. min ratio 0.0 belongs to that same excluded family.",
-  "frankl_nontrivial_violations": 0
+  "generated": "2026-09-29T19:35:22+00:00"
 }

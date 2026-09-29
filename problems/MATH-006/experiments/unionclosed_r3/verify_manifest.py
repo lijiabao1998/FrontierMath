@@ -1,9 +1,18 @@
 #!/usr/bin/env python3
-import hashlib, sys
+"""Verify problems/MATH-006/results/r3/hashes.txt.
+
+paths in the manifest are relative to problems/MATH-006 (= three parents up
+from this file). Exit != 0 on any mismatch or missing file."""
+import hashlib
+import sys
 from pathlib import Path
-ROOT = Path(__file__).resolve().parent.parent  # problems/MATH-006
+
+HERE = Path(__file__).resolve().parent           # experiments/unionclosed_r3
+ROOT = HERE.parent.parent                        # problems/MATH-006
+MANIFEST = ROOT / "results" / "r3" / "hashes.txt"
+
 fail = False
-for line in (ROOT / "results" / "r3" / "hashes.txt").read_text(encoding="utf-8").splitlines():
+for line in MANIFEST.read_text(encoding="utf-8").splitlines():
     line = line.strip()
     if not line or line.startswith("#"):
         continue
@@ -11,9 +20,13 @@ for line in (ROOT / "results" / "r3" / "hashes.txt").read_text(encoding="utf-8")
     name = name.lstrip("*")
     path = ROOT / name
     if not path.is_file():
-        print(f"MISSING {name}"); fail = True; continue
-    if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
-        print(f"MISMATCH {name}"); fail = True
+        print(f"MISSING {name}")
+        fail = True
+        continue
+    actual = hashlib.sha256(path.read_bytes()).hexdigest()
+    if actual != digest:
+        print(f"MISMATCH {name}")
+        fail = True
     else:
         print(f"OK {name}")
 sys.exit(1 if fail else 0)
