@@ -1,0 +1,88 @@
+{
+  "problem": "MATH-001",
+  "n": 9,
+  "target": 18,
+  "points": [
+    [
+      1,
+      1
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      8,
+      4
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      8,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      9,
+      7
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      9,
+      8
+    ],
+    [
+      3,
+      9
+    ],
+    [
+      2,
+      1
+    ]
+  ],
+  "source": "tamper:collinear_injection_of_glm-dfs-r1",
+  "origin_ref": "self-generated deterministic DFS, experiments/baseline_r1/search_small_n.py; upper bound 2n via <=2 per row, so a verified 2n certificate proves D(n)=2n for this n",
+  "generated": "2026-09-27T18:00:10+00:00",
+  "search_stats": {
+    "wall_seconds": 13.706,
+    "nodes": 306124
+  },
+  "wlog_note": "exactly 2 points per row; columns capped at 2",
+  "tamper_note": "moved last point to (2, 1) on line (1, 1)-(4, 1)"
+}

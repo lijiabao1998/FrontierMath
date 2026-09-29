@@ -1,0 +1,5 @@
+Python 3.13.5
+MINGW64_NT-10.0-26200 Ï°½üÆ½µÄzenbook 3.6.10-710e5275.x86_64 2026-07-28 09:32 UTC x86_64 Msys
+governance pin: FrontierLab-Governance 07d2b13051b83215182e411e1612f92f1912d8fb
+base_sha: cd1e4eadc177920b95332ebe08c2498e52c3ce56
+branch: glm/MATH-001-baseline-r1

@@ -1,0 +1,36 @@
+{
+  "problem": "MATH-001",
+  "n": 3,
+  "target": 6,
+  "points": [
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      3
+    ]
+  ],
+  "source": "flammenkamp-known-solutions-1997",
+  "origin_ref": "https://wwwhomes.uni-bielefeld.de/achim/no3in/readme.html (data_1997/known_solutions, decoded per decode.c semantics)",
+  "generated": "2026-09-27T18:26:31+00:00",
+  "symmetry_class": "dia2",
+  "archive_line": 2
+}
