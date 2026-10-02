@@ -1,0 +1,16 @@
+{
+  "frozen_at": "2026-10-02T14:28:30.687586+00:00",
+  "git_head": "756148569a8c8488c157747682d7d54af32f96ce",
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "sources": {
+    "decode_flam.py": "9beade48e58f9bd2566724df8feee60e53a031fc1b6a8a49c41a645aef4c6518",
+    "verifier_det.py": "ff79d32dfb01402d307925a1fe5e2c52bb9f6f592cbfdfb902858417a7c474c8",
+    "verifier_lines.py": "1df8f98caed3bee44a4f79e5138aad147113cad872eee150bb43830b2837b4d7",
+    "gate.py": "dfd32411dfc30b505bdf983c04fca1f1a6ee4f03e3f1788732a75e77553a1fb2",
+    "full_scan.py": "394d5dd0f50b25089424e53cc712bb946bb6a5f8d18a970ef5d60a8856aaf66c"
+  },
+  "dataset_path": "data_cache\\all_known_solutions",
+  "dataset_bytes": 23834242,
+  "dataset_sha256": "c27f8f53286be5b047a46bf1e469985e44efd4e6955783e8d0fb5ad66b7effde"
+}

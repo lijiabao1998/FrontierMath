@@ -1,0 +1,301 @@
+{
+  "file": "known_solutions_1997",
+  "bytes": 1654852,
+  "sha256": "5e127d7be1c060a4d9021356b14848661fac8b76efee45c79acba5b7b7cd80f4",
+  "scanned": 36912,
+  "stopped": "",
+  "seconds": 66.075,
+  "per_n": {
+    "2": {
+      "pass": 1,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1
+    },
+    "3": {
+      "pass": 1,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1
+    },
+    "4": {
+      "pass": 4,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 4
+    },
+    "5": {
+      "pass": 5,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 5
+    },
+    "6": {
+      "pass": 11,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 11
+    },
+    "7": {
+      "pass": 22,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 22
+    },
+    "8": {
+      "pass": 57,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 57
+    },
+    "9": {
+      "pass": 51,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 51
+    },
+    "10": {
+      "pass": 156,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 156
+    },
+    "11": {
+      "pass": 158,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 158
+    },
+    "12": {
+      "pass": 566,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 566
+    },
+    "13": {
+      "pass": 499,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 499
+    },
+    "14": {
+      "pass": 1366,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1366
+    },
+    "15": {
+      "pass": 3978,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 3978
+    },
+    "16": {
+      "pass": 5900,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 5900
+    },
+    "17": {
+      "pass": 294,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 294
+    },
+    "18": {
+      "pass": 353,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 353
+    },
+    "19": {
+      "pass": 610,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 610
+    },
+    "20": {
+      "pass": 712,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 712
+    },
+    "21": {
+      "pass": 2426,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 2426
+    },
+    "22": {
+      "pass": 1276,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1276
+    },
+    "23": {
+      "pass": 4004,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 4004
+    },
+    "24": {
+      "pass": 2922,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 2922
+    },
+    "25": {
+      "pass": 9042,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 9042
+    },
+    "26": {
+      "pass": 37,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 37
+    },
+    "27": {
+      "pass": 9,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 9
+    },
+    "28": {
+      "pass": 58,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 58
+    },
+    "29": {
+      "pass": 9,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 9
+    },
+    "30": {
+      "pass": 93,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 93
+    },
+    "31": {
+      "pass": 7,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 7
+    },
+    "32": {
+      "pass": 102,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 102
+    },
+    "33": {
+      "pass": 14,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 14
+    },
+    "34": {
+      "pass": 172,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 172
+    },
+    "35": {
+      "pass": 24,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 24
+    },
+    "36": {
+      "pass": 282,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 282
+    },
+    "37": {
+      "pass": 21,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 21
+    },
+    "38": {
+      "pass": 338,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 338
+    },
+    "39": {
+      "pass": 33,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 33
+    },
+    "40": {
+      "pass": 541,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 541
+    },
+    "41": {
+      "pass": 1,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1
+    },
+    "42": {
+      "pass": 747,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 747
+    },
+    "43": {
+      "pass": 1,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1
+    },
+    "44": {
+      "pass": 3,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 3
+    },
+    "45": {
+      "pass": 1,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1
+    },
+    "46": {
+      "pass": 1,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1
+    },
+    "48": {
+      "pass": 1,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1
+    },
+    "50": {
+      "pass": 2,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 2
+    },
+    "52": {
+      "pass": 1,
+      "decode_fail": 0,
+      "math_fail": 0,
+      "det_checked": 1
+    }
+  },
+  "decode_fail": [],
+  "math_fail": [],
+  "disagree": []
+}

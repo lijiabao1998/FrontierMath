@@ -48,4 +48,4 @@ python3 tools/audit_lean.py
 本版未引入 mathlib。需要時另開依賴 PR，選與 Lean 匹配的精確 mathlib commit，提交 `lake-manifest.json`，重驗再使用；不要追浮動 master。`claims.json` 列需要審計的每個正式 theorem。CI 通過只保證列出的命題在允許公理下被檢查，不保證自然語言題目翻譯正確，也不保證新穎。研究 proof 應放 `problems/<ID>/proofs/` 並經正式 Lean module 匯入；不能以未被 build 的檔案冒充證明。
 
 ## 目前交付邊界
-40 題整體中的本庫 10 題已完成初始選題；尚未開始原創數學探索、下載大型構造、實作各題 evaluator 或重現最佳界。來源摘要／問題頁篩查不等於完整證明審讀。流程 CI、Lean CI 的實際結果以 Actions 為準，不在這裡預寫成功。
+10 題都已完成初始選題。MATH-001 在 `grok/MATH-001-baseline-r1` 有一輪有限檢查器與公開構造重驗，一般問題仍 OPEN；其餘 9 題的 evaluator 尚未實作。有限 n 的通過不是通解。流程 CI、Lean CI 的實際結果以 Actions 為準，不在這裡預寫成功。

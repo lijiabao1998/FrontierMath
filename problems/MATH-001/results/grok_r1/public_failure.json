@@ -1,0 +1,25 @@
+{
+  "file": "n67_rct4.few",
+  "bytes": 136,
+  "sha256": "0428cf840f02c20a978ba47e4abfe4bf772202716a7e371a2e96d9d8f95beb96",
+  "scanned": 1,
+  "stopped": "",
+  "seconds": 0.011,
+  "per_n": {
+    "-1": {
+      "pass": 0,
+      "decode_fail": 1,
+      "math_fail": 0
+    }
+  },
+  "decode_fail": [
+    {
+      "line": 1,
+      "reason": "legacy @ record not in this decoder",
+      "head": "cbhVhZkABFOIqIW7girGfB$u$FX8R5Ts#nvGMyzU"
+    }
+  ],
+  "math_fail": [],
+  "disagree": [],
+  "samples": {}
+}

@@ -1,0 +1,211 @@
+{
+  "few": [
+    {
+      "file": "n61_rct4.few",
+      "passed": 2,
+      "failed": []
+    },
+    {
+      "file": "n62_rot4.few",
+      "passed": 6,
+      "failed": []
+    },
+    {
+      "file": "n63_rct4.few",
+      "passed": 1,
+      "failed": []
+    },
+    {
+      "file": "n64_rot4.few",
+      "passed": 26,
+      "failed": []
+    },
+    {
+      "file": "n65_rct4.few",
+      "passed": 1,
+      "failed": []
+    },
+    {
+      "file": "n66_rot4.few",
+      "passed": 3,
+      "failed": []
+    },
+    {
+      "file": "n67_rct4.few",
+      "passed": 1,
+      "failed": []
+    },
+    {
+      "file": "n68_rot4.few",
+      "passed": 3,
+      "failed": []
+    },
+    {
+      "file": "n69_rct4.few",
+      "passed": 2,
+      "failed": []
+    },
+    {
+      "file": "n70_rot4.few",
+      "passed": 15,
+      "failed": []
+    },
+    {
+      "file": "n71_rct4.few",
+      "passed": 1,
+      "failed": []
+    },
+    {
+      "file": "n72_rot4.few",
+      "passed": 1,
+      "failed": []
+    },
+    {
+      "file": "n73_rct4.few",
+      "passed": 1,
+      "failed": []
+    },
+    {
+      "file": "n74_rot4.few",
+      "passed": 1,
+      "failed": []
+    },
+    {
+      "file": "n76_rot4.few",
+      "passed": 1,
+      "failed": []
+    }
+  ],
+  "all_known_records_read": 431008,
+  "all_known_n_ge_55": 12007,
+  "per_n": {
+    "55": {
+      "pass": 578,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "56": {
+      "pass": 10466,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "57": {
+      "pass": 840,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "58": {
+      "pass": 23,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "59": {
+      "pass": 2,
+      "fail": 0,
+      "det_checked": 2,
+      "examples": []
+    },
+    "60": {
+      "pass": 33,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "61": {
+      "pass": 2,
+      "fail": 0,
+      "det_checked": 2,
+      "examples": []
+    },
+    "62": {
+      "pass": 6,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "63": {
+      "pass": 1,
+      "fail": 0,
+      "det_checked": 1,
+      "examples": []
+    },
+    "64": {
+      "pass": 26,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "65": {
+      "pass": 1,
+      "fail": 0,
+      "det_checked": 1,
+      "examples": []
+    },
+    "66": {
+      "pass": 3,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "67": {
+      "pass": 1,
+      "fail": 0,
+      "det_checked": 1,
+      "examples": []
+    },
+    "68": {
+      "pass": 3,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "69": {
+      "pass": 2,
+      "fail": 0,
+      "det_checked": 2,
+      "examples": []
+    },
+    "70": {
+      "pass": 15,
+      "fail": 0,
+      "det_checked": 3,
+      "examples": []
+    },
+    "71": {
+      "pass": 1,
+      "fail": 0,
+      "det_checked": 1,
+      "examples": []
+    },
+    "72": {
+      "pass": 1,
+      "fail": 0,
+      "det_checked": 1,
+      "examples": []
+    },
+    "73": {
+      "pass": 1,
+      "fail": 0,
+      "det_checked": 1,
+      "examples": []
+    },
+    "74": {
+      "pass": 1,
+      "fail": 0,
+      "det_checked": 1,
+      "examples": []
+    },
+    "76": {
+      "pass": 1,
+      "fail": 0,
+      "det_checked": 1,
+      "examples": []
+    }
+  },
+  "seconds": 45.693,
+  "high_seconds": 43.566
+}

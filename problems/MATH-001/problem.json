@@ -1,13 +1,13 @@
 {
   "id":"MATH-001","domain":"math","title":"No-three-in-line：一般 n 的 2n 點構造","status":"OPEN","priority":"A","checked_on":"2026-09-27",
   "statement":"令 D(n) 為 {1,...,n}² 中任三相異點不共線的最大子集大小。研究對所有 n>=2 是否 D(n)=2n，或給出嚴格反例／一般界。",
-  "known_result":"Prellberg 2026 提供 n<=60 的 2n 構造；這是該文發表時的有限進展，不保證此刻 n=61 仍為最小未定實例。",
+  "known_result":"Prellberg arXiv:2602.07751v1（2026-02-08）給出 n<=60 的 2n 構造。Flammenkamp 表（更新 2026-09-11）記入 n<=74 除 n=75 外至少一個 2n 構造，最大記入構造為 n=76（Heule, rot4, 2026-08-10）。這些是外部有限結果，不是本庫發現，也不關閉一般問題。本輪 grok r1 用兩套檢查器重驗了公開 .few（n=61..74 與 n=76）以及 1997 年 known_solutions 全檔。",
   "open_gap":"一般 n 的存在性；新有限構造僅提升有限下界，不能直接完成一般問題。",
-  "first_task":"重查最新有限紀錄及補充資料，先以 n=2..8 建整數 determinant checker；獨立重驗一組公開構造與故意加入共線點的負例。",
+  "first_task":"grok r1 已完成檢查器、n=2..10 自製 2n 憑證、1997 全檔與 n=61..74/76 公開檔重驗。下一輪最小動作：為 n=75 做 SAT/CSP 編碼校準，或取得 Heule 的 DRAT/LRAT；未有可檢查的 UNSAT 證書前不得宣稱 D(75)<152。",
   "evaluator":"檢查格點範圍、唯一性及每组三點的整數行列式非零；目標大小與 n 分開記。",
   "validation_limits":"隨機沒找到反例不證明通解；搜尋失敗不證明不存在；SAT UNSAT 需可驗證證書。",
   "completion_criterion":"與 statement 同範圍的已確認一般證明或反例；有限 n 完成只記子任務。",
-  "screening_note":"初始有界搜尋與 arXiv 摘要核對；非完整證明審讀，下一輪重新查文獻。",
-  "screening_queries":["site.arxiv.org no-three-in-line problem 2026 2025 2n"],
-  "sources":[{"title":"Prellberg (2026), Constraint Satisfaction Programming for the No-three-in-line Problem","url":"https://arxiv.org/abs/2602.07751","kind":"primary","supports":"n<=60 有限構造與一般問題的缺口；本輪已讀摘要。"}]
+  "screening_note":"grok r1（2026-09-27Z）重新檢索。一般問題無同 scope 證明或反例。2602.07751 只有 v1，讀了 abs 與 HTML 的 Theorem 1／結論，未逐行審 16 頁。有限 frontier 以 Flammenkamp 2026-09-11 表為準；該表在本輪結束前再抓一次，SHA256 未變。詳見 runs/20260927T184702323864Z-grok-MATH-001/LITERATURE_MAP.md。下一輪仍須重查。",
+  "screening_queries":["site.arxiv.org no-three-in-line problem 2026 2025 2n","no-three-in-line problem D(n)=2n open status 2026","all:\"no-three-in-line\" sortBy=submittedDate","\"no-three-in-line\" Heule SAT n=75 OR n=76 OR solved OR counterexample 2026","\"no-three-in-line\" erratum OR retraction OR corrigendum Prellberg OR Heule OR Flammenkamp"],
+  "sources":[{"title":"Prellberg (2026), Constraint Satisfaction Programming for the No-three-in-line Problem, arXiv:2602.07751v1","url":"https://arxiv.org/abs/2602.07751","kind":"primary","supports":"n<=60 的 2n 構造。只有 v1。本輪讀 abs 與 HTML Theorem 1 和結論，未逐行審 PDF。"},{"title":"A. Flammenkamp, Number of Solutions table, updated 11 September 2026","url":"https://wwwhomes.uni-bielefeld.de/achim/no3in/table.html","kind":"primary","supports":"有限 frontier：n=75 空白，n=76 一個構造，n<=74 除 75 外至少一個。全文讀完。"},{"title":"No-(k+1)-in-line problem for k greater than or equal to 3, arXiv:2607.05255v1","url":"https://arxiv.org/abs/2607.05255","kind":"primary","supports":"只解決 k>=3。摘要寫明 k=2 仍未解決。abstract-only，不關閉本題。"}]
 }

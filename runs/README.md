@@ -1,2 +1,2 @@
 # 輪次紀錄
-目前沒有研究輪次。用治理工具 start 生成 DRAFT；實際完成本輪聯網查證後 admit。每輪放獨立目錄，不編造搜尋、命令、結果。研究改動必須附相同 problem_id 的合格 round.json。大型資料另存合法可訪問來源及 SHA256，不放進 git。
+已有一輪：`20260927T184702323864Z-grok-MATH-001`（MATH-001，grok，PARTIAL_PROGRESS）。用治理工具 start 生成 DRAFT；實際完成本輪聯網查證後 admit。每輪放獨立目錄，不編造搜尋、命令、結果。研究改動必須附相同 problem_id 的合格 round.json。大型資料另存合法可訪問來源及 SHA256，不放進 git。
