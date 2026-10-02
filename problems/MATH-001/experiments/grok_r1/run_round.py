@@ -13,10 +13,14 @@ import time
 import urllib.request
 from pathlib import Path
 
+import datetime as dt
+import subprocess
+
 import decode_flam
 import search_small
 import verifier_det
 import verifier_lines
+from gate import failure_reasons
 
 ROOT = Path(__file__).resolve().parents[4]
 ROUND = ROOT / "runs" / "20260927T184702323864Z-grok-MATH-001"
@@ -147,6 +151,7 @@ def verify_coded_file(path: Path, det_all: bool, det_min_n: int, deadline_s: flo
         "decode_fail": decode_fail,
         "math_fail": math_fail,
         "disagree": disagree,
+        "eof": stopped == "",
         "samples": {str(k): v for k, v in sorted(samples.items()) if k <= 12 or k >= 60},
     }
 
@@ -227,14 +232,41 @@ def tamper(certificates: list):
     return {"cases": len(cases), "injections": injected, "fuzz_pairs": fuzz_agree, "seed": 42, "labels": [c["label"] for c in cases]}
 
 
+def _freeze_manifest() -> dict:
+    sources = {
+        path.name: sha256_file(path)
+        for path in sorted(Path(__file__).resolve().parent.glob("*.py"))
+    }
+    head = subprocess.check_output(
+        ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True
+    ).strip()
+    manifest = {
+        "frozen_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "git_head": head,
+        "python": sys.version,
+        "platform": platform.platform(),
+        "sources": sources,
+    }
+    (OUT / "run_manifest_frozen.json").write_text(
+        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+    )
+    return manifest
+
+
+def _tag(name: str, report: dict) -> list[str]:
+    return [f"{name}:{reason}" for reason in failure_reasons(report)]
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     CACHE.mkdir(parents=True, exist_ok=True)
+    manifest = _freeze_manifest()
     t0 = time.monotonic()
     env = {
-        "python": sys.version,
-        "platform": platform.platform(),
-        "implementation": platform.python_implementation(),
+        "python": manifest["python"],
+        "platform": manifest["platform"],
+        "git_head": manifest["git_head"],
+        "frozen_at": manifest["frozen_at"],
     }
     (OUT / "environment.txt").write_text(json.dumps(env, indent=2) + "\n", encoding="utf-8")
 
@@ -329,40 +361,44 @@ def main() -> int:
         table_note["preflight_sha256"] = sha256_file(lit_table)
         table_note["unchanged_since_preflight"] = table_note["preflight_sha256"] == table_note["refetch_sha256"]
 
-    code_hashes = {}
-    for path in sorted(Path(__file__).resolve().parent.glob("*.py")):
-        code_hashes[path.name] = sha256_file(path)
-    hash_lines = [f"{digest}  {name}" for name, digest in code_hashes.items()]
-    hash_lines.append(f"{old_report['sha256']}  known_solutions_1997")
-    hash_lines.append(f"{big_report['sha256']}  all_known_solutions")
-    hash_lines.append(f"{table_note['refetch_sha256']}  table.html")
-    (OUT / "hashes.txt").write_text("\n".join(hash_lines) + "\n", encoding="utf-8")
-
+    drifted = {
+        name: sha256_file(Path(__file__).resolve().parent / name)
+        for name in manifest["sources"]
+    }
+    if drifted != manifest["sources"]:
+        big_report["stopped"] = big_report.get("stopped") or "code_changed_during_run"
+        big_report["eof"] = False
     summary = {
         "trials": TRIALS,
         "trial_count": len(TRIALS),
         "search": search_rows,
         "tamper": tamper_summary,
-        "frontier_files": [r["file"] if "file" in r else r for r in frontier],
+        "frontier_files": [item["file"] for item in frontier],
         "frontier": frontier,
-        "flam1997": {k: old_report[k] for k in ("scanned", "seconds", "stopped", "sha256", "math_fail", "decode_fail", "disagree")},
-        "all_known": {k: big_report[k] for k in ("scanned", "seconds", "stopped", "sha256", "math_fail", "decode_fail", "disagree", "bytes")},
+        "flam1997": {k: old_report[k] for k in ("scanned", "seconds", "stopped", "eof", "sha256", "math_fail", "decode_fail", "disagree")},
+        "all_known": {k: big_report[k] for k in ("scanned", "seconds", "stopped", "eof", "sha256", "math_fail", "decode_fail", "disagree", "bytes")},
         "table": table_note,
-        "code_sha256": code_hashes,
+        "code_sha256": manifest["sources"],
+        "git_head": manifest["git_head"],
+        "frozen_at": manifest["frozen_at"],
         "wall_seconds": round(time.monotonic() - t0, 3),
         "command": "py -3 problems/MATH-001/experiments/grok_r1/run_round.py",
     }
-    (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"wall_seconds": summary["wall_seconds"], "trials": len(TRIALS), "1997": old_report["scanned"], "all_known": big_report["scanned"], "stopped_big": big_report["stopped"]}, indent=2))
     bad = []
-    if old_report["math_fail"] or old_report["decode_fail"] or old_report["disagree"] or old_report["stopped"]:
-        bad.append("1997")
-    if any(item["math_fail"] or item["decode_fail"] or item["disagree"] for item in frontier):
-        bad.append("frontier")
-    if big_report["disagree"]:
-        bad.append("all_known_disagree")
+    bad += _tag("1997", old_report)
+    bad += _tag("all_known", big_report)
+    for item in frontier:
+        bad += _tag(item["file"], item)
+    summary["full_reproduction"] = not bad
+    summary["failure_reasons"] = bad
+    # summary.json is the run-1 historical artifact. Never rewrite it.
+    summary_path = OUT / "summary.json"
+    if summary_path.exists():
+        summary_path = OUT / "summary_subsequent.json"
+    summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"full_reproduction": summary["full_reproduction"], "failure_reasons": bad}, indent=2))
     if bad:
-        print("INCOMPLETE " + ",".join(bad), flush=True)
+        print("RED " + ",".join(bad), flush=True)
         return 2
     return 0
 

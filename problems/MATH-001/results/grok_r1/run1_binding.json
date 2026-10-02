@@ -1,0 +1,13 @@
+{
+  "artifact": "summary.json and public_failure.json",
+  "what": "Run 1 treated '@' as a 1995 format flag and rejected records such as n67_rct4.few with reason \"legacy @ record not in this decoder\".",
+  "produced_by_code_sha256": {
+    "decode_flam.py": "fdfc81c934b9b3f059324b47986453f0f44fb61e72852776ac804a88d154d65d",
+    "run_round.py": "e76f8424cb4136b4b175a358512301c9b0bb041ef381d0be3e3af56623d2943f",
+    "search_small.py": "c14298c7d70ffd032d6f3767accd36eee48b1209f6393cb60c9131dd45f98bdf",
+    "verifier_det.py": "ff79d32dfb01402d307925a1fe5e2c52bb9f6f592cbfdfb902858417a7c474c8",
+    "verifier_lines.py": "1df8f98caed3bee44a4f79e5138aad147113cad872eee150bb43830b2837b4d7"
+  },
+  "where_the_hash_is_stored": "These SHA-256 values are the code_sha256 object inside summary.json. They were written at the end of that process, while decode_flam.py still contained the '@' format-flag check. They are not the hashes of the files after that check was removed.",
+  "do_not_backfill": "Do not replace summary.json code_sha256 or public_failure.json with a later source hash."
+}
