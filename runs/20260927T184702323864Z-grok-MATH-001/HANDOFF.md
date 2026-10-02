@@ -47,7 +47,11 @@ py -3 problems\MATH-001\experiments\grok_r1\recheck_public.py
 
 ## 檢查器狀態
 
-兩套在所有已報告的正例上 PASS，在所有故意負例上 FAIL，沒有分歧。1997：36912/36912。`.few`：65/65。`all_known`：431008 筆可解碼，直線檢查器覆蓋 n<=54 與 n>=55，0 失敗；沒有 n=75。
+兩套在已報告的正例上 PASS，在故意負例上 FAIL。1997：36912/36912。`.few`：65/65。
+
+`all_known_solutions` 的全量是 `full_scan.py`，git `7561485`，凍結 `2026-10-02T14:28:30Z`。431008/431008，兩套檢查器，exit 0。n=54 是 7714，0 失敗。沒有 n=75。第一遍 `run_round.py` 的 412675 筆 `time_limit` 不是這次全量。
+
+`@` 失敗仍在 `summary.json`。產生它的 `decode_flam.py` 是 `fdfc81c934b9b3f059324b47986453f0f44fb61e72852776ac804a88d154d65d`，記在 `run1_binding.json`。不要用後來的程式 hash 回填。
 
 ## 不要再做
 

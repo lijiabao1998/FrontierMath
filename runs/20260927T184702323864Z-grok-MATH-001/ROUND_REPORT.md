@@ -38,11 +38,13 @@
 
 `configurations/` 裡 n>=61 的 `.few`：n=61 到 74，以及 76，沒有 75。修正解碼器之後 65 筆全部兩套通過，包含 Heule 的 `n76_rot4.few` 與 Prellberg 的 `n74_rot4.few`。點列在 `results/grok_r1/public/n76_rot4_points.json` 與 `n74_rot4_points.json`。
 
-`all_known_solutions` 431008 筆都解得出來。直線檢查器：第一遍 412675 筆（涵蓋 n<=53 以及 n=54 的前段）0 失敗；補上全部 7714 筆 n=54，0 失敗；n>=55 的 12007 筆 0 失敗。沒有 n=75。n>=61 的筆數與 `.few` 逐 n 相同，而 `.few` 已用行列式全查。n=11..53 的行列式只查了 n<=10 的全部、每 25 筆一張，以及 1997 檔的全部。
+`all_known_solutions` 的全量結果只算 `full_scan.py` 這一趟。git `756148569a8c8488c157747682d7d54af32f96ce`，凍結時間 `2026-10-02T14:28:30Z`，資料 SHA256 與上面相同。431008 筆都到達檔尾，行列式和直線分桶都通過，decode / math / disagree 都是 0，exit 0。n=54 為 7714 筆、0 失敗，先前 300 秒停住所漏的尾段在這 7714 筆裡面。per_n 從 2 到 74 再加 76，沒有 75。
+
+第一遍 `run_round.py` 停在 412675 筆、`stopped: time_limit`。那個行程的出口只看 `disagree`，所以未掃完仍會 exit 0。這不是全量成功。當時的 `recheck_public.py` 只對 n≥55 做數學驗證。
 
 ## 解碼器抓到的錯
 
-第一遍把 `@` 當成 1995 年 `decode.c` 的格式旗標。2026-07-12 的 `char_to_val` 裡 `@` 是索引 66。於是 n=70、71、73、74、76 等被記成 decode failure，而不是數學失敗。`summary.json` 留著這次結果。去掉這個判斷後 `recheck_public.py` 全過。
+第一遍把 `@` 當成 1995 年 `decode.c` 的格式旗標。2026-07-12 的 `char_to_val` 裡 `@` 是索引 66。於是 n=70、71、73、74、76 等被記成 decode failure，而不是數學失敗。`summary.json` 和 `public_failure.json` 留著這次結果，綁定的 `decode_flam.py` 是 `fdfc81c934b9b3f059324b47986453f0f44fb61e72852776ac804a88d154d65d`（見 `run1_binding.json`）。現在的程式 hash 沒有寫回那兩個檔。
 
 不要再犯：`'a'` 的索引是 36，不是 10。1995 年 `decode.c` 的 `MAX_N 62` 不能解擴充字母。
 
@@ -62,8 +64,8 @@
 ## 重跑
 
 ```text
-py -3 problems/MATH-001/experiments/grok_r1/run_round.py
-py -3 problems/MATH-001/experiments/grok_r1/recheck_public.py
+py -3 problems/MATH-001/experiments/grok_r1/test_fail_closed.py
+py -3 problems/MATH-001/experiments/grok_r1/full_scan.py --dataset problems/MATH-001/experiments/grok_r1/data_cache/all_known_solutions --checkpoint problems/MATH-001/results/grok_r1/public/all_known_full_checkpoint.json --manifest-out problems/MATH-001/results/grok_r1/public/all_known_full_manifest.json
 ```
 
 大型檔在 `experiments/grok_r1/data_cache/`，被 gitignore。刪掉後這兩條命令會重新下載。
