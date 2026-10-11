@@ -1,0 +1,145 @@
+{
+  "round_id": "20261011T180847963562Z-gpt-MATH-006",
+  "problem_id": "MATH-006",
+  "agent": "gpt",
+  "branch": "gpt/MATH-006-bounded-independent-20261011",
+  "base_sha": "1d75828f779b9863f966a76fbf115fac3708e09c",
+  "started_at": "2026-10-11T18:08:47.963562+00:00",
+  "state": "ADMITTED",
+  "acceptance": "Frozen PROTOCOL.json: independent reference and original evaluator contract are separate; all required checks must exist and be true for total success. Exact finite counts/integer predicates for MATH, absolute DFT/Parseval error <=1e-10 and original energy tolerance 0.10 for PHYS; do not alter inherited criteria.",
+  "not_done": "m=5 or higher; r1 V4 random m=6 exploration; original r1 main full execution; theorem or general conjecture proof; evaluator repair; remote writes, merge or deployment",
+  "budget": {
+    "wall_minutes": 30,
+    "usd": 0,
+    "max_trials": 100,
+    "cpu_affinity_count": 1,
+    "authorized_exhaustive_exception": {
+      "m": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "m4_candidates": 65536,
+      "total_candidates": 65812
+    }
+  },
+  "preflight": {
+    "checked_at": "2026-10-11T18:21:44.711128+00:00",
+    "verdict": "PARTIAL_PROGRESS",
+    "queries": [
+      {
+        "category": "general",
+        "query": "Frankl union closed sets conjecture current status 2026",
+        "engine": "web.run search index (batched)",
+        "outcome": "Indexed partial/special-case results; no independently confirmed general resolution in this bounded check."
+      },
+      {
+        "category": "discipline",
+        "query": "site.arxiv.org union closed sets conjecture Gilmer 2026",
+        "engine": "web.run search index (batched)",
+        "outcome": "Primary Gilmer and later bound/formulation sources located/opened; no proof audit of their full derivations."
+      },
+      {
+        "category": "solution",
+        "query": "union closed conjecture proof solved counterexample 2026",
+        "engine": "web.run search index (batched)",
+        "outcome": "Recent formulation and older proof claims surfaced; no verified same-scope resolution. The authorized task is an evaluator replication, no novelty search."
+      },
+      {
+        "category": "criticism",
+        "query": "Gilmer union closed conjecture correction erratum retraction DeFranco 2606.26191",
+        "engine": "web.run search index (batched)",
+        "outcome": "Gilmer v2 notes typo fixes and refuted ancillary conjecture; Hu criticizes earlier proof claims. Later proof revisions not independently adjudicated."
+      },
+      {
+        "category": "solution",
+        "query": "Frankl union closed sets conjecture proof solved counterexample",
+        "engine": "web.run search index (batched)",
+        "outcome": "Undated batched results were noisy; primary sources were opened directly. Search completeness is not claimed."
+      }
+    ],
+    "sources": [
+      {
+        "title": "DeFranco, On Boolean polynomials and the Union-Closed Conjecture",
+        "url": "https://arxiv.org/abs/2606.26191",
+        "kind": "primary",
+        "version": "v1, 2026-06-24",
+        "read_scope": "abstract, version history and HTML introductory definitions",
+        "supports": "An equivalent Boolean formulation, not a general proof; distinct-set requirements appear in the formulation."
+      },
+      {
+        "title": "Gilmer, A constant lower bound for the union-closed sets conjecture",
+        "url": "https://arxiv.org/abs/2211.09055",
+        "kind": "primary",
+        "version": "v2, 2022-11-28",
+        "read_scope": "abstract, version history; HTML opened, not full proof audited",
+        "supports": "A constant 0.01 lower bound is partial progress. Version notes acknowledge typo fixes and refutation of an ancillary conjecture; this is not Frankl's half-bound proof."
+      },
+      {
+        "title": "OEIS A102896",
+        "url": "https://oeis.org/A102896",
+        "kind": "primary",
+        "version": "page read 2026-10-11",
+        "read_scope": "sequence, offset, definitions and examples",
+        "supports": "Moore-family counts 2/7/61/2480 for m=1..4. Complement maps universe-containing intersection-closed families to empty-containing union-closed families; this explains r1/r2 count conventions."
+      },
+      {
+        "title": "Hu, On the Union-Closed Sets Conjecture",
+        "url": "https://arxiv.org/html/1706.06167v1",
+        "kind": "primary",
+        "version": "v1, 2017-06-19",
+        "read_scope": "introduction and conjecture statement only",
+        "supports": "Nonempty-union qualification and an author's criticism of older claimed proofs. No independent adjudication of later revisions is claimed."
+      }
+    ],
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "limitations": "Bounded search, not an exhaustive proof audit. No general-solution or physical-novelty claim. Only own paraphrases stored; no copied full articles or external datasets. No experimental data downloaded. Public repository source has no inspected explicit redistribution license; immutable snapshots are local owner-directed review evidence. Python startup warning is retained; no software installed.",
+    "scope_comparison": "Parent problem unchanged and OPEN. This is bounded independent replication/component audit, not a new general solution. Older unadjudicated proof claims do not supply a verified general resolution and are not a novelty target in this round.",
+    "baseline": "Pinned r1/r2 inherited results and thresholds; originals unchanged. Mathematics m<=4 known counts; Physics finite periodic analytic coefficients and Parseval; inherited E3 FAIL preserved."
+  },
+  "artifacts": [],
+  "result": null,
+  "source_head": "1d75828f779b9863f966a76fbf115fac3708e09c",
+  "remote_main_sha": "12962b3f7612ecdfc22280c0403f9ef6dcca3f56",
+  "governance_pin": "07d2b13051b83215182e411e1612f92f1912d8fb",
+  "protocol_sha256": "376b3ac869af007dd3281eee863d3c15b7d53551142fee70fe15b9f2df5167e3",
+  "execution_inputs_sha256": {
+    "problems/MATH-006/experiments/independent_20261011/PROTOCOL.json": "376b3ac869af007dd3281eee863d3c15b7d53551142fee70fe15b9f2df5167e3",
+    "problems/MATH-006/experiments/independent_20261011/PROTOCOL_REVIEW.md": "cda2d178316e206f5df068de87f06434b11545793bb9b8c101e63a8f03522451",
+    "problems/MATH-006/experiments/independent_20261011/reference/inherited-r1.json": "35a304e440c0de0cd1881bf019d5a9d497df9cea61135ae3a46dabb12174a572",
+    "problems/MATH-006/experiments/independent_20261011/reference/inherited-r2.json": "5a2c2c7af848a5ab5c2ba0c925939740037fd78c69c9b8f0e4b405d0bf8eaae6",
+    "problems/MATH-006/experiments/independent_20261011/reference/r1.py": "bad919a4af8334beee46df7ae90931a912032b6ddcf9f662442c9a1d64653aa1",
+    "problems/MATH-006/experiments/independent_20261011/reference/r2.py": "617631d1f8e885a026899efe1e1d050ed9379bc291872e4d5ccec34e1dcfcc18",
+    "problems/MATH-006/experiments/independent_20261011/run_bounded.py": "6523868a0b0a415eddee32814616c9d56ce94fdd4ce612538a38ee6f942262ba",
+    "problems/MATH-006/experiments/independent_20261011/SOURCE_MANIFEST.json": "98f447325fa3a9733f155fcec84041d6ad6d7561a3a2d14a508d9d569f2bb1f1",
+    "problems/MATH-006/experiments/independent_20261011/SOURCES.json": "8d934c649c3fe42a68e2ce258e6f9d31920786c09d5870844588f3329da37b82",
+    "problems/MATH-006/experiments/independent_20261011/verify.py": "1d664d8839fd7dbb9d25e5243b7ecfdb6cf1a0d18e2bbbd9070ee3a64aa59f50"
+  },
+  "frozen_at": "2026-10-11T18:21:44.714010+00:00",
+  "ownership_registration": "Continuation of parent-owned bounded verifier scope from https://github.com/lijiabao1998/FrontierMath/pull/10#issuecomment-6090275340. Source thread 01a1257c-cd31-723e-b379-a721dcdb5025. No external write needed for this local-only continuation.",
+  "authorization": "Human user at 2026-10-11 18:02 UTC approved local retry with low concurrency, isolated workspaces, no merge/deploy; delegated continuation from thread 01a1257c-cd31-723e-b379-a721dcdb5025.",
+  "independent_protocol_review": "Separate read-only Verifier/Skeptic session independent_review: initial protocol comments incorporated before freeze; final confirmation preserved in PROTOCOL_REVIEW.md.",
+  "execution_commands": [
+    {
+      "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\first-batch-independent-20261011\\FrontierMath",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\first-batch-independent-20261011\\FrontierMath\\problems\\MATH-006\\experiments\\independent_20261011\\run_bounded.py",
+        "--round",
+        "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\first-batch-independent-20261011\\FrontierMath\\runs\\20261011T180847963562Z-gpt-MATH-006\\round.json",
+        "--tag",
+        "attempt-01"
+      ]
+    }
+  ],
+  "admitted_at": "2026-10-11T18:22:19.869351+00:00"
+}
