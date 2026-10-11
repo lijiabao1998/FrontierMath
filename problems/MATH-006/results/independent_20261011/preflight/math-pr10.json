@@ -1,0 +1,47 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Action completed."
+    }
+  ],
+  "structuredContent": {
+    "url": "https://github.com/lijiabao1998/FrontierMath/pull/10",
+    "number": 10,
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "draft": false,
+    "body": "MATH-006 r1 round（runs/20260929T165552429150Z-glm-MATH-006）。四路檢索＋凍結＋admit＋施工完成。V1 檢查器正/負控制過；V2 窮舉 m=1..4 全部 union-closed 族皆滿足 Frankl（誠實重現文獻小 m 結論）；V4 Gilmer 式數值探索標 HYPOTHESIS_LEVEL。等 owner 合併批准。",
+    "title": "MATH-006 r1 (glm): union-closed evaluator — exhaustive Frankl verification m=1..4 (ALL pass), family counts, Gilmer-inspired numeric exploration (hypothesis-level)",
+    "base": "main",
+    "base_sha": "12962b3f7612ecdfc22280c0403f9ef6dcca3f56",
+    "head": "glm/MATH-006-enum-r1",
+    "head_sha": "1d75828f779b9863f966a76fbf115fac3708e09c",
+    "head_repo_id": 1391007174,
+    "head_repo_full_name": "lijiabao1998/FrontierMath",
+    "merge_commit_sha": "93b9a86731fdafaa0b982d4843833cfb059cb5ab",
+    "user": {
+      "login": "lijiabao1998",
+      "name": "lijiabao1998",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/332928950?v=4",
+      "id": 332928950
+    },
+    "requested_reviewers": null,
+    "requested_team_reviewers": null,
+    "diff": null,
+    "comments": null,
+    "created_at": "2026-09-29T17:03:32Z",
+    "updated_at": "2026-10-09T22:26:06Z",
+    "closed_at": null,
+    "merged_at": null,
+    "commits": 7,
+    "changed_files": 23,
+    "additions": 1519,
+    "deletions": 0,
+    "display_url": "https://github.com/lijiabao1998/FrontierMath/pull/10",
+    "display_title": "MATH-006 r1 (glm): union-closed evaluator — exhaustive Frankl verification m=1..4 (ALL pass), family counts, Gilmer-inspired numeric exploration (hypothesis-level)"
+  },
+  "isError": false
+}

@@ -1,0 +1,10 @@
+{
+  "finished_at": "2026-10-11T18:23:04.762227+00:00",
+  "wall_seconds": 0.6850287999986904,
+  "child_exit_code": 1,
+  "timed_out": false,
+  "result_present": true,
+  "execution_status": "COMPLETED_WITH_AUDIT_FAILURE",
+  "scientific_all_criteria_passed": false,
+  "result_verdict": "AUDIT_FAIL_EVALUATOR_DEFECTS"
+}

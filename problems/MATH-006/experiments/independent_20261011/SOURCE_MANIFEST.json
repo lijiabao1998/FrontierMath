@@ -1,0 +1,34 @@
+[
+  {
+    "source_commit": "1d75828f779b9863f966a76fbf115fac3708e09c",
+    "source_path": "problems/MATH-006/experiments/unionclosed_r1/unionclosed_eval.py",
+    "git_blob": "e195f97232683d4481c4872fa7d06482f083eb14",
+    "snapshot": "reference/r1.py",
+    "sha256": "bad919a4af8334beee46df7ae90931a912032b6ddcf9f662442c9a1d64653aa1",
+    "bytes": 5757
+  },
+  {
+    "source_commit": "1d75828f779b9863f966a76fbf115fac3708e09c",
+    "source_path": "problems/MATH-006/experiments/unionclosed_r2/enum_a102896.py",
+    "git_blob": "bf7b6c8c7f6a08d06b3ff274e458d25750ea3d0b",
+    "snapshot": "reference/r2.py",
+    "sha256": "617631d1f8e885a026899efe1e1d050ed9379bc291872e4d5ccec34e1dcfcc18",
+    "bytes": 4384
+  },
+  {
+    "source_commit": "1d75828f779b9863f966a76fbf115fac3708e09c",
+    "source_path": "problems/MATH-006/results/MATH-006/r1/unionclosed_r1_results.json",
+    "git_blob": "589a65d56624f068da15676645c9dcf7c5465384",
+    "snapshot": "reference/inherited-r1.json",
+    "sha256": "35a304e440c0de0cd1881bf019d5a9d497df9cea61135ae3a46dabb12174a572",
+    "bytes": 1033
+  },
+  {
+    "source_commit": "1d75828f779b9863f966a76fbf115fac3708e09c",
+    "source_path": "problems/MATH-006/results/r2/enum_a102896_results.json",
+    "git_blob": "f9e5296f2893f6315b8dbaa573cbdf0c9a150000",
+    "snapshot": "reference/inherited-r2.json",
+    "sha256": "5a2c2c7af848a5ab5c2ba0c925939740037fd78c69c9b8f0e4b405d0bf8eaae6",
+    "bytes": 605
+  }
+]

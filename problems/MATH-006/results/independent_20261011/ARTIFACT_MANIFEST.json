@@ -1,0 +1,148 @@
+{
+  "format": "sha256-raw-bytes-v1",
+  "files": [
+    {
+      "path": "problems/MATH-006/results/independent_20261011/.gitattributes",
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/attempt-01/data/direct_union_closed_corpus.jsonl",
+      "sha256": "80d6a997004858dbc8ca136ff792483161abdbbabbcb215d2a8b3feeccd86c37",
+      "bytes": 441564
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/attempt-01/data/result.json",
+      "sha256": "7d9ed1f0c1cdc723d56d20842b806668f3a6676b2589cb2c78f5ccf552f459e3",
+      "bytes": 13963
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/attempt-01/execution.json",
+      "sha256": "df33a39386001b7d18f8f8f0abd6a34021961cc0a2dc59c8f94466fcd143cb9e",
+      "bytes": 325
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/attempt-01/launch.json",
+      "sha256": "42d93eedf8f13a433b2c68d2f98c66812b3c1df56f870b6916f97e3ddc7d25e9",
+      "bytes": 1280
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/attempt-01/stderr.txt",
+      "sha256": "8531d820d22f5cdadd3f00c00d592e13c211ecf2ec0fe113c1931848a5ccc97d",
+      "bytes": 98
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/attempt-01/stdout.txt",
+      "sha256": "cbef7955be32f35d3550ce92597adff12044b4d6deedfd8fe35fd0ff8844a7de",
+      "bytes": 8622
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/BYTE_PRESERVATION.json",
+      "sha256": "77bf93e38786e29c34caa55aebd4ade5175e391004af53aaf37de6b26bfd9898",
+      "bytes": 740
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/INDEPENDENT_REVIEW.md",
+      "sha256": "00557a4ebf6fe97d3c856594ee10fa3666eb5fefc6f4c5f0187c738e3acb68af",
+      "bytes": 1712
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/launch-console.txt",
+      "sha256": "9438e59b0cd567286e98ffc695417c21b7b3146f0d37449c1fd1c69f800c606d",
+      "bytes": 1586
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/freeze-records.txt",
+      "sha256": "6ba63a31465695e67f2d758a8137b18455dacef94a1c6e03f718161e08c9bc07",
+      "bytes": 654
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/governance-checkout.txt",
+      "sha256": "9ebf70cb6c158a467ef35c184d520c45e011b237a1f27aea7ecd4157f8a0fbd5",
+      "bytes": 142
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/governance-clone.txt",
+      "sha256": "954fed12aa5815e4f276dd260788055637e468f79838ad01228a2f9bc958fb0f",
+      "bytes": 71
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/math-admit.txt",
+      "sha256": "0d9c58d33183f10c6e3f35b54fd380c7d939901488d73a5d695b1fbf30537a0d",
+      "bytes": 197
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/math-checkout.txt",
+      "sha256": "c5dbb89e154bc10457b72ca82650c1b750eecbc8939ecc910af5a2b2cfa6a263",
+      "bytes": 70
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/math-clone-retry.txt",
+      "sha256": "54157a955d45f221d5aa2487ed2e88da9f680a8d3c9a54a8f55ec5e616b06efb",
+      "bytes": 65
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/math-clone.txt",
+      "sha256": "30a43f8881e450828ae96086d7e78fed782e280479a0b9e3eca8e9f99743ee44",
+      "bytes": 178
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/math-freeze-commit.txt",
+      "sha256": "cdb46050c0dbc062b3ccb28acd924b742e3ae1a759f7a5f65cc688b137e1bd89",
+      "bytes": 1137
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/math-pr10.json",
+      "sha256": "b8675f53f115ccb3f67f6721c639c0a967cd704ae0954d6474067a8b3c2eb760",
+      "bytes": 1946
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/math-refs.txt",
+      "sha256": "2305884480507bd799d4f5b18d869122b1ee963fcb7fe14fd9bf7f8200101fe7",
+      "bytes": 84
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/math-start.txt",
+      "sha256": "8d93cd135a1a6b5380a02fea990f3547056802d85629aa63079802981677439e",
+      "bytes": 313
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/math-validate-inherited.txt",
+      "sha256": "eb943947fc7cad12d4d82b201a2fb9b10caa4435f0e28a4d123bd42bf98c661a",
+      "bytes": 184
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/prcomments.json",
+      "sha256": "d32ebf3ded6eef1ed8251e9fe7e07016276a6449b1bc10620c779b202949b759",
+      "bytes": 31760
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/preflight/source-export.txt",
+      "sha256": "e56b82d9a07ecd22d51e2137266be5258bd3aa32a52255aa30b33607cc2050b1",
+      "bytes": 597
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/PRESERVATION.json",
+      "sha256": "4fb3ce54663eb012464c90b1b32c2b5467fff440454639cbe0f035aff3375364",
+      "bytes": 514
+    },
+    {
+      "path": "problems/MATH-006/results/independent_20261011/ROUND_REPORT.md",
+      "sha256": "f5cbd123eff46e82249cc48a6b1ae044754556adf52d97c674e2ddcf2327fea4",
+      "bytes": 5288
+    }
+  ],
+  "frozen_execution_inputs": {
+    "problems/MATH-006/experiments/independent_20261011/PROTOCOL.json": "376b3ac869af007dd3281eee863d3c15b7d53551142fee70fe15b9f2df5167e3",
+    "problems/MATH-006/experiments/independent_20261011/PROTOCOL_REVIEW.md": "cda2d178316e206f5df068de87f06434b11545793bb9b8c101e63a8f03522451",
+    "problems/MATH-006/experiments/independent_20261011/reference/inherited-r1.json": "35a304e440c0de0cd1881bf019d5a9d497df9cea61135ae3a46dabb12174a572",
+    "problems/MATH-006/experiments/independent_20261011/reference/inherited-r2.json": "5a2c2c7af848a5ab5c2ba0c925939740037fd78c69c9b8f0e4b405d0bf8eaae6",
+    "problems/MATH-006/experiments/independent_20261011/reference/r1.py": "bad919a4af8334beee46df7ae90931a912032b6ddcf9f662442c9a1d64653aa1",
+    "problems/MATH-006/experiments/independent_20261011/reference/r2.py": "617631d1f8e885a026899efe1e1d050ed9379bc291872e4d5ccec34e1dcfcc18",
+    "problems/MATH-006/experiments/independent_20261011/run_bounded.py": "6523868a0b0a415eddee32814616c9d56ce94fdd4ce612538a38ee6f942262ba",
+    "problems/MATH-006/experiments/independent_20261011/SOURCE_MANIFEST.json": "98f447325fa3a9733f155fcec84041d6ad6d7561a3a2d14a508d9d569f2bb1f1",
+    "problems/MATH-006/experiments/independent_20261011/SOURCES.json": "8d934c649c3fe42a68e2ce258e6f9d31920786c09d5870844588f3329da37b82",
+    "problems/MATH-006/experiments/independent_20261011/verify.py": "1d664d8839fd7dbb9d25e5243b7ecfdb6cf1a0d18e2bbbd9070ee3a64aa59f50"
+  },
+  "excludes": "This manifest itself and mutable round metadata; no circular hashes."
+}

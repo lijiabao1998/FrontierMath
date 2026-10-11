@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "problem_id": "MATH-006",
+  "classification": "BOUNDED_INDEPENDENT_VERIFICATION_AND_EVALUATOR_AUDIT",
+  "parent_scope": "Finite distinct union-closed family with nonempty union; existential integer half-frequency inequality.",
+  "source_head": "1d75828f779b9863f966a76fbf115fac3708e09c",
+  "remote_main": "12962b3f7612ecdfc22280c0403f9ef6dcca3f56",
+  "governance_pin": "07d2b13051b83215182e411e1612f92f1912d8fb",
+  "budget": {
+    "wall_minutes": 30,
+    "usd": 0,
+    "cpu_affinity_count": 1,
+    "max_named_cases": 100,
+    "exhaustive_exception": {
+      "m": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "m4_candidates": 65536,
+      "total_candidates": 65812
+    }
+  },
+  "enumeration": {
+    "universe_labels": "1..m",
+    "family_representation": "tuple of distinct frozensets; direct set union and membership; no borrowed BFS/closure algorithm",
+    "include_empty_family_as_candidate": true,
+    "skip_empty_family_in_nonempty_family_counts": true,
+    "exclude_empty_union_from_conjecture_checks": true,
+    "expected_nonempty_union_closed": [
+      3,
+      13,
+      121,
+      4959
+    ],
+    "expected_nonempty_union": [
+      2,
+      12,
+      120,
+      4958
+    ],
+    "expected_empty_set_containing": [
+      2,
+      7,
+      61,
+      2480
+    ],
+    "expected_m4_empty_containing_nontrivial": 2479,
+    "expected_minimum_ratio": [
+      1,
+      2
+    ],
+    "frequency_predicate": "2*max(element incidence counts)>=len(family)",
+    "comparison": "Compare direct collection of empty-containing families to r2 bfs_all(m) and r1 functions, all m<=4."
+  },
+  "controls": [
+    "valid_singleton",
+    "valid_half_bound",
+    "valid_power_set_m2",
+    "valid_union_closure_m2",
+    "empty_family",
+    "empty_union_only",
+    "duplicate_singleton",
+    "duplicate_empty_half_family",
+    "duplicate_closed_family",
+    "missing_union",
+    "missing_union_with_empty",
+    "nonclosed_below_half",
+    "out_of_universe",
+    "r1_empty_family_closure_probe",
+    "r1_empty_union_frequency_probe",
+    "r1_duplicate_singleton_probe",
+    "r1_duplicate_closed_probe",
+    "r1_V1_forced_false",
+    "r1_V1_forced_true",
+    "audit_summary_failed_control",
+    "audit_summary_missing_control",
+    "audit_summary_empty_controls"
+  ],
+  "acceptance": {
+    "finite_counts": "all exact expected counts and minimum ratio match",
+    "reference_controls": "all named reference controls meet specified admissibility",
+    "r2": "family sets match exactly",
+    "r1_unique_input": "closure/frequency compare on the independently admitted distinct m<=4 families",
+    "r1_boundary_and_verdict": "duplicate family must be rejected by a full evaluator; empty union must be ineligible; any failed V1 control must prevent success",
+    "audit_total": "separate reference_validation_pass, finite_replication_pass and original_evaluator_contract_pass; total success requires all, missing checks/errors fail closed"
+  },
+  "v1_probe": {
+    "method": "AST extract original main initialization+V1 statements and original final verdict/return, inject is_union_closed=False or True; no disk writes; all other stages assumed pass",
+    "limitation": "isolated original aggregation path, not an end-to-end rerun"
+  },
+  "not_run": [
+    "m=5 or higher",
+    "r1 V4 random m=6 exploration",
+    "original r1 main full execution",
+    "theorem or general conjecture proof",
+    "evaluator repair",
+    "remote writes, merge or deployment"
+  ],
+  "failures": "Preserve defects, mismatches, tracebacks, timeouts and partial output; a multiset/nonclosed family is never a conjecture counterexample.",
+  "control_table": [
+    {
+      "name": "valid_singleton",
+      "family": [
+        [
+          1
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": true
+    },
+    {
+      "name": "valid_half_bound",
+      "family": [
+        [],
+        [
+          1
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": true
+    },
+    {
+      "name": "valid_power_set_m2",
+      "family": [
+        [],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": true
+    },
+    {
+      "name": "valid_union_closure_m2",
+      "family": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": true
+    },
+    {
+      "name": "empty_family",
+      "family": [],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": false
+    },
+    {
+      "name": "empty_union_only",
+      "family": [
+        []
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": false
+    },
+    {
+      "name": "duplicate_singleton",
+      "family": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": false
+    },
+    {
+      "name": "duplicate_empty_half_family",
+      "family": [
+        [],
+        [],
+        [
+          1
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": false
+    },
+    {
+      "name": "duplicate_closed_family",
+      "family": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": false
+    },
+    {
+      "name": "missing_union",
+      "family": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": false
+    },
+    {
+      "name": "missing_union_with_empty",
+      "family": [
+        [],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": false
+    },
+    {
+      "name": "nonclosed_below_half",
+      "family": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": false
+    },
+    {
+      "name": "out_of_universe",
+      "family": [
+        [
+          5
+        ]
+      ],
+      "universe": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_accepted": false
+    }
+  ],
+  "probe_expectations": {
+    "r1_duplicate_singleton_probe": {
+      "family": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected_rejection": true
+    },
+    "r1_duplicate_closed_probe": {
+      "family": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "expected_rejection": true
+    },
+    "r1_empty_family_closure_probe": {
+      "family": [],
+      "expected_closure": true,
+      "expected_full_eligibility": false
+    },
+    "r1_empty_union_frequency_probe": {
+      "family": [
+        []
+      ],
+      "expected_integer_half": false,
+      "expected_full_eligibility": false
+    },
+    "r1_V1_forced_false": {
+      "forced_closure_return": false,
+      "expected_overall_verdict": "failure",
+      "expected_exit_nonzero": true
+    },
+    "r1_V1_forced_true": {
+      "forced_closure_return": true,
+      "expected_overall_verdict": "failure",
+      "expected_exit_nonzero": true
+    },
+    "audit_summary_failed_control": {
+      "checks": {
+        "a": true,
+        "b": false
+      },
+      "expected_names": [
+        "a",
+        "b"
+      ],
+      "expected_total": false
+    },
+    "audit_summary_missing_control": {
+      "checks": {
+        "a": true
+      },
+      "expected_names": [
+        "a",
+        "b"
+      ],
+      "expected_total": false
+    },
+    "audit_summary_empty_controls": {
+      "checks": {},
+      "expected_names": [],
+      "expected_total": false
+    }
+  },
+  "runtime_errors": "any exception/source/protocol hash failure must preserve stderr and produce nonzero status; no success result can be reused; missing named checks false",
+  "execution_source_policy": "compile only source-reviewed whitelisted functions via AST: r1 is_union_closed/closure/frankl_ok, r2 closure/bfs_all; no original top-level or main execution"
+}

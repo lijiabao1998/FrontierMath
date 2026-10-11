@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-10-11T18:25:28.340238+00:00",
+  "source_base": "1d75828f779b9863f966a76fbf115fac3708e09c",
+  "tracked_changes_outside_new_scope": [],
+  "old_artifacts_modified": false,
+  "remote_write": false,
+  "new_payment": false,
+  "new_software": false,
+  "first_sandbox_dns_failure_preserved": "preflight/math-clone.txt",
+  "python_warning": "Failed to find real location of .../Python313/python.exe; process nevertheless produced complete results; warning retained verbatim in stderr."
+}
