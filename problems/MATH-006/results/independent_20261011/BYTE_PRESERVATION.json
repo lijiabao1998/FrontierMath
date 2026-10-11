@@ -1,0 +1,13 @@
+{
+  "initial_protocol_commit": "659df6d",
+  "initial_git_text_conversion_mismatches": [
+    {
+      "path": "problems/MATH-006/experiments/independent_20261011/SOURCE_MANIFEST.json",
+      "frozen_working_sha256": "98f447325fa3a9733f155fcec84041d6ad6d7561a3a2d14a508d9d569f2bb1f1",
+      "initial_commit_blob_sha256": "928d1c6be01431c5d5bc2bbbf65e96f2e7b8f92561a9de5b0453f6b9afa02025"
+    }
+  ],
+  "remediation": "Added * -text attributes only to this round experiment/result directories; scope-limited Git renormalize re-adds exact executed bytes. Original protocol/harness/result bytes unchanged; final blob audit must match all execution input hashes.",
+  "evaluator_or_threshold_change": false,
+  "research_rerun": false
+}

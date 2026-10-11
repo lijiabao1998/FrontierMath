@@ -5,7 +5,7 @@
   "branch": "gpt/MATH-006-bounded-independent-20261011",
   "base_sha": "1d75828f779b9863f966a76fbf115fac3708e09c",
   "started_at": "2026-10-11T18:08:47.963562+00:00",
-  "state": "ADMITTED",
+  "state": "ROUND_FINISHED",
   "acceptance": "Frozen PROTOCOL.json: independent reference and original evaluator contract are separate; all required checks must exist and be true for total success. Exact finite counts/integer predicates for MATH, absolute DFT/Parseval error <=1e-10 and original energy tolerance 0.10 for PHYS; do not alter inherited criteria.",
   "not_done": "m=5 or higher; r1 V4 random m=6 exploration; original r1 main full execution; theorem or general conjecture proof; evaluator repair; remote writes, merge or deployment",
   "budget": {
@@ -104,8 +104,62 @@
     "scope_comparison": "Parent problem unchanged and OPEN. This is bounded independent replication/component audit, not a new general solution. Older unadjudicated proof claims do not supply a verified general resolution and are not a novelty target in this round.",
     "baseline": "Pinned r1/r2 inherited results and thresholds; originals unchanged. Mathematics m<=4 known counts; Physics finite periodic analytic coefficients and Parseval; inherited E3 FAIL preserved."
   },
-  "artifacts": [],
-  "result": null,
+  "artifacts": [
+    "problems/MATH-006/results/independent_20261011/.gitattributes",
+    "problems/MATH-006/results/independent_20261011/attempt-01/data/direct_union_closed_corpus.jsonl",
+    "problems/MATH-006/results/independent_20261011/attempt-01/data/result.json",
+    "problems/MATH-006/results/independent_20261011/attempt-01/execution.json",
+    "problems/MATH-006/results/independent_20261011/attempt-01/launch.json",
+    "problems/MATH-006/results/independent_20261011/attempt-01/stderr.txt",
+    "problems/MATH-006/results/independent_20261011/attempt-01/stdout.txt",
+    "problems/MATH-006/results/independent_20261011/BYTE_PRESERVATION.json",
+    "problems/MATH-006/results/independent_20261011/INDEPENDENT_REVIEW.md",
+    "problems/MATH-006/results/independent_20261011/launch-console.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/freeze-records.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/governance-checkout.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/governance-clone.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/math-admit.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/math-checkout.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/math-clone-retry.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/math-clone.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/math-freeze-commit.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/math-pr10.json",
+    "problems/MATH-006/results/independent_20261011/preflight/math-refs.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/math-start.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/math-validate-inherited.txt",
+    "problems/MATH-006/results/independent_20261011/preflight/prcomments.json",
+    "problems/MATH-006/results/independent_20261011/preflight/source-export.txt",
+    "problems/MATH-006/results/independent_20261011/PRESERVATION.json",
+    "problems/MATH-006/results/independent_20261011/ROUND_REPORT.md",
+    "problems/MATH-006/results/independent_20261011/ARTIFACT_MANIFEST.json"
+  ],
+  "result": {
+    "verdict": "AUDIT_FAIL_EVALUATOR_DEFECTS",
+    "exit_code": 1,
+    "all_checks_passed": false,
+    "checks": {
+      "finite_replication_pass": true,
+      "named_case_budget_pass": true,
+      "original_evaluator_contract_pass": false,
+      "reference_validation_pass": true
+    },
+    "named_case_count": 22,
+    "named_case_passed": 18,
+    "compute_wall_seconds": 0.6850287999986904,
+    "cpu_seconds": 0.5625,
+    "usd_spent": 0,
+    "timeout": false,
+    "parent_problem_closed": false,
+    "independent_review": "static/artifact audit completed; independent experimental rerun NOT_RUN",
+    "source_of_full_result": "problems/MATH-006/results/independent_20261011/attempt-01/data/result.json",
+    "limits": "m=5 or higher; r1 V4 random m=6 exploration; original r1 main full execution; theorem or general conjecture proof; evaluator repair; remote writes, merge or deployment",
+    "confirmed_defects": [
+      "r1_duplicate_singleton_probe",
+      "r1_duplicate_closed_probe",
+      "r1_V1_forced_false",
+      "r1_V1_forced_true"
+    ]
+  },
   "source_head": "1d75828f779b9863f966a76fbf115fac3708e09c",
   "remote_main_sha": "12962b3f7612ecdfc22280c0403f9ef6dcca3f56",
   "governance_pin": "07d2b13051b83215182e411e1612f92f1912d8fb",
@@ -141,5 +195,9 @@
       ]
     }
   ],
-  "admitted_at": "2026-10-11T18:22:19.869351+00:00"
+  "admitted_at": "2026-10-11T18:22:19.869351+00:00",
+  "finished_at": "2026-10-11T18:23:04.762227+00:00",
+  "reviewed_at": "2026-10-11T18:33:09.998809+00:00",
+  "protocol_commit": "659df6d872c5487eb0a590938483954f60ab7461",
+  "artifact_manifest_sha256": "ea398576aeff05c7b6b6430c1b2ee2de9a1bbbee064fb15eb12f55a5810306d8"
 }

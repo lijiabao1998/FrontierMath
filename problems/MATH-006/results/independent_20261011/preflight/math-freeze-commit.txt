@@ -1,0 +1,13 @@
+[gpt/MATH-006-bounded-independent-20261011 659df6d] Freeze bounded MATH-006 independent verification protocol and admission
+ 11 files changed, 1369 insertions(+)
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/PROTOCOL.json
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/PROTOCOL_REVIEW.md
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/SOURCES.json
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/SOURCE_MANIFEST.json
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/reference/inherited-r1.json
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/reference/inherited-r2.json
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/reference/r1.py
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/reference/r2.py
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/run_bounded.py
+ create mode 100644 problems/MATH-006/experiments/independent_20261011/verify.py
+ create mode 100644 runs/20261011T180847963562Z-gpt-MATH-006/round.json
