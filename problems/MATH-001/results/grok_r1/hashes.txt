@@ -1,0 +1,17 @@
+# Run 1 @-bug binding. Do not replace these with later source hashes.
+# They are the code_sha256 object inside summary.json. See run1_binding.json.
+fdfc81c934b9b3f059324b47986453f0f44fb61e72852776ac804a88d154d65d  decode_flam.py  run1
+e76f8424cb4136b4b175a358512301c9b0bb041ef381d0be3e3af56623d2943f  run_round.py  run1
+
+# Frozen at the start of full_scan.py, git 756148569a8c8488c157747682d7d54af32f96ce,
+# 2026-10-02T14:28:30.687586+00:00. These files scanned all 431008 records.
+9beade48e58f9bd2566724df8feee60e53a031fc1b6a8a49c41a645aef4c6518  decode_flam.py  full_scan
+ff79d32dfb01402d307925a1fe5e2c52bb9f6f592cbfdfb902858417a7c474c8  verifier_det.py  full_scan
+1df8f98caed3bee44a4f79e5138aad147113cad872eee150bb43830b2837b4d7  verifier_lines.py  full_scan
+dfd32411dfc30b505bdf983c04fca1f1a6ee4f03e3f1788732a75e77553a1fb2  gate.py  full_scan
+394d5dd0f50b25089424e53cc712bb946bb6a5f8d18a970ef5d60a8856aaf66c  full_scan.py  full_scan
+
+# Datasets. Unchanged between run 1 and the full scan.
+5e127d7be1c060a4d9021356b14848661fac8b76efee45c79acba5b7b7cd80f4  known_solutions_1997
+c27f8f53286be5b047a46bf1e469985e44efd4e6955783e8d0fb5ad66b7effde  all_known_solutions
+6fd563d23b1bc5064bd9ae4bf8a3933c5f153b7c3b32a622c4652b2a19d04ff4  table.html

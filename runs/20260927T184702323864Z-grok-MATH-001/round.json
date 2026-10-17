@@ -1,0 +1,161 @@
+{
+  "round_id": "20260927T184702323864Z-grok-MATH-001",
+  "problem_id": "MATH-001",
+  "agent": "grok",
+  "branch": "grok/MATH-001-baseline-r1",
+  "base_sha": "cd1e4eadc177920b95332ebe08c2498e52c3ce56",
+  "started_at": "2026-09-27T18:47:02.323864+00:00",
+  "state": "FINISHED",
+  "acceptance": "凍結於實驗前。不改 statement、completion_criterion、evaluator 定義。本輪只做：(1) 把有限 frontier 核到 Flammenkamp 2026-09-11 表，有限構造不關閉一般問題；(2) 兩套不共用程式的精確檢查：整數行列式，以及直線分桶。同一 session 的第二套不得簽署為獨立覆核；(3) 正例：確定性搜索的 n=2..8（時間允許則到 10）2n 憑證；data_1997/known_solutions 全檔；configurations/ 中 n=70,71,72,73,74,76 的 .few。負例：共線、重複點、越界、點數不足必須 FAIL。兩套檢查器不一致則記 EVALUATOR_BUG 並停止，不放寬題目。不做一般證明、n=75 SAT、新 Lean 定理、付費運算。試驗批次上限 100：一次搜索一個 n、一次資料檔或一次 adversarial 套件算一批，不是每個格點。",
+  "not_done": "不宣稱對所有 n，D(n)=2n 成立或失敗。未取得 Heule SAT/DRAT 證書。未逐行審完 arXiv:2602.07751 的 16 頁。不把未合併的 glm PR #2 當作本輪證據。",
+  "budget": {
+    "wall_minutes": 120,
+    "usd": 0,
+    "max_trials": 100
+  },
+  "preflight": {
+    "checked_at": "2026-09-27T18:52:37.229418+00:00",
+    "verdict": "PARTIAL_PROGRESS",
+    "queries": [
+      {
+        "category": "general",
+        "engine": "web search",
+        "query": "no-three-in-line problem D(n)=2n open status 2026",
+        "outcome": "仍被稱為 unsolved。有限構造已超過題卡的 n<=60。"
+      },
+      {
+        "category": "discipline",
+        "engine": "web search",
+        "query": "site:arxiv.org no-three-in-line Prellberg 2026",
+        "outcome": "2602.07751 是古典 n<=60；2605.09215 是棋盤變體且寫明古典問題仍 open。"
+      },
+      {
+        "category": "discipline",
+        "engine": "export.arxiv.org API",
+        "query": "all:\"no-three-in-line\" sortBy=submittedDate descending max_results=25",
+        "outcome": "沒有一篇宣稱一般 D(n)=2n 已證明或已有反例。2607.05255 明示排除 k=2。"
+      },
+      {
+        "category": "solution",
+        "engine": "web search",
+        "query": "\"no-three-in-line\" Heule SAT n=75 OR n=76 OR solved OR counterexample 2026",
+        "outcome": "Heule/Prellberg 的有限 SAT/CP 紀錄在 Flammenkamp 頁。沒有一般反例。"
+      },
+      {
+        "category": "solution",
+        "engine": "HTTPS GET",
+        "query": "https://wwwhomes.uni-bielefeld.de/achim/no3in/table.html",
+        "outcome": "2026-09-11 表：n=75 空白，n=76 有一個構造，n=61..74 至少有一個。"
+      },
+      {
+        "category": "criticism",
+        "engine": "web search",
+        "query": "\"no-three-in-line\" erratum OR retraction OR corrigendum OR \"failed to reproduce\" Prellberg OR Heule OR Flammenkamp",
+        "outcome": "沒有 2n 存在性撤稿。相關更正是 Guy-Kelly 啟發式常數，以及 Flammenkamp 1992 計數表。"
+      },
+      {
+        "category": "criticism",
+        "engine": "HTTPS GET",
+        "query": "https://wwwhomes.uni-bielefeld.de/achim/no3in/readme.html#9",
+        "outcome": "Corrections 節更正 n=30 rot4 計數 62->92、n=32 99->101、n=20 欄位 693->675。不是存在性撤稿。2602.07751 只有 v1。"
+      },
+      {
+        "category": "discipline",
+        "engine": "HTTPS GET",
+        "query": "https://wwwhomes.uni-bielefeld.de/achim/no3in/download/configurations/",
+        "outcome": "有 n70,n71,n72,n73,n74,n76 的 .few；沒有 n75 檔。n76_rot4.few 已整行讀取。"
+      }
+    ],
+    "sources": [
+      {
+        "title": "A. Flammenkamp, The No-Three-in-Line Problem (readme, chronology and corrections)",
+        "url": "https://wwwhomes.uni-bielefeld.de/achim/no3in/readme.html",
+        "kind": "primary",
+        "supports": "一般 2n 仍是主猜想；2026 有限年表署名 Heule/Prellberg；1992 計數更正。本輪讀了年表、編碼與 Corrections，不是每條舊參考都打開。"
+      },
+      {
+        "title": "A. Flammenkamp, Number of Solutions table, updated 11 September 2026",
+        "url": "https://wwwhomes.uni-bielefeld.de/achim/no3in/table.html",
+        "kind": "primary",
+        "supports": "有限 frontier：n=75 空白，n=76 一個已知構造，n<=74 除 75 外至少一個。全文讀完。"
+      },
+      {
+        "title": "T. Prellberg, Constraint Satisfaction Programming for the No-three-in-line Problem, arXiv:2602.07751v1",
+        "url": "https://arxiv.org/abs/2602.07751",
+        "kind": "primary",
+        "supports": "2026-02-08 v1：n<=60 的 2n 構造。讀了 abs 與 HTML 的 Theorem 1 和結論，未逐行審 16 頁 PDF。沒有 v2。"
+      },
+      {
+        "title": "No-(k+1)-in-line problem for k>=3, arXiv:2607.05255v1",
+        "url": "https://arxiv.org/abs/2607.05255",
+        "kind": "primary",
+        "supports": "只解決 k>=3。摘要明示 k=2 仍是未解決的 no-three-in-line。abstract-only。"
+      },
+      {
+        "title": "Flammenkamp download README and n=76 rot4 certificate",
+        "url": "https://wwwhomes.uni-bielefeld.de/achim/no3in/download/configurations/n76_rot4.few",
+        "kind": "primary",
+        "supports": "公開 154-byte 編碼，檔案時間 2026-08-10。本輪將用自寫驗證器重驗，此處只確認檔案存在且已讀到該行。"
+      }
+    ],
+    "limitations": "有界檢索，不是全網否定。Wikipedia 停在 n<=70，OEIS A000769 註記停在 n<=60，皆落後 2026-09-11 原始表。MathWorld 渲染句中的缺號數字未被可靠抽出，缺號以表上 n=75 空白列為準。Prellberg 全文與 Heule SAT 證書未取得。資料是作者網頁免費下載，未見 SPDX。1997 年 decode.c 不能解 2026 擴充字母。同題 glm PR #2 未合併；本輪不使用該分支。",
+    "scope_comparison": "題卡要求所有 n>=2 的 D(n)=2n 或同範圍反例/一般界。2026-09-11 表只是有限存在性：n<=74 除 n=75 空白外有構造，紀錄 n=76。arXiv:2607.05255 只解決 k>=3。arXiv:2605.09215 是棋盤變體。arXiv:2609.25133 是立方體與計數。Guy-Kelly 修正是啟發式常數，不是定理。因此不標 RESOLVED_EXTERNAL，父問題保持 OPEN。",
+    "baseline": "對照 origin/main 題卡的 n<=60。基線檢查是有號整數共線判據。正控制是 2n 憑證與 Flammenkamp 公開編碼。負控制是植入共線、重複、越界與點數不足。",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true
+  },
+  "artifacts": [
+    "runs/20260927T184702323864Z-grok-MATH-001/LITERATURE_MAP.md",
+    "runs/20260927T184702323864Z-grok-MATH-001/ROUND_REPORT.md",
+    "runs/20260927T184702323864Z-grok-MATH-001/HANDOFF.md",
+    "problems/MATH-001/experiments/grok_r1/",
+    "problems/MATH-001/results/grok_r1/"
+  ],
+  "result": {
+    "verdict": "PARTIAL_PROGRESS",
+    "problem_status": "OPEN",
+    "self_certificates_n": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "flam1997_both_checkers": 36912,
+    "frontier_few_both_checkers": 65,
+    "frontier_n": [
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      76
+    ],
+    "all_known_records": 431008,
+    "all_known_has_n75": false,
+    "evaluator_disagreement": 0,
+    "decoder_bug_found": "@ is alphabet index 66, not a 1995 format flag",
+    "lean": "NOT_RUN",
+    "hall_construction": "NOT_RUN",
+    "heule_sat_certificate": "NOT_RUN"
+  },
+  "admitted_at": "2026-09-27T18:52:37.382060+00:00"
+}
