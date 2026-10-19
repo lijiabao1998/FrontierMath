@@ -1,0 +1,100 @@
+{
+  "round_id": "20260929T165552429150Z-glm-MATH-006",
+  "problem_id": "MATH-006",
+  "agent": "glm",
+  "branch": "glm/MATH-006-enum-r1",
+  "base_sha": "12962b3f7612ecdfc22280c0403f9ef6dcca3f56",
+  "started_at": "2026-09-29T16:55:52.429150+00:00",
+  "state": "ADMITTED",
+  "acceptance": "Scope 凍結（動手前）——MATH-006 第一個 evaluator 輪（重現+建設，非解題宣稱）：(V1) union-closed 精確檢查器：F 對所有 A,B∈F 有 A∪B∈F；正例（如 {{}, {1}} 之 closure）PASS、負例（移除一個 union 結果）FAIL（故意破壞測試）。(V2) Frankl 窮舉重現：m=1..4（全集 {1..m}）窮舉全部 2^(2^m) set-families，對每個非空 union-closed 且非 {∅}-only 族檢查：存在元素頻率 ≥ |F|/2。預期全部成立（文獻：小 m 已驗證；West 頁記 m=11 sets 層級已窮舉）——如實記錄結果。(V3) union-closed 族計數（m=1..4，含 ∅）：記錄本庫計數值作為可重現資料點（僅與自身重跑一致，不冒充文獻計數——文獻計數來源待下輪引用）。(V4) Gilmer 式數值探索（明確標 hypothesis-level）：隨機生成 200 個 union-closed 族（closure of 隨機子族，seed 42/12345），記錄 max-frequency ratio 分佈（min/mean/max），觀察是否恆 ≥ 0.38（Gilmer 常數）——此為本庫自有數值觀察，非 Gilmer 定理重現。預算 0 美元、≤90 分鐘、≤100 trials。",
+  "not_done": "不宣稱 Frankl 任何一般進展；不重現 Gilmer 定理本身（僅數值探索）；m=5+ 不窮舉（2^32 超界）；文獻計數未引用。",
+  "budget": {
+    "wall_minutes": 90,
+    "usd": 0,
+    "max_trials": 100
+  },
+  "preflight": {
+    "checked_at": "2026-09-29T17:05:00Z",
+    "verdict": "NO_RESOLUTION_FOUND",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "queries": [
+      {
+        "category": "general",
+        "query": "union-closed families conjecture exhaustive enumeration small universe verified Falgas-Ravry",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "UNKNOWN",
+        "outcome": "Falgas-Ravry 2011 minimal-weight 構造；Bruhn-Schaudt survey 為標準參考；West 頁：m=11 sets 已窮舉"
+      },
+      {
+        "category": "discipline",
+        "query": "Gilmer entropy approach union-closed constant lower bound 0.38",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "UNKNOWN",
+        "outcome": "Gilmer arXiv:2211.09055（~0.01 常數）；AHS EJC 2024 改進至 ~0.382；Sawin/Yu 優化"
+      },
+      {
+        "category": "solution",
+        "query": "union-closed verified computer small m enumeration Frankl",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "UNKNOWN",
+        "outcome": "小 m/小 family 數已電腦驗證（West 頁）；Mary 2019 DMTCS closure enumeration 方法"
+      },
+      {
+        "category": "criticism",
+        "query": "claimed full proofs union-closed refinements unverified",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "UNKNOWN",
+        "outcome": "存在未驗證之完整證明宣稱（ResearchGate 級）——本庫不引用"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2211.09055",
+        "title": "Gilmer, A constant lower bound... (2022)",
+        "kind": "primary",
+        "supports": "熵方法常數下界突破（引用層級；本輪僅數值探索靈感來源）"
+      },
+      {
+        "url": "https://dwest.web.illinois.edu (Union-Closed Sets Conjecture page)",
+        "title": "West: union-closed 猜想現況頁",
+        "kind": "secondary",
+        "supports": "m=11 sets 窮舉已驗證之文獻現況"
+      }
+    ],
+    "limitations": "四路檢索各 1 query（本輪為 evaluator 建設輪，非文獻主張輪）；Gilmer/AHS 僅摘要層級；West 頁未全文抓取。",
+    "scope_comparison": "本輪 scope＝MATH-006 第一個 evaluator＋小 m 窮舉重現；無未解爭議需處理。",
+    "baseline": "baseline＝窮舉 Frankl 檢查（m≤4）＋union-closed 檢查器正/負控制。"
+  },
+  "artifacts": [],
+  "result": {
+    "state": "ROUND_FINISHED",
+    "summary": "MATH-006 第一個 evaluator 完成：(V1) union-closed 檢查器正/負控制過；(V2) m=1..4 窮舉 Frankl 全數成立（2/13/121/4,959 個 UC 族，4,951 個非平凡族全過）——文獻小 m 結論之誠實重現；(V3) 族計數為本庫可重現資料點（含 ∅ 之慣例如實記錄）；(V4) Gilmer 式數值探索 200 trials：min ratio 0.5079、全數 ≥0.38（HYPOTHESIS_LEVEL 觀察，非定理重現）。",
+    "adversarial_note": "隨機族之高 ratio 可能部分來自 closure 生成之選擇偏誤——已於 results JSON 標註生成機制，結論僅限觀察。",
+    "commands": [
+      {
+        "cwd": "problems/MATH-006/experiments/unionclosed_r1",
+        "command": "python unionclosed_eval.py"
+      }
+    ],
+    "artifacts": [
+      "problems/MATH-006/experiments/unionclosed_r1/unionclosed_eval.py",
+      "problems/MATH-006/results/MATH-006/r1/unionclosed_r1_results.json"
+    ],
+    "limitations": "m≥5 未窮舉（2^32 超界）；族計數之文獻對照待下輪；Gilmer 定理本身未重現。"
+  },
+  "admitted_at": "2026-09-29T17:15:48.915834+00:00"
+}
