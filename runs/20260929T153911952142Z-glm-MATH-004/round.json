@@ -1,0 +1,106 @@
+{
+  "round_id": "20260929T153911952142Z-glm-MATH-004",
+  "problem_id": "MATH-004",
+  "agent": "glm",
+  "branch": "glm/MATH-004-verifier-r1",
+  "base_sha": "12962b3f7612ecdfc22280c0403f9ef6dcca3f56",
+  "started_at": "2026-09-29T15:39:11.952142+00:00",
+  "state": "ADMITTED",
+  "acceptance": "Scope 凍結（動手前）——MATH-004 第一個 evaluator 輪（非解題宣稱）：(V1) AP-free 精確驗證器：整數運算，檢查 F₃ⁿ 子集中任意三點不成非平凡 3-term AP（x+z=2y 且三點相異）；正例（已知 cap）必 PASS、注入 AP 之負例必 FAIL（故意破壞測試）。(V2) 窮舉 D(n)：n=1（3 subsets）、n=2（512 subsets）全枚舉得精確最大值，對照文獻 2 與 4（OEIS A090245）。(V3) n=3..6 構造：DFS/啟發式尋找 AP-free 集合，如實記錄達成之下界（目標對照文獻值 9/20/45/112；達不到文獻值時記錄實際達成值——下界重現，不冒充精確值）。(V4) 文獻主張記錄：EG 2017 上界 2.756ⁿ、FunSearch n=8 512-cap 下界——僅登記為文獻宣稱，非本庫計算。預算 0 美元、≤90 分鐘、≤100 trials。",
+  "not_done": "不宣稱 n≥4 之精確 D(n)（除非窮舉完成）；不做 polynomial method 上界計算；不解 n≥7；不宣稱新下界。",
+  "budget": {
+    "wall_minutes": 90,
+    "usd": 0,
+    "max_trials": 100
+  },
+  "preflight": {
+    "checked_at": "2026-09-29T15:45:00Z",
+    "verdict": "NO_RESOLUTION_FOUND",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "queries": [
+      {
+        "category": "general",
+        "query": "cap set problem F_3^n maximum size exact values small n 2026",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "UNKNOWN",
+        "outcome": "精確值 n=1..6 = 2,4,9,20,45,112（OEIS A090245）；n≥7 僅上下界；無 2026 新突破"
+      },
+      {
+        "category": "discipline",
+        "query": "Ellenberg Gijswijt cap set polynomial method bound 2.756 official paper Annals",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "UNKNOWN",
+        "outcome": "EG 2017 Annals 185(1):339-343, arXiv:1605.01422；polynomial method；上界 c≈2.756"
+      },
+      {
+        "category": "solution",
+        "query": "cap set FunSearch DeepMind improved lower bound construction 512 admissible set",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "UNKNOWN",
+        "outcome": "FunSearch（Romera-Paredes 2023 Nature）：n=8 512-cap，下界 2.2180→2.2202；admissible set full-size construction"
+      },
+      {
+        "category": "criticism",
+        "query": "cap set exact values computation n=6 exhaustive integer programming（搜尋逾時一次，部分覆蓋）",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "UNKNOWN",
+        "outcome": "搜尋逾時；批評路徑以 query1 之『無 2026 新突破』部分覆蓋——記 limitations"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://oeis.org/A090245",
+        "title": "OEIS A090245: Maximal cap sizes in AG(n,3)",
+        "kind": "secondary",
+        "supports": "精確值序列 2,4,9,20,45,112"
+      },
+      {
+        "url": "https://annals.math.princeton.edu/2017/185-1/p08",
+        "title": "Ellenberg & Gijswijt, Annals of Mathematics 185(1):339-343 (2017), arXiv:1605.01422",
+        "kind": "primary",
+        "supports": "上界 2.756^n（polynomial method）"
+      },
+      {
+        "url": "https://www.nature.com/articles/s42256-023-00712-x",
+        "title": "FunSearch (Romera-Paredes et al. 2023, Nature)",
+        "kind": "secondary",
+        "supports": "n=8 512-cap 下界改進 2.2180→2.2202"
+      }
+    ],
+    "limitations": "第四路查詢逾時一次（部分覆蓋）；未讀 EG 全文（僅摘要層級）；OEIS 為二級來源（精確值原始計算文獻待下一輪引用）。",
+    "scope_comparison": "本輪 scope＝MATH-004 第一個 evaluator＋小 n 精確/下界重現；文獻無同範圍未解爭議（小 n 精確值已定）——本輪為重現+建設輪。",
+    "baseline": "baseline＝(a) AP-free 精確驗證器（整數三元組檢查，正/負控制）；(b) n=1,2 窮舉精確 D(n) 對照文獻 2/4；(c) n=3..6 DFS 構造之 AP-free 下界集合（對照文獻 9/20/45/112，達不到則記實際值）；(d) EG 上界與 FunSearch 下界登記為文獻宣稱（非本庫計算）。"
+  },
+  "artifacts": [],
+  "result": {
+    "state": "ROUND_FINISHED",
+    "summary": "MATH-004 第一個 evaluator 完成：(V1) mod-3 AP 精確驗證器（正/負控制過）；(V2) 窮舉 D(1)=2、D(2)=4 與文獻一致；(V3) seed-42 greedy 下界 n=3..6 = 8/18/35/72（文獻 9/20/45/112；皆獨立驗證 AP-free；誠實記錄未達文獻值）；(V4) EG 上界與 FunSearch 下界登記為文獻宣稱。",
+    "adversarial_finding": "初版 verifier 用未 wrap 的整數 AP 定義（2b==a+c 不取模），窮舉 D(2)=6 與文獻 4 矛盾暴露定義性 bug——修正為 mod-3（(a+c-2b)%3==0）。此為對抗式流程之實證價值。",
+    "commands": [
+      {
+        "cwd": "problems/MATH-004/experiments/capset_r1",
+        "command": "python capset_eval.py"
+      }
+    ],
+    "artifacts": [
+      "problems/MATH-004/experiments/capset_r1/capset_eval.py",
+      "problems/MATH-004/results/MATH-004/r1/capset_r1_results.json"
+    ],
+    "limitations": "greedy 下界未達文獻值（搜尋為啟發式非窮舉）；n≥3 精確值未計算；文獻精確值引用 OEIS（二級來源），原始計算文獻待下輪引用。"
+  },
+  "admitted_at": "2026-09-29T15:43:16.568191+00:00"
+}

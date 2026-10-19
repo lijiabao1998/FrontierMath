@@ -1,0 +1,102 @@
+{
+  "round_id": "20260929T155952970349Z-glm-MATH-004",
+  "problem_id": "MATH-004",
+  "agent": "glm",
+  "branch": "glm/MATH-004-verifier-r1",
+  "base_sha": "7cb405e1271b393de6bf04ac1f11efb1db8a59f3",
+  "started_at": "2026-09-29T15:59:52.970349+00:00",
+  "state": "ADMITTED",
+  "acceptance": "Scope 凍結（動手前）——MATH-004 r2：n=3 精確值窮舉（D(3)）。方法：slice-DP 完整窮舉——F₃³ 按 z 座標切三層（各 9 cells = F₃²）；(1) 枚舉 512 個 F₃² 子集，過濾出 2D caps（wrapped mod-3 AP-free）；(2) 三層組合 (S0,S1,S2) 跨層約束：不存在 a∈S0,b∈S1,c∈S2 使 (a+c−2b)%3==0 逐座標成立（等價：S1 避開 forbidden = {2(a+c) mod 3 : a∈S0, c∈S2}）；(3) D(3) = max |S0|+|S1|+|S2|。完整性論證：任何 F₃³ 子集由三層子集唯一決定；最優解之每一層必為 2D cap（層內 AP 可單獨移除一點而不違反跨層約束、不增加大小——即最優解之層內子集可設為 cap）；故窮舉三層 2D-cap 組合即完整。判準：計算值與文獻 9 一致 → REPLICATED；不一致 → CONTESTED 並調查。交叉檢查：最優三層以 r1 mod-3 三元組驗證器全驗。預算 0 美元、≤90 分鐘、≤10 trials。",
+  "not_done": "不算 n≥4；不做 EG 上界數值重現；不宣稱新數學結果（文獻值重現輪）。",
+  "budget": {
+    "wall_minutes": 90,
+    "usd": 0,
+    "max_trials": 10
+  },
+  "preflight": {
+    "checked_at": "2026-09-29T16:43:13+00:00",
+    "verdict": "NO_RESOLUTION_FOUND",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "queries": [
+      {
+        "category": "general",
+        "query": "cap set F_3^3 maximum 9 points AG(3,3) exact exhaustive",
+        "engine": "zcode-websearch(web_search_prime)",
+        "started_at": null,
+        "completed_at": null,
+        "timestamp_status": "QUOTA_BLOCKED_2026-09-29",
+        "outcome": "WebSearch quota exceeded；以 in-round WebFetch（OEIS A090245，2026-09-30）補 primary read"
+      },
+      {
+        "category": "discipline",
+        "query": "OEIS A090245 direct fetch",
+        "engine": "zcode-webfetch(oeis.org)",
+        "started_at": "2026-09-30T15:36:00Z",
+        "completed_at": "2026-09-30T15:37:00Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "a(1..6)=2,4,9,20,45,112（offset n=0 含 a(0)=1）；出處 Edel-FLS 2002、Potechin 2008"
+      },
+      {
+        "category": "solution",
+        "query": "D(3)=9 exact computation via complete slice-DP (in-round)",
+        "engine": "in-round computation",
+        "started_at": "2026-09-30T15:38:00Z",
+        "completed_at": null,
+        "timestamp_status": "RECORDED",
+        "outcome": "本輪完整 slice-DP 重現文獻值"
+      },
+      {
+        "category": "criticism",
+        "query": "verifier definitional audit: unwrapped vs mod-3 AP（r1 對抗式發現複檢）",
+        "engine": "internal-audit",
+        "started_at": "2026-09-30T15:38:00Z",
+        "completed_at": "2026-09-30T15:39:00Z",
+        "timestamp_status": "RECORDED",
+        "outcome": "r1 已修正 mod-3 語意；本輪 slice-DP 交叉驗證"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://oeis.org/A090245",
+        "title": "OEIS A090245 (WebFetch 2026-09-30)",
+        "kind": "primary",
+        "supports": "D(3)=9 文獻值；原始計算出處 Edel-FLS 2002、Potechin 2008"
+      },
+      {
+        "url": "https://arxiv.org/abs/1605.01422",
+        "title": "Ellenberg & Gijswijt 2017 (arXiv:1605.01422)",
+        "kind": "primary",
+        "supports": "上界 2.756^n（r1 已驗證記錄之引用）"
+      }
+    ],
+    "limitations": "WebSearch quota 2026-09-29 耗盡（general 路以 in-round WebFetch 補）；Edel-FLS/Potechin 原文未讀全文。",
+    "scope_comparison": "本輪 scope＝D(3) 精確值重現（文獻值 9 已知）；無未解爭議。",
+    "baseline": "baseline＝r1 mod-3 驗證器（正/負控制已驗）＋文獻值 9。"
+  },
+  "artifacts": [
+    "problems/MATH-004/experiments/capset_r2/slice_dp_d3.py",
+    "problems/MATH-004/results/r2/slice_dp_d3_results.json"
+  ],
+  "result": {
+    "state": "ROUND_FINISHED",
+    "summary": "D(3)=9 REPLICATED：slice-DP 完整窮舉（172 個 2D caps、367,525 valid triples、最優 9=4+4+1 型組合存在），獨立 mod-3 union 驗證通過；文獻值重現成功。",
+    "commands": [
+      {
+        "cwd": "problems/MATH-004/experiments/capset_r2",
+        "command": "python slice_dp_d3.py"
+      },
+      {
+        "cwd": "problems/MATH-004",
+        "command": "python experiments/capset_r1/verify_manifest.py"
+      }
+    ],
+    "adversarial_note": "完整性論證：最優解各層必為 2D cap（層內 AP 可移除單點不違反跨層約束）——slice 窮舉因此完整。"
+  },
+  "admitted_at": "2026-09-29T16:45:13.195852+00:00"
+}
